@@ -18,12 +18,10 @@ import com.jrdevel.aboutus.core.util.ResultObject;
  * @author Raphael Domingues
  *
  */
-@Controller
 public class GroupController {
 	
 	private GroupService groupService;
 	
-	@Autowired
 	public void setGroupService(GroupService groupService) {
 		this.groupService = groupService;
 	}

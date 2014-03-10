@@ -15,10 +15,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 
 	<bean class="com.jrdevel.aboutus.web.util.AboutUsJsonConverter" id="applicationConversionService"/>
 
-	<!-- Configures the @Controller programming model -->
 	<mvc:annotation-driven conversion-service="applicationConversionService">
 		<mvc:message-converters>
-	        <!-- Use the HibernateAware mapper instead of the default -->
 	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 	            <property name="objectMapper">
 	                <bean class="com.jrdevel.aboutus.web.util.HibernateAwareObjectMapper" />
@@ -35,7 +33,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean id="userSession" class="com.jrdevel.aboutus.core.model.User" scope="globalSession">
+	<bean id="userSession" class="com.jrdevel.aboutus.core.model.User" scope="session">
       <!-- this next element effects the proxying of the surrounding bean -->
       <aop:scoped-proxy/>
     </bean>

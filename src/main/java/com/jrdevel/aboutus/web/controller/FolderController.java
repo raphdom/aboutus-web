@@ -15,15 +15,12 @@ import com.jrdevel.aboutus.core.util.FolderWrapper;
  * @author Raphael Domingues
  *
  */
-@Controller
 public class FolderController {
 	
 	private FolderService folderService;
 	
-	@Autowired
 	private User userSession;
 	
-	@Autowired
 	public void setGroupService(FolderService folderService) {
 		this.folderService = folderService;
 	}

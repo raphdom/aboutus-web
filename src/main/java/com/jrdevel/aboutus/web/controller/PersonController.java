@@ -16,12 +16,10 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
 import com.jrdevel.aboutus.core.util.ListParams;
 import com.jrdevel.aboutus.core.util.ResultObject;
 
-@Controller
 public class PersonController {
 	
 	private PersonService personService;
 	
-	@Autowired
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
 	}

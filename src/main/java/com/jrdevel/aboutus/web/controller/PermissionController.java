@@ -17,12 +17,10 @@ import com.jrdevel.aboutus.core.util.ListResult;
  * @author Raphael Domingues
  *
  */
-@Controller
 public class PermissionController {
 	
 	private PermissionService permissionService;
 	
-	@Autowired
 	public void setPermissionService(PermissionService permissionService) {
 		this.permissionService = permissionService;
 	}

@@ -21,16 +21,13 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
 import com.jrdevel.aboutus.core.util.ListParams;
 import com.jrdevel.aboutus.core.util.ResultObject;
 
-@Controller
 @RequestMapping(value="/cloud")
 public class CloudController {
 
 	private CloudService cloudService;
 
-	@Autowired
 	private AboutUsConfiguration configuration;
 
-	@Autowired
 	public void setCloudService(CloudService cloudService) {
 		this.cloudService = cloudService;
 	}

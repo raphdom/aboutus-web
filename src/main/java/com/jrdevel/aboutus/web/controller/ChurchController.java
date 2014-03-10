@@ -13,12 +13,10 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
 import com.jrdevel.aboutus.core.util.ListParams;
 import com.jrdevel.aboutus.core.util.ListResult;
 
-@Controller
 public class ChurchController {
 	
 	private ChurchService churchService;
 	
-	@Autowired
 	public void setChurchService(ChurchService churchService) {
 		this.churchService = churchService;
 	}

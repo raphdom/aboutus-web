@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.jrdevel.aboutus.core.authentication.AuthenticationService;
 import com.jrdevel.aboutus.core.model.Register;
 import com.jrdevel.aboutus.core.model.User;
-import com.jrdevel.aboutus.core.service.AuthenticationService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 import com.jrdevel.aboutus.core.util.ResultObject;
 
@@ -24,12 +24,11 @@ import com.jrdevel.aboutus.core.util.ResultObject;
 @Controller
 public class AuthenticationController {
 
-	private AuthenticationService authenticationService;
-
 	@Autowired
-	public void setContactService(AuthenticationService authenticationService) {
-		this.authenticationService = authenticationService;
-	}
+	private AuthenticationService authenticationService;
+	
+	@Autowired
+	private User userSession;
 
 	@RequestMapping(value="/login.action")
 	public @ResponseBody Map<String,? extends Object> login(User user, HttpSession session) throws Exception {
@@ -38,6 +37,12 @@ public class AuthenticationController {
 
 			ResultObject result = authenticationService.login(user);
 
+			if (result.getData()!= null && !result.getData().isEmpty()){
+				User userDB = (User) result.getData().get(0);
+				userSession.setId(userDB.getId());
+				userSession.setEmail(userDB.getEmail());
+			}
+			
 			return result.toMap();
 
 		} catch (Exception e) {
@@ -63,7 +68,6 @@ public class AuthenticationController {
 
 	@RequestMapping(value="/logout.action")
 	public ModelAndView logout(HttpSession session){
-
 		session.setAttribute("scopedTarget.userSession", null);
 		return new ModelAndView(new RedirectView("")); 
 	}

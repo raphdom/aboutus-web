@@ -19,7 +19,6 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
 import com.jrdevel.aboutus.core.util.ListParams;
 import com.jrdevel.aboutus.core.util.ResultObject;
 
-@Controller
 @RequestMapping(value="/user")
 public class UserController {
 	
@@ -28,12 +27,10 @@ public class UserController {
 	
 	private UserService userService;
 	
-	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 	
-	@Autowired
 	private User userSession;
 	
 	@RequestMapping(value="/view.action")

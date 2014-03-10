@@ -19,12 +19,10 @@ import com.jrdevel.aboutus.core.util.GenericValueText;
  * @author Raphael Domingues
  *
  */
-@Controller
 public class ListController {
 
 	private ListService listService;
 
-	@Autowired
 	public void setListService(ListService listService) {
 		this.listService = listService;
 	}
