@@ -3,7 +3,10 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <property name="context-root" value="aboutus-web"/>
+        <dependent-module archiveName="aboutus-core.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/aboutus-core/aboutus-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/aboutus-web/target/classes"/>
+        <property name="context-root" value="aboutus"/>
     </wb-module>
 </project-modules>

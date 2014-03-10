@@ -1,0 +1,93 @@
+.feed-list {
+    padding: 0 3px 0 3px;
+}
+
+.feed-list-item {
+    margin-top: 3px;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 40px;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+
+.feed-list .x-item-selected {
+    font-weight: bold; 
+    color: #15428B;
+    background-color: #DFE8F6;
+    border: 1px dotted #A3BAE9;
+}
+
+.feed-list-item-hover {
+    background-color: #eee;
+}
+
+.feed-list-item .image{
+	float:left;
+	padding-right:5px;
+	padding-top:10px;
+}
+
+.ux-notification-window-info .x-window-body {
+	text-align: center;
+	color:#FFFFFF;
+	padding: 10px;
+	padding-left: 20px;
+	padding-top: 12px;
+	background-color: #157FCC;
+	font-weight: bold;
+}
+
+.ux-notification-window-warning .x-window-body {
+	text-align: center;
+	color:#FFFFFF;
+	padding: 10px;
+	padding-left: 20px;
+	padding-top: 12px;
+	background-color: #FFCC00;
+	font-weight: bold;
+}
+
+.ux-notification-window-error .x-window-body {
+	text-align: center;
+	color:#FFFFFF;
+	padding: 10px;
+	padding-left: 20px;
+	padding-top: 12px;
+	background-color: #CC0000;
+	font-weight: bold;
+}
+
+.imageLogo{
+	background-color: #DFEAF2;
+}
+
+.imageLogoBody{
+	background-image: url("../images/logoAboutUs.png");
+	background-repeat: no-repeat;
+	background-color: #DFEAF2;
+	margin-top: 20px;
+	margin-left: 20px;
+	z-index: 10;
+	width: 300px ! important;
+}
+
+/* Styling of global error indicator */
+.form-error-state {
+    font-size: 11px;
+    padding-left: 20px;
+    height: 16px;
+    line-height: 18px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    cursor: default;
+}
+
+/* Error details tooltip */
+.errors-tip .error {
+    font-style: italic;
+}
+
+.x-icon-valid-message {
+	background-image: url("../images/tick2.png");
+}

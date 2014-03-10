@@ -1,0 +1,260 @@
+#images-view .x-panel-body{
+    background: white;
+    font: 11px Arial, Helvetica, sans-serif;
+}
+#images-view .thumb{
+    background: #dddddd;
+    padding: 3px;
+    padding-bottom: 0;
+}
+
+.x-quirks #images-view .thumb {
+    padding-bottom: 3px;
+}
+
+#images-view .thumb img{
+    height: 60px;
+    width: 80px;
+}
+#images-view .thumbIcon img{
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+}
+#images-view .thumb-wrap{
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 5px;
+}
+#images-view .thumb-wrap span {
+    cursor:default;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    width: 86px; /* for ie to ensure that the text is centered */
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+#images-view .x-item-over{
+    border:1px solid #dddddd;
+    background: #efefef url(over.gif) repeat-x left top;
+    padding: 4px;
+}
+
+#images-view .x-item-selected{
+    background: #eff5fb url(selected.gif) no-repeat right bottom;
+    border:1px solid #99bbe8;
+    padding: 4px;
+}
+#images-view .x-item-selected .thumb{
+    background:transparent;
+}
+
+#images-view .loading-indicator {
+    font-size:11px;
+    background-image:url('../../../resources/themes/images/default/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left:20px;
+    margin:10px;
+}
+
+.x-view-selector {
+    position:absolute;
+    left:0;
+    top:0;
+    width:0;
+    border:1px dotted;
+    opacity: .5;
+    -moz-opacity: .5;
+    filter:alpha(opacity=50);
+    zoom:1;
+    background-color:#c3daf9;
+    border-color:#3399bb;
+}.ext-strict .ext-ie .x-tree .x-panel-bwrap{
+    position:relative;
+    overflow:hidden;
+}
+
+#img-detail-panel .details {
+    text-align: center;
+    padding-top:5px;
+}
+
+#img-detail-panel .details-info {
+    border-top: 1px solid #cccccc;
+    font: 11px Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+#img-detail-panel .details-info b {
+    color: #555555;
+    display: block;
+    margin-bottom: 4px;
+    margin-left: 5px;
+}
+
+#img-detail-panel .details-info span {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+#img-detail-panel {
+    background: white;
+    font: 11px Arial, Helvetica, sans-serif;
+}
+
+#img-detail-panel .thumb {
+    padding: 3px;
+}
+
+#img-detail-panel .thumb-wrap {
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 5px;
+}
+
+#img-detail-panel .thumb-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+#img-detail-panel .x-view-over {
+    border:1px solid #dddddd;
+    background-color: #efefef;
+    padding: 4px;
+}
+
+#img-detail-panel .x-item-selected {
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    padding: 4px;
+}
+
+#img-detail-panel .x-item-selected .thumb {
+    background:transparent;
+}
+
+#img-detail-panel .x-item-selected span {
+    color:#1A4D8F;
+}
+
+#img-detail-panel .loading-indicator {
+    font-size:11px;
+    background-image:url('../../resources/images/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left:20px;
+    margin:10px;
+}
+
+#images img {
+    margin: 20px;
+}
+
+
+
+
+
+
+
+
+
+#icons-view .x-panel-body{
+    background: white;
+    font: 11px Arial, Helvetica, sans-serif;
+}
+#icons-view .thumb{
+    background: #dddddd;
+    padding: 2px;
+    float:left;
+}
+#icons-view .thumbIcon{
+   height: 44px;
+    width: 54px;
+    float:left;
+}
+
+.x-quirks #icons-view .thumb {
+    padding-bottom: 3px;
+}
+
+#icons-view .thumb img{
+    height: 40px;
+    width: 50px;
+}
+#icons-view .thumbIcon img{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:5px;
+}
+#icons-view .icons-wrap{
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 2px;
+    width:200px;
+}
+#icons-view .icons-wrap .iconsInfo {
+    display: block;
+    overflow: hidden;
+    width: 140px; /* for ie to ensure that the text is centered */
+    float:left;
+    padding-left:2px;
+}
+
+#icons-view .icons-wrap .iconsInfo .infoName{
+    float:left;
+    width:100%;
+    height:13px;
+    overflow:hidden;
+    cursor:default;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+#icons-view .icons-wrap .iconsInfo .infoType{
+    float:left;
+    width:100%;
+    cursor:default;
+    color:#AAAAAA;
+}
+
+#icons-view .icons-wrap .iconsInfo .infoSize{
+    float:left;
+    width:100%;
+    cursor:default;
+    color:#AAAAAA;
+}
+
+#icons-view .x-item-over{
+    border:1px solid #dddddd;
+    background: #efefef url(over.gif) repeat-x left top;
+    padding: 1px;
+}
+
+#icons-view .x-item-selected{
+    background: #eff5fb url(selected.gif) no-repeat right bottom;
+    border:1px solid #99bbe8;
+    padding: 1px;
+}
+#icons-view .x-item-selected .icons{
+    background:transparent;
+}
+
+#icons-view .loading-indicator {
+    font-size:11px;
+    background-image:url('../../../resources/themes/images/default/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left:20px;
+    margin:10px;
+}

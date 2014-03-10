@@ -1,0 +1,24 @@
+.icon-default
+{
+	background: transparent no-repeat;
+	background-image: url('../images/switch.png');
+	background-position: 0 0 !important;
+}
+.icon-icons
+{
+	background: transparent no-repeat;
+	background-image: url('../images/switch.png');
+	background-position: -16px 0 !important;
+}
+.icon-thumb
+{
+	background: transparent no-repeat;
+	background-image: url('../images/switch.png');
+	background-position: -32px 0 !important;
+}
+.icon-thumbLarge
+{
+	background: transparent no-repeat;
+	background-image: url('../images/switch.png');
+	background-position: -48px 0 !important;
+}
