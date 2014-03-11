@@ -11,9 +11,9 @@ import org.springframework.format.support.FormattingConversionServiceFactoryBean
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jrdevel.aboutus.core.model.Group;
-import com.jrdevel.aboutus.core.model.Permission;
-import com.jrdevel.aboutus.core.util.Filter;
+import com.jrdevel.aboutus.core.common.model.Group;
+import com.jrdevel.aboutus.core.common.model.Permission;
+import com.jrdevel.aboutus.core.common.to.Filter;
 
 /**
  * @author Raphael Domingues

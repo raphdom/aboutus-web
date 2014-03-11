@@ -17,7 +17,7 @@
   </listener>
   
   <servlet>
-    <servlet-name>aboutus-spring</servlet-name>
+    <servlet-name>aboutusServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
@@ -31,8 +31,9 @@
   </welcome-file-list>
   
   <servlet-mapping>
-    <servlet-name>aboutus-spring</servlet-name>
+    <servlet-name>aboutusServlet</servlet-name>
     <url-pattern>*.action</url-pattern>
   </servlet-mapping>
+  
  
 </web-app>

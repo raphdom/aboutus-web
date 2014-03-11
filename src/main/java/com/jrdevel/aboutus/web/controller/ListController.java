@@ -10,10 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.constant.DAOConstants;
-import com.jrdevel.aboutus.core.service.ListService;
+import com.jrdevel.aboutus.core.common.ListService;
+import com.jrdevel.aboutus.core.common.constants.DAOConstants;
+import com.jrdevel.aboutus.core.common.to.GenericValueText;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
-import com.jrdevel.aboutus.core.util.GenericValueText;
 
 /**
  * @author Raphael Domingues

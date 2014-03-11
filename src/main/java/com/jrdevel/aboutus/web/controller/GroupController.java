@@ -8,11 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.model.Group;
-import com.jrdevel.aboutus.core.service.GroupService;
+import com.jrdevel.aboutus.core.common.model.Group;
+import com.jrdevel.aboutus.core.common.to.ListParams;
+import com.jrdevel.aboutus.core.common.to.ResultObject;
+import com.jrdevel.aboutus.core.user.GroupService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
-import com.jrdevel.aboutus.core.util.ListParams;
-import com.jrdevel.aboutus.core.util.ResultObject;
 
 /**
  * @author Raphael Domingues

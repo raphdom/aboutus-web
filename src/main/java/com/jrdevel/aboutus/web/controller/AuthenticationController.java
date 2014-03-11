@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.jrdevel.aboutus.core.authentication.AuthenticationService;
-import com.jrdevel.aboutus.core.model.Register;
-import com.jrdevel.aboutus.core.model.User;
+import com.jrdevel.aboutus.core.common.model.Register;
+import com.jrdevel.aboutus.core.common.model.User;
+import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
-import com.jrdevel.aboutus.core.util.ResultObject;
 
 /**
  * @author Raphael Domingues

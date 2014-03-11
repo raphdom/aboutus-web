@@ -33,7 +33,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean id="userSession" class="com.jrdevel.aboutus.core.model.User" scope="session">
+	<bean id="userSession" class="com.jrdevel.aboutus.core.common.model.User" scope="session">
       <!-- this next element effects the proxying of the surrounding bean -->
       <aop:scoped-proxy/>
     </bean>

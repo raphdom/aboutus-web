@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.model.Church;
-import com.jrdevel.aboutus.core.service.ChurchService;
+import com.jrdevel.aboutus.core.church.ChurchService;
+import com.jrdevel.aboutus.core.common.model.Church;
+import com.jrdevel.aboutus.core.common.to.ListParams;
+import com.jrdevel.aboutus.core.common.to.ListResult;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
-import com.jrdevel.aboutus.core.util.ListParams;
-import com.jrdevel.aboutus.core.util.ListResult;
 
 public class ChurchController {
 	

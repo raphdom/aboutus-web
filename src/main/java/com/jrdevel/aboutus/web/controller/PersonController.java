@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.model.Person;
-import com.jrdevel.aboutus.core.service.PersonService;
+import com.jrdevel.aboutus.core.common.model.Person;
+import com.jrdevel.aboutus.core.common.to.ListParams;
+import com.jrdevel.aboutus.core.common.to.ResultObject;
+import com.jrdevel.aboutus.core.person.PersonService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
-import com.jrdevel.aboutus.core.util.ListParams;
-import com.jrdevel.aboutus.core.util.ResultObject;
 
 public class PersonController {
 	

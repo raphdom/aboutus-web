@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.model.User;
-import com.jrdevel.aboutus.core.service.FolderService;
-import com.jrdevel.aboutus.core.util.FolderWrapper;
+import com.jrdevel.aboutus.core.cloud.FolderService;
+import com.jrdevel.aboutus.core.cloud.FolderWrapper;
+import com.jrdevel.aboutus.core.common.model.User;
 
 /**
  * @author Raphael Domingues
