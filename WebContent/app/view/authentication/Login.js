@@ -2,7 +2,7 @@ Ext.define('AboutUs.view.authentication.Login', {
     extend: 'Ext.form.Panel',
     xtype: 'loginForm',
     
-    url:'login.action',
+    url:'j_spring_security_check',
     title: 'Autenticação',
     frame:true,
     width: 400,
@@ -17,14 +17,14 @@ Ext.define('AboutUs.view.authentication.Login', {
     items: [
         {
             allowBlank: false,
-            fieldLabel: 'Email',
-            name: 'email',
-            emptyText: 'Email'
+            fieldLabel: 'Utilizador',
+            name:'j_username',
+            emptyText: 'Utilizador'
         },
         {
             allowBlank: false,
             fieldLabel: 'Palavra-chave',
-            name: 'password',
+            name:'j_password',
             emptyText: 'Palavra-chave',
             inputType: 'password'
         },
