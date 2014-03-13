@@ -6,7 +6,7 @@ Ext.define('AboutUs.store.CurrentUserStore', {
     proxy: {
         type: 'ajax',
         api: {
-        	read : 'user/currentUser.action'
+        	read : 'getUserAuthenticated.action'
         },
         reader: {
             type: 'json',

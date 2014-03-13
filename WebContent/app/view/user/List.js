@@ -52,7 +52,7 @@ Ext.define('AboutUs.view.user.List', {
 		dataIndex:'block',
 		criteriaXtype:'combo'
 	},{
-		header: "ï¿½ltimo acesso",
+		header: "Último acesso",
 		width: 150,
 		flex:1,
 		dataIndex:'lastvisitDate',

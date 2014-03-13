@@ -2,11 +2,11 @@ Ext.define('AboutUs.store.PermissionStore', {
     extend: 'Ext.data.Store',
     model: 'AboutUs.model.Permission',
     pageSize: 1000,
-    autoLoad:true,
+    autoLoad:false,
     proxy: {
         type: 'ajax',
         api: {
-        	read : 'permission/view.action'
+        	read : 'getUserRoles.action'
         },
         reader: {
             type: 'json',
