@@ -51,11 +51,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/save.action", method = RequestMethod.POST)
-	public @ResponseBody Map<String,? extends Object> save(@RequestBody User data) throws Exception {
+	public @ResponseBody Map<String,? extends Object> save(@RequestBody User user) throws Exception {
 
 		try{
 
-			ResultObject result = userService.update(data);
+			ResultObject result = null;
+
+			if (user.getId() != null && user.getId() != 0){
+				result = userService.update(user);
+			}else{
+				result = userService.insert(user);
+			}
 			
 			return result.toMap();
 			

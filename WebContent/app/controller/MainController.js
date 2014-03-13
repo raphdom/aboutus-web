@@ -29,7 +29,7 @@ Ext.define('AboutUs.controller.MainController', {
     
     onLogoutButtonClick: function(){
     	console.log('onLogoutButtonClick');
-    	window.location.href="logout.action";
+    	window.location.href="j_spring_security_logout";
     }
     
 });
