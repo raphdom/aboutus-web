@@ -21,17 +21,14 @@ import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
+@Controller
 @RequestMapping(value="/cloud")
 public class CloudController {
 
+	@Autowired
 	private CloudService cloudService;
 
 	private AboutUsConfiguration configuration;
-
-	public void setCloudService(CloudService cloudService) {
-		this.cloudService = cloudService;
-	}
-
 
 	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
