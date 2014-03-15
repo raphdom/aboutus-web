@@ -41,7 +41,9 @@ Ext.define('AboutUs.controller.CloudController', {
            selector: 'centercloudcontainer'
         },{
            ref: 'cloudDialog',
-           selector: 'clouddialog'
+           selector: 'clouddialog',
+           autoCreate:true,
+           xtype:'clouddialog'
        },{
            ref: 'folderDialog',
            selector: 'folderdialog',
@@ -146,7 +148,7 @@ Ext.define('AboutUs.controller.CloudController', {
     },
     
     onFolderClick : function(treepanel, record, item, idx, e, eOpts){
-    	this.getCenterCloudContainer().setTitle(this.getTreeCloudPanel().getFolderPath(record))
+    	this.getCenterCloudContainer().setTitle(this.getTreeCloudPanel().getFolderPath(record));
        	this.getCloudStoreStore().clearFilter(true);
        	this.getCloudStoreStore().filter({ property: 'folder.id', value: record.get('id') , type: 'id', operator:'eq'});
     },
@@ -174,14 +176,20 @@ Ext.define('AboutUs.controller.CloudController', {
     onAddFiles: function(button){
     	var folder = this.getTreeCloudPanel().getSelectedFolder();
     	var folderPath = this.getTreeCloudPanel().getFolderPath(folder);
-    	var dialog = Ext.create('Ext.ux.upload.Dialog', {
+    	
+    	Ext.widget('clouddialog',{
+    		dialogTitle: 'Adicionar ficheiros na pasta: ' + folderPath,
+		    uploadParams:{folderId:folder.get('id')}
+    	}).show();
+    	
+    	/*var dialog = Ext.create('Ext.ux.upload.Dialog', {
 		    dialogTitle: 'Adicionar ficheiros na pasta: ' + folderPath,
 		    uploadUrl: 'cloud/upload.action',
 		    modal:true,
 		    uploadParams:{folderId:folder.get('id')}
 		});
 		
-		dialog.show();
+		dialog.show();*/
     },
     
     onViewImageFile: function(button){
@@ -190,7 +198,7 @@ Ext.define('AboutUs.controller.CloudController', {
     },
     
     onDownloadFile:function(button){
-    	var record = this.getGridActive().getSelectionModel().getSelection()[0]
+    	var record = this.getGridActive().getSelectionModel().getSelection()[0];
 		this.getFileDownloader().load({
 		    url: 'cloud/downloadFile.action?fileId='+record.get('id')
 		});

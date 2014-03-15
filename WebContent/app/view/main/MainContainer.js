@@ -11,7 +11,12 @@ Ext.define('AboutUs.view.main.MainContainer', {
         	cls:'imageLogo',
         	bodyCls:'imageLogoBody',
         	buttons:[
-        		{
+				{
+					text:'Upload Dialog',
+					icon:'resources/images/download-cloud.png',
+					action:'cloudDialog',
+					hidden:true
+				},{
         			text:'Disco',
 	        		icon:'resources/images/mediaManager.png',
 	        		action:'cloud'

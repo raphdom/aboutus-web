@@ -8,7 +8,12 @@ Ext.define('AboutUs.controller.MainController', {
     refs: [{
         ref: 'mainContainer',
         selector: 'mainContainer'
-    }],
+    },{
+    	 ref: 'buttonCloudDialog',
+         selector: 'mainContainer button[action=cloudDialog]'
+    }
+    
+    ],
     
     init: function() {
         this.control({
@@ -17,6 +22,9 @@ Ext.define('AboutUs.controller.MainController', {
             },
             'mainContainer container[region=north] button[action=logout]': {
                 click: this.onLogoutButtonClick
+            },
+            'mainContainer button[action=cloudDialog]':{
+            	click: this.onCloudDialogButtonClick
             }
         });
     },
@@ -30,6 +38,10 @@ Ext.define('AboutUs.controller.MainController', {
     onLogoutButtonClick: function(){
     	console.log('onLogoutButtonClick');
     	window.location.href="j_spring_security_logout";
+    },
+    
+    onCloudDialogButtonClick:function(button){
+    	AboutUs.app.getController('CloudController').getCloudDialog().show(button);
     }
     
 });
