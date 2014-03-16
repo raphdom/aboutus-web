@@ -21,7 +21,8 @@ Ext.define('AboutUs.view.cloud.CenterCloudContainer' ,{
     tbar:[{
                 text: 'Upload',
                 icon:'resources/images/download-cloud.png',
-                action:'add'
+                action:'add',
+                disabled:true
         },{
                  icon:'resources/images/controlPlay.png',
                 action:'slideshow'

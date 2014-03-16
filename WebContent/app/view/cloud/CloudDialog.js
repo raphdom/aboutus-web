@@ -4,12 +4,11 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     
     modal:true,
     minimizable:true,
-    uploadUrl: 'cloud/upload.action',
     textClose : 'Fechar',
     
     panel : Ext.create('Ext.ux.upload.Panel', {
         synchronous : this.synchronous,
-        uploadUrl : this.uploadUrl,
+        uploadUrl : 'cloud/upload.action',
         uploadParams : this.uploadParams,
         uploader: 'Ext.ux.upload.uploader.FormDataUploader',
         
@@ -39,6 +38,18 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     	var buttonCloudDialog = AboutUs.app.getController('MainController').getButtonCloudDialog();
     	buttonCloudDialog.setVisible(true);
     	this.hide(buttonCloudDialog);
+    },
+    
+    setFolder:function(folder,folderPath){
+    	this.setTitle('Adicionar ficheiros na pasta: ' + folderPath);
+    	Ext.apply(this,{
+    		uploadParams:{folderId:folder.get('id')},
+    		uploadUrl: 'cloud/upload.action'
+    	});
+    },
+    
+    removeAllFiles:function(){
+    	this.panel.onRemoveAll();
     },
     
     listeners:{

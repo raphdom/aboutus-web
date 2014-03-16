@@ -40,6 +40,9 @@ Ext.define('AboutUs.controller.CloudController', {
            ref: 'centerCloudContainer',
            selector: 'centercloudcontainer'
         },{
+        	ref: 'uploadButton',
+        	selector:'centercloudcontainer toolbar button[action=add]'
+        },{
            ref: 'cloudDialog',
            selector: 'clouddialog',
            autoCreate:true,
@@ -77,7 +80,8 @@ Ext.define('AboutUs.controller.CloudController', {
         		afterrender:this.onAfterRenderComboOrder
     		},
     		'treecloudpanel':{
-        		itemclick: this.onFolderClick
+        		itemclick: this.onFolderClick,
+        		selectionchange : this.onFolderSelectionChange
     		},
     		'treecloudpanel toolbar button[action=add]':{
     			click: this.onAddFolder
@@ -153,6 +157,14 @@ Ext.define('AboutUs.controller.CloudController', {
        	this.getCloudStoreStore().filter({ property: 'folder.id', value: record.get('id') , type: 'id', operator:'eq'});
     },
     
+    onFolderSelectionChange: function (treepanel, selected, eOpts){
+    	if (treepanel.hasSelection()){
+    		this.getUploadButton().enable();
+    	}else{
+    		this.getUploadButton().disable();
+    	}
+    },
+    
     onFileSelected : function(view, selections){
         var selected = selections[0];
         
@@ -177,10 +189,24 @@ Ext.define('AboutUs.controller.CloudController', {
     	var folder = this.getTreeCloudPanel().getSelectedFolder();
     	var folderPath = this.getTreeCloudPanel().getFolderPath(folder);
     	
-    	Ext.widget('clouddialog',{
+    	this.getCloudDialog();
+    	this.getCloudDialog().setFolder(folder,folderPath);
+    	
+    	var buttonCloudDialog = AboutUs.app.getController('MainController').getButtonCloudDialog();
+    	
+    	if (buttonCloudDialog.isVisible()){
+    		this.getCloudDialog().show(buttonCloudDialog);
+    	}else{
+    		this.getCloudDialog().removeAllFiles();
+    		this.getCloudDialog().show(button);
+    	}
+    	
+    	
+    	
+    	/*Ext.widget('clouddialog',{
     		dialogTitle: 'Adicionar ficheiros na pasta: ' + folderPath,
 		    uploadParams:{folderId:folder.get('id')}
-    	}).show();
+    	}).show();*/
     	
     	/*var dialog = Ext.create('Ext.ux.upload.Dialog', {
 		    dialogTitle: 'Adicionar ficheiros na pasta: ' + folderPath,
