@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="ext4.2.1/resources/ext-theme-neptune/ext-theme-neptune-all.css">
     <script type="text/javascript" src="ext4.2.1/ext-all-dev.js"></script>
     <script type="text/javascript" src="ext4.2.1/ext-theme-neptune.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="resources/js/lightview.js"></script>
     <script type="text/javascript" src="ext4.2.1/locale/ext-lang-pt_PT.js" charset="utf-8"></script>
     
