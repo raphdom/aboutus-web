@@ -1,4 +1,4 @@
-<meta http-equiv=content-type content=text/html; charset=iso-8859-1> 
+<meta http-equiv=content-type content=text/html; charset=ISO-8859-1> 
 <html>
 <head>
 	<title>::About Us::</title>
@@ -9,7 +9,7 @@
     <script type="text/javascript" src="ext4.2.1/ext-theme-neptune.js"></script>
     <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="resources/js/lightview.js"></script>
-    <script type="text/javascript" src="ext4.2.1/locale/ext-lang-pt_PT.js" charset="utf-8"></script>
+    <script type="text/javascript" src="ext4.2.1/locale/ext-lang-pt_PT.js"></script>
     
     <!-- App Files -->
 	<link rel="stylesheet" type="text/css" href="resources/css/aboutus.css">

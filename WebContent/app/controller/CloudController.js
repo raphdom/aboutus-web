@@ -220,7 +220,7 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onViewImageFile: function(button){
           var recordSelect = this.getGridActive().getSelectionModel().getSelection();
-          Lightview.show(recordSelect[0].data.url3);
+          Lightview.show("http://localhost:8080/aboutus/"+recordSelect[0].data.url3);
     },
     
     onDownloadFile:function(button){
@@ -233,7 +233,7 @@ Ext.define('AboutUs.controller.CloudController', {
     onSlideShow: function(button){
         var images = new Array();
         AboutUs.app.getStore('CloudStore').each(function(item,index,count) {
-              images.push({url:item.data.url3});
+              images.push({url:'http://localhost:8080/aboutus/'+item.data.url3});
         });
         Lightview.show(images, 1);
     },

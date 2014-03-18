@@ -4,12 +4,15 @@ Ext.define('AboutUs.model.File', {
                 'filename',
                 'filetype',
                 'filesize',
+                'title',
+                'caption',
+                'keywords',
                 {
-                        name:'shortName',
-                        convert:function(v,record){
-                                return Ext.util.Format.ellipsis(record.data.filename, 15);
-                        }
-                },{
+                	name:'createdDate',
+                	type:'date',
+            		dateReadFormat:'time'
+                },
+                {
                         name:'icon',
                         convert:function(v, record){
                         	if (record.data.filetype.indexOf("image") != -1){

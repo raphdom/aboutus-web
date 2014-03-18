@@ -27,6 +27,12 @@ Ext.define('AboutUs.view.cloud.TileGridDetails' ,{
             flex: 1,
             dataIndex: 'filesize',
             renderer: 'fileSize'
+        }, {
+            text: 'Criado',
+            flex: 1,
+            dataIndex: 'createdDate',
+            xtype:'datecolumn', 
+    		format:'d-m-Y H:i'
         }]
     
 });

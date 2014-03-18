@@ -42,8 +42,10 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     
     setFolder:function(folder,folderPath){
     	this.setTitle('Adicionar ficheiros na pasta: ' + folderPath);
+    	Ext.apply(this.panel.uploadManager.uploader,{
+    		params:{folderId:folder.get('id')}
+    	});
     	Ext.apply(this,{
-    		uploadParams:{folderId:folder.get('id')},
     		uploadUrl: 'cloud/upload.action'
     	});
     },

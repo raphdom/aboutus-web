@@ -38,7 +38,8 @@ Ext.define('AboutUs.view.cloud.CenterCloudContainer' ,{
                         data : [
                                 {"key":"filename", "value":"Nome"},
                                 {"key":"filetype", "value":"Tipo"},
-                                {"key":"filesize", "value":"Tamanho"}
+                                {"key":"filesize", "value":"Tamanho"},
+                                {"key":"createdDate", "value":"Data Criação"}
                                 ]
                         })
         },{

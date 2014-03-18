@@ -1,5 +1,6 @@
 package com.jrdevel.aboutus.web.controller;
 
+import java.io.FileInputStream;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class CloudController {
 	@Autowired
 	private CloudService cloudService;
 
+	@Autowired
 	private AboutUsConfiguration configuration;
 
 	@RequestMapping(value="/view.action")
@@ -62,7 +64,7 @@ public class CloudController {
 
 		mpf.transferTo(file);
 
-		cloudService.processFile(mpf.getInputStream(),mpf.getOriginalFilename(),mpf.getSize(),
+		cloudService.processFile(new FileInputStream(file),mpf.getOriginalFilename(),mpf.getSize(),
 				file.getAbsolutePath(), mpf.getContentType(),folderId);
 
 		//System.out.println(mpf.getOriginalFilename() +" uploaded!");

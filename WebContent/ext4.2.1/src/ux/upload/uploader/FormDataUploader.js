@@ -18,7 +18,7 @@ Ext.define('Ext.ux.upload.uploader.FormDataUploader', {
             url = this.url;
 
         xhr.open(method, url, true);
-
+        
         this.abortXhr = function() {
             this.suspendEvents();
             xhr.abort();
