@@ -111,6 +111,7 @@ Ext.define('AboutUs.controller.CloudController', {
     	centerContainer.add(list);
     	this.hideAllGrids();
     	this.getTileGridThumbs().show();
+    	centerContainer.setLoading(false);
     },
     
     onClickGridDetails: function(button){

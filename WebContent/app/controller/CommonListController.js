@@ -61,8 +61,9 @@ Ext.define('AboutUs.controller.CommonListController', {
 	processActionMenu: function(){
 		
 		var centerContainer = this.getController('MainController').getMainContainer().down('container[itemId=centerContainer]');
+		centerContainer.setLoading(true);
     	centerContainer.removeAll();
-		
+    	
 	},
 	
 	onAdd: function(button, event, options) {

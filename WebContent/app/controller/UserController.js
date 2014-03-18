@@ -41,6 +41,8 @@ Ext.define('AboutUs.controller.UserController', {
     	var list = Ext.create('AboutUs.view.user.List');
     	centerContainer.add(list);
     	
+    	centerContainer.setLoading(false);
+    	
     },
     
     onBeforeSaveData: function(){
