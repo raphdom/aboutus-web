@@ -114,7 +114,9 @@ Ext.define('Ext.ux.upload.Dialog', {
         }
 
         this.relayEvents(this.panel, [
-                'uploadcomplete'
+                'uploadcomplete',
+                'itemuploadsuccess',
+                'itemuploadfailure'
             ]);
 
         Ext.apply(this, {

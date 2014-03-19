@@ -406,11 +406,11 @@ Ext.define('Ext.ux.upload.Panel', {
     },
 
     onItemUploadSuccess : function(manager, item, info) {
-
+    	this.fireEvent('itemuploadsuccess', this, manager, item, info);
     },
 
     onItemUploadFailure : function(manager, item, info) {
-
+    	this.fireEvent('itemuploadfailure', this, manager, item, info);
     },
 
     startUpload : function() {

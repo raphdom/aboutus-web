@@ -30,6 +30,7 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
         // status toolbar strings
         selectionMessageText : 'Selecionados {0} ficheiro(s), {1}',
         uploadMessageText : 'Progresso {0}% ({1} of {2} no total)',
+        filenameEncoder : 'Ext.ux.upload.header.Base64FilenameEncoder'
     }),
     
     closeAction:'hidden',
@@ -46,7 +47,8 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     		params:{folderId:folder.get('id')}
     	});
     	Ext.apply(this,{
-    		uploadUrl: 'cloud/upload.action'
+    		uploadUrl: 'cloud/upload.action',
+    		filenameEncoder : 'Ext.ux.upload.header.Base64FilenameEncoder'
     	});
     },
     
@@ -58,6 +60,16 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     	close:function(window,eOpts){
     		var buttonCloudDialog = AboutUs.app.getController('MainController').getButtonCloudDialog();
     		buttonCloudDialog.setVisible(false);
+    	},
+    	itemuploadsuccess:function(panel, manager, item, info){
+    		//Actualizar toda a vez o folder.
+    		//Se o folder estiver aberto e se o cloud estiver ativo
+    		//Podes não estar devido a ter a janela minimizada e ter passado pra outro painel
+    		console.log('item feito upload');
+    	},
+    	uploadcomplete:function(panel, manager, items, errorCount){
+    		//Se a janela estiver minimizada dar uma mensagem
+    		this.close();
     	}
     }
     

@@ -1,4 +1,4 @@
-<meta http-equiv=content-type content=text/html; charset=iso-8859-1>
+<meta http-equiv=content-type content=text/html; charset=UTF-8>
 <html>
 <head>
 	<title>::About Us::</title>

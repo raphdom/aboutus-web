@@ -1,4 +1,4 @@
-<meta http-equiv=content-type content=text/html; charset=ISO-8859-1> 
+<meta http-equiv=content-type content=text/html; charset=UTF-8> 
 <html>
 <head>
 	<title>::About Us::</title>
@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/ButtonSegment.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/dataview.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/tileview.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/upload.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/lightview/lightview.css">
 	<!--  App Constants -->
 	<script type="text/javascript" src="app/util/Constants.js"></script>
