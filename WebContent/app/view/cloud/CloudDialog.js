@@ -5,6 +5,7 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     modal:true,
     minimizable:true,
     textClose : 'Fechar',
+    folderId:null,
     
     panel : Ext.create('Ext.ux.upload.Panel', {
         synchronous : this.synchronous,
@@ -42,6 +43,7 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     },
     
     setFolder:function(folder,folderPath){
+    	this.folderId = folder.get('id');
     	this.setTitle('Adicionar ficheiros na pasta: ' + folderPath);
     	Ext.apply(this.panel.uploadManager.uploader,{
     		params:{folderId:folder.get('id')}
@@ -65,7 +67,8 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     		//Actualizar toda a vez o folder.
     		//Se o folder estiver aberto e se o cloud estiver ativo
     		//Podes não estar devido a ter a janela minimizada e ter passado pra outro painel
-    		console.log('item feito upload');
+    		
+    		//console.log('item feito upload');
     	},
     	uploadcomplete:function(panel, manager, items, errorCount){
     		//Se a janela estiver minimizada dar uma mensagem

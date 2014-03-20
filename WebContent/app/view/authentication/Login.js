@@ -3,7 +3,7 @@ Ext.define('AboutUs.view.authentication.Login', {
     xtype: 'loginForm',
     
     url:'j_spring_security_check',
-    title: 'Autenticação',
+    title: 'AutenticaÃ§Ã£o',
     frame:true,
     width: 400,
     bodyPadding: 10,

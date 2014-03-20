@@ -5,6 +5,8 @@ Ext.define('AboutUs.store.CloudStore', {
     
     remoteFilter:true,
     
+    pageSize: 1000,
+    
     proxy: {
         type: 'ajax',
         api: {

@@ -4,7 +4,7 @@ Ext.define('AboutUs.controller.CloudController', {
     stores: ['CloudStore','FolderStore','FolderComboStore'],
 
     models: ['File'],
-
+    
     views: [
             'cloud.CloudContainer',
             'cloud.DetailsPanel',
@@ -100,6 +100,9 @@ Ext.define('AboutUs.controller.CloudController', {
     		},
     		'detailspanel toolbar button[action=down]':{
         		click: this.onDownloadFile
+    		},
+    		'clouddialog':{
+    			itemuploadsuccess:this.onItemUploadSucess
     		}
                 
         });
@@ -156,6 +159,11 @@ Ext.define('AboutUs.controller.CloudController', {
     	this.getCenterCloudContainer().setTitle(this.getTreeCloudPanel().getFolderPath(record));
        	this.getCloudStoreStore().clearFilter(true);
        	this.getCloudStoreStore().filter({ property: 'folder.id', value: record.get('id') , type: 'id', operator:'eq'});
+    },
+    
+    refresh : function(){
+    	var folderSelected = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
+    	this.onFolderClick(this.getTreeCloudPanel(),folderSelected);
     },
     
     onFolderSelectionChange: function (treepanel, selected, eOpts){
@@ -241,6 +249,13 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onAddFolder: function(button){
    		this.getFolderDialog().show(); 	
+    },
+    
+    onItemUploadSucess:function(panel, manager, item, info){
+    	var folderSelected = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
+    	if (folderSelected.get('id')==this.getCloudDialog().folderId){
+    		this.onFolderClick(this.getTreeCloudPanel(),folderSelected);
+    	}
     }
     
 });
