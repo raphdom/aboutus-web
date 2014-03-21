@@ -62,17 +62,6 @@ Ext.define('AboutUs.view.cloud.CloudDialog' ,{
     	close:function(window,eOpts){
     		var buttonCloudDialog = AboutUs.app.getController('MainController').getButtonCloudDialog();
     		buttonCloudDialog.setVisible(false);
-    	},
-    	itemuploadsuccess:function(panel, manager, item, info){
-    		//Actualizar toda a vez o folder.
-    		//Se o folder estiver aberto e se o cloud estiver ativo
-    		//Podes não estar devido a ter a janela minimizada e ter passado pra outro painel
-    		
-    		//console.log('item feito upload');
-    	},
-    	uploadcomplete:function(panel, manager, items, errorCount){
-    		//Se a janela estiver minimizada dar uma mensagem
-    		this.close();
     	}
     }
     

@@ -10,6 +10,7 @@ Ext.define('AboutUs.view.cloud.TileGridThumbs' ,{
                 Ext.applyIf(me, {
                         items: Ext.create('Ext.view.View', {
                             store: store,
+                            autoScroll:true,
                             tpl: [
                                 '<tpl for=".">',
                                     '<div class="thumb-wrap" id="{filename:stripTags}">',

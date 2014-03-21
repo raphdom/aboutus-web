@@ -102,7 +102,8 @@ Ext.define('AboutUs.controller.CloudController', {
         		click: this.onDownloadFile
     		},
     		'clouddialog':{
-    			itemuploadsuccess:this.onItemUploadSucess
+    			itemuploadsuccess: this.onItemUploadSucess,
+    			uploadcomplete: this.onUploadComplete
     		}
                 
         });
@@ -255,6 +256,15 @@ Ext.define('AboutUs.controller.CloudController', {
     	var folderSelected = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
     	if (folderSelected.get('id')==this.getCloudDialog().folderId){
     		this.onFolderClick(this.getTreeCloudPanel(),folderSelected);
+    	}
+    },
+    
+    onUploadComplete: function(panel, manager, items, errorCount){
+    	var buttonCloudDialog = AboutUs.app.getController('MainController').getButtonCloudDialog();
+    	if (buttonCloudDialog.isVisible()){
+    		
+    	}else{
+    		this.getCloudDialog().close();
     	}
     }
     
