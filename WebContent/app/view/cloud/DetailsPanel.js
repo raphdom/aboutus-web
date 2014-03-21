@@ -15,8 +15,7 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
     tpl: [
         '<div class="details">',
             '<tpl for=".">',
-                    (!Ext.isIE6? '<img src="{url2}" />' : 
-                    '<div style="width:74px;height:74px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'icons/{thumb}\')"></div>'),
+            	'<img src="{url2}" />', 
                 '<div class="details-info">',
                     '<b>Nome do Ficheiro:</b>',
                     '<span>{filename}</span>',
@@ -26,7 +25,7 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
                     '<span>{filesize:fileSize}</span>',
                     '<b>Criado em:</b>',
                     '<span>{createdDate:date("d-m-Y G:i:s")}</span>',
-                    '<b>Tí­tulo:</b>',
+                    '<b>TÃ­tulo:</b>',
                     '<span>{title}</span>',
                     '<b>Palavras-chave:</b>',
                     '<span>{keywords}</span>',

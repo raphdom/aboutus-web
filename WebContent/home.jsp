@@ -21,6 +21,7 @@
 	<!--  App Constants -->
 	<script type="text/javascript" src="app/util/Constants.js"></script>
 	
+	<script type="text/javascript" src="app/extjs-override.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
     
 </head>
