@@ -113,6 +113,7 @@ Ext.define('AboutUs.controller.CloudController', {
     	var centerContainer = this.getController('MainController').getMainContainer().down('container[itemId=centerContainer]');
     	var list = Ext.create('AboutUs.view.cloud.CloudContainer');
     	centerContainer.add(list);
+    	this.getCloudStoreStore().removeAll();
     	this.hideAllGrids();
     	this.getTileGridThumbs().show();
     	centerContainer.setLoading(false);

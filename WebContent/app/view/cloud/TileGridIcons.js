@@ -3,6 +3,7 @@ Ext.define('AboutUs.view.cloud.TileGridIcons' ,{
     alias : 'widget.tilegridicons',
     
         id: 'icons-view',
+        autoScroll:true,
     
         initComponent: function() {
                 var me = this;
@@ -13,7 +14,7 @@ Ext.define('AboutUs.view.cloud.TileGridIcons' ,{
                             tpl: [
                                 '<tpl for=".">',
                                     '<div class="icons-wrap" id="{name:stripTags}">',
-                                        '<div class="{classThumb}"><img src="{id:formatThumbUrl(1,this.filetype)}" title="{name:htmlEncode}"></div>',
+                                        '<div class="{classThumb}"><img src="{id:formatThumbUrl(0,values.filetype)}" title="{name:htmlEncode}"></div>',
                                         '<div class="iconsInfo">',
                                                 '<span class="infoName">{filename:htmlEncode}</span>',
                                                 '<span class="infoType">{filetype:htmlEncode}</span>',

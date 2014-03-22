@@ -52,7 +52,7 @@ Ext.apply(Ext.util.Format,{
             		sizeIconDataType= '128';
             	}
         		
-        		if (record.data.filetype.indexOf("image") != -1){
+        		if (filetype.indexOf("image") != -1){
 					return "cloud/getImage.action?imageId="+fileid+"&dataType="+datatype;
             	}else{
             		return "resources/images/mimetypes/"+sizeIconDataType+"/default.png";

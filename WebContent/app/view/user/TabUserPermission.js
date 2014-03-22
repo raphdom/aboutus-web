@@ -3,7 +3,7 @@ Ext.define('AboutUs.view.user.TabUserPermission', {
     
     alias: 'widget.usertabuserpermission',
     
-    title:'Grupos/Permissıes',
+    title:'Grupos/Permiss√µes',
     
     header:false,
     
@@ -20,7 +20,7 @@ Ext.define('AboutUs.view.user.TabUserPermission', {
     		editColumn:false,
     		scroll:true
     	},{
-    		title:'Permissıes',
+    		title:'Permiss√µes',
     		xtype:'permissionlist',
     		flex:1,
     		hidetoolbar:true,

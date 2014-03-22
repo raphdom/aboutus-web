@@ -26,6 +26,8 @@
     margin: 4px;
     margin-right: 0;
     padding: 5px;
+    width:96px;
+    height:90px;
 }
 #images-view .thumb-wrap span {
     cursor:default;
@@ -38,14 +40,14 @@
 }
 
 #images-view .x-item-over{
-    border:1px solid #dddddd;
-    background: #efefef;
+    border:1px solid #E2EFF8;
+    background: #E2EFF8;
     padding: 4px;
 }
 
 #images-view .x-item-selected{
-    background: #eff5fb;
-    border:1px solid #99bbe8;
+    background: #C1DDF1;
+    border:1px solid #E2EFF8;
     padding: 4px;
 }
 #images-view .x-item-selected .thumb{
@@ -60,6 +62,8 @@
     padding-left:20px;
     margin:10px;
 }
+
+
 
 .x-view-selector {
     position:absolute;
@@ -202,6 +206,7 @@
     margin-right: 0;
     padding: 2px;
     width:200px;
+    height:50px;
 }
 #icons-view .icons-wrap .iconsInfo {
     display: block;
@@ -236,14 +241,14 @@
 }
 
 #icons-view .x-item-over{
-    border:1px solid #dddddd;
-    background: #efefef;
+    border:1px solid #E2EFF8;
+    background: #E2EFF8;
     padding: 1px;
 }
 
 #icons-view .x-item-selected{
-    background: #eff5fb;
-    border:1px solid #99bbe8;
+    background: #C1DDF1;
+    border:1px solid #E2EFF8;
     padding: 1px;
 }
 #icons-view .x-item-selected .icons{

@@ -3,6 +3,7 @@ Ext.define('AboutUs.view.cloud.TileGridThumbs' ,{
     alias : 'widget.tilegridthumbs',
     
         id: 'images-view',
+        autoScroll:true,
     
         initComponent: function() {
                 var me = this;
@@ -10,12 +11,11 @@ Ext.define('AboutUs.view.cloud.TileGridThumbs' ,{
                 Ext.applyIf(me, {
                         items: Ext.create('Ext.view.View', {
                             store: store,
-                            autoScroll:true,
                             tpl: [
                                 '<tpl for=".">',
                                     '<div class="thumb-wrap" id="{filename:stripTags}">',
                                         '<div class="{classThumb}">',
-                                        	'<img src="{url1}" title="{filename:htmlEncode}">',
+                                        	'<img src="{id:formatThumbUrl(1,values.filetype)}" title="{filename:htmlEncode}">',
                                         '</div>',
                                         '<span class="x-editable">{filename:htmlEncode}</span>',
                                     '</div>',

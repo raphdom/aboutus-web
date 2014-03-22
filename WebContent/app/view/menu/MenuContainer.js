@@ -68,7 +68,7 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 		    	    	   visible:true
 		    	       },
 		    	       {
-		    	    	   title:'Vídeos',
+		    	    	   title:'VÃ­deos',
 		    	    	   icon:'resources/images/videos.png',
 		    	    	   visible:true
 		    	       },
@@ -84,18 +84,18 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 		    	       }
 		    	       ]
 		    },{
-		        title: 'Música',
+		        title: 'MÃºsica',
 		        itemId:'music',
 		        xtype:'menu-list',
 		        icon:'resources/images/music.png',
 		    	menuItems:[
 		    	       {
-		    	    	   title:'Listas de Reprodução',
+		    	    	   title:'Listas de ReproduÃ§Ã£o',
 		    	    	   icon:'resources/images/playlist.png',
 		    	    	   visible:true
 		    	       },
 		    	       {
-		    	    	   title:'Músicas',
+		    	    	   title:'MÃºsicas',
 		    	    	   icon:'resources/images/music.png',
 		    	    	   visible:true
 		    	       }

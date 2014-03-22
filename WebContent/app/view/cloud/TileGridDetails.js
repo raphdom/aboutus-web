@@ -6,10 +6,10 @@ Ext.define('AboutUs.view.cloud.TileGridDetails' ,{
     store:'CloudStore',
     
     columns: [{
-    		dataIndex: 'icon',
+    		dataIndex: 'id',
     		width: 35,
-		    renderer: function(value){
-		        return '<img src="' + value + '" />';
+		    renderer: function(value, metadata, record){
+		        return '<img src="' + Ext.util.Format.formatThumbUrl(value,-1,record.get('filetype')) + '" />';
 		    }
     	},{
             text: 'Nome',

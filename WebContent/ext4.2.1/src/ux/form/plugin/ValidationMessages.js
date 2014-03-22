@@ -19,8 +19,8 @@ Ext.define('Ext.ux.form.plugin.ValidationMessages', {
             validCls: Ext.baseCSSPrefix + 'icon-valid-message',
             baseCls: 'form-error-state',
             flex: 1,
-            validText: 'Formul·rio completo',
-            invalidText: 'Formul·rio incompleto',
+            validText: 'Formul√°rio completo',
+            invalidText: 'Formul√°rio incompleto',
             tipTpl: Ext.create('Ext.XTemplate', '<ul class="' + Ext.plainListCls + '"><tpl for="."><li><span class="field-name">{name}</span>: <span class="error">{error}</span></li></tpl></ul>'),
 
             getTip: function() {
