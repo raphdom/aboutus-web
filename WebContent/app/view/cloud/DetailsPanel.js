@@ -64,17 +64,20 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
                 },'->',{
 	                xtype:'buttonsegment',
 	                items:[{
-	                        icon:'resources/images/edit.png',
-	                        action:'edit'
+	                    icon:'resources/images/edit.png',
+	                    action:'edit'
 	                },{
-	                        icon:'resources/images/delete.png',
-	                        action:'del'
+                        icon:'resources/images/delete.png',
+                        action:'delete'
 	                }]
              }]
     }],
    
     loadRecord: function(image) {
         this.tpl.overwrite(this.body, image.data);
+        this.down('toolbar button[action=view]').show();
+        this.down('toolbar button[action=down]').show();
+        this.down('toolbar button[action=edit]').show();
         this.down('toolbar').show();
     },
     
@@ -84,7 +87,11 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
     		filesize:filesize
     	}
     	this.tpl2.overwrite(this.body, data);
+        
         this.down('toolbar').show();
+        this.down('toolbar button[action=view]').hide();
+        this.down('toolbar button[action=down]').hide();
+        this.down('toolbar button[action=edit]').hide();
     },
     
     clear: function(){

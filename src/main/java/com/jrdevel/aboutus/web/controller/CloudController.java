@@ -2,12 +2,14 @@ package com.jrdevel.aboutus.web.controller;
 
 import java.io.FileInputStream;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.jrdevel.aboutus.core.cloud.AboutUsFileHelper;
 import com.jrdevel.aboutus.core.cloud.CloudService;
 import com.jrdevel.aboutus.core.common.configuration.AboutUsConfiguration;
+import com.jrdevel.aboutus.core.common.model.File;
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
@@ -53,13 +56,13 @@ public class CloudController {
 		Iterator<String> itr =  request.getFileNames();
 
 		MultipartFile mpf = request.getFile(itr.next());
-		
+
 		String folderIdParam = request.getParameter("folderId");
 		Integer folderId = null;
 		if (!folderIdParam.isEmpty()){
 			folderId = Integer.parseInt(folderIdParam);
 		}
-		
+
 		java.io.File file = new java.io.File(AboutUsFileHelper.getNameOfFile(configuration.getMediaPath())); 
 
 		mpf.transferTo(file);
@@ -94,7 +97,7 @@ public class CloudController {
 		}
 
 	}
-	
+
 	@RequestMapping(value="/downloadFile.action", method = RequestMethod.GET)
 	public void downloadFile(@RequestParam Integer fileId,
 			final HttpServletResponse response) throws Exception {
@@ -104,12 +107,27 @@ public class CloudController {
 		byte[] fileByteArray = (byte[]) result.get("file_byte");
 		String fileName = (String) result.get("file_name");
 		String fileType = (String) result.get("file_type");
-		
+
 		if (fileByteArray != null && fileByteArray.length > 0){
 			response.setContentType(fileType);
 			response.setHeader("Content-Disposition", "attachment; filename="+fileName); 
 			response.getOutputStream().write(fileByteArray);
 			response.getOutputStream().flush();
+		}
+
+	}
+
+	@RequestMapping(value="/delete.action")
+	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<File> data) throws Exception {
+
+		try{
+			ResultObject result = cloudService.delete(null);
+
+			return result.toMap();
+
+		} catch (Exception e) {
+
+			return ExtJSReturn.mapError("Error removing Files from database.");
 		}
 
 	}

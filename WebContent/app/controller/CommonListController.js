@@ -111,7 +111,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     	if (this.getCommonGrid().getSelectionModel().getSelection().length > 0){
     		
     	}else{
-    		AboutUs.util.NotificationUtil.showNotificationError("Você deve selecionar um registo.");
+    		AboutUs.util.NotificationUtil.showNotificationError("VocÃª deve selecionar um registo.");
     	}
     },
     
@@ -121,7 +121,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     	var win = button.up('window'),
             form = win.down('form');
     	if (!form.isValid()){
-    		AboutUs.util.NotificationUtil.showNotificationError("Preencha os campos obrigatórios!");
+    		AboutUs.util.NotificationUtil.showNotificationError("Preencha os campos obrigatÃ³rios!");
     		return;
     	}
     	form.updateRecord();

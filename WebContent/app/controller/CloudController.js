@@ -101,6 +101,12 @@ Ext.define('AboutUs.controller.CloudController', {
     		'detailspanel toolbar button[action=down]':{
         		click: this.onDownloadFile
     		},
+    		'detailspanel toolbar button[action=edit]':{
+        		click: this.onEditFile
+    		},
+    		'detailspanel toolbar button[action=delete]':{
+        		click: this.onDeleteFile
+    		},
     		'clouddialog':{
     			itemuploadsuccess: this.onItemUploadSucess,
     			uploadcomplete: this.onUploadComplete
@@ -243,6 +249,17 @@ Ext.define('AboutUs.controller.CloudController', {
 		this.getFileDownloader().load({
 		    url: 'cloud/downloadFile.action?fileId='+record.get('id')
 		});
+    },
+    
+    onEditFile:function(button){
+    	console.log('onEditFile');
+    },
+    
+    onDeleteFile: function(button){
+    	console.log('onDeleteFile');
+    	var records = this.getGridActive().getSelectionModel().getSelection();
+    	this.getCloudStoreStore().remove(records);
+    	this.getCloudStoreStore().sync();
     },
     
     onSlideShow: function(button){
