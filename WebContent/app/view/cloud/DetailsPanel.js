@@ -34,6 +34,20 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
         '</div>'
     ],
     
+    tpl2:  new Ext.XTemplate(
+        '<div class="details">',
+            '<tpl for=".">',
+            	'<img src="resources/images/mimetypes/128/default.png" />', 
+                '<div class="details-info">',
+                    '<b>Nome do Ficheiro:</b>',
+                    '<span>{quantity} ficheiros selecionados</span>',
+                    '<b>Tamanho:</b>',
+                    '<span>{filesize:fileSize}</span>',
+                '</div>',
+            '</tpl>',
+        '</div>'
+    ),
+    
     dockedItems: [{
             xtype: 'toolbar',
             dock: 'top',
@@ -61,6 +75,15 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
    
     loadRecord: function(image) {
         this.tpl.overwrite(this.body, image.data);
+        this.down('toolbar').show();
+    },
+    
+    loadRecords: function(quantity,filesize){
+    	var data = {
+    		quantity:quantity,
+    		filesize:filesize
+    	}
+    	this.tpl2.overwrite(this.body, data);
         this.down('toolbar').show();
     },
     

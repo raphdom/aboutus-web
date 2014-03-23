@@ -177,13 +177,17 @@ Ext.define('AboutUs.controller.CloudController', {
     },
     
     onFileSelected : function(view, selections){
-        var selected = selections[0];
-        
-        if (selected) {
-            this.getDetailsPanel().loadRecord(selected);
-        }else{
-            this.getDetailsPanel().clear();
-        }
+    	if (selections.length == 1){
+            this.getDetailsPanel().loadRecord(selections[0]);
+    	}else if (selections.length == 0){
+    		this.getDetailsPanel().clear();
+    	}else {
+    		var totalfilesize = 0;
+    		Ext.Array.forEach(selections, function(item, index, allItems){
+    			totalfilesize = totalfilesize + item.get('filesize');
+    		});
+    		this.getDetailsPanel().loadRecords(selections.length,totalfilesize);
+    	}
     },
     
     onComboOrderSelect : function(combo, record, eOpts){
