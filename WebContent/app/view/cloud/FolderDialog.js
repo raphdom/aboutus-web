@@ -40,7 +40,7 @@ Ext.define('AboutUs.view.cloud.FolderDialog' ,{
 					}]
         		}]
         	},{
-        		title:'Permissıes'
+        		title:'Permiss√µes'
         	}]
     	}]
     }]

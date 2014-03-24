@@ -3,7 +3,7 @@ Ext.define('AboutUs.view.person.TabObservation', {
     
     alias: 'widget.persontabobservation',
     
-    title:'Observações',
+    title:'ObservaÃ§Ãµes',
     
     closable:false,
     

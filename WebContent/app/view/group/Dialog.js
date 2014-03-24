@@ -27,7 +27,7 @@ Ext.define('AboutUs.view.group.Dialog', {
 			hidden:true
         },{
         	xtype:'fieldset',
-        	title: 'Permissıes',
+        	title: 'Permiss√µes',
         	layout:'anchor',
         	items :[{
         		hidetoolbar:true,

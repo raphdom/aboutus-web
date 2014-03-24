@@ -57,7 +57,7 @@ Ext.define('AboutUs.view.person.List', {
 		flex:1,
 		dataIndex: 'nif'
 	},{
-		header: "Profiss„o",
+		header: "Profiss√£o",
 		width: 170,
 		flex:1,
 		dataIndex: 'profession'

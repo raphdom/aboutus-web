@@ -41,7 +41,7 @@ Ext.define('AboutUs.view.authentication.Register', {
 		        },
 		        {
 		        	allowBlank: false,
-		            fieldLabel: 'País',
+		            fieldLabel: 'PaÃ­s',
 		            xtype:'combo',
 		            store:'list.CountryStore',
 		            valueField:'value',
@@ -115,7 +115,7 @@ Ext.define('AboutUs.view.authentication.Register', {
 		            inputType: 'password',
 					validator: function(value) {
 		                var password1 = this.previousSibling('[name=password]');
-		                return (value === password1.getValue()) ? true : 'Palavra-chave não corresponde.'
+		                return (value === password1.getValue()) ? true : 'Palavra-chave nÃ£o corresponde.'
 		            }		            
 		        },{
 		        	allowBlank: false,
@@ -125,12 +125,12 @@ Ext.define('AboutUs.view.authentication.Register', {
 	},{
 	    xtype: 'checkboxfield',
 	    name: 'acceptTerms',
-	    fieldLabel: 'Termos e Condições',
+	    fieldLabel: 'Termos e CondiÃ§Ãµes',
 	    hideLabel: true,
 	    margin: '15 0 0 0',
-	    boxLabel: 'Eu li e aceito os <a href="#" class="terms">Termos de utilização</a>.',
+	    boxLabel: 'Eu li e aceito os <a href="#" class="terms">Termos de utilizaÃ§Ã£o</a>.',
         getErrors: function() {
-            return this.getValue() ? [] : ['Você deve aceitar os termos de utilização']
+            return this.getValue() ? [] : ['VocÃª deve aceitar os termos de utilizaÃ§Ã£o']
         },
         listeners: {
                 click: {

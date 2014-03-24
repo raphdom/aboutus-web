@@ -5,11 +5,11 @@ Ext.define('AboutUs.view.authentication.RegisterWindow', {
     
     title: 'Registo efetuado',
     html:'Registo efetuado com sucesso, ' +
-    		'para ativar a sua conta dever· fazer o login pela ' +
-    		'primeira vez, clicando sobre o bot„o de login abaixo ' +
+    		'para ativar a sua conta dever√° fazer o login pela ' +
+    		'primeira vez, clicando sobre o bot√£o de login abaixo ' +
     		'e indicando os dados de acesso que indicou no registo.<br>' +
     		'Obrigado pelo seu registo no AboutUs e esperamos' +
-    		'que ajude a guiar o seu rebanho tambÈm.<br>' +
+    		'que ajude a guiar o seu rebanho tamb√©m.<br>' +
     		'Equipa AboutUs',
     width: 700,
     height: 300,

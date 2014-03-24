@@ -29,7 +29,7 @@ Ext.define('AboutUs.view.person.TabChurchData', {
 	                    inputValue: '1',
 	                    id        : 'baptized1'
 	                }, {
-	                    boxLabel  : 'Não',
+	                    boxLabel  : 'NÃ£o',
 	                    name      : 'baptized',
 	                    inputValue: '0',
 	                    id        : 'baptized2'
@@ -53,7 +53,7 @@ Ext.define('AboutUs.view.person.TabChurchData', {
 	                    inputValue: '1',
 	                    id        : 'consolidated1'
 	                }, {
-	                    boxLabel  : 'Não',
+	                    boxLabel  : 'NÃ£o',
 	                    name      : 'consolidated',
 	                    inputValue: '0',
 	                    id        : 'consolidated2'

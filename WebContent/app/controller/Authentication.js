@@ -65,7 +65,7 @@ Ext.define('AboutUs.controller.Authentication', {
 	            }
 	        });
     	}else{
-    		AboutUs.util.NotificationUtil.showNotificationError("Preencha os campos obrigatórios!");
+    		AboutUs.util.NotificationUtil.showNotificationError("Preencha os campos obrigatÃ³rios!");
     	}
     },
     
@@ -92,7 +92,7 @@ Ext.define('AboutUs.controller.Authentication', {
 	            }
 	        });
     	}else{
-    		AboutUs.util.NotificationUtil.showNotificationError("Preencha todos os campos obrigatórios!");
+    		AboutUs.util.NotificationUtil.showNotificationError("Preencha todos os campos obrigatÃ³rios!");
     	}
 	},
 	

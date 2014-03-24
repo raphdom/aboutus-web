@@ -3,7 +3,7 @@ Ext.define('AboutUs.view.authentication.TermsOfUseDialog', {
     
     alias: 'widget.termswindow',
     
-    title: 'Termos de Utilização',
+    title: 'Termos de UtilizaÃ§Ã£o',
     modal: true,
     contentEl: Ext.getDom('legalese'),
     width: 700,

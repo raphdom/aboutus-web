@@ -66,7 +66,7 @@ Ext.define('AboutUs.view.person.TabData', {
             name: 'nif',
             allowBlank: false
         },{
-			fieldLabel: 'Profiss„o',
+			fieldLabel: 'Profiss√£o',
             name: 'profession',
             allowBlank: false
         },{
@@ -84,7 +84,7 @@ Ext.define('AboutUs.view.person.TabData', {
                     inputValue: '1',
                     id        : 'radio1'
                 }, {
-                    boxLabel  : 'N„o',
+                    boxLabel  : 'N√£o',
                     name      : 'member',
                     inputValue: 'l',
                     id        : 'radio2'
