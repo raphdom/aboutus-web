@@ -11,6 +11,7 @@ import org.springframework.format.support.FormattingConversionServiceFactoryBean
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jrdevel.aboutus.core.common.model.File;
 import com.jrdevel.aboutus.core.common.model.Group;
 import com.jrdevel.aboutus.core.common.model.Permission;
 import com.jrdevel.aboutus.core.common.to.Filter;
@@ -29,6 +30,7 @@ public class AboutUsJsonConverter extends FormattingConversionServiceFactoryBean
 		registry.addConverter(convertFilter());
 		registry.addConverter(convertPermissions());
 		registry.addConverter(convertGroups());
+		//registry.addConverter(convertFiles());
 	}
 
 	public Converter<String, List<Filter>> convertFilter() {
@@ -79,6 +81,24 @@ public class AboutUsJsonConverter extends FormattingConversionServiceFactoryBean
 				} catch (Exception e) {
 					if(log.isErrorEnabled())
 						log.error("Error converting JSON collection to List<MyType>.", e);
+				}
+				return myTypeList;
+			}
+		};
+	}
+	
+	public Converter<String, List<File>> convertFiles() {
+		return new Converter<String, List<File>>() {
+
+			@Override
+			public List<File> convert(String source) {
+				ObjectMapper mapper = new ObjectMapper();
+				List<File> myTypeList = null;
+				try {
+					myTypeList = mapper.readValue(source, new TypeReference<List<File>>() {});
+				} catch (Exception e) {
+					if(log.isErrorEnabled())
+						log.error("Error converting JSON collection to List<File>.", e);
 				}
 				return myTypeList;
 			}

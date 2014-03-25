@@ -2,7 +2,7 @@ Ext.define('AboutUs.model.File', {
     extend: 'Ext.data.Model',
     fields: [
             'filename',
-            'filetype',
+            'fileType',
             'filesize',
             'title',
             'caption',
@@ -13,8 +13,9 @@ Ext.define('AboutUs.model.File', {
         		dateReadFormat:'time'
             },{
                     name:'classThumb',
+                    persist:false,
                     convert:function(v, record){
-                        if (record.data.filetype.indexOf("image") != -1){
+                        if (record.data.fileType.indexOf("image") != -1){
 							return "thumb";
                     	}else{
                     		return "thumbIcon";
@@ -36,7 +37,8 @@ Ext.define('AboutUs.model.File', {
         writer: {
             type: 'associatedjson',
             writeAllFields: true,
-            encode: false
+            encode: false,
+            allowSingle:false
         }
     }
 });

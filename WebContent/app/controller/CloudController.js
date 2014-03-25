@@ -258,8 +258,21 @@ Ext.define('AboutUs.controller.CloudController', {
     onDeleteFile: function(button){
     	console.log('onDeleteFile');
     	var records = this.getGridActive().getSelectionModel().getSelection();
-    	this.getCloudStoreStore().remove(records);
-    	this.getCloudStoreStore().sync();
+    	if (records.length > 0){
+    		this.getCloudStoreStore().remove(records);
+    		this.getCloudStoreStore().sync({
+    			success: function(record, operation){
+    				var response = this.getReader().jsonData;
+	    			AboutUs.util.NotificationUtil.processMessages(response.messages);
+		    	},
+		    	failure: function(record, operation){
+		    		var response = this.getReader().jsonData;
+	    			AboutUs.util.NotificationUtil.processMessages(response.messages);
+		    	}
+    		});	
+    	}else{
+    		AboutUs.util.NotificationUtil.showNotificationError("Você deve selecionar um registo.");
+    	}
     },
     
     onSlideShow: function(button){

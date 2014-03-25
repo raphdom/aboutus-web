@@ -7,6 +7,10 @@ Ext.define('AboutUs.util.NotificationUtil', {
     	Ext.Array.forEach(messages,function(item, index){
     		if (item.type == 1){
     			me.showNotificationError(item.message);
+    		}else if (item.type == 2){
+    			me.showNotificationWarning(item.message);
+    		}else if (item.type == 3){
+    			me.showNotificationInfo(item.message);
     		}
     	});
     },
@@ -20,8 +24,8 @@ Ext.define('AboutUs.util.NotificationUtil', {
 				closable: false,
 				resizable:false,
 				shadow:true,
-				icon:'resources/images/info.png',
-				title:'Informação',
+				icon:'resources/images/information.png',
+				title:'InformaÃ§Ã£o',
 				manager: 'demo1',
 				autoCloseDelay: 5000,
 				spacing: 20,

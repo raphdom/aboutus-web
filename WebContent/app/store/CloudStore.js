@@ -24,7 +24,7 @@ Ext.define('AboutUs.store.CloudStore', {
             type: 'json',
             writeAllFields: true,
             encode: false,
-            root: 'data'
+            allowSingle:false
         },
         listeners: {
             exception: function(proxy, response, operation){

@@ -121,7 +121,7 @@ public class CloudController {
 	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<File> data) throws Exception {
 
 		try{
-			ResultObject result = cloudService.delete(null);
+			ResultObject result = cloudService.delete(data);
 
 			return result.toMap();
 
