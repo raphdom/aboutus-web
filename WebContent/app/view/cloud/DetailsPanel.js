@@ -15,12 +15,12 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
     tpl: [
         '<div class="details">',
             '<tpl for=".">',
-            	'<img src="{id:formatThumbUrl(2,values.filetype)}" />', 
+            	'<img src="{id:formatThumbUrl(2,values.fileType)}" />', 
                 '<div class="details-info">',
                     '<b>Nome do Ficheiro:</b>',
                     '<span>{filename}</span>',
                     '<b>Tipo:</b>',
-                    '<span>{filetype}</span>',
+                    '<span>{fileType}</span>',
                     '<b>Tamanho:</b>',
                     '<span>{filesize:fileSize}</span>',
                     '<b>Criado em:</b>',
@@ -75,7 +75,11 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
    
     loadRecord: function(image) {
         this.tpl.overwrite(this.body, image.data);
-        this.down('toolbar button[action=view]').show();
+        if (image.get('fileType').indexOf("image") != -1){
+        	this.down('toolbar button[action=view]').show();
+        }else{
+        	this.down('toolbar button[action=view]').hide();
+        }
         this.down('toolbar button[action=down]').show();
         this.down('toolbar button[action=edit]').show();
         this.down('toolbar').show();

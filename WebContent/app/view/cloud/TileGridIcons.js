@@ -14,10 +14,10 @@ Ext.define('AboutUs.view.cloud.TileGridIcons' ,{
                             tpl: [
                                 '<tpl for=".">',
                                     '<div class="icons-wrap" id="{name:stripTags}">',
-                                        '<div class="{classThumb}"><img src="{id:formatThumbUrl(0,values.filetype)}" title="{name:htmlEncode}"></div>',
+                                        '<div class="{classThumb}"><img src="{id:formatThumbUrl(0,values.fileType)}" title="{name:htmlEncode}"></div>',
                                         '<div class="iconsInfo">',
                                                 '<span class="infoName">{filename:htmlEncode}</span>',
-                                                '<span class="infoType">{filetype:htmlEncode}</span>',
+                                                '<span class="infoType">{fileType:htmlEncode}</span>',
                                                 '<span class="infoSize">{filesize:fileSize}</span>',
                                         '</div>',
                                     '</div>',

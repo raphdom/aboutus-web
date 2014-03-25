@@ -9,7 +9,7 @@ Ext.define('AboutUs.view.cloud.TileGridDetails' ,{
     		dataIndex: 'id',
     		width: 35,
 		    renderer: function(value, metadata, record){
-		        return '<img src="' + Ext.util.Format.formatThumbUrl(value,-1,record.get('filetype')) + '" />';
+		        return '<img src="' + Ext.util.Format.formatThumbUrl(value,-1,record.get('fileType')) + '" />';
 		    }
     	},{
             text: 'Nome',
@@ -20,7 +20,7 @@ Ext.define('AboutUs.view.cloud.TileGridDetails' ,{
             text: 'Tipo',
             id: 'type',
             flex: 1,
-            dataIndex: 'filetype'
+            dataIndex: 'fileType'
         }, {
             text: 'Tamanho',
             id: 'size',

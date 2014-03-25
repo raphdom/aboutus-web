@@ -87,13 +87,16 @@ Ext.define('AboutUs.controller.CloudController', {
     			click: this.onAddFolder
     		},
     		'tilegriddetails':{
-    		        selectionchange: this.onFileSelected
+    		        selectionchange: this.onFileSelected,
+    		        itemdblclick: this.onFileDoubleClick
     		},
     		'tilegridicons dataview':{
-    		        selectionchange: this.onFileSelected
+    		        selectionchange: this.onFileSelected,
+    		        itemdblclick: this.onFileDoubleClick
     		},
     		'tilegridthumbs dataview':{
-    		        selectionchange: this.onFileSelected
+    		        selectionchange: this.onFileSelected,
+    		        itemdblclick: this.onFileDoubleClick
     		},
     		'detailspanel toolbar button[action=view]':{
         		click: this.onViewImageFile
@@ -221,27 +224,12 @@ Ext.define('AboutUs.controller.CloudController', {
     		this.getCloudDialog().removeAllFiles();
     		this.getCloudDialog().show(button);
     	}
-    	
-    	
-    	
-    	/*Ext.widget('clouddialog',{
-    		dialogTitle: 'Adicionar ficheiros na pasta: ' + folderPath,
-		    uploadParams:{folderId:folder.get('id')}
-    	}).show();*/
-    	
-    	/*var dialog = Ext.create('Ext.ux.upload.Dialog', {
-		    dialogTitle: 'Adicionar ficheiros na pasta: ' + folderPath,
-		    uploadUrl: 'cloud/upload.action',
-		    modal:true,
-		    uploadParams:{folderId:folder.get('id')}
-		});
-		
-		dialog.show();*/
     },
     
     onViewImageFile: function(button){
-          var recordSelect = this.getGridActive().getSelectionModel().getSelection();
-          Lightview.show("http://localhost:8080/aboutus/"+recordSelect[0].data.url3);
+          var recordSelect = this.getGridActive().getSelectionModel().getSelection()[0];
+          var url = Ext.util.Format.formatThumbUrl(recordSelect.get('id'),3,recordSelect.get('fileType'));
+          Lightview.show("http://localhost:8080/aboutus/"+url);
     },
     
     onDownloadFile:function(button){
@@ -278,7 +266,10 @@ Ext.define('AboutUs.controller.CloudController', {
     onSlideShow: function(button){
         var images = new Array();
         AboutUs.app.getStore('CloudStore').each(function(item,index,count) {
-              images.push({url:'http://localhost:8080/aboutus/'+item.data.url3});
+        	  if (item.get('fileType').indexOf("image") != -1){
+        	  	var url = Ext.util.Format.formatThumbUrl(item.get('id'),3,item.get('fileType'));
+              	images.push({url:'http://localhost:8080/aboutus/'+url});
+        	  }
         });
         Lightview.show(images, 1);
     },
@@ -300,6 +291,14 @@ Ext.define('AboutUs.controller.CloudController', {
     		
     	}else{
     		this.getCloudDialog().close();
+    	}
+    },
+    
+    onFileDoubleClick: function(view, record, item, index, e, eOpts){
+    	if (record.get('fileType').indexOf("image") != -1){
+    		this.onViewImageFile();
+    	}else{
+    		this.onDownloadFile();
     	}
     }
     
