@@ -7,7 +7,6 @@ Ext.define('AboutUs.view.cloud.FolderDialog' ,{
     title: 'Nova pasta',
     height: 200,
     width: 400,
-    modal:true,
     layout: 'fit',
     
     items:[{
@@ -17,7 +16,7 @@ Ext.define('AboutUs.view.cloud.FolderDialog' ,{
         	items:[{
         		title:'Data',
         		items:[{
-        			 layout: 'form',
+        			layout: 'form',
 			        bodyPadding: 10,
 			        fieldDefaults: {
 			            msgTarget: 'side',
@@ -39,9 +38,11 @@ Ext.define('AboutUs.view.cloud.FolderDialog' ,{
 						allowBlank: false
 					}]
         		}]
-        	},{
+        	}
+        	/*,{
         		title:'Permissões'
-        	}]
+        	}*/
+        	]
     	}]
     }]
     
