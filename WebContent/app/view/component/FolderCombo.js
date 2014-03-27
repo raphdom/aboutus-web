@@ -14,31 +14,5 @@ Ext.define('AboutUs.view.component.FolderCombo', {
         })
     	this.callParent(arguments);
     }
-	
-	/*createPicker: function() {
-		var me = this;
-		Ext.StoreManager.get('FolderComboStore').load();
-		this.picker = Ext.create('Ext.tree.Panel', {
-            autoScroll : true,
-            floating : true,
-            resizable: false,
-            focusOnToFront : false,
-            shadow : true,
-            ownerCt : this.ownerCt,
-            store : 'FolderComboStore',
-            rootVisible : true,
-            listeners:{
-                scope:this,
-                select:this.valueSelected
-            }
-		});
-		return this.picker;
-	},
-	
-	valueSelected: function(picker,value,options) {
-        this.setValue(value.data.text);
-        this.fireEvent('valueSelected',this,value.data.id);
-        this.collapse();
-    }*/
     
 });
