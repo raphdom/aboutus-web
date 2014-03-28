@@ -1,5 +1,5 @@
 Ext.define('AboutUs.view.cloud.FolderDialog' ,{
-    extend: 'AboutUs.view.common.Dialog',
+    extend: 'Ext.window.Window',
     alias : 'widget.folderdialog',
     
     requires:['AboutUs.view.component.FolderCombo'],
@@ -34,7 +34,7 @@ Ext.define('AboutUs.view.cloud.FolderDialog' ,{
 						allowBlank: false
 					},{
 						fieldLabel: 'Nome',
-						name:'name',
+						name:'text',
 						allowBlank: false
 					}]
         		}]

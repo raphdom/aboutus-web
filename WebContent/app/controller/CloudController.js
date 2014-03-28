@@ -1,5 +1,5 @@
 Ext.define('AboutUs.controller.CloudController', {
-    extend: 'AboutUs.controller.CommonListController',
+    extend: 'Ext.app.Controller',
     
     stores: ['CloudStore','FolderStore','FolderComboStore'],
 
@@ -113,6 +113,9 @@ Ext.define('AboutUs.controller.CloudController', {
     		'clouddialog':{
     			itemuploadsuccess: this.onItemUploadSucess,
     			uploadcomplete: this.onUploadComplete
+    		},
+    		'folderdialog commonform button[action=save]':{
+    			click: this.onSaveFolder
     		}
                 
         });
@@ -275,7 +278,9 @@ Ext.define('AboutUs.controller.CloudController', {
     },
     
     onAddFolder: function(button){
-   		this.getFolderDialog().show(); 	
+   		this.getFolderDialog().show();
+   		var record = Ext.create('AboutUs.model.Folder');
+    	this.getFolderDialog().down('form').loadRecord(record);
     },
     
     onItemUploadSucess:function(panel, manager, item, info){
@@ -300,6 +305,28 @@ Ext.define('AboutUs.controller.CloudController', {
     	}else{
     		this.onDownloadFile();
     	}
+    },
+    
+    onSaveFolder: function(button){
+    	var me = this;
+    	var win = button.up('window'),
+            form = win.down('form');
+    	if (!form.isValid()){
+    		AboutUs.util.NotificationUtil.showNotificationError("Preencha os campos obrigatórios!");
+    		return;
+    	}
+    	form.updateRecord();
+    	
+    	form.getRecord().save({
+    		success: function(record, operation){
+    			win.close();
+        		//me.getCommonGrid().getStore().reload();
+	    	},
+	    	failure: function(record, operation){
+	    		var response = operation.request.proxy.reader.rawData;
+	    		AboutUs.util.NotificationUtil.processMessages(response.messages);
+	    	}
+    	});
     }
     
 });

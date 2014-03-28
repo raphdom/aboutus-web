@@ -42,10 +42,10 @@ Ext.define('AboutUs.controller.CommonListController', {
 			'commonlist':{
 				editRecord: this.onEdit
 			},
-	 		'commonform button[action=save]': {
+	 		'commondialog commonform button[action=save]': {
 	 			click: this.onSave
 	 		},
-	 		'commonform button[action=cancel]': {
+	 		'commondialog commonform button[action=cancel]': {
 				click: this.onDialogCancel
 			}
 	    });
