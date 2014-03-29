@@ -58,7 +58,13 @@ public class FolderController {
 			Folder bean = new Folder();
 			bean.setName(folder.getText());
 			
-			ResultObject result = folderService.update(bean);
+			ResultObject result = null;
+			
+			if (folder.getId() != 0){
+				result = folderService.update(bean);
+			}else{
+				result = folderService.insert(bean);
+			}
 
 			return result.toMap();
 			
