@@ -129,6 +129,7 @@ Ext.define('AboutUs.controller.CloudController', {
     	this.hideAllGrids();
     	this.getTileGridThumbs().show();
     	centerContainer.setLoading(false);
+    	this.getFolderStoreStore().load();
     },
     
     onClickGridDetails: function(button){
@@ -320,7 +321,7 @@ Ext.define('AboutUs.controller.CloudController', {
     	form.getRecord().save({
     		success: function(record, operation){
     			win.close();
-        		//me.getCommonGrid().getStore().reload();
+    			me.getFolderStoreStore().load();
 	    	},
 	    	failure: function(record, operation){
 	    		var response = operation.request.proxy.reader.rawData;

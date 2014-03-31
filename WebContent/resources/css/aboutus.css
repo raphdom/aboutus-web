@@ -91,3 +91,15 @@
 .x-icon-valid-message {
 	background-image: url("../images/tick2.png");
 }
+
+
+.folderTree .x-tree-icon-parent {
+    background-image: url("../images/folder.png");
+}
+.folderTree .x-grid-tree-node-expanded .x-tree-icon-parent {
+    background-image: url("../images/folder.png");
+    padding-top: 1px;
+}
+.folderTree .x-tree-icon-leaf {
+    background-image: url("../images/folder.png");
+}  

@@ -8,8 +8,15 @@ Ext.define('AboutUs.view.cloud.TreeCloudPanel' ,{
     collapsible: true,
     border:true,
     store:'FolderStore',
+    cls: 'folderTree',
     useArrows: true,
-    rootVisible: false,
+    //rootVisible: false,
+    root: {
+    	id: "0",
+        text: "Disco",
+        expanded: true,
+        icon:"resources/images/harddisk.png"
+    },
     tbar:[{
             xtype:'buttonsegment',
             items:[{

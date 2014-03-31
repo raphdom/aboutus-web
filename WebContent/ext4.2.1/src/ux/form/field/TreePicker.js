@@ -82,8 +82,15 @@ Ext.define('Ext.ux.form.field.TreePicker', {
                 shrinkWrapDock: 2,
                 store: me.store,
                 floating: true,
+                cls: 'folderTree',
                 displayField: me.displayField,
                 columns: me.columns,
+                root: {
+                	id: "0",
+			        text: "Disco",
+			        expanded: true,
+			        icon:"resources/images/harddisk.png"
+			    },
                 //minHeight: me.minPickerHeight,
                 //maxHeight: me.maxPickerHeight,
                 manageHeight: false,
