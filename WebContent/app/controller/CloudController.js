@@ -86,6 +86,9 @@ Ext.define('AboutUs.controller.CloudController', {
     		'treecloudpanel toolbar button[action=add]':{
     			click: this.onAddFolder
     		},
+    		'treecloudpanel toolbar button[action=edit]':{
+    			click: this.onEditFolder
+    		},
     		'tilegriddetails':{
     		        selectionchange: this.onFileSelected,
     		        itemdblclick: this.onFileDoubleClick
@@ -328,6 +331,12 @@ Ext.define('AboutUs.controller.CloudController', {
 	    		AboutUs.util.NotificationUtil.processMessages(response.messages);
 	    	}
     	});
+    },
+    
+    onEditFolder: function(button){
+   		this.getFolderDialog().show();
+   		var record = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
+    	this.getFolderDialog().down('form').loadRecord(record); 	
     }
     
 });
