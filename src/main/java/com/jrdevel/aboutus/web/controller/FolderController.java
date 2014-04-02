@@ -56,6 +56,7 @@ public class FolderController {
 		try{
 			
 			Folder bean = new Folder();
+			bean.setId(folder.getId());
 			bean.setName(folder.getText());
 			bean.setParent(folder.getParent());
 			

@@ -283,7 +283,9 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onAddFolder: function(button){
    		this.getFolderDialog().show();
+   		var folder = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
    		var record = Ext.create('AboutUs.model.Folder');
+   		record.set('parent',folder.get('id'));
     	this.getFolderDialog().down('form').loadRecord(record);
     },
     
@@ -336,7 +338,7 @@ Ext.define('AboutUs.controller.CloudController', {
     onEditFolder: function(button){
    		this.getFolderDialog().show();
    		var record = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
-    	this.getFolderDialog().down('form').loadRecord(record); 	
+    	this.getFolderDialog().down('form').loadRecord(record); 
     }
     
 });

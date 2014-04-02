@@ -4,10 +4,6 @@ Ext.define('AboutUs.view.component.FolderCombo', {
 
 	displayField: 'text',
     valueField: 'id',
-    root: {
-        text: "Raiz",
-        expanded: true
-    },
     
     initComponent: function() {
     	var me = this;

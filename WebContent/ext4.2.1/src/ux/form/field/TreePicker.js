@@ -252,6 +252,8 @@ Ext.define('Ext.ux.form.field.TreePicker', {
         // set the raw value to the record's display field if a record was found
         me.setRawValue(record ? record.get(me.displayField) : '');
 
+        me.checkChange();
+        
         return me;
     },
     
@@ -274,7 +276,7 @@ Ext.define('Ext.ux.form.field.TreePicker', {
     onLoad: function() {
         var value = this.value;
 
-        if (value) {
+        if (value || value == 0	) {
             this.setValue(value);
         }
     },

@@ -2,7 +2,8 @@ Ext.define('AboutUs.model.Folder', {
         extend: 'Ext.data.Model',
         fields: [
         	{
-        		name:'id'
+        		name:'id',
+        		type:'int'
         	},{
         		name:'text'
 	        },{
