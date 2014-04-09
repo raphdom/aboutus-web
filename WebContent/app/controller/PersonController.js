@@ -36,6 +36,8 @@ Ext.define('AboutUs.controller.PersonController', {
     	var list = Ext.create('AboutUs.view.person.List');
     	centerContainer.add(list);
     	
+    	centerContainer.setLoading(false);
+    	
     }
     
 });

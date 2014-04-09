@@ -3,6 +3,7 @@ package com.jrdevel.aboutus.web.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,16 +17,16 @@ import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.person.PersonService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
+@RequestMapping(value="/person")
+@Controller
 public class PersonController {
 	
+	private static final Logger logger = Logger.getLogger(PersonController.class);
+	
+	@Autowired
 	private PersonService personService;
 	
-	public void setPersonService(PersonService personService) {
-		this.personService = personService;
-	}
-	
-	
-	@RequestMapping(value="/person/view.action")
+	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
 		try{
@@ -35,12 +36,14 @@ public class PersonController {
 			return result.toMap();
 			
 		} catch (Exception e) {
-
+			
+			logger.error(e.getMessage());
+			
 			return ExtJSReturn.mapError("Error retrieving Contacts from database.");
 		}
 	}
 	
-	@RequestMapping(value="/person/save.action", method = RequestMethod.POST)
+	@RequestMapping(value="/save.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> save(@RequestBody Person data) throws Exception {
 
 		try{
@@ -55,7 +58,7 @@ public class PersonController {
 		}
 	}
 	
-	@RequestMapping(value="/person/get.action")
+	@RequestMapping(value="/get.action")
 	public @ResponseBody Map<String,? extends Object> get(Person input) throws Exception {
 
 		try{
@@ -70,7 +73,7 @@ public class PersonController {
 		}
 	}
 	
-	@RequestMapping(value="/person/delete.action")
+	@RequestMapping(value="/delete.action")
 	public @ResponseBody Map<String,? extends Object> delete(List<Person> input) throws Exception {
 
 		try{

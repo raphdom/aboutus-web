@@ -35,14 +35,14 @@ Ext.define('AboutUs.view.person.List', {
 		header: "Naturalidade",
 		width: 170,
 		flex:1,
-		dataIndex: 'country'
+		dataIndex: 'naturality'
 	},{
 		xtype:'booleanimagecolumn',
 		align:'center',
 		header: "Membro",
 		width: 170,
 		flex:1,
-		dataIndex: 'isMember'
+		dataIndex: 'member'
 	},{
 		header: "Nascimento",
 		width: 170,

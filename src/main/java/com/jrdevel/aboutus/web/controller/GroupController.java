@@ -18,16 +18,15 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
  * @author Raphael Domingues
  *
  */
+
+@RequestMapping(value="/group")
+@Controller
 public class GroupController {
 	
+	@Autowired
 	private GroupService groupService;
 	
-	public void setGroupService(GroupService groupService) {
-		this.groupService = groupService;
-	}
-	
-	
-	@RequestMapping(value="/group/view.action")
+	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
 		try{
@@ -42,7 +41,7 @@ public class GroupController {
 		}
 	}
 	
-	@RequestMapping(value="/group/get.action")
+	@RequestMapping(value="/get.action")
 	public @ResponseBody Map<String,? extends Object> get(Group input) throws Exception {
 
 		try{
@@ -57,7 +56,7 @@ public class GroupController {
 		}
 	}
 	
-	@RequestMapping(value="/group/save.action")
+	@RequestMapping(value="/save.action")
 	public @ResponseBody Map<String,? extends Object> save(Group input) throws Exception {
 
 		try{
@@ -72,7 +71,7 @@ public class GroupController {
 		}
 	}
 	
-	@RequestMapping(value="/group/delete.action")
+	@RequestMapping(value="/delete.action")
 	public @ResponseBody Map<String,? extends Object> delete(List<Group> input) throws Exception {
 
 		try{

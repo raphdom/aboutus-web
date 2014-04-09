@@ -12,14 +12,12 @@ Ext.define('AboutUs.model.Person', {
     		type:'boolean'
     	},{
     		name:'civilStatus',
-    		mapping:'civilStatus.civilStatusTranslates[0].text',
     		persist:false
 		},{
-    		name:'country',
-    		mapping:'country.countryTranslates[0].text',
+    		name:'naturality',
     		persist:false
     	},{
-    		name:'isMember',
+    		name:'member',
     		type:'boolean'
     	},{
     		name:'birthday',
@@ -32,7 +30,6 @@ Ext.define('AboutUs.model.Person', {
     		name:'profession'
     	},{
     		name:'memberType',
-    		mapping:'memberType.memberTypeTranslates[0].text',
     		persist:false
     	}]
 });

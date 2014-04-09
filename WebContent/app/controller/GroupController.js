@@ -36,6 +36,8 @@ Ext.define('AboutUs.controller.GroupController', {
     	centerContainer.add(list);
     	//list.getStore().clearFilter();
     	
+    	centerContainer.setLoading(false);
+    	
     },
     
     onAfterAdd: function(button, event, options) {

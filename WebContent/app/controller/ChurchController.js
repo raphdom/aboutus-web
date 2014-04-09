@@ -29,6 +29,8 @@ Ext.define('AboutUs.controller.ChurchController', {
     	
     	var list = Ext.create('AboutUs.view.church.List');
     	centerContainer.add(list);
+    	
+    	centerContainer.setLoading(false);
     	//list.getStore().clearFilter();
     	
     }
