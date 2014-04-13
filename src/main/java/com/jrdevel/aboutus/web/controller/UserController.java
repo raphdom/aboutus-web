@@ -27,12 +27,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
-	//private User userSession;
-	
 	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
@@ -50,7 +44,22 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/save.action", method = RequestMethod.POST)
+	@RequestMapping(value="/get.action")
+	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
+
+		try{
+			
+			ResultObject result = userService.get(id);
+			
+			return result.toMap();
+			
+		} catch (Exception e) {
+
+			return ExtJSReturn.mapError("Error retrieving Groups from database.");
+		}
+	}
+	
+	/*@RequestMapping(value="/save.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> save(@RequestBody User user) throws Exception {
 
 		try{
@@ -68,21 +77,6 @@ public class UserController {
 		} catch (Exception e) {
 
 			return ExtJSReturn.mapError("Error save User in database.");
-		}
-	}
-	
-	@RequestMapping(value="/get.action")
-	public @ResponseBody Map<String,? extends Object> get(User input) throws Exception {
-
-		try{
-			
-			ResultObject result = userService.get(input);
-			
-			return result.toMap();
-			
-		} catch (Exception e) {
-
-			return ExtJSReturn.mapError("Error retrieving Groups from database.");
 		}
 	}
 	
