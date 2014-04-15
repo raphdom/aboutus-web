@@ -1,6 +1,7 @@
 package com.jrdevel.aboutus.web.controller;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import com.jrdevel.aboutus.core.common.model.Register;
 import com.jrdevel.aboutus.core.common.model.User;
 import com.jrdevel.aboutus.core.common.to.ListResult;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
+import com.jrdevel.aboutus.core.dto.UserDTO;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 /**
@@ -79,18 +81,18 @@ public class AuthenticationController {
 			UserDetailsAdapter userAdapter = (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			
 			ResultObject result = new ResultObject();
-			User user = new User();
-			user.setId(userAdapter.getId());
-			user.setEmail(userAdapter.getUsername());
-			user.setPermissions(new HashSet<Permission>(userAdapter.getRoles()));
-			result.setData(user);
+			UserDTO dto = new UserDTO();
+			dto.setId(userAdapter.getId());
+			dto.setEmail(userAdapter.getUsername());
+			List<Integer> permissions = new ArrayList<Integer>();
+			for(Permission permission : userAdapter.getRoles()){
+				permissions.add(permission.getId());
+			}
+			dto.setPermissions(permissions);
+			result.setData(dto);
 			result.setSuccess(true);
 			
 			return result.toMap();
-			
-			//ListResult<Permission> listResult = new ListResult<Permission>(user.getRoles());
-			
-			//return ExtJSReturn.mapOK(listResult);
 			
 		} catch (Exception e) {
 

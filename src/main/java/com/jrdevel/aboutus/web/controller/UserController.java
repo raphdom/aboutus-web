@@ -1,6 +1,5 @@
 package com.jrdevel.aboutus.web.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.common.model.User;
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
+import com.jrdevel.aboutus.core.dto.UserDTO;
 import com.jrdevel.aboutus.core.user.UserService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
@@ -54,33 +53,33 @@ public class UserController {
 			return result.toMap();
 			
 		} catch (Exception e) {
+			
+			logger.error(e);
 
 			return ExtJSReturn.mapError("Error retrieving Groups from database.");
 		}
 	}
 	
-	/*@RequestMapping(value="/save.action", method = RequestMethod.POST)
-	public @ResponseBody Map<String,? extends Object> save(@RequestBody User user) throws Exception {
+	@RequestMapping(value="/save.action", method = RequestMethod.POST)
+	public @ResponseBody Map<String,? extends Object> save(@RequestBody UserDTO userDTO) throws Exception {
 
 		try{
 
 			ResultObject result = null;
 
-			if (user.getId() != null && user.getId() != 0){
-				result = userService.update(user);
-			}else{
-				result = userService.insert(user);
-			}
+			result = userService.save(userDTO);
 			
 			return result.toMap();
 			
 		} catch (Exception e) {
+			
+			logger.error(e);
 
 			return ExtJSReturn.mapError("Error save User in database.");
 		}
 	}
 	
-	@RequestMapping(value="/delete.action")
+	/*@RequestMapping(value="/delete.action")
 	public @ResponseBody Map<String,? extends Object> delete(List<User> input) throws Exception {
 
 		try{

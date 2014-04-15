@@ -13,9 +13,8 @@ Ext.define('AboutUs.util.UserManager', {
     },
     
     hasPermission: function(permissionId){
-    	var permissionStore = this.getUser().permissions();
-    	var record = permissionStore.find('id',permissionId);
-    	if (record > -1){
+    	var permissions = this.getUser().get('permissions')
+    	if (Ext.Array.contains(permissions,permissionId)){
     		return true;
     	}else{
     		return false;

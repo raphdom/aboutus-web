@@ -3,22 +3,31 @@ Ext.define('AboutUs.view.component.PersonCombo', {
     
     alias: 'widget.personcombo',
     
-    store:Ext.create('Ext.data.Store', {
-	    model: 'AboutUs.model.Person',
-	    loaded:false,
-	    proxy: {
-	        type: 'ajax',
-	        api: {
-	        	read : 'person/view.action'
-	        },
-	        reader: {
-	            type: 'json',
-	            root: 'data',
-	            successProperty: 'success'
-	        }
-	    }
-	}),
     displayField:'name',
-    valueField:'id'
+    valueField:'id',
+	editable:false,
+	
+    initComponent: function() {
+    	var me = this;
+    	var store = Ext.create('Ext.data.Store', {
+		    model: 'AboutUs.model.Person',
+		    autoLoad:true,
+		    proxy: {
+		        type: 'ajax',
+		        api: {
+		        	read : 'person/view.action'
+		        },
+		        reader: {
+		            type: 'json',
+		            root: 'data',
+		            successProperty: 'success'
+		        }
+		    }
+		});
+    	Ext.apply(me, {
+        	store:store
+        })
+        this.callParent(arguments);
+    }
     
 });

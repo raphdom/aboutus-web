@@ -11,44 +11,38 @@ Ext.define('AboutUs.model.User', {
     		name:'lastvisitDate',
     		type:'date',
     		dateReadFormat:'time',
-    		dateWriteFormat:'d-m-Y'
+    		dateWriteFormat:'d-m-Y',
+    		persist:false
     	},{
     		name:'activation',
-    		type:'boolean'
+    		type:'boolean',
+    		persist:false
 		},{
     		name:'block',
-    		type:'boolean'
+    		type:'boolean',
+    		persist:false
     	},{
+    		name:'personId',
+    		type:'int',
+    		useNull:true
+		},{
     		name:'personName',
     		type:'string',
 			persist:false
 		},{
+    		name:'churchId',
+    		type:'int',
+    		useNull:true
+		},{
     		name:'churchName',
     		type:'string',
 			persist:false
+    	},{
+    		name:'groups'
+    	},{
+    		name:'permissions'
     	}],
     	
-    associations: [{
-        type: 'hasOne',
-        model: 'AboutUs.model.Church',
-        associationKey: 'church',
-        getterName: 'getChurch',
-        setterName: 'setChurch',
-        name:'church'
-    },{
-    	type: 'hasOne',
-        model: 'AboutUs.model.Person',
-        associationKey: 'person',
-        getterName: 'getPerson',
-        setterName: 'setPerson',
-        name:'person'
-    }],
-    	
-   	hasMany: [
-   		{model: 'AboutUs.model.Permission', foreignKey: 'userId', name:'permissions'},
-   		{model: 'AboutUs.model.Group', foreignKey: 'userId', name:'groups'}
-	],
-   	
    	proxy: {
         type: 'ajax',
         api: {

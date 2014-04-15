@@ -29,20 +29,14 @@ Ext.define('AboutUs.view.user.TabUserData', {
             vtype:'email'
         },{
             fieldLabel: 'Pessoa',
-            name: 'person',
+            name: 'personId',
             xtype:'personcombo',
             allowBlank: true
         },{
         	xtype:'churchcombo',
-        	name: 'church.id',
+        	name: 'churchId',
             fieldLabel: 'Igreja',
             allowBlank: false
-        },{
-			name : 'groups',
-			hidden:true
-		},{
-			name : 'permissions',
-			hidden:true
 		}]
     }]
     

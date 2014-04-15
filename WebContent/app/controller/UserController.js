@@ -47,30 +47,23 @@ Ext.define('AboutUs.controller.UserController', {
     
     onBeforeSaveData: function(){
 		var form = this.getUserDialog().down('form');
-		
-		var permissions = this.getPermissionList().grid.getSelectionModel().getSelection();
-		var church = form.down('churchcombo').store.findRecord('id',form.down('churchcombo').getValue());
-		var person = form.down('personcombo').store.findRecord('id',form.down('personcombo').getValue());
-		form.getRecord().setChurch(church);
-		form.getRecord().setPerson(person);
-		form.getRecord().permissions().add(permissions);
-		
+
 		var groups = this.getGroupList().grid.getSelectionModel().getSelection();
-		form.getRecord().groups().add(groups);
+		var permissions = this.getPermissionList().grid.getSelectionModel().getSelection();
+		form.getRecord().set('groups',[1]);
+		form.getRecord().set('permissions',[1,2]);
 		
 	},
 	
 	onGetDataSuccess:function(record){
-		
+		var me = this;
 		var form = this.getUserDialog().down('form');
 		
-		if (record.getAssociatedData().person){
-			form.down('personcombo').setValue(record.getPerson());
-		}
-		form.down('churchcombo').setValue(record.getChurch());
+		Ext.Array.each(record.get('groups'), function(id, index) {
+			var record = me.getGroupList().grid.getStore().getById(id)
+		    me.getGroupList().grid.getSelectionModel().select(record);
+		});
 		
-		this.getGroupList().grid.getSelectionModel().select(record.groups().getRange());
-		this.getPermissionList().grid.getSelectionModel().select(record.permissions().getRange());
 		
 	}
     
