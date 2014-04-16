@@ -1,5 +1,6 @@
 package com.jrdevel.aboutus.web.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -79,12 +80,12 @@ public class UserController {
 		}
 	}
 	
-	/*@RequestMapping(value="/delete.action")
-	public @ResponseBody Map<String,? extends Object> delete(List<User> input) throws Exception {
+	@RequestMapping(value="/delete.action")
+	public @ResponseBody Map<String,? extends Object> delete(List<Integer> ids) throws Exception {
 
 		try{
 			
-			ResultObject result = userService.delete(input);
+			ResultObject result = userService.delete(ids);
 			
 			return result.toMap();
 			

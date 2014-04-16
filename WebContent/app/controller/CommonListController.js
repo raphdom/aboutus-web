@@ -109,7 +109,11 @@ Ext.define('AboutUs.controller.CommonListController', {
     onDelete: function(button, event, options) {
     	console.log('CommonController.onDelete()');
     	if (this.getCommonGrid().getSelectionModel().getSelection().length > 0){
-    		
+    		var ids = new Array();
+    		Ext.Array.each(this.getCommonGrid().getSelectionModel().getSelection(), function(record, index) {
+				ids.push(record.getId());
+    		});
+    		console.log('testes');
     	}else{
     		AboutUs.util.NotificationUtil.showNotificationError("Você deve selecionar um registo.");
     	}
