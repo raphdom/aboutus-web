@@ -81,7 +81,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/delete.action")
-	public @ResponseBody Map<String,? extends Object> delete(List<Integer> ids) throws Exception {
+	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<Integer> ids) throws Exception {
 
 		try{
 			

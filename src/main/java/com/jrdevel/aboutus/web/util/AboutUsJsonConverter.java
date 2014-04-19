@@ -28,8 +28,9 @@ public class AboutUsJsonConverter extends FormattingConversionServiceFactoryBean
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
 		registry.addConverter(convertFilter());
-		registry.addConverter(convertPermissions());
-		registry.addConverter(convertGroups());
+		//registry.addConverter(convertInteger());
+		//registry.addConverter(convertPermissions());
+		//registry.addConverter(convertGroups());
 		//registry.addConverter(convertFiles());
 	}
 
@@ -42,6 +43,24 @@ public class AboutUsJsonConverter extends FormattingConversionServiceFactoryBean
 				List<Filter> myTypeList = null;
 				try {
 					myTypeList = mapper.readValue(source, new TypeReference<List<Filter>>() {});
+				} catch (Exception e) {
+					if(log.isErrorEnabled())
+						log.error("Error converting JSON collection to List<MyType>.", e);
+				}
+				return myTypeList;
+			}
+		};
+	}
+	
+	public Converter<String, List<Integer>> convertInteger() {
+		return new Converter<String, List<Integer>>() {
+
+			@Override
+			public List<Integer> convert(String source) {
+				ObjectMapper mapper = new ObjectMapper();
+				List<Integer> myTypeList = null;
+				try {
+					myTypeList = mapper.readValue(source, new TypeReference<List<Integer>>() {});
 				} catch (Exception e) {
 					if(log.isErrorEnabled())
 						log.error("Error converting JSON collection to List<MyType>.", e);

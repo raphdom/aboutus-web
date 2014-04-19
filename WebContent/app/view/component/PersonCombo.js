@@ -3,19 +3,19 @@ Ext.define('AboutUs.view.component.PersonCombo', {
     
     alias: 'widget.personcombo',
     
-    displayField:'name',
-    valueField:'id',
+    //displayField:'name',
+    //valueField:'id',
 	editable:false,
 	
     initComponent: function() {
     	var me = this;
     	var store = Ext.create('Ext.data.Store', {
-		    model: 'AboutUs.model.Person',
+		    model: 'AboutUs.model.GenericValueText',
 		    autoLoad:true,
 		    proxy: {
 		        type: 'ajax',
 		        api: {
-		        	read : 'person/view.action'
+		        	read : 'person/viewCombo.action'
 		        },
 		        reader: {
 		            type: 'json',

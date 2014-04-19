@@ -107,13 +107,29 @@ Ext.define('AboutUs.controller.CommonListController', {
     },
     
     onDelete: function(button, event, options) {
-    	console.log('CommonController.onDelete()');
+    	var me = this;
     	if (this.getCommonGrid().getSelectionModel().getSelection().length > 0){
-    		var ids = new Array();
-    		Ext.Array.each(this.getCommonGrid().getSelectionModel().getSelection(), function(record, index) {
-				ids.push(record.getId());
-    		});
-    		console.log('testes');
+    		Ext.Msg.confirm('Eliminar', 'Deseja realmente eliminar os registos selecionados', 
+    			function(btn, text){
+			    	if (btn == 'yes'){
+						var ids = new Array();
+			    		Ext.Array.each(me.getCommonGrid().getSelectionModel().getSelection(), function(record, index) {
+							ids.push(record.getId());
+			    		});
+			    		Ext.Ajax.request({
+						    url: me.getCommonGrid().getStore().getProxy().api.destroy,
+						    headers: {
+			                	'Content-Type': 'application/json;'
+			                },
+						    params: Ext.encode(ids),
+						    success: function(response){
+						        var response = Ext.decode(response.responseText);
+						        AboutUs.util.NotificationUtil.processMessages(response.messages);
+						        me.onDoSearch();
+						    }
+						});
+			    	}
+			});
     	}else{
     		AboutUs.util.NotificationUtil.showNotificationError("Você deve selecionar um registo.");
     	}

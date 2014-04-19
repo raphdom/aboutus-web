@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jrdevel.aboutus.core.common.ListService;
 import com.jrdevel.aboutus.core.common.constants.DAOConstants;
-import com.jrdevel.aboutus.core.common.to.GenericValueText;
+import com.jrdevel.aboutus.core.dto.GenericValueTextDTO;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 /**
@@ -32,7 +32,7 @@ public class ListController {
 
 		try{
 
-			List<GenericValueText> listCountry = listService.getList(DAOConstants.COUNTRY_LIST);
+			List<GenericValueTextDTO> listCountry = listService.getList(DAOConstants.COUNTRY_LIST);
 			
 			return ExtJSReturn.mapOK(listCountry);
 
@@ -47,7 +47,7 @@ public class ListController {
 
 		try{
 
-			List<GenericValueText> listCountry = listService.getList(DAOConstants.CIVILSTATUS_LIST);
+			List<GenericValueTextDTO> listCountry = listService.getList(DAOConstants.CIVILSTATUS_LIST);
 			
 			return ExtJSReturn.mapOK(listCountry);
 
