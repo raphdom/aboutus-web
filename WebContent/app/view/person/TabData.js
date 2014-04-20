@@ -55,7 +55,8 @@ Ext.define('AboutUs.view.person.TabData', {
 			xtype:'combo',
 			fieldLabel: 'Naturalidade',
             name: 'name',
-            allowBlank: false
+            allowBlank: false,
+            store:'list.CountryStore'
         },{
 			xtype:'datefield',
 			fieldLabel: 'Data de Nascimento',
@@ -94,7 +95,8 @@ Ext.define('AboutUs.view.person.TabData', {
 			xtype:'combo',
 			fieldLabel: 'Tipo de Membro',
             name: 'name',
-            allowBlank: false
+            allowBlank: false,
+            store:'list.MemberTypeStore'
         }]
     }]
     

@@ -82,7 +82,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     
     onEdit: function(button, record) {
     	var me = this;
-    	
+    	var listRecord = record;
     	eval(record.modelName).load(record.get('id'), {
 		    scope: this,
 		    failure: function(record, operation) {
@@ -93,7 +93,8 @@ Ext.define('AboutUs.controller.CommonListController', {
 		    	me.getCommonDialog().down('form').loadRecord(record);
 		    	var titleUpdate = me.getCommonDialog().titleUpdate;
         		if (titleUpdate != undefined){
-        			me.getCommonDialog().setTitle(me.getCommonDialog().titleUpdate);	
+        			var tpl = new Ext.XTemplate(titleUpdate);
+        			me.getCommonDialog().setTitle(tpl.apply(listRecord.data));	
         		}
 		    	if (me.actualController().onGetDataSuccess != undefined){
 		    		me.actualController().onGetDataSuccess(record);	

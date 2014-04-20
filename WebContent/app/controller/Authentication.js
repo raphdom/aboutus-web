@@ -27,7 +27,7 @@ Ext.define('AboutUs.controller.Authentication', {
 			'loginForm button[action=login]': {
          		click: this.onLogin
      		},
-     		'loginForm textfield[name=email]': {
+     		'loginForm textfield[name=j_username]': {
          		afterrender: this.onEmailAfterRender
      		},
      		'loginForm textfield': {

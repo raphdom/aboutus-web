@@ -5,7 +5,7 @@ Ext.define('AboutUs.controller.MainController', {
     
     stores: ['CurrentUserStore'],
     
-     models: ['GenericValueText'],
+     models: ['GenericValueText','GenericIdText'],
     
     refs: [{
         ref: 'mainContainer',

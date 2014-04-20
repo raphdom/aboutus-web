@@ -3,7 +3,8 @@ Ext.define('AboutUs.view.person.Dialog', {
     
     alias: 'widget.persondialog',
     
-    title: 'Pessoa',
+    title: 'Nova Pessoa',
+    titleUpdate: 'Detalhes da pessoa: {name}',
     
     width: 600,
     

@@ -1,11 +1,10 @@
-Ext.define('AboutUs.store.list.CountryStore', {
+Ext.define('AboutUs.store.list.MemberTypeStore', {
     extend: 'Ext.data.Store',
-    autoLoad:false,
     fields: ['value','text'], 
     proxy: {
         type: 'ajax',
         api: {
-        	read : 'list/country.action'
+        	read : 'list/memberType.action'
         },
         reader: {
             type: 'json',
