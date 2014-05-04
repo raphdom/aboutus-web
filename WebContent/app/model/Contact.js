@@ -5,10 +5,12 @@ Ext.define('AboutUs.model.Contact', {
     		name:'id',
     		type:'int'
     	},{ 
-    		name:'type',
+    		name:'contactTypeValue',
     		type:'string'
     	},{
     		name:'value',
     		type:'string'
-    	}]
+    	}],
+    	
+    belongsTo: {model: 'AboutUs.model.Person', foreignKey: 'personId'}
 });

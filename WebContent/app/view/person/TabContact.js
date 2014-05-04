@@ -23,8 +23,23 @@ Ext.define('AboutUs.view.person.TabContact', {
 		    	xtype:'grid',
 		    	store:'ContactStore',
 		    	columns: [
-		        	{ text: 'Tipo',  dataIndex: 'type',editor:{},flex:1},
-		        	{ text: 'Valor', dataIndex: 'value',editor:{},flex:1}
+		        	{ 
+		        		text: 'Tipo',  
+		        		dataIndex: 'contactTypeValue',
+		        		editor:{
+		        			xtype:'combo',
+            				store:'list.ContactTypeStore',
+            				displayField:'text',
+    						valueField:'value'
+		        		},
+		        		flex:1
+		        	},
+		        	{ 
+		        		text: 'Valor', 
+		        		dataIndex: 'value',
+		        		editor:{},
+		        		flex:1
+		        	}
 		    	],
 		    	tbar: [{
 		            text: 'Adicionar',

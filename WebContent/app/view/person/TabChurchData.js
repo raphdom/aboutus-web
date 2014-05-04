@@ -19,6 +19,7 @@ Ext.define('AboutUs.view.person.TabChurchData', {
        		xtype      : 'fieldcontainer',
             fieldLabel : 'Batizado',
             defaultType: 'radiofield',
+            name:'baptized',
             defaults: {
                 flex: 1
             },
@@ -26,22 +27,23 @@ Ext.define('AboutUs.view.person.TabChurchData', {
             items: [{
 	                    boxLabel  : 'Sim',
 	                    name      : 'baptized',
-	                    inputValue: '1',
-	                    id        : 'baptized1'
+	                    inputValue: 'true',
+	                    id        : 'baptizedYes'
 	                }, {
 	                    boxLabel  : 'Não',
 	                    name      : 'baptized',
-	                    inputValue: '0',
-	                    id        : 'baptized2'
+	                    inputValue: 'false',
+	                    id        : 'baptizedNo'
 	            	}]
     	},{
 			xtype:'datefield',
 			fieldLabel: 'Data de Batismo',
-            name: 'baptismDate'
+            name: 'baptismdate'
     	},{
     		xtype      : 'fieldcontainer',
             fieldLabel : 'Consolidado',
             defaultType: 'radiofield',
+            name:'consolidated',
             defaults: {
                 flex: 1
             },
@@ -49,21 +51,21 @@ Ext.define('AboutUs.view.person.TabChurchData', {
             items: [{
 	                    boxLabel  : 'Sim',
 	                    name      : 'consolidated',
-	                    inputValue: '1',
-	                    id        : 'consolidated1'
+	                    inputValue: 'true',
+	                    id        : 'consolidatedYes'
 	                }, {
 	                    boxLabel  : 'Não',
 	                    name      : 'consolidated',
-	                    inputValue: '0',
-	                    id        : 'consolidated2'
+	                    inputValue: 'false',
+	                    id        : 'consolidatedNo'
 	            	}]
     	},{
 			xtype:'datefield',
 			fieldLabel: 'Data de Chegada',
-            name: 'arrivalDate'
+            name: 'arrivalChurchDate'
         },{
 			fieldLabel: 'Igreja Anterior',
-            name: 'previousChurch'
+            name: 'precedingChurch'
     	}]
     }]
     

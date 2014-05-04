@@ -29,36 +29,41 @@ Ext.define('AboutUs.view.person.TabData', {
             fieldLabel: 'Sexo',
             defaultType: 'radiofield',
             layout:'hbox',
+            name:'male',
             defaults: {
                 flex: 1
             },
             items: [
                 {
                     boxLabel  : 'Masculino',
-                    name      : 'topping',
-                    inputValue: 'Y',
-                    id        : 'checkbox1'
+                    name      : 'male',
+                    inputValue: 'true',
+                    id        : 'checkMale'
                 }, {
                     boxLabel  : 'Feminino',
-                    name      : 'topping',
-                    inputValue: '2',
-                    id        : 'checkbox2'
+                    name      : 'male',
+                    inputValue: 'false',
+                    id        : 'checkFemale'
                 }
             ]
 		},{
 			xtype:'combo',
 			fieldLabel: 'Estado Civil',
-            name: 'name',
-            store:'list.CivilStatusStore'
+            name: 'civilStatusValue',
+            store:'list.CivilStatusStore',
+            displayField:'text',
+    		valueField:'value'
 		},{
 			xtype:'combo',
 			fieldLabel: 'Naturalidade',
-            name: 'name',
-            store:'list.CountryStore'
+            name: 'naturalityValue',
+            store:'list.CountryStore',
+            displayField:'text',
+    		valueField:'value'
         },{
 			xtype:'datefield',
 			fieldLabel: 'Data de Nascimento',
-            name: 'birthDate'
+            name: 'birthday'
         },{
 			fieldLabel: 'NIF',
             name: 'nif',
@@ -71,6 +76,7 @@ Ext.define('AboutUs.view.person.TabData', {
             fieldLabel : 'Membro',
             defaultType: 'radiofield',
             allowBlank: false,
+            name:'member',
             defaults: {
                 flex: 1
             },
@@ -79,21 +85,23 @@ Ext.define('AboutUs.view.person.TabData', {
                 {
                     boxLabel  : 'Sim',
                     name      : 'member',
-                    inputValue: 'y',
-                    id        : 'radio1',
+                    inputValue: 'true',
+                    id        : 'memberYes',
                     checked:true
                 }, {
                     boxLabel  : 'Não',
                     name      : 'member',
-                    inputValue: 'n',
-                    id        : 'radio2'
+                    inputValue: 'false',
+                    id        : 'memberNo'
                 }
             ]
         },{
 			xtype:'combo',
 			fieldLabel: 'Tipo de Membro',
-            name: 'name',
-            store:'list.MemberTypeStore'
+            name: 'memberTypeValue',
+            store:'list.MemberTypeStore',
+            displayField:'text',
+    		valueField:'value'
         }]
     }]
     

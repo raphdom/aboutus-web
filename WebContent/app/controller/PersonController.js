@@ -6,6 +6,7 @@ Ext.define('AboutUs.controller.PersonController', {
     		 'list.CivilStatusStore', 
     		 'list.CountryStore', 
     		 'list.MemberTypeStore',
+    		 'list.ContactTypeStore',
     		 'AddressStore',
     		 'ContactStore'
     		 ],
@@ -24,11 +25,17 @@ Ext.define('AboutUs.controller.PersonController', {
     		],
     
     refs: [{
-        ref: 'personlist',
-        selector: 'personList'
+        ref: 'personList',
+        selector: 'personlist'
     },{
-    	ref: 'persondialog',
-    	selector: 'personDialog'
+    	ref: 'personDialog',
+    	selector: 'persondialog'
+    },{
+    	ref: 'addressGrid',
+    	selector: 'persontabaddress grid'
+	 },{
+    	ref: 'contactGrid',
+    	selector: 'persontabcontact grid'
     }],
     
     init: function() {
@@ -45,6 +52,17 @@ Ext.define('AboutUs.controller.PersonController', {
     	
     	centerContainer.setLoading(false);
     	
-    }
+    },
+    
+    onBeforeSaveData: function(){
+		var form = this.getPersonDialog().down('form');
+
+		var adresses = this.getAddressGrid().getSelectionModel().getSelection();
+		form.getRecord().addresses().add(adresses);
+		
+		var contacts = this.getContactGrid().getSelectionModel().getSelection();
+		form.getRecord().contacts().add(contacts);
+		
+	}
     
 });

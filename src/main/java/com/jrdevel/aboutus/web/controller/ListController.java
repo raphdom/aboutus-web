@@ -81,5 +81,22 @@ public class ListController {
 			return ExtJSReturn.mapError("Error retrieving List of Civil Status from database.");
 		}
 	}
+	
+	@RequestMapping(value="/list/contactType.action")
+	public @ResponseBody Map<String,? extends Object> getListContactType() throws Exception {
+
+		try{
+
+			List<GenericValueTextDTO> listCountry = listService.getContactType();
+			
+			return ExtJSReturn.mapOK(listCountry);
+
+		} catch (Exception e) {
+
+			logger.error(e);
+			
+			return ExtJSReturn.mapError("Error retrieving List of Contacts Type from database.");
+		}
+	}
 
 }

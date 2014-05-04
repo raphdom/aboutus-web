@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
-import com.jrdevel.aboutus.core.dto.PersonDTO;
+import com.jrdevel.aboutus.core.person.PersonDTO;
 import com.jrdevel.aboutus.core.person.PersonService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 

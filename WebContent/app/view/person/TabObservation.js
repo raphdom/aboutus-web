@@ -14,7 +14,7 @@ Ext.define('AboutUs.view.person.TabObservation', {
     items:[{
     	xtype     : 'textareafield',
     	emptyText : 'Digita aqui uma observação',
-        name      : 'observation'
+        name      : 'observations'
     }]
     
     
