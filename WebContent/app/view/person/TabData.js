@@ -49,31 +49,28 @@ Ext.define('AboutUs.view.person.TabData', {
 			xtype:'combo',
 			fieldLabel: 'Estado Civil',
             name: 'name',
-            allowBlank: false,
             store:'list.CivilStatusStore'
 		},{
 			xtype:'combo',
 			fieldLabel: 'Naturalidade',
             name: 'name',
-            allowBlank: false,
             store:'list.CountryStore'
         },{
 			xtype:'datefield',
 			fieldLabel: 'Data de Nascimento',
-            name: 'birthDate',
-            allowBlank: false
+            name: 'birthDate'
         },{
 			fieldLabel: 'NIF',
             name: 'nif',
             allowBlank: false
         },{
 			fieldLabel: 'Profissão',
-            name: 'profession',
-            allowBlank: false
+            name: 'profession'
         },{
 			xtype      : 'fieldcontainer',
             fieldLabel : 'Membro',
             defaultType: 'radiofield',
+            allowBlank: false,
             defaults: {
                 flex: 1
             },
@@ -82,12 +79,13 @@ Ext.define('AboutUs.view.person.TabData', {
                 {
                     boxLabel  : 'Sim',
                     name      : 'member',
-                    inputValue: '1',
-                    id        : 'radio1'
+                    inputValue: 'y',
+                    id        : 'radio1',
+                    checked:true
                 }, {
                     boxLabel  : 'Não',
                     name      : 'member',
-                    inputValue: 'l',
+                    inputValue: 'n',
                     id        : 'radio2'
                 }
             ]
@@ -95,7 +93,6 @@ Ext.define('AboutUs.view.person.TabData', {
 			xtype:'combo',
 			fieldLabel: 'Tipo de Membro',
             name: 'name',
-            allowBlank: false,
             store:'list.MemberTypeStore'
         }]
     }]

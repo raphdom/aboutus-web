@@ -1,9 +1,16 @@
 Ext.define('AboutUs.controller.PersonController', {
     extend: 'AboutUs.controller.CommonListController',
     
-    stores: ['PersonStore','list.CivilStatusStore', 'list.CountryStore', 'list.MemberTypeStore'],
+    stores: [
+    		 'PersonStore',
+    		 'list.CivilStatusStore', 
+    		 'list.CountryStore', 
+    		 'list.MemberTypeStore',
+    		 'AddressStore',
+    		 'ContactStore'
+    		 ],
 
-    models: ['Person'],
+    models: ['Person','Address', 'Contact'],
 
     views: [
     		'person.List',

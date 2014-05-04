@@ -64,7 +64,7 @@ Ext.define('Ext.ux.form.plugin.ValidationMessages', {
             }
     	});
     	
-    	formPanel.down('toolbar').insert(0,this.messageComponent);
+    	formPanel.down('toolbar[dock=bottom]').insert(0,this.messageComponent);
     	formPanel.on({
     		fieldvaliditychange: this.updateErrorState,
         	fielderrorchange: this.updateErrorState,

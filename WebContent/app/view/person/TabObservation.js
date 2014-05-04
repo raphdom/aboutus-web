@@ -7,7 +7,15 @@ Ext.define('AboutUs.view.person.TabObservation', {
     
     closable:false,
     
-    items:[]
+    height: 200,
+    
+    layout:'fit',
+    
+    items:[{
+    	xtype     : 'textareafield',
+    	emptyText : 'Digita aqui uma observação',
+        name      : 'observation'
+    }]
     
     
 });
