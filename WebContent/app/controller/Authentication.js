@@ -1,12 +1,12 @@
 Ext.define('AboutUs.controller.Authentication', {
     extend: 'Ext.app.Controller',
 
-    views: ['authentication.Login',
-    		'authentication.Register',
+    views: ['authentication.Login'
+    		/*'authentication.Register',
     		'authentication.TermsOfUseDialog',
-    		'authentication.RegisterWindow'],
+    		'authentication.RegisterWindow'*/],
     
-    stores: ['list.CountryStore'],
+    stores: [],
     
      refs: [{
         ref: 'loginForm',

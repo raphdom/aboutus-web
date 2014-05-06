@@ -43,7 +43,7 @@ Ext.define('AboutUs.view.authentication.Register', {
 		        	allowBlank: false,
 		            fieldLabel: 'País',
 		            xtype:'combo',
-		            store:'list.CountryStore',
+		            //store:'list.CountryStore',
 		            valueField:'value',
 		            forceSelection:true,
 		            displayField:'text',

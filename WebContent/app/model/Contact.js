@@ -7,7 +7,6 @@ Ext.define('AboutUs.model.Contact', {
     	},{
     		name:'value',
     		type:'string'
-    	}],
+    	}]
     	
-    belongsTo: {model: 'AboutUs.model.Person', foreignKey: 'personId'}
 });

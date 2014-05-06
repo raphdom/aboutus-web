@@ -33,7 +33,8 @@ Ext.define('AboutUs.view.person.TabChurchData', {
 	                    boxLabel  : 'Não',
 	                    name      : 'baptized',
 	                    inputValue: 'false',
-	                    id        : 'baptizedNo'
+	                    id        : 'baptizedNo',
+	                    checked   :	true
 	            	}]
     	},{
 			xtype:'datefield',
@@ -57,7 +58,8 @@ Ext.define('AboutUs.view.person.TabChurchData', {
 	                    boxLabel  : 'Não',
 	                    name      : 'consolidated',
 	                    inputValue: 'false',
-	                    id        : 'consolidatedNo'
+	                    id        : 'consolidatedNo',
+	                    checked   :	true
 	            	}]
     	},{
 			xtype:'datefield',

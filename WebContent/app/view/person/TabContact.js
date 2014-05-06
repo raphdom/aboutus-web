@@ -18,19 +18,29 @@ Ext.define('AboutUs.view.person.TabContact', {
 	        autoCancel: false
 	    });
 	    
+	    var contactStore = Ext.create('Ext.data.Store', {
+		    model: 'AboutUs.model.Contact',
+		    proxy: {
+		        type: 'memory'
+		    }
+		});
+	    
 	    Ext.applyIf(this, {
         	items:[{
 		    	xtype:'grid',
-		    	store:'ContactStore',
+		    	store:contactStore,
 		    	columns: [
 		        	{ 
 		        		text: 'Tipo',  
 		        		dataIndex: 'contactTypeValue',
+		        		renderer: function(value, metaData, record, rowIndex, colIndex, store) {
+							var idx = this.columns[colIndex].field.store.find('value', value);
+							return idx !== -1 ? this.columns[colIndex].field.store.getAt(idx).get('text') : ''; 
+						},
 		        		editor:{
-		        			xtype:'combo',
-            				store:'list.ContactTypeStore',
-            				displayField:'text',
-    						valueField:'value'
+		        			xtype:'listcombo',
+            				url:'list/contactType.action',
+            				editable:false
 		        		},
 		        		flex:1
 		        	},

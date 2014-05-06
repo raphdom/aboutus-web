@@ -13,7 +13,6 @@ Ext.define('AboutUs.model.Address', {
     	},{
     		name:'postcode',
     		type:'string'
-    	}],
+    	}]
     	
-    	belongsTo: {model: 'AboutUs.model.Person', foreignKey: 'personId'}
 });

@@ -6,6 +6,8 @@ Ext.define('AboutUs.view.person.Dialog', {
     title: 'Nova Pessoa',
     titleUpdate: 'Detalhes da pessoa: {name}',
     
+    icon:'resources/images/person.png',
+    
     width: 600,
     
     layout:'fit',

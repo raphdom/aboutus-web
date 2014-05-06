@@ -1,15 +1,7 @@
 Ext.define('AboutUs.controller.PersonController', {
     extend: 'AboutUs.controller.CommonListController',
     
-    stores: [
-    		 'PersonStore',
-    		 'list.CivilStatusStore', 
-    		 'list.CountryStore', 
-    		 'list.MemberTypeStore',
-    		 'list.ContactTypeStore',
-    		 'AddressStore',
-    		 'ContactStore'
-    		 ],
+    stores: ['PersonStore'],
 
     models: ['Person','Address', 'Contact'],
 
@@ -62,6 +54,16 @@ Ext.define('AboutUs.controller.PersonController', {
 		
 		var contacts = this.getContactGrid().getSelectionModel().getSelection();
 		form.getRecord().contacts().add(contacts);
+		
+	},
+	
+	onGetDataSuccess:function(record){
+		var me = this;
+		var form = this.getPersonDialog().down('form');
+		
+		this.getAddressGrid().getStore().add(record.addresses().getRange());
+		this.getContactGrid().getStore().add(record.contacts().getRange());
+		
 		
 	}
     

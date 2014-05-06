@@ -5,6 +5,8 @@ Ext.define('AboutUs.view.person.TabData', {
     
     title:'Dados Pessoais',
     
+	requires:['AboutUs.view.component.ListCombo'],
+    
     closable:false,
     
     items:[{
@@ -43,23 +45,21 @@ Ext.define('AboutUs.view.person.TabData', {
                     boxLabel  : 'Feminino',
                     name      : 'male',
                     inputValue: 'false',
+                    checked   :	true,
                     id        : 'checkFemale'
                 }
             ]
 		},{
-			xtype:'combo',
+			xtype:'listcombo',
 			fieldLabel: 'Estado Civil',
             name: 'civilStatusValue',
-            store:'list.CivilStatusStore',
-            displayField:'text',
-    		valueField:'value'
+            url:'list/civilStatus.action',
+    		editable:false
 		},{
-			xtype:'combo',
+			xtype:'listcombo',
 			fieldLabel: 'Naturalidade',
             name: 'naturalityValue',
-            store:'list.CountryStore',
-            displayField:'text',
-    		valueField:'value'
+            url:'list/country.action'
         },{
 			xtype:'datefield',
 			fieldLabel: 'Data de Nascimento',
@@ -86,22 +86,21 @@ Ext.define('AboutUs.view.person.TabData', {
                     boxLabel  : 'Sim',
                     name      : 'member',
                     inputValue: 'true',
-                    id        : 'memberYes',
-                    checked:true
+                    id        : 'memberYes'
                 }, {
                     boxLabel  : 'Não',
                     name      : 'member',
                     inputValue: 'false',
-                    id        : 'memberNo'
+                    id        : 'memberNo',
+                    checked   :	true
                 }
             ]
         },{
-			xtype:'combo',
+			xtype:'listcombo',
 			fieldLabel: 'Tipo de Membro',
             name: 'memberTypeValue',
-            store:'list.MemberTypeStore',
-            displayField:'text',
-    		valueField:'value'
+            url:'list/memberType.action',
+            editable:false
         }]
     }]
     

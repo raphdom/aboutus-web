@@ -18,10 +18,17 @@ Ext.define('AboutUs.view.person.TabAddress', {
 	        autoCancel: false
 	    });
 	    
+	    var addressStore = Ext.create('Ext.data.Store', {
+		    model: 'AboutUs.model.Address',
+		    proxy: {
+		        type: 'memory'
+		    }
+		});
+	    
 	    Ext.applyIf(this, {
         	items:[{
 		    	xtype:'grid',
-		    	store:'AddressStore',
+		    	store:addressStore,
 		    	columns: [
 		        	{ text: 'Morada',  dataIndex: 'address',editor:{},flex:1},
 		        	{ text: 'Localidade', dataIndex: 'state',editor:{},flex:1},
