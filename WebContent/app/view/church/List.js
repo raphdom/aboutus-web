@@ -11,6 +11,12 @@ Ext.define('AboutUs.view.church.List', {
     
     dialog: 'AboutUs.view.church.Dialog',
     
+    permissions:{
+    	add:Constants.auth_adduser,
+    	edit:Constants.auth_edituser,
+    	remove:Constants.auth_deleteuser
+    },
+    
     columns: [
     {
     	header: "Nome",

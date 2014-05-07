@@ -203,7 +203,8 @@ Ext.define('AboutUs.controller.CommonListController', {
     		}
 	    	var field = Ext.widget(menuItem.criteriaXtype,{
 	    		fieldLabel: menuItem.header,
-				name : menuItem.criteriaName
+				name : menuItem.criteriaName,
+				width : 400
 	    	});
 	    	this.getCriteriaContainer().add(field);
     	}else{

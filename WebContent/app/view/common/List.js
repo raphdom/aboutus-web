@@ -13,6 +13,8 @@ Ext.define('AboutUs.view.common.List', {
     	remove:0
     },
     
+    layout:{type:'vbox',align:'stretch'},
+    
 	initComponent: function(){
 		var me = this;
 		
@@ -86,7 +88,8 @@ Ext.define('AboutUs.view.common.List', {
 			xtype:'grid',
 			store:me.store,
 			columns:me.columns,
-			selType: 'checkboxmodel'
+			selType: 'checkboxmodel',
+			flex:1
 		});
 		
 		this.grid = grid;
