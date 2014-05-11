@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jrdevel.aboutus.core.common.helper.MessageHelper;
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.dto.UserDTO;
@@ -27,6 +28,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private MessageHelper messageHelper;
+	
 	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
@@ -40,7 +44,7 @@ public class UserController {
 			
 			logger.error(e);
 			
-			return ExtJSReturn.mapError("Error retrieving Users from database.");
+			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
 		}
 	}
 	
@@ -57,7 +61,7 @@ public class UserController {
 			
 			logger.error(e);
 
-			return ExtJSReturn.mapError("Error retrieving Groups from database.");
+			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
 		}
 	}
 	
@@ -75,8 +79,8 @@ public class UserController {
 		} catch (Exception e) {
 			
 			logger.error(e);
-
-			return ExtJSReturn.mapError("Error save User in database.");
+			
+			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
 		}
 	}
 	
@@ -91,7 +95,7 @@ public class UserController {
 			
 		} catch (Exception e) {
 
-			return ExtJSReturn.mapError("Error retrieving Groups from database.");
+			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
 		}
 	}
 	

@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <meta http-equiv=content-type content=text/html; charset=UTF-8> 
 <html>
 <head>
@@ -9,7 +10,7 @@
     <script type="text/javascript" src="ext4.2.1/ext-theme-neptune.js"></script>
     <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="resources/js/lightview.js"></script>
-    <script type="text/javascript" src="ext4.2.1/locale/ext-lang-pt_PT.js"></script>
+    <script type="text/javascript" src="ext4.2.1/locale/ext-lang-${pageContext.response.locale}.js"></script>
     
     <!-- App Files -->
 	<link rel="stylesheet" type="text/css" href="resources/css/aboutus.css">
@@ -23,7 +24,9 @@
 	
 	<script type="text/javascript" src="app/extjs-override.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
-    
+    <script>
+    var userListTitle = '<spring:message code="user.list.title" text="Users" />';
+    </script>
 </head>
 <body>
 </body>

@@ -2,7 +2,7 @@ Ext.define('AboutUs.view.user.List', {
 	extend: 'AboutUs.view.common.List',
     
     alias: 'widget.userlist',
-    title : 'Utilizadores',
+    title : userListTitle,
     store: 'UserStore',
     icon:'resources/images/user.png',
     dialog: 'userdialog',

@@ -44,4 +44,24 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	    <property name="maxUploadSize" value="209715200"/>
 	</bean>
 	
+	
+	<!-- Configure the internationalization-->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+ 
+	<mvc:interceptors>
+	<!-- Changes the locale when a 'lang' request parameter is sent; e.g. /?lang=de -->
+	  <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+	      <property name="paramName" value="lang"/>
+	   </bean>
+	</mvc:interceptors>
+	
+	<!-- Register the welcome.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+	</bean>
+	
 </beans>
