@@ -1,0 +1,82 @@
+<beans 
+xmlns="http://www.springframework.org/schema/beans"
+xmlns:security="http://www.springframework.org/schema/security"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd  
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd  
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+	<!--
+ 	<security:global-method-security secured-annotations="enabled" />
+  
+ 	<security:http auto-config="true" use-expressions="true" access-denied-page="/denied" >
+ 
+		  <security:form-login
+		    login-page="/loginPage.action"
+		    authentication-failure-url="/failure.jsp"
+		    default-target-url="/home"/>
+		    
+		  <security:logout
+		    invalidate-session="true"
+		    logout-success-url="/loginPage.action"
+		    logout-url="/logout.jsp"/>
+  
+ 	</security:http>
+  
+	 <security:authentication-manager>
+	         <security:authentication-provider user-service-ref="userDetailsService">
+	           <security:password-encoder ref="passwordEncoder"/>
+	         </security:authentication-provider>
+	 </security:authentication-manager>
+  
+	 <bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>
+	 
+	  <security:user-service id="userDetailsService">
+	     <security:user name="john" password="21232f297a57a5a743894a0e4a801fc3" authorities="ROLE_USER, ROLE_ADMIN" />
+	     <security:user name="jane" password="ee11cbb19052e40b07aac0ca060c23ee" authorities="ROLE_USER" />
+	   </security:user-service>
+	
+	<security:intercept-url pattern="/login.jsp" access="permitAll"/>
+        <security:intercept-url pattern="/home.jsp" access="hasRole('ROLE_AUTHENTICATED_USER')" />
+        <security:intercept-url pattern="/*.action" access="hasRole('ROLE_AUTHENTICATED_USER')" />
+-->
+	<security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" />
+ 
+	<bean id="exceptionTranslationFilter"
+  		class="org.springframework.security.web.access.ExceptionTranslationFilter">
+ 		<property name="authenticationEntryPoint" ref="authenticationProcessingFilterEntryPoint"/>
+ 		<property name="accessDeniedHandler" ref="accessDeniedHandler"/>
+	</bean> 
+ 	<bean id="accessDeniedHandler" class="com.jrdevel.aboutus.web.util.CustomAjaxAccessDeniedHandlerImpl">
+ 		<property name="errorPage" value="/user/view.action"/>  
+  	</bean>  
+ 	
+ 	
+    <security:http auto-config="false" use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
+    	<security:intercept-url pattern="/login.action" access="permitAll"/>
+    	<security:intercept-url pattern="/*" access="hasRole('ROLE_AUTHENTICATED_USER')" />
+        <security:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationProcessingFilter"/>
+        <security:logout logout-success-url="/login.action" />
+        <security:access-denied-handler ref="accessDeniedHandler" />
+    </security:http>
+ 
+    <bean id="authenticationProcessingFilter" class="com.jrdevel.aboutus.web.util.CustomAjaxAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager" />
+    </bean>
+ 
+    <bean id="authenticationProcessingFilterEntryPoint"
+        class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <property name="loginFormUrl" value="/login.action" />
+        <property name="forceHttps" value="false" />
+    </bean>
+ 
+    <security:authentication-manager alias="authenticationManager">
+    	<security:authentication-provider user-service-ref="authenticationService" />
+    </security:authentication-manager>
+
+ 
+</beans>
