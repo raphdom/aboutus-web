@@ -11,8 +11,10 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 	
+	<context:annotation-config />
+	
 	<context:component-scan base-package="com.jrdevel.aboutus.web" />
-
+	
 	<bean class="com.jrdevel.aboutus.web.util.AboutUsJsonConverter" id="applicationConversionService"/>
 
 	<mvc:annotation-driven conversion-service="applicationConversionService">
@@ -25,14 +27,15 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	    </mvc:message-converters>
 	</mvc:annotation-driven>
 	
-	<!-- misc -->
+	<!-- misc 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+	-->
+	
 	<bean id="userSession" class="com.jrdevel.aboutus.core.common.model.User" scope="session">
       <!-- this next element effects the proxying of the surrounding bean -->
       <aop:scoped-proxy/>
@@ -63,5 +66,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
 	</bean>
+	
+	<mvc:resources mapping="/**" location="/" />
 	
 </beans>

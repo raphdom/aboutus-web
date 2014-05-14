@@ -37,27 +37,6 @@ public class AuthenticationController {
 	@Autowired
 	private User userSession;
 
-	@RequestMapping(value="/login.action")
-	public @ResponseBody Map<String,? extends Object> login(User user, HttpSession session) throws Exception {
-
-		try{
-
-			ResultObject result = authenticationService.login(user);
-
-			if (result.getData()!= null && !result.getData().isEmpty()){
-				User userDB = (User) result.getData().get(0);
-				userSession.setId(userDB.getId());
-				userSession.setEmail(userDB.getEmail());
-			}
-			
-			return result.toMap();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ExtJSReturn.mapError("Erro no login");
-		}
-	}
-
 	@RequestMapping(value="/register.action")
 	public @ResponseBody Map<String,? extends Object> register(Register register, HttpSession session) throws Exception {
 

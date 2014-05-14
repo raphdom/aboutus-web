@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,18 +35,21 @@ public class UserController {
 	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
-		try{
+		
+		ResultObject result = userService.list(input);
+		
+		return result.toMap();
+		
+		/*try{
 			
-			ResultObject result = userService.list(input);
 			
-			return result.toMap();
 			
 		} catch (Exception e) {
 			
 			logger.error(e);
 			
 			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
-		}
+		}*/
 	}
 	
 	@RequestMapping(value="/get.action")

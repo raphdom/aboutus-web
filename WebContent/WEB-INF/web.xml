@@ -9,7 +9,11 @@
   
   <context-param>
 	<param-name>contextConfigLocation</param-name>
-	<param-value>classpath:root-context.xml</param-value>
+	<param-value>
+	classpath:root-context.xml
+	/WEB-INF/spring-security.xml
+	/WEB-INF/spring-web-config.xml
+	</param-value>
   </context-param>
   
   <listener>
@@ -21,18 +25,18 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/spring-web-config.xml</param-value>
+      <param-value>/WEB-INF/aboutusServlet-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   
   <welcome-file-list>
-    <welcome-file>home.action</welcome-file>
+    <welcome-file>loginPage.action</welcome-file>
   </welcome-file-list>
   
   <servlet-mapping>
     <servlet-name>aboutusServlet</servlet-name>
-    <url-pattern>*.action</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   
   	<!-- Spring Security -->
