@@ -101,5 +101,10 @@ public class AuthenticationController {
 		session.setAttribute("scopedTarget.userSession", null);
 		return new ModelAndView(new RedirectView("")); 
 	}
+	
+	@RequestMapping(value="/keepAlive.action")
+	public ModelAndView keepAlive(HttpSession session){
+		return null; 
+	}
 
 }

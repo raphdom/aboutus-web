@@ -31,6 +31,18 @@ Ext.application({
                     xtype: 'mainContainer'
                 }
             ]
-        });
+        });	
+        //Keep Alive
+        Ext.TaskManager.start({
+	        run: function(){
+	                   Ext.Ajax.request({
+	                         url: 'keepAlive.action',
+	                         success: function(response){
+	                         }
+	                 });
+	        },
+	        //interval: 30000 //30 segundos
+	        interval: 300000 //5minutos = 300000ms
+		}); 
     }
 });
