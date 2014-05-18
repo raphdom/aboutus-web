@@ -85,7 +85,6 @@ Ext.define('AboutUs.view.common.List', {
 		}
 		
 		var grid = Ext.create('Ext.grid.Panel',{
-			xtype:'grid',
 			store:me.store,
 			columns:me.columns,
 			selType: 'checkboxmodel',

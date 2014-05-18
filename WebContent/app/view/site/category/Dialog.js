@@ -1,13 +1,19 @@
-Ext.define('AboutUs.view.cloud.FolderDialog' ,{
-    extend: 'Ext.window.Window',
-    alias : 'widget.folderdialog',
+Ext.define('AboutUs.view.site.category.Dialog', {
+    extend: 'AboutUs.view.common.Dialog',
     
-    requires:['AboutUs.view.component.FolderCombo'],
+    alias: 'widget.sitecategorydialog',
     
-    title: 'Nova pasta',
-    height: 200,
-    width: 400,
-    layout: 'fit',
+    requires:['AboutUs.view.component.CategoryCombo'],
+    
+    title: 'Nova Categoria',
+    titleUpdate: 'Detalhes da categoria: {name}',
+    
+    icon:'resources/images/categories.png',
+    
+    width:500,
+    height:300,
+    
+    layout:'fit',
     
     items:[{
     	xtype:'commonform',
@@ -28,8 +34,8 @@ Ext.define('AboutUs.view.cloud.FolderDialog' ,{
 						name : 'id',
 						hidden:true
 					},{
-						xtype:'foldercombo',
-						fieldLabel: 'Pasta:',
+						xtype:'categorycombo',
+						fieldLabel: 'Categoria pai:',
 						name:'parent',
 						allowBlank: false
 					},{

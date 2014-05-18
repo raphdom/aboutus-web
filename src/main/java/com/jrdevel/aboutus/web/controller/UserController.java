@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jrdevel.aboutus.core.common.helper.MessageHelper;
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
-import com.jrdevel.aboutus.core.dto.UserDTO;
+import com.jrdevel.aboutus.core.user.UserDTO;
 import com.jrdevel.aboutus.core.user.UserService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 

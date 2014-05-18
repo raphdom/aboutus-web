@@ -60,7 +60,9 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 		    	       {
 		    	    	   title:'Categorias',
 		    	    	   icon:'resources/images/categories.png',
-		    	    	   visible:true
+		    	    	   controller:'site.CategoryController',
+		    	    	   type:'list',
+		    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
 		    	       },
 		    	       {
 		    	    	   title:'Artigos',
