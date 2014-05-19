@@ -7,6 +7,8 @@ Ext.define('AboutUs.view.common.List', {
     
     hidetoolbar:false,
     
+    tree:false,
+    
     permissions:{
     	add:0,
     	edit:0,
@@ -53,12 +55,15 @@ Ext.define('AboutUs.view.common.List', {
 	                action: 'search',
 	                menu: searchMenu
 	            }]
-			},{
-			 	xtype: 'pagingtoolbar',
-		        dock: 'bottom',
-		        displayInfo: true,
-		        store:this.store
 			}];
+			if (!this.tree){
+				this.dockedItems.push({
+					xtype: 'pagingtoolbar',
+			        dock: 'bottom',
+			        displayInfo: true,
+			        store:this.store
+				})
+			}
 		}
 		
 		if (this.editColumn && AboutUs.util.UserManager.hasPermission(this.permissions.edit)){
@@ -84,21 +89,32 @@ Ext.define('AboutUs.view.common.List', {
 			this.columns.push.apply(this.columns,columnsList);
 		}
 		
-		var grid = Ext.create('Ext.grid.Panel',{
-			store:me.store,
-			columns:me.columns,
-			selType: 'checkboxmodel',
-			flex:1
-		});
-		
-		this.grid = grid;
+		if (!this.tree){
+			this.grid = Ext.create('Ext.grid.Panel',{
+				store:me.store,
+				columns:me.columns,
+				selType: 'checkboxmodel',
+				flex:1
+			});
+		}else{
+			this.grid = Ext.create('Ext.tree.Panel',{
+			    useArrows: true,
+			    rootVisible: false,
+			    multiSelect: true,
+			    selType: 'checkboxmodel',
+			    store:me.store,
+				columns:me.columns
+			});
+		}
 		
         Ext.applyIf(me, {
-        	items: [{xtype:'criteriacontainer'},grid]
+        	items: [{xtype:'criteriacontainer'},this.grid]
         });
 		
-        grid.addEvents('editRecord');
-        AboutUs.app.getStore(this.store).clearFilter();
+        this.grid.addEvents('editRecord');
+        if (!this.tree){
+       		AboutUs.app.getStore(this.store).clearFilter();
+        }
         this.callParent(arguments);
     }
     

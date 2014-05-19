@@ -14,7 +14,8 @@ Ext.define('AboutUs.controller.CloudController', {
             'cloud.TileGridThumbs',
             'cloud.CenterCloudContainer',
             'cloud.CloudDialog',
-            'cloud.FolderDialog'
+            'cloud.FolderDialog',
+            'cloud.ImagePicker'
     ],
     
    refs: [
@@ -55,12 +56,17 @@ Ext.define('AboutUs.controller.CloudController', {
        },{
        		ref: 'fileDownloader',
        		selector: 'centercloudcontainer FileDownloader'
-       }
+        },{
+           ref: 'imagePicker',
+           selector: 'imagepicker',
+           autoCreate:true,
+           xtype:'imagepicker'
+        }
     ],
     
    init: function() {
         this.control({
-                'centercloudcontainer toolbar button[action=gridThumbs]':{
+            'centercloudcontainer toolbar button[action=gridThumbs]':{
         		click: this.onClickGridThumbs
     		},
     		'centercloudcontainer toolbar button[action=gridDetails]':{
@@ -119,6 +125,12 @@ Ext.define('AboutUs.controller.CloudController', {
     		},
     		'folderdialog commonform button[action=save]':{
     			click: this.onSaveFolder
+    		},
+    		'imagepicker button[action=cancel]':{
+    			click: this.onCancelImagePicker
+    		},
+    		'imagepicker button[action=accept]':{
+    			click: this.onAcceptImagePicker
     		}
                 
         });
@@ -132,6 +144,14 @@ Ext.define('AboutUs.controller.CloudController', {
     	this.hideAllGrids();
     	this.getTileGridThumbs().show();
     	centerContainer.setLoading(false);
+    	this.getFolderStoreStore().load();
+    },
+    
+    openImagePicker: function(){
+    	this.getImagePicker().show();
+    	this.getCloudStoreStore().removeAll();
+    	this.hideAllGrids();
+    	this.getTileGridThumbs().show();
     	this.getFolderStoreStore().load();
     },
     
@@ -176,7 +196,21 @@ Ext.define('AboutUs.controller.CloudController', {
     onFolderClick : function(treepanel, record, item, idx, e, eOpts){
     	this.getCenterCloudContainer().setTitle(this.getTreeCloudPanel().getFolderPath(record));
        	this.getCloudStoreStore().clearFilter(true);
-       	this.getCloudStoreStore().filter({ property: 'folder.id', value: record.get('id') , type: 'id', operator:'eq'});
+       	var filters = new Array();
+       	filters.push({
+       		property: 'folder.id', 
+       		value: record.get('id') , 
+       		type: 'id', 
+       		operator:'eq'
+       	});
+       	if (!Ext.isEmpty(Ext.ComponentQuery.query('imagepicker'))){
+	       	filters.push({
+	       		property: 'fileType',
+	   			value: 'image',
+	   			type: 'textfield'
+	       	});
+       	}
+       	this.getCloudStoreStore().filter(filters);
     },
     
     refresh : function(){
@@ -339,6 +373,23 @@ Ext.define('AboutUs.controller.CloudController', {
    		this.getFolderDialog().show();
    		var record = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
     	this.getFolderDialog().down('form').loadRecord(record); 
+    },
+    
+    _getRecordSelected: function(){
+    	return this.getGridActive().getSelectionModel().getSelection()[0];
+    },
+    
+    onAcceptImagePicker: function(button){
+    	var recordSel = this._getRecordSelected();
+    	if (recordSel){
+    		this.getImagePicker().fireEvent('recordSelected', this.getImagePicker(), recordSel);
+    	}else{
+    		AboutUs.util.NotificationUtil.showNotificationError("Selecione uma imagem!");
+    	}
+    },
+    
+    onCancelImagePicker: function(button){
+    	this.getImagePicker().close();
     }
     
 });

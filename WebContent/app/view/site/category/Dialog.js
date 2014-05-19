@@ -3,7 +3,8 @@ Ext.define('AboutUs.view.site.category.Dialog', {
     
     alias: 'widget.sitecategorydialog',
     
-    requires:['AboutUs.view.component.CategoryCombo'],
+    requires:['AboutUs.view.component.CategoryCombo',
+    		  'AboutUs.view.component.ThumbField'],
     
     title: 'Nova Categoria',
     titleUpdate: 'Detalhes da categoria: {name}',
@@ -11,7 +12,7 @@ Ext.define('AboutUs.view.site.category.Dialog', {
     icon:'resources/images/categories.png',
     
     width:500,
-    height:300,
+    height:400,
     
     layout:'fit',
     
@@ -42,7 +43,37 @@ Ext.define('AboutUs.view.site.category.Dialog', {
 						fieldLabel: 'Nome',
 						name:'text',
 						allowBlank: false
-					}]
+					},{
+						fieldLabel: 'Ordem',
+						name:'text',
+						allowBlank: false
+					},{
+			            xtype: 'fieldcontainer',
+			            fieldLabel: 'Publicado em',
+			            defaultType: 'checkboxfield',
+			            layout: {
+					    	type:'hbox',
+					    	defaultMargins:{
+							    right: 5
+							}
+					    },
+			            items: [
+			                {
+			                    boxLabel  : 'Fotos',
+			                    name      : 'publishedIn',
+			                    inputValue: '1',
+			                    id        : 'checkbox1'
+		                	}, {
+			                    boxLabel  : 'Videos',
+			                    name      : 'publishedIn',
+			                    inputValue: '2',
+			                    id        : 'checkbox2'
+			                }
+			            ]
+			        },{
+			        	xtype: 'thumbfield',
+				        fieldLabel: 'Miniatura'
+			        }]
         		}]
         	}]
     	}]
