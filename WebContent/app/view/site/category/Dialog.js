@@ -20,6 +20,7 @@ Ext.define('AboutUs.view.site.category.Dialog', {
     	xtype:'commonform',
     	items:[{
         	xtype:'tabpanel',
+        	layout:'fit',
         	items:[{
         		title:'Data',
         		items:[{
@@ -37,15 +38,15 @@ Ext.define('AboutUs.view.site.category.Dialog', {
 					},{
 						xtype:'categorycombo',
 						fieldLabel: 'Categoria pai:',
-						name:'parent',
+						name:'parentId',
 						allowBlank: false
 					},{
 						fieldLabel: 'Nome',
 						name:'text',
 						allowBlank: false
 					},{
-						fieldLabel: 'Ordem',
-						name:'text',
+						fieldLabel: 'Posição',
+						name:'position',
 						allowBlank: false
 					},{
 			            xtype: 'fieldcontainer',
@@ -60,20 +61,29 @@ Ext.define('AboutUs.view.site.category.Dialog', {
 			            items: [
 			                {
 			                    boxLabel  : 'Fotos',
-			                    name      : 'publishedIn',
-			                    inputValue: '1',
+			                    name      : 'publishedAlbuns',
+			                    inputValue: 'true',
 			                    id        : 'checkbox1'
 		                	}, {
 			                    boxLabel  : 'Videos',
-			                    name      : 'publishedIn',
-			                    inputValue: '2',
+			                    name      : 'publishedVideos',
+			                    inputValue: 'true',
 			                    id        : 'checkbox2'
 			                }
 			            ]
 			        },{
 			        	xtype: 'thumbfield',
-				        fieldLabel: 'Miniatura'
+				        fieldLabel: 'Miniatura',
+				        name:'thumbId'
 			        }]
+        		}]
+        	},{
+        		title:'Descrição',
+        		layout:'fit',
+        		items:[{
+        			xtype     : 'htmleditor',
+			    	emptyText : 'Digita aqui uma observação',
+			        name      : 'description'
         		}]
         	}]
     	}]

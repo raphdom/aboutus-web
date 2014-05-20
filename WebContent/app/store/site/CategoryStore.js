@@ -60,7 +60,10 @@ Ext.define('AboutUs.store.site.CategoryStore', {
     defaultRootText:'Raiz',
 	proxy: {
     	type: 'ajax',
-     	url: 'site/category/view.action',
+    	api: {
+        	read : 'site/category/view.action',
+            destroy: 'site/category/delete.action'
+        },
      	reader: {
         	type: 'json'
      	}

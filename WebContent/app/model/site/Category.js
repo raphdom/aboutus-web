@@ -6,6 +6,28 @@ Ext.define('AboutUs.model.site.Category', {
     		type:'int'
     	},{
     		name:'text'
+    	},{
+    		name:'description'
+		},{
+    		name:'parentId',
+    		type:'int',
+    		useNull:true
+    	},{
+    		name:'position',
+    		type:'int'
+    	},{
+    		name:'publishedAlbuns',
+    		type:'boolean'
+    	},{
+    		name:'publishedVideos',
+    		type:'boolean'
+		},{
+    		name:'thumbId',
+    		type:'int'
+		},{
+    		name:'leaf',
+    		type:'boolean',
+    		persist: false
     	}],
     	
    	proxy: {
@@ -13,8 +35,8 @@ Ext.define('AboutUs.model.site.Category', {
         api: {
         	read : 'site/category/get.action',
             create : 'site/category/save.action',
-            update: 'site/category.action',
-            destroy: 'site/category.action'
+            update: 'site/category/save.action',
+            destroy: 'site/category/delete.action'
         },
         reader: {
             type: 'json',

@@ -37,7 +37,7 @@ Ext.define('AboutUs.view.common.List', {
 			    xtype: 'toolbar',
 			    dock: 'top',
 			   items: [{
-	                icon: 'resources/images/add.png',
+	                icon: 'resources/images/add2.png',
 	                itemId: 'add',
 	                text: 'Adicionar',
 	                action: 'add',

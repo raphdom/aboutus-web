@@ -15,6 +15,7 @@ import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.dto.NodeDTO;
 import com.jrdevel.aboutus.core.site.category.CategoryDTO;
+import com.jrdevel.aboutus.core.site.category.CategoryListDTO;
 import com.jrdevel.aboutus.core.site.category.CategoryService;
 
 @RequestMapping(value="/site/category")
@@ -31,11 +32,11 @@ public class CategoryController {
 	public @ResponseBody NodeDTO view(ListParams input) throws Exception {
 
 		
-		List<NodeDTO> nodes = service.list(input);
+		List<CategoryListDTO> categories = service.list(input);
 		
-		NodeDTO root = new NodeDTO();
+		CategoryListDTO root = new CategoryListDTO();
 		
-		root.setChildren(nodes);
+		root.setChildren(categories);
 		
 		return root;
 		

@@ -1,5 +1,8 @@
 Ext.define('AboutUs.view.component.ThumbField', {
 	extend: 'Ext.form.FieldContainer',
+	mixins: {
+        field: 'Ext.form.field.Field'
+    },
 	alias: 'widget.thumbfield',
 	
     layout: {
@@ -25,6 +28,7 @@ Ext.define('AboutUs.view.component.ThumbField', {
         			var thumbUrl = Ext.util.Format.formatThumbUrl(recordSelected.get('id'),
         			2,recordSelected.get('fileType'))
         			button.up().down('image').setSrc(thumbUrl);
+        			button.up().setValue(recordSelected.get('id'));
         			imagePicker.close();
         		}
         	})
@@ -42,6 +46,17 @@ Ext.define('AboutUs.view.component.ThumbField', {
         Ext.apply(me, {
         })
     	this.callParent(arguments);
+    },
+    
+   	setValue: function(value) {
+        var me = this;
+        me.value = value;
+        me.checkChange();
+        if (value != 0){
+        	var thumbUrl = Ext.util.Format.formatThumbUrl(value,2);
+        	this.down('image').setSrc(thumbUrl);
+        }
+        return me;
     }
     
 });

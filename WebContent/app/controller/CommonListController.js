@@ -109,16 +109,16 @@ Ext.define('AboutUs.controller.CommonListController', {
     
     onDelete: function(button, event, options) {
     	var me = this;
-    	if (this.getCommonGrid().getSelectionModel().getSelection().length > 0){
+    	if (me.getCommonList().grid.getSelectionModel().getSelection().length > 0){
     		Ext.Msg.confirm('Eliminar', 'Deseja realmente eliminar os registos selecionados', 
     			function(btn, text){
 			    	if (btn == 'yes'){
 						var ids = new Array();
-			    		Ext.Array.each(me.getCommonGrid().getSelectionModel().getSelection(), function(record, index) {
+			    		Ext.Array.each(me.getCommonList().grid.getSelectionModel().getSelection(), function(record, index) {
 							ids.push(record.getId());
 			    		});
 			    		Ext.Ajax.request({
-						    url: me.getCommonGrid().getStore().getProxy().api.destroy,
+						    url: me.getCommonList().grid.getStore().getProxy().api.destroy,
 						    headers: {
 			                	'Content-Type': 'application/json;'
 			                },
@@ -152,7 +152,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     	form.getRecord().save({
     		success: function(record, operation){
     			win.close();
-        		me.getCommonGrid().getStore().reload();
+        		me.getCommonList().grid.getStore().reload();
 	    	},
 	    	failure: function(record, operation){
 	    		var response = operation.request.proxy.reader.rawData;
@@ -175,7 +175,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     
     onDoSearch: function(button, event, options) {
     	console.log('CommonController.onDoSearch()');
-        var store = this.getCommonGrid().store;
+        var store = this.getCommonList().grid.store;
         var form = this.getCriteriaContainer();
         var values = form.getValues();
         var filters = [];

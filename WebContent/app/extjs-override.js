@@ -52,10 +52,10 @@ Ext.apply(Ext.util.Format,{
             		sizeIconDataType= '128';
             	}
         		
-        		if (filetype.indexOf("image") != -1){
-					return "cloud/getImage.action?imageId="+fileid+"&dataType="+datatype;
-            	}else{
+            	if (Ext.isDefined(filetype) && filetype.indexOf("image") == -1){
             		return "resources/images/mimetypes/"+sizeIconDataType+"/default.png";
+            	}else{
+            		return "cloud/getImage.action?imageId="+fileid+"&dataType="+datatype;
             	}
         	}
         }
