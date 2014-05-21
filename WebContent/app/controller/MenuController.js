@@ -12,7 +12,7 @@ Ext.define('AboutUs.controller.MenuController', {
     
     init: function() {
         this.control({
-            'menuContainer > menu-list': {
+            'menuContainer menu-list': {
                 itemSelect: this.onItemSelect
             }
         });

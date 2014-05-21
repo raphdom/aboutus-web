@@ -27,6 +27,9 @@ Ext.define('AboutUs.controller.MainController', {
             },
             'mainContainer button[action=cloudDialog]':{
             	click: this.onCloudDialogButtonClick
+            },
+            'mainContainer button[action=calendar]':{
+            	click: this.onCalendarButtonClick
             }
         });
     },
@@ -44,6 +47,12 @@ Ext.define('AboutUs.controller.MainController', {
     
     onCloudDialogButtonClick:function(button){
     	AboutUs.app.getController('CloudController').getCloudDialog().show(button);
+    },
+    
+    onCalendarButtonClick: function(button){
+    	console.log('onCloudButtonClick');
+    	this.getController('CommonListController').processActionMenu();
+    	this.getController('CalendarController').processActionMenu();
     }
     
 });
