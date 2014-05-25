@@ -8,29 +8,60 @@ Ext.define('AboutUs.view.main.MainContainer', {
         {
         	region:'north',
         	height:120,
-        	cls:'imageLogo',
-        	bodyCls:'imageLogoBody',
-        	html:'Raphael Rodrigues Domingues',
-        	buttons:[
-				{
-					text:'Upload Dialog',
-					icon:'resources/images/download-cloud.png',
-					action:'cloudDialog',
-					hidden:true
-        		},{
-	        		text:'Sair',
-	        		icon:'resources/images/logout.png',
-	        		action:'logout'
-        		}
-        	]
-        },
-        {
+        	layout:'hbox',
+        	bodyCls:'north',
+        	items:[{
+        		xtype:'container',
+        		cls:'imageLogo',
+        		width: 300,
+        		height:100
+        	},{
+        		xtype:'container',
+        		cls:'northMiddle',
+        		flex: 1
+        	},{
+        		xtype:'panel',
+        		width: 400,
+        		height:120,
+        		bodyCls:'north',
+    			items:[{
+    				xtype:'container',
+    				cls:'userInfo',
+    				layout: 'hbox',
+    				items:[{
+    					xtype:'button',
+    					icon:'resources/images/userManager.png',
+    					menu      : [
+					        {text: 'Meu Perfil'},
+					        {text: 'Preferências'},
+					        {text: 'Sobre'}
+					    ]
+    				},{
+    					xtype:'container',
+    					tpl: '<div class="userInfoBox">{name}</div>',
+    					data: {name: 'Raphael Rodrigues Domingues'},
+    					flex: 1
+    				},{
+    					xtype:'button',
+    					icon:'resources/images/logout.png',
+    					action:'logout'
+    				}]
+    			}],
+    			buttons:[
+					{
+						text:'Upload Dialog',
+						icon:'resources/images/download-cloud.png',
+						action:'cloudDialog',
+						hidden:true
+	        		}
+        		]
+        	}]
+        },{
             region: 'center',
             itemId:'centerContainer',
             layout:'fit'
             
-        },
-        {
+        },{
             region:'west',
             width:200,
             collapsible:true,

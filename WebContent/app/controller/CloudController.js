@@ -324,9 +324,11 @@ Ext.define('AboutUs.controller.CloudController', {
     },
     
     onItemUploadSucess:function(panel, manager, item, info){
-    	var folderSelected = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
-    	if (folderSelected.get('id')==this.getCloudDialog().folderId){
-    		this.onFolderClick(this.getTreeCloudPanel(),folderSelected);
+    	if (this.getTreeCloudPanel()){
+	    	var folderSelected = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
+	    	if (folderSelected.get('id')==this.getCloudDialog().folderId){
+	    		this.onFolderClick(this.getTreeCloudPanel(),folderSelected);
+	    	}
     	}
     },
     

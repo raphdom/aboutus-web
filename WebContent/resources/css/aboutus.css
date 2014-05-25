@@ -58,18 +58,28 @@
 	font-weight: bold;
 }
 
-.imageLogo{
+.north{
 	background-color: #DFEAF2;
 }
 
-.imageLogoBody{
+.imageLogo{
 	background-image: url("../images/logoAboutUs.png");
 	background-repeat: no-repeat;
 	background-color: #DFEAF2;
 	margin-top: 20px;
 	margin-left: 20px;
 	z-index: 10;
-	width: 300px ! important;
+}
+
+.userInfo{
+	background-color: #157FCC;
+	padding: 5px;
+}
+
+.userInfoBox{
+	color: #FFFFFF;
+	padding-top:4px;
+	text-align:center;
 }
 
 /* Styling of global error indicator */
