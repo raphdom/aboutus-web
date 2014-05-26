@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/dataview.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/tileview.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/upload.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/calendar.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/lightview/lightview.css">
 	<!--  App Constants -->
 	<script type="text/javascript" src="app/util/Constants.js"></script>
