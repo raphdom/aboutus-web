@@ -1,9 +1,9 @@
 Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.container.Container',
     alias : 'widget.calendarcontainer',
     
-    icon:'resources/images/calendar.png',
-    title:'Calendário',
+    //icon:'resources/images/calendar.png',
+    //title:'Calendário',
     
     requires: [
         'AboutUs.view.calendar.util.Date',
@@ -27,9 +27,10 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
         // A sample event store that loads static JSON from a local file. Obviously a real
         // implementation would likely be loading remote data via an HttpProxy, but the
         // underlying store functionality is the same.
-        this.eventStore = Ext.create('AboutUs.view.calendar.data.MemoryEventStore', {
+        /*this.eventStore = Ext.create('AboutUs.view.calendar.data.MemoryEventStore', {
             data: AboutUs.view.calendar.data.Events.getData()
-        });
+        });*/
+        this.eventStore = AboutUs.app.getStore('EventStore');
         
         // This is the app UI layout code.  All of the calendar views are subcomponents of
         // CalendarPanel, but the app title bar and sidebar/navigation calendar are separate
@@ -39,6 +40,7 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
             layout: 'border',
             items: [{
                 id: 'app-center',
+                icon:'resources/images/calendar.png',
                 title: '...', // will be updated to the current view's date range
                 region: 'center',
                 layout: 'border',

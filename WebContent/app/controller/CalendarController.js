@@ -6,9 +6,9 @@ Ext.define('AboutUs.controller.CalendarController', {
     		'calendar.CalendarPanel'
     ],
     
-    stores: [],
+    stores: ['EventStore'],
     
-    models: [],
+    models: ['Event'],
     
     refs: [],
     
