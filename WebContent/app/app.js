@@ -2,7 +2,8 @@ Ext.Loader.setConfig({
     enabled: true,
     disableCaching:true,
     paths: {
-        'AboutUs': 'app'
+        'AboutUs': 'app',
+        "Extensible": "ext4.2.1/src/calendar"
     }
 });
 Ext.require('AboutUs.AssociatedWriter');

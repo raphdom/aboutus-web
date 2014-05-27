@@ -1,56 +1,28 @@
 Ext.define('AboutUs.store.EventStore', {
-    extend: 'Ext.data.Store',
-	
-    model: 'AboutUs.model.Event',
+    extend: 'Extensible.calendar.data.EventStore',
     
-    remoteFilter:true,
-    
-    pageSize: 1000,
-    
+    autoLoad: true,
     proxy: {
         type: 'ajax',
-        api: {
-        	read : 'calendar/view.action',
-            create : 'calendar/save.action',
-            update: 'calendar/update.action',
-            destroy: 'calendar/delete.action'
-        },
+        url: 'event/view.action',
+        noCache: false,
+        
         reader: {
             type: 'json',
-            root: 'data',
-            successProperty: 'success'
+            root: 'data'
         },
+        
         writer: {
             type: 'json',
-            writeAllFields: true,
-            encode: false,
-            allowSingle:false
+            nameProperty: 'mapping'
         },
+        
         listeners: {
-            exception: function(proxy, response, operation){
-                Ext.MessageBox.show({
-                    title: 'REMOTE EXCEPTION',
-                    msg: operation.getError(),
-                    icon: Ext.MessageBox.ERROR,
-                    buttons: Ext.Msg.OK
-                });
+            exception: function(proxy, response, operation, options){
+                var msg = response.message ? response.message : Ext.decode(response.responseText).message;
+                // ideally an app would provide a less intrusive message display
+                Ext.Msg.alert('Server Error', msg);
             }
-        },
-        encodeFilters: function(filters) {
-	        var filtersOut = [];
-	
-	
-	        for (var i = 0, l = filters.length; i < l; i++) {
-	            filtersOut[i] = {
-	                property: filters[i].property,
-	                value:    filters[i].value,
-	                operator: filters[i].operator,
-	                type:     filters[i].type
-	            };
-	        }
-	
-	
-	        return this.applyEncoding(filtersOut);
-	    }
+        }
     }
 });

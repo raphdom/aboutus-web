@@ -1,12 +1,9 @@
 Ext.define('AboutUs.controller.CalendarController', {
     extend: 'Ext.app.Controller',
 
-    views: [
-    		'calendar.CalendarContainer',
-    		'calendar.CalendarPanel'
-    ],
+    views: ['calendar.CalendarContainer'],
     
-    stores: ['EventStore'],
+    stores: ['EventStore','CalendarStore'],
     
     models: ['Event'],
     

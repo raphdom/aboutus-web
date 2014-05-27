@@ -1,5 +1,6 @@
 package com.jrdevel.aboutus.web.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -10,25 +11,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.calendar.CalendarService;
+import com.jrdevel.aboutus.core.calendar.EventService;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
-@RequestMapping(value="/calendar")
+@RequestMapping(value="/event")
 @Controller
-public class CalendarController {
+public class EventController {
 	
-	private static final Logger logger = Logger.getLogger(CalendarController.class);
+	private static final Logger logger = Logger.getLogger(EventController.class);
 	
 	@Autowired
-	private CalendarService calendarService;
+	private EventService eventService;
 	
 	@RequestMapping(value="/view.action")
 	public @ResponseBody Map<String,? extends Object> view(@RequestParam String startDate, @RequestParam String endDate) throws Exception {
 
 		try{
 			
-			ResultObject result = calendarService.list(null);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 
+			Date rangeStart = formatter.parse(startDate);
+			Date rangeEnd = formatter.parse(endDate);
+			
+			ResultObject result = eventService.list(rangeStart,rangeEnd);
+			
 			
 			return result.toMap();
 			

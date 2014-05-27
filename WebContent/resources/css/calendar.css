@@ -1,9 +1,22 @@
+/*!
+ * Extensible 1.5.2
+ * Copyright(c) 2010-2013 Extensible, LLC
+ * licensing@ext.ensible.com
+ * http://ext.ensible.com
+ */
 
 /*******************************************
  * 
  * Ext Calendar styles
  *
  ******************************************/
+
+/* -----------------------------------------
+ * Ext overrides 
+ */
+.x-strict .x-webkit .x-small-editor .x-form-field-wrap .x-form-trigger {
+    height: 21px;
+}
 
 /* -----------------------------------------
  * Shared calendar view containers 
@@ -13,7 +26,7 @@
     border-bottom-width: 0 !important;
 }
 .x-panel-tbar .ext-cal-toolbar .x-btn button {
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #555;
 }
 .x-panel-tbar .ext-cal-toolbar .x-toolbar-cell {
@@ -23,8 +36,17 @@
 .ext-cal-ct {
     position: relative;
     font-family: helvetica, arial, sans-serif;
-    border-bottom:1px solid #ddd;
-    border-right:1px solid #ddd;
+}
+.x-cal-panel .x-panel-body {
+    background: white !important;
+}
+.x-panel-default-framed .x-panel-body .ext-cal-ct,
+.x-panel-default-framed .x-panel-body .ext-evt-edit-form {
+    border-left: 1px solid #99BBE8;
+    border-right: 1px solid #99BBE8;
+}
+.x-panel-default-framed .x-panel-body .ext-cal-day-header {
+    border: 0;
 }
 .ext-cal-ct img {
     border:0 none;
@@ -46,7 +68,7 @@
 }
 
 /* Window specific rules */
-.x-window .x-window-mc .x-cal-body {
+.x-window .x-window-body .x-cal-body {
     border: 0 !important;
 }
 .x-window .ext-cal-toolbar {
@@ -62,10 +84,14 @@
     top:0;
     width:100%;
 }
+.x-ie9 .ext-cal-dayview .ext-cal-body-ct .ext-cal-bg-tbl {
+    /* fix scroll position reset bug on IE9 on click */
+    position: relative;
+}
 
-/* Month names subheader */
+/* Shared subheader */
 .ext-cal-hd-days-tbl {
-    background: #EFEFEF;
+    background: #D3E1F1;
     color: #555;
     table-layout: fixed;
     top: 18px;
@@ -73,17 +99,16 @@
     font-size: 12px;
     line-height: 12px;
 }
-
 .ext-cal-month-hd .ext-cal-hd-days-tbl {
     border-top: 1px solid #99BBE8;
+    background: #eee;
 }
 .x-calendar-nonav .ext-cal-month-hd .ext-cal-hd-days-tbl {
     border-top: 0;
 }
 .ext-cal-month-hd .ext-cal-hd-day {
-    border-left: 1px solid #DDD;
+    border-left: 1px solid #C3D9FF;
 }
-
 .ext-cal-hd-ct {
     border-bottom: 1px solid #bcf;
 }
@@ -99,7 +124,7 @@
 .ext-cal-dayview .ext-cal-hd-days-tbl {
     table-layout: fixed;
     width: 100%;
-    background-color: #D3E1F1;
+    background-color: #CDDCEF;
     overflow: hidden;
     font-size: 11px;
     line-height: 14px;
@@ -144,9 +169,6 @@
 .x-calendar-nonav .ext-cal-hd-ad-inner {
     margin-top: 3px;
 }
-.x-calendar-nonav .ext-cal-hd-ct {
-    border-top: 1px solid #99BBE8;
-}
 .ext-cal-dayview .ext-cal-dtitle {
     padding: 8px 1px 2px;
 } 
@@ -165,6 +187,8 @@
     overflow-x: hidden;
     padding: 0;
     line-height: normal;
+    background: #eee;
+    margin-top: 1px;
 }
 .ext-cal-dayview .ext-cal-body-ct .ext-cal-bg-tbl {
     height: 1008px;
@@ -173,20 +197,17 @@
     background-color: #fff;
     margin-top: -1px;
     border-bottom: 1px solid #bcf;
-    border-right: 1px solid #bcf;
 }
 .ext-cal-dayview .ext-cal-bg-rows {
     position: relative;
     margin-left: 1px;
-    top: 1px;
 }
 .ext-cal-dayview .ext-cal-bg-rows-inner {
     position: absolute;
     width: 100%;
 }
-.x-ie .ext-cal-dayview .ext-cal-bg-rows-inner,
 .x-gecko .ext-cal-dayview .ext-cal-bg-rows-inner {
-    top: -1; /* row line alignment fix */
+    top: -1px; /* row line alignment fix */
 }
 .ext-cal-dayview .ext-cal-bg-row {
     height: 42px;
@@ -197,6 +218,9 @@
     font-size: 1px;
     height: 21px;
     margin-bottom: 20px;
+}
+.ext-cal-dayview .ext-cal-bg-row .no-sep {
+    border-bottom: 0;
 }
 .ext-cal-dayview .ext-row-1 {
     border-top: 0;
@@ -211,7 +235,7 @@
 .ext-cal-day-time-inner {
     height: 42px;
     border-bottom: 1px solid #ddd;
-    padding: 3px 4px 0 0;
+    padding-right: 2px
 }
 .ext-cal-day-col {
     border-left: 1px solid #ddd;
@@ -242,6 +266,7 @@
     top: 0;
     position: absolute;
     width: 100%;
+    /*background: #95B8EF;*/
 }
 .ext-cal-monthview .ext-cal-body-ct {
     background: #fff;
@@ -253,7 +278,6 @@
     top: 20px;
     width: 100%;
 }
-
 .ext-cal-monthview .ext-cal-noheader .ext-cal-hd-ct {
     display: none;
 }
@@ -270,8 +294,8 @@
     top: 0;
     height: 100%;
     background: #EFEFEF;
-    border-top: 1px solid #DDD;
-    border-right: 1px solid #DDD;
+    border-top: 1px solid #C3D9FF;
+    /*border-right: 1px solid #C3D9FF;*/
     font-size: 10px;
     color: #999;
     padding: 3px 0 0;
@@ -294,7 +318,9 @@
 .ext-cal-monthview .ext-week-link-over {
     background: #E0E7EF;
 }
-
+.ext-cal-week-links .ext-cal-day-first {
+    border-left: 1px solid #C3D9FF;
+}
 
 /* Hide the nav bar if specified */
 .ext-cal-hide-navbar .ext-cal-hd-ct {
@@ -317,11 +343,10 @@
 }
 /* Background table cell */
 .ext-cal-day {
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #C3D9FF;
     cursor: pointer;
 }
 .ext-cal-day-first {
-    /*border-left: 1px solid #BBCCFF;*/
    border-left: 0;
 }
 
@@ -329,6 +354,10 @@
 .ext-cal-dtitle {
     cursor: pointer;
 }
+.ext-cal-readonly .ext-cal-day,
+.ext-cal-readonly .ext-cal-dtitle {
+    cursor: default;
+} 
 .ext-day-over {
     background: #D1EAEF !important;
 }
@@ -342,18 +371,18 @@
 /* Event title cell (includes today, prev & next month) */
 td.ext-cal-dtitle {
     font-family: helvetica, arial, sans-serif;
-    border-top:1px solid #ddd;
-    color: #666;
+    border-top:1px solid #C3D9FF;
+    color: #A7C6DF;
     line-height:14px;
     overflow:hidden;
     text-align:right;
-    font-size: 11px;
+    font-size: 16px;
     padding-top: 1px;
     padding-right: 1px;
     padding-left: 1px;
 }
 td.ext-cal-dtitle-first {
-    border-top: 1px solid #DDD;
+    border-top: 1px solid #BBCCFF;
 }
 td.ext-cal-dtitle div {
     padding: 2px 4px 1px;
@@ -366,6 +395,10 @@ td.ext-cal-dtitle-today div {
 /* Today time span */
 .ext-cal-dtitle-time {
     font-size: 11px;
+}
+/* Weekend background cell */
+.ext-cal-day-we {
+    background: #EFF9FC;
 }
 /* Today's background cell */
 .ext-cal-day-today {
@@ -384,7 +417,7 @@ td.ext-cal-dtitle-today div {
 /* Event cells */
 .ext-cal-ev {
     font-family:Verdana,sans-serif;
-    padding: 0 1px 0 2px;
+    padding:1px 1px 0 2px;
     vertical-align:top;
 }
 /* Event overflow more link */
@@ -393,17 +426,13 @@ td.ext-cal-dtitle-today div {
 }
 .ext-cal-ev-more a,
 .ext-cal-ev-more a:visited {
-    font-family: verdana;
-    color: #777;
-    font-size: 10px;
-    cursor: pointer;
+	color: #369;
+	cursor: pointer;
 }
 /* More view */
 .ext-cal-mvd-tbl {
-    width: 100%;
-    table-layout: fixed;
-    border-spacing: 1;
-    border-collapse: separate;
+	width: 100%;
+	table-layout: fixed;
 }
 
 .ext-cal-evt {
@@ -416,14 +445,10 @@ td.ext-cal-dtitle-today div {
     -webkit-border-radius:5px;
     border-radius:5px;
     overflow:hidden;
-    padding: 2px 1px 2px 5px;
+    padding:1px 1px 1px 5px;
     white-space:nowrap;
 	text-overflow: ellipsis;
     border: 0;
-}
-.ext-cal-day-col .ext-cal-evr {
-    border-width: 1px;
-    border-style: solid;
 }
 /* Nested event divs (IE/Opera) */
 .ext-cal-evo { /* outer */
@@ -481,7 +506,8 @@ td.ext-cal-dtitle-today div {
 .ext-cal-evdm {
     border: 1px solid;
     -moz-border-radius: 3px;
-    -webkit-border-radius: 3px
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 .ext-cal-evdm dt {
     margin-top: 0
@@ -496,7 +522,7 @@ td.ext-cal-dtitle-today div {
 .ext-cal-evb {
     height: 1px;
     overflow: hidden;
-    margin: 0 1px;
+    margin: 0 2px;
     border-top-width: 1px;
     border-top-style: solid;
 }
@@ -600,31 +626,32 @@ td.ext-cal-dtitle-today div {
     opacity: 0.5;
     position: absolute;
 }
-
-/* Webkit/Gecko: */
-.ext-evt-over,
-/* IE/Opera: */
-.ext-evt-over .ext-cal-evm {
+.ext-evt-over {
     opacity: .8;
-    filter: alpha(opacity=80);
 }
 
 /* Calendar Picker */
+.ext-calendar-picker {
+    position: relative;
+}
+.x-gecko .ext-calendar-picker {
+    /* http://stackoverflow.com/questions/5148041/does-firefox-support-position-relative-on-table-elements */
+    display: block;
+}
 .ext-calendar-picker .x-form-text {
-    padding-left: 23px;
+    padding-left: 27px;
 }
 .ext-calendar-picker .x-combo-list-item {
     padding-left: 24px;
 }
 .ext-cal-picker-icon {
-    width: 16px;
+    width: 20px;
     height: 16px;
     margin-right: 5px;
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;
-    border-radius:8px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
     float: left;
-    position: relative;
 }
 /* This is the selected icon that always shows: */
 .ext-cal-picker-mainicon {
@@ -643,7 +670,6 @@ td.ext-cal-dtitle-today div {
     height: 5px;
     line-height: 5px;
     width: 100%;
-    margin-left: -5px;
     text-align: center; /* needed for IE quirks mode */
     cursor: s-resize;
 }
@@ -677,77 +703,6 @@ td.ext-cal-dtitle-today div {
     filter:alpha(opacity=50);
 }
 
-/* 
- * Calendar event colors 
- */
-.ext-cal-evr,
-.ext-cal-evi,
-.ext-cal-evt dl {
-	color: #fff;
-}
-
-.ext-color-1,
-.x-ie .ext-color-1-ad,
-.x-opera .ext-color-1-ad {
-	color: #306da6;
-}
-.ext-cal-day-col .ext-color-1,
-.ext-dd-drag-proxy .ext-color-1,
-.ext-color-1-ad,
-.ext-color-1-ad .ext-cal-evm,
-.ext-color-1 .ext-cal-picker-icon,
-.ext-color-1-x dl,
-.ext-color-1-x .ext-cal-evb {
-	background: #306da6;
-}
-.ext-color-1-x .ext-cal-evb,
-.ext-color-1-ad .ext-cal-evm,
-.ext-color-1-ad,
-.ext-color-1-x dl {
-    border-color: #306da6;
-}
-
-.ext-color-2,
-.x-ie .ext-color-2-ad,
-.x-opera .ext-color-2-ad {
-	color: #86a723;
-}
-.ext-cal-day-col .ext-color-2,
-.ext-dd-drag-proxy .ext-color-2,
-.ext-color-2-ad,
-.ext-color-2-ad .ext-cal-evm,
-.ext-color-2 .ext-cal-picker-icon,
-.ext-color-2-x dl,
-.ext-color-2-x .ext-cal-evb {
-	background: #86a723;
-}
-.ext-color-2-x .ext-cal-evb,
-.ext-color-2-ad .ext-cal-evm,
-.ext-color-2-ad,
-.ext-color-2-x dl {
-    border-color: #86a723;
-}
-.ext-color-3,
-.x-ie .ext-color-3-ad,
-.x-opera .ext-color-3-ad {
-    color: #b6a980;
-}
-.ext-cal-day-col .ext-color-3,
-.ext-dd-drag-proxy .ext-color-3,
-.ext-color-3-ad,
-.ext-color-3-ad .ext-cal-evm,
-.ext-color-3 .ext-cal-picker-icon,
-.ext-color-3-x dl,
-.ext-color-3-x .ext-cal-evb {
-    background: #b6a980;
-}
-.ext-color-3-x .ext-cal-evb,
-.ext-color-3-ad .ext-cal-evm,
-.ext-color-3-ad,
-.ext-color-3-x dl {
-    border-color: #b6a980;
-}
-
 .ext-cal-day-col .ext-cal-evt {
     position: absolute;
 }
@@ -767,11 +722,6 @@ td.ext-cal-dtitle-today div {
 	-khtml-opacity:.40;
     filter:alpha(opacity=40);
 	background: #C3D9FF;
-}
-
-.ext-cal-event-win a:link,
-.ext-cal-event-win a:visited {
-    color: #15428B;
 }
 
 /* StatusProxy override styles */
@@ -805,7 +755,7 @@ td.ext-cal-dtitle-today div {
     border-color: #99BBE8;
 }
 .ext-cal-nav-picker .x-datepicker-header {
-    background: #D3E1F1 url(../images/default/bg.gif) repeat-x;
+    background: #D3E1F1 url(../images/default/ext/toolbar-bg.gif) repeat-x;
 }
 .ext-cal-nav-picker .x-datepicker-month,
 .ext-cal-nav-picker .x-datepicker-prev,
@@ -813,10 +763,10 @@ td.ext-cal-dtitle-today div {
     background: transparent;
 }
 .ext-cal-nav-picker .x-datepicker-prev a {
-    background-image: url(../images/default/page-prev.gif);
+    background-image: url(../images/default/ext/page-prev.gif);
 }
 .ext-cal-nav-picker .x-datepicker-next a {
-    background-image: url(../images/default/page-next.gif);
+    background-image: url(../images/default/ext/page-next.gif);
 }
 .ext-cal-nav-picker .x-datepicker-month {
     padding: 3px 0;
@@ -827,7 +777,7 @@ td.ext-cal-dtitle-today div {
     font-family: arial,tahoma,verdana,helvetica;
 }
 .ext-cal-nav-picker .x-datepicker-month .x-btn-split-right {
-    background-image: url(../images/default/arrow.gif) !important;
+    background-image: url(../images/default/ext/button-arrow.gif) !important;
     background-position: right 4px;
 }
 .ext-cal-nav-picker .x-datepicker-inner {
@@ -848,7 +798,26 @@ td.ext-cal-dtitle-today div {
     left: 0 !important;
 }
 .ext-cal-nav-picker .x-datepicker-footer {
-    background: #D3E1F1 url(../images/default/bg.gif) repeat-x;
+    background: #D3E1F1 url(../images/default/ext/toolbar-bg.gif) repeat-x;
+}
+
+/*******************************************
+ * 
+ * Calendar editor window styles
+ *
+ ******************************************/
+.ext-cal-evt-win {
+    z-index: 12100;
+}
+.x-gecko .ext-cal-event-win .x-window-body .x-form-item {
+    overflow: hidden;
+}
+.ext-cal-event-win .x-window-body .x-panel-body {
+    background: transparent;
+}
+.ext-cal-event-win a:link,
+.ext-cal-event-win a:visited {
+    color: #15428B;
 }
 
 /*******************************************
@@ -856,8 +825,8 @@ td.ext-cal-dtitle-today div {
  * Calendar form styles
  *
  ******************************************/
-.x-gecko .ext-cal-event-win .x-window-body .x-form-item {
-    overflow: hidden;
+.ext-evt-edit-form {
+    height: 100%;
 }
 .ext-evt-edit-form .x-form-item {
     margin-bottom: 8px;
@@ -867,16 +836,21 @@ td.ext-cal-dtitle-today div {
 }
 .ext-evt-edit-form .x-panel-header {
     background: transparent url(../images/default/ext-cal-edit-hd.png) repeat-x;
-    padding: 9px 0 4px !important;
+    padding: 9px 0 4px 5px !important;
     font-size: 13px !important;
     font-family: helvetica, arial, sans-serif;
     border-top: 0;
     border-bottom: 1px solid #BBCCFF;
 }
-.ext-evt-edit-form .x-panel-fbar {
-    padding: 5px 10px;
+.x-panel-mc .ext-evt-edit-form .x-panel-header {
+   border-top: 1px solid #99BBE8;
+}
+.ext-evt-edit-form .x-toolbar-footer {
+    padding: 10px;
     background: #DFE8F6;
-    border: 1px solid #BBCCFF;
+}
+.ext-cal-event-win .x-panel-body {
+    padding: 8px 10px 5px;
 }
 
 /*******************************************
@@ -884,12 +858,138 @@ td.ext-cal-dtitle-today div {
  * DateRangeField styles
  *
  ******************************************/
-.ext-dt-range label {
-    font-size: 12px;
+.ext-dt-range {
+    /* Don't double the bottom margin, use the contained fields' margin */
+    margin-bottom: 0 !important;
 }
-.ext-dt-range .x-form-check-wrap {
+.ext-dt-range .x-form-cb-wrap {
     white-space: nowrap;
 }
-.ext-dt-range .x-table-layout-cell {
-    padding-right: 5px;
+
+/*******************************************
+ * 
+ * ContextMenu styles
+ *
+ ******************************************/
+.extensible-cal-icon-evt-edit {
+    background-image:url(../images/default/silk/calendar_edit.png) !important;
+}
+.extensible-cal-icon-evt-del {
+    background-image:url(../images/default/silk/cross.png) !important;
+}
+.extensible-cal-icon-evt-move {
+    background-image:url(../images/default/silk/date_go.png) !important;
+}
+
+/*******************************************
+ * 
+ * CalendarList styles
+ *
+ ******************************************/
+.x-calendar-list {
+    border-bottom: 1px solid #99BBE8;
+}
+.x-calendar-list ul {
+    margin: 0;
+    padding: 0;
+}
+.x-calendar-list .x-panel-body {
+    padding: 4px 2px 2px;
+    background: #fff !important;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 12px;
+}
+.x-calendar-list .x-panel-header-text {
+    color: #555;
+}
+.x-calendar-list li {
+    position: relative;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.x-calendar-list li em {
+    background-image: url(../images/default/calendar-sprites.gif);
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    height: 11px;
+    line-height: 11px;
+    width: 12px;
+    top: 2px;
+    background-position: -40px 0;
+    right: 0;
+}
+.x-calendar-list .hover em {
+    background-position: -28px 0;
+    right: 2px;
+    opacity:.7;
+    -moz-opacity:.7;
+}
+.x-calendar-list .ext-cal-evr {
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+.ext-cal-hidden,
+/* IE/Opera: */
+.ext-cal-hidden .ext-cal-evi {
+    background-image: url(../images/default/ext-cal-list-hidden.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity:.5;
+    -moz-opacity:.5;
+}
+.x-ie .ext-cal-hidden {
+    filter: alpha(opacity=50);
+    zoom: 1;
+}
+.x-ie .ext-cal-hidden .ext-cal-evi  {
+    /* the following works around an IE bug that won't apply the opacity filter correctly without dimensions */
+    width: 100%;
+    height: 100%;
+}
+.x-ie6 .ext-cal-hidden .ext-cal-evi {
+    background-image: url(../images/default/ext-cal-list-hidden-ie6.png);
+}
+.extensible-cal-icon-cal-show {
+    background-image:url(../images/default/silk/calendar_view_month.png) !important;
+}
+.extensible-cal-icon-cal-colors {
+    background-image:url(../images/default/silk/color_wheel.png) !important;
+}
+
+/*******************************************
+ * 
+ * CalendarList menu styles
+ *
+ ******************************************/
+.x-calendar-list-menu .x-color-picker {
+    padding-left: 32px;
+    width: 210px;
+    background: inherit;
+    height: 90px;
+}
+.x-calendar-list-menu .x-color-picker a {
+    border: 1px solid #f0f0f0;
+    float: left;
+    padding: 2px;
+    text-decoration: none;
+    -moz-outline: 0 none;
+    outline: 0 none;
+    cursor: pointer;
+}
+.x-calendar-list-menu .x-color-picker a:hover, 
+.x-calendar-list-menu .x-color-picker a.x-color-picker-selected {
+    border-color: #8BB8F3;
+}
+.x-calendar-list-menu .x-color-picker em {
+    display: block;
+    border: 1px solid #aca899;
+}
+.x-calendar-list-menu .x-color-picker em span {
+    cursor: pointer;
+    display: block;
+    height: 14px;
+    width: 14px;
+    line-height: 10px;
 }
