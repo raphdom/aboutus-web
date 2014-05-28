@@ -145,9 +145,49 @@ Extensible.calendar.data.EventMappings = {
         mapping: 'rem',
         type:    'string'
     },
-    Where: {
-    	name: 'Where',
-    	mapping: 'where',
+    EventIdOriginal: {
+    	name: 'EventIdOriginal',
+    	mapping: 'eid',
+    	type:'int'
+    },
+    Frequency: {
+    	name: 'Frequency',
+    	mapping: 'frequency',
     	type:'string'
+    },
+    Separation: {
+    	name: 'Separation',
+    	mapping: 'separation',
+    	type:'int'
+    },
+    WeekDays: {
+    	name: 'WeekDays',
+    	mapping: 'weekDays',
+    	type:'string'
+    },
+    Count: {
+    	name: 'Count',
+    	mapping: 'count',
+    	type:'int'
+    },
+    Until: {
+    	name: 'Until',
+    	mapping: 'until',
+    	type:'time'
+    },
+    CategoryId: {
+    	name: 'CategoryId',
+    	mapping: 'catId',
+    	type:'int'
+    },
+    ThumbId: {
+    	name: 'ThumbId',
+    	mapping: 'thbId',
+    	type:'int'
+    },
+    Published: {
+    	name: 'Published',
+    	mapping: 'published',
+    	type:    'boolean'
     }
 };

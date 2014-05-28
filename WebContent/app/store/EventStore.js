@@ -4,7 +4,12 @@ Ext.define('AboutUs.store.EventStore', {
     autoLoad: true,
     proxy: {
         type: 'ajax',
-        url: 'event/view.action',
+        api: {
+		    create  : 'event/save.action',
+		    read    : 'event/view.action',
+		    update  : 'event/save.action',
+		    destroy : 'event/delete.action'
+		},
         noCache: false,
         
         reader: {

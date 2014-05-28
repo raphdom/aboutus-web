@@ -47,7 +47,8 @@ Ext.define('Extensible.calendar.form.EventWindow', {
     requires: [
         'Ext.form.Panel',
         'Extensible.calendar.data.EventModel',
-        'Extensible.calendar.data.EventMappings'
+        'Extensible.calendar.data.EventMappings',
+        'Extensible.calendar.form.EventWindowRepeat'
     ],
     
     // Locale configs
@@ -195,10 +196,21 @@ Ext.define('Extensible.calendar.form.EventWindow', {
             fieldLabel: this.datesLabelText
         },{
         	xtype: 'textfield',
-        	itemId: this.id + '-where',
-        	name: Extensible.calendar.data.EventMappings.Where.name,
+        	itemId: this.id + '-loc',
+        	name: Extensible.calendar.data.EventMappings.Location.name,
         	fieldLabel: 'Where',
         	anchor: '100%'
+        },{
+        	xtype: 'checkbox',
+        	itemId: this.id + '-repeat',
+        	fieldLabel: 'Repeat',
+        	anchor: '100%',
+        	listeners:{
+        		change:{
+        			fn:this.changeRepeatCheckBox,
+        			scope:this
+        		}
+        	}
         }];
         
         if(this.calendarStore){
@@ -208,11 +220,63 @@ Ext.define('Extensible.calendar.form.EventWindow', {
                 name: Extensible.calendar.data.EventMappings.CalendarId.name,
                 anchor: '100%',
                 fieldLabel: this.calendarLabelText,
-                store: this.calendarStore
+                store: this.calendarStore,
+                listeners:{
+					select: {
+            			fn: this.onCalendarSelect,
+            			scope: this
+           			}
+				}
             });
         }
         
+        items.push({
+	        	xtype:'categorycombo',
+	        	itemId: this.id + '-category',
+	        	fieldLabel: 'Category',
+	        	name: Extensible.calendar.data.EventMappings.CategoryId.name,
+	        	anchor: '100%',
+	        	hidden:true
+        	},{
+	        	xtype: 'thumbfield',
+		        fieldLabel: 'Miniatura',
+		        itemId: this.id + '-thumb',
+		        name: Extensible.calendar.data.EventMappings.ThumbId.name,
+		        anchor: '100%',
+		        hidden:true
+	        },{
+	        	xtype: 'checkbox',
+	        	itemId: this.id + '-published',
+	        	fieldLabel: 'Published',
+	        	name: Extensible.calendar.data.EventMappings.Published.name,
+	        	anchor: '100%',
+	        	hidden:true
+        })
+        
         return items;
+    },
+    
+    onCalendarSelect: function(combo,records,eOpts){
+    	if (combo.getValue()=='2'){
+    		this.categoryField.setVisible(true);
+        	this.thumbField.setVisible(true);
+        	this.publishedField.setVisible(true);
+    	}else{
+    		this.categoryField.setVisible(false);
+        	this.thumbField.setVisible(false);
+        	this.publishedField.setVisible(false);
+    	}
+    },
+    
+    changeRepeatCheckBox: function(checkbox, newValue, oldValue){
+    	if (checkbox.getValue()){
+    		if(!this.eventWinRepeat){
+    			this.eventWinRepeat = Ext.create('Extensible.calendar.form.EventWindowRepeat',{
+    				eventWindow: this
+    			});
+    		}
+    		this.eventWinRepeat.show();
+    	}
     },
 
     // private
@@ -245,6 +309,12 @@ Ext.define('Extensible.calendar.form.EventWindow', {
         this.titleField = this.down('#' + this.id + '-title');
         this.dateRangeField = this.down('#' + this.id + '-dates');
         this.calendarField = this.down('#' + this.id + '-calendar');
+        this.checkRepeatField = this.down('#' + this.id + '-repeat');
+        
+        //site fields
+        this.categoryField = this.down('#' + this.id + '-category');
+        this.thumbField = this.down('#' + this.id + '-thumb');
+        this.publishedField = this.down('#' + this.id + '-published');
     },
     
     // private

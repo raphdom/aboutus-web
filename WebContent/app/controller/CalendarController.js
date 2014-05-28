@@ -1,6 +1,9 @@
 Ext.define('AboutUs.controller.CalendarController', {
     extend: 'Ext.app.Controller',
 
+    requires:['AboutUs.view.component.CategoryCombo',
+    		  'AboutUs.view.component.ThumbField'],
+    
     views: ['calendar.CalendarContainer'],
     
     stores: ['EventStore','CalendarStore'],
