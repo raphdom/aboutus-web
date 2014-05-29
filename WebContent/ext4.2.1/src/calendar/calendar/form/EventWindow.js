@@ -74,7 +74,7 @@ Ext.define('Extensible.calendar.form.EventWindow', {
     constrain: true,
     buttonAlign: 'left',
     editDetailsLinkClass: 'edit-dtl-link',
-    enableEditDetails: true,
+    enableEditDetails: false,
     layout: 'fit',
     
     formPanelConfig: {
@@ -156,13 +156,13 @@ Ext.define('Extensible.calendar.form.EventWindow', {
                 scope: this
             }];
         
-        if(this.enableEditDetails !== false){
+        /*if(this.enableEditDetails){
             cfg.unshift({
                 xtype: 'tbtext',
                 itemId: this.id + '-details-btn',
                 text: '<a href="#" class="' + this.editDetailsLinkClass + '">' + this.detailsLinkText + '</a>'
             });
-        }
+        }*/
         return cfg;
     },
     
@@ -201,16 +201,30 @@ Ext.define('Extensible.calendar.form.EventWindow', {
         	fieldLabel: 'Where',
         	anchor: '100%'
         },{
-        	xtype: 'checkbox',
-        	itemId: this.id + '-repeat',
+        	xtype     : 'fieldcontainer',
         	fieldLabel: 'Repeat',
-        	anchor: '100%',
-        	listeners:{
-        		change:{
-        			fn:this.changeRepeatCheckBox,
-        			scope:this
-        		}
-        	}
+		    layout: {
+    			type: 'hbox',
+            	defaultMargins:{
+					right: 5
+				}
+    	    },
+            items     : [{
+            	xtype: 'checkbox',
+            	itemId: this.id + '-repeat',
+            	listeners:{
+	        		change:{
+	        			fn:this.changeRepeatCheckBox,
+	        			scope:this
+	        		}
+	        	}
+            },{
+            	xtype:'displayfield',
+            	value:'Daily'
+            },{
+            	xtype:'button',
+            	text:'Edit'
+            }]
         }];
         
         if(this.calendarStore){

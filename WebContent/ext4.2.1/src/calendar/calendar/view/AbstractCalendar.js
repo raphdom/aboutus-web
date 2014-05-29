@@ -1475,7 +1475,11 @@ alert('End: '+bounds.end);
         this.editWin = this.editWin || Ext.WindowMgr.get('ext-cal-editwin');
          
         if(!this.editWin){
-            this.editWin = Ext.create('Extensible.calendar.form.EventWindow', {
+        	this.editWin = Ext.create('AboutUs.view.calendar.Dialog',{
+        		id: 'ext-cal-editwin',
+        		calendarStore: this.calendarStore
+        	});
+            /*this.editWin = Ext.create('Extensible.calendar.form.EventWindow', {
                 id: 'ext-cal-editwin',
                 calendarStore: this.calendarStore,
                 modal: this.editModal,
@@ -1520,7 +1524,7 @@ alert('End: '+bounds.end);
                         scope: this
                     }
                 }
-            });
+            });*/
         }
         
         // allows the window to reference the current scope in its callbacks
