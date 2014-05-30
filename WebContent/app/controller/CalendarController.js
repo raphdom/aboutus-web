@@ -5,10 +5,7 @@ Ext.define('AboutUs.controller.CalendarController', {
     		  'AboutUs.view.component.ThumbField'],
     
     views: ['calendar.CalendarContainer',
-    		'calendar.Dialog',
-    		'calendar.TabPanel',
-    		'calendar.TabEventData',
-    		'calendar.TabEventDescription'],
+    		'calendar.Dialog'],
     
     stores: ['EventStore','CalendarStore'],
     

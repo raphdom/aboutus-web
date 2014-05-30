@@ -17,7 +17,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     
     	this.callParent([Ext.apply({
     	
-    		width: 450,
+    	width: 450,
 		closeAction: 'hide',
 		closable:false,
 		modal: true,
@@ -288,13 +288,19 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     
     },
     
-    show: function(starton){
+    show: function(rec, starton){
     	this.down('[id=startOn]').setValue(starton);
+    	
+    	this.activeRecord = rec;
+    	
+    	this.activeRecord.beginEdit();
+    	
     	this.callParent();
     	return this;
     },
     
     onCancelRepeatWin: function(button){
+    	this.activeRecord.cancelEdit();
     	if (this.eventWindow.activeRecord.get(Extensible.calendar.data.EventMappings.Frequency.name)==""){
     		this.eventWindow.checkRepeatField.setValue(false);
     	}
@@ -302,7 +308,8 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     },
     
     onSaveRepeatWin: function(button){
-    	this.eventWindow.activeRecord.set(Extensible.calendar.data.EventMappings.Frequency.name,this.down('[id=comboRepeat]').getValue());
+    	this.activeRecord.set(Extensible.calendar.data.EventMappings.Frequency.name,this.down('[id=comboRepeat]').getValue());
+    	this.activeRecord.endEdit();
     	this.close();
     },
     
