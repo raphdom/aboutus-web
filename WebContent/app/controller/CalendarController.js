@@ -11,9 +11,15 @@ Ext.define('AboutUs.controller.CalendarController', {
     
     models: ['Event'],
     
-    refs: [],
+    refs: [{
+    	ref: 'eventDialog',
+    	selector: 'eventdialog'
+    }],
     
     init: function() {
+    	this.addEvents({
+    		onSave: true
+    	});	
         this.control({
         });
     },
@@ -23,6 +29,10 @@ Ext.define('AboutUs.controller.CalendarController', {
     	var list = Ext.create('AboutUs.view.calendar.CalendarContainer');
     	centerContainer.add(list);
     	centerContainer.setLoading(false);
+    },
+    
+    onSave:function(record){
+    	this.getEventDialog().onSave();
     }
     
 });

@@ -52,7 +52,13 @@ Ext.define('AboutUs.controller.CommonListController', {
 	},
 	
 	getControllerName: function(){
-		return this.getCommonList().controller;
+		if (this.getCommonList()){
+			return this.getCommonList().controller;
+		}else if (this.getCommonDialog()){
+			return this.getCommonDialog().controller;
+		}else{
+			return undefined;
+		}
 	},
 	actualController: function(){
 		return this.getController(this.getControllerName());
@@ -149,16 +155,21 @@ Ext.define('AboutUs.controller.CommonListController', {
     	if (this.getController(this.getControllerName()).onBeforeSaveData != undefined){
     		this.getController(this.getControllerName()).onBeforeSaveData();	
     	}
-    	form.getRecord().save({
-    		success: function(record, operation){
-    			win.close();
-        		me.getCommonList().grid.getStore().reload();
-	    	},
-	    	failure: function(record, operation){
-	    		var response = operation.request.proxy.reader.rawData;
-	    		AboutUs.util.NotificationUtil.processMessages(response.messages);
-	    	}
-    	});
+    	
+    	if (this.getController(this.getControllerName()).onSave != undefined){
+    		this.getController(this.getControllerName()).onSave(form.getRecord());	
+    	}else{
+	    	form.getRecord().save({
+	    		success: function(record, operation){
+	    			win.close();
+	        		me.getCommonList().grid.getStore().reload();
+		    	},
+		    	failure: function(record, operation){
+		    		var response = operation.request.proxy.reader.rawData;
+		    		AboutUs.util.NotificationUtil.processMessages(response.messages);
+		    	}
+	    	});
+    	}
         /*form.submit({
         	url:this.getCommonDialog().urlSubmit,
         	scope:this,

@@ -57,10 +57,11 @@ Ext.define('AboutUs.view.main.MainContainer', {
         		]
         	}]
         },{
+        	xtype:'container',
             region: 'center',
             itemId:'centerContainer',
-            layout:'fit'
-            
+            layout:'fit',
+            items:[{xtype:'homecontainer'}]
         },{
             region:'west',
             width:200,

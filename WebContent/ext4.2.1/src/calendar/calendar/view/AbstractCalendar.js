@@ -1477,7 +1477,15 @@ alert('End: '+bounds.end);
         if(!this.editWin){
         	this.editWin = Ext.create('AboutUs.view.calendar.Dialog',{
         		id: 'ext-cal-editwin',
-        		calendarStore: this.calendarStore
+        		calendarStore: this.calendarStore,
+        		listeners: {
+                    'eventadd': {
+                        fn: function(win, rec, animTarget) {
+                            win.currentView.onEventAdd(null, rec);
+                        },
+                        scope: this
+                    }
+        		}
         	});
             /*this.editWin = Ext.create('Extensible.calendar.form.EventWindow', {
                 id: 'ext-cal-editwin',

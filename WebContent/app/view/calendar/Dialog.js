@@ -11,6 +11,8 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     width:700,
     height:300,
     
+    controller: 'CalendarController',
+    
     closeAction: 'hide',
     
     layout:'fit',
@@ -18,6 +20,13 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     initComponent: function(){
     	
     	var me = this;
+    	
+    	 this.addEvents({
+            eventadd: true,
+            eventupdate: true,
+            eventdelete: true,
+            eventcancel: true
+        });
     	
     	Ext.apply(me, {
         	items:[{
@@ -76,11 +85,14 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 						        	}
 					            },{
 					            	xtype:'displayfield',
-					            	value:'Daily'
+					            	itemId: this.id + '-repeatLabel'
 					            },{
 					            	xtype:'button',
 					            	hidden:true,
-					            	text:'Edit'
+					            	itemId: this.id + '-repeatButton',
+					            	text:'Edit',
+					            	handler:this.onEditRepeatClick,
+					            	scope: this
 					            }]
 					        },{
 					        	xtype: 'extensible.calendarcombo',
@@ -114,6 +126,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					        	itemId: this.id + '-published',
 					        	fieldLabel: 'Published',
 					        	name: Extensible.calendar.data.EventMappings.Published.name,
+					        	inputValue: 'true',
 					        	anchor: '100%',
 					        	hidden:true
 					        }]
@@ -213,6 +226,8 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         this.dateRangeField = this.down('#' + this.id + '-dates');
         this.calendarField = this.down('#' + this.id + '-calendar');
         this.checkRepeatField = this.down('#' + this.id + '-repeat');
+        this.checkRepeatLabel = this.down('#' + this.id + '-repeatLabel');
+        this.checkRepeatButton = this.down('#' + this.id + '-repeatButton');
         
         //site fields
         this.categoryField = this.down('#' + this.id + '-category');
@@ -233,14 +248,139 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     },
     
     changeRepeatCheckBox: function(checkbox, newValue, oldValue){
-    	if (checkbox.getValue()){
+    	var frequency = this.activeRecord.get(Extensible.calendar.data.EventMappings.Frequency.name);
+    	if (checkbox.getValue() && frequency == ""){
     		if(!this.eventWinRepeat){
     			this.eventWinRepeat = Ext.create('Extensible.calendar.form.EventWindowRepeat',{
     				eventWindow: this
     			});
     		}
-    		this.eventWinRepeat.show(this.activeRecord);
+    		this.eventWinRepeat.show(this.activeRecord, this.dateRangeField.getValue()[0]);
+    	}else{
+    		this.checkRepeatButton.show();
+    		this.checkRepeatLabel.setValue(this.getSummaryLabel(this.activeRecord));
     	}
-    }
+    	
+    	if (!checkbox.getValue()){
+    		this.checkRepeatButton.hide();
+    		this.checkRepeatLabel.setValue('');
+    	}
+    },
     
+    onEditRepeatClick: function(button){
+   		this.eventWinRepeat.show(this.activeRecord, this.dateRangeField.getValue()[0]);
+    },
+    
+    completeRepeatEdit:function(){
+    	if (this.activeRecord.get(Extensible.calendar.data.EventMappings.Frequency.name)){
+    		this.checkRepeatButton.show();
+    		this.checkRepeatLabel.setValue(this.getSummaryLabel(this.activeRecord));
+    		this.checkRepeatField.setValue(true);
+    	}else{
+    		this.checkRepeatButton.hide();
+    		this.checkRepeatLabel.setValue('');
+    		this.checkRepeatField.setValue(false);
+    	}
+    },
+    
+     getSummaryLabel:function(rec){
+	
+		var result = "";
+		
+		var M = Extensible.calendar.data.EventMappings;
+		
+		var frequency = rec.get(M.Frequency.name);
+		var separation = rec.get(M.Separation.name);
+		var weekdays = rec.get(M.WeekDays.name);
+		var count = rec.get(M.Count.name);
+		var until = rec.get(M.Until.name);
+		
+		if (frequency == 'daily'){
+			
+			if (separation == 1){
+				result = "Every day";
+			}else{
+				result = "To each " + separation + " days";
+			}
+			
+			if (count > 0){
+				result = result + ", " + count + " times.";
+			}else if (until){
+				result = result + ", until " + Ext.util.Format.date(until,'d-m-Y') + ".";
+			}
+		
+		}
+		
+		/*if (frequency == 'weekly'){
+			
+			if (repeatEvery == 1){
+				result = "Weekly: every ";
+			}else{
+				result = "To each "+repeatEvery+ " weeks";
+			}
+			
+			if (this.getChkWeekDay('chkSun').getValue()){
+				result = result + "Sunday";
+			}
+			
+			if (this.getChkWeekDay('chkMon').getValue()){
+				result = result + ",Monday";
+			}
+			
+			if (this.getChkWeekDay('chkTue').getValue()){
+				result = result + ",Tuesday";
+			}
+			
+			if (endOn== '1'){
+				result = result + ", " + this.down('[id=endsOnOcurrences]').getValue() + " times.";
+			}else if (endOn== '2'){
+				result = result + ", until " + Ext.util.Format.date(this.down('[id=endsOnDate]').getValue(),'d-m-Y') + ".";
+			}
+		
+		}*/
+		
+		return result;
+	
+    },
+    
+    updateRecord: function(record, keepEditing) {
+        var fields = record.fields,
+            values = this.formPanel.getForm().getValues(),
+            name,
+            M = Extensible.calendar.data.EventMappings,
+            obj = {};
+
+        fields.each(function(f) {
+            name = f.name;
+            if (name in values) {
+                obj[name] = values[name];
+            }
+        });
+        
+        var dates = this.dateRangeField.getValue();
+        obj[M.StartDate.name] = dates[0];
+        obj[M.EndDate.name] = dates[1];
+        obj[M.IsAllDay.name] = dates[2];
+
+        record.beginEdit();
+        record.set(obj);
+        
+        if (!keepEditing) {
+            record.endEdit();
+        }
+
+        return this;
+    },
+    
+    // private
+    onSave: function(){
+        if(!this.formPanel.form.isValid()){
+            return;
+        }
+		if(!this.updateRecord(this.activeRecord)){
+			this.onCancel();
+			return;
+		}
+		this.fireEvent(this.activeRecord.phantom ? 'eventadd' : 'eventupdate', this, this.activeRecord, this.animateTarget);
+    }
 });

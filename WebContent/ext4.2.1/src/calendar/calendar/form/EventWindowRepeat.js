@@ -39,8 +39,8 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 				id:'comboRepeat',
 				anchor: '100%',
 				displayField: 'text',
-		    		valueField: 'value',
-		    		value:'daily',
+		    	valueField: 'value',
+		    	value:'daily',
 				store: Ext.create('Ext.data.Store', {
 					fields: ['text', 'value'],
 					data : [
@@ -176,11 +176,10 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    }
 		                }]
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Start on',
 				anchor: '100%',
-				id:'startOn',
-				disabled:true
+				id:'startOn'
 			},{
 				xtype: 'fieldcontainer',
 				anchor: '100%',
@@ -289,11 +288,13 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     },
     
     show: function(rec, starton){
-    	this.down('[id=startOn]').setValue(starton);
+    	this.down('[id=startOn]').setValue(Ext.Date.format(starton,'d-m-Y'));
     	
     	this.activeRecord = rec;
     	
     	this.activeRecord.beginEdit();
+    	
+    	this.onRepeatComboSelect(this.down('[id=comboRepeat]'));
     	
     	this.callParent();
     	return this;
@@ -301,15 +302,17 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     
     onCancelRepeatWin: function(button){
     	this.activeRecord.cancelEdit();
-    	if (this.eventWindow.activeRecord.get(Extensible.calendar.data.EventMappings.Frequency.name)==""){
-    		this.eventWindow.checkRepeatField.setValue(false);
-    	}
+    	//if (this.eventWindow.activeRecord.get(Extensible.calendar.data.EventMappings.Frequency.name)==""){
+    		//this.eventWindow.checkRepeatField.setValue(false);
+    	//}
+    	this.eventWindow.completeRepeatEdit();
     	this.close();
     },
     
     onSaveRepeatWin: function(button){
-    	this.activeRecord.set(Extensible.calendar.data.EventMappings.Frequency.name,this.down('[id=comboRepeat]').getValue());
+    	//this.activeRecord.set(Extensible.calendar.data.EventMappings.Frequency.name,this.down('[id=comboRepeat]').getValue());
     	this.activeRecord.endEdit();
+    	this.eventWindow.completeRepeatEdit();
     	this.close();
     },
     
@@ -332,60 +335,36 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     	
     },
     
+    updateRecord : function(){
+    	
+    	var endOn = this.down('[id=radio1]').getGroupValue();
+    	var rec = this.activeRecord;
+    	
+    	rec.set(M.Frequency.name,this.down('[id=comboRepeat]').getValue());
+		rec.set(M.Separation.name,this.down('[id=repeatEvery]').getValue());
+		//rec.set(M.WeekDays.name);
+		rec.set(M.Count.name,undefined);
+		rec.set(M.Until.name,undefined);
+		if (endOn== '1'){
+			rec.set(M.Count.name,this.down('[id=endsOnOcurrences]').getValue());
+		}else if (endOn== '2'){
+			rec.set(M.Until.name, this.down('[id=endsOnDate]').getValue());
+		}
+		
+		
+    },
+    
     updateSummaryField:function(){
+    	
+    	if (this.activeRecord){
 	
-	var result = "";
-	
-	var frequency = this.down('[id=comboRepeat]').getValue();
-	var repeatEvery = this.down('[id=repeatEvery]').getValue();
-	
-	var endOn = this.down('[id=radio1]').getGroupValue();
-	
-	if (frequency == 'daily'){
+    		this.updateRecord();
+    	
+			var summary = this.eventWindow.getSummaryLabel(this.activeRecord);
 		
-		if (repeatEvery == 1){
-			result = "Every day";
-		}else{
-			result = "To each "+repeatEvery+ " days";
-		}
-		
-		if (endOn== '1'){
-			result = result + ", " + this.down('[id=endsOnOcurrences]').getValue() + " times.";
-		}else if (endOn== '2'){
-			result = result + ", until " + Ext.util.Format.date(this.down('[id=endsOnDate]').getValue(),'d-m-Y') + ".";
-		}
-	
-	}
-	
-	if (frequency == 'weekly'){
-		
-		if (repeatEvery == 1){
-			result = "Weekly: every ";
-		}else{
-			result = "To each "+repeatEvery+ " weeks";
-		}
-		
-		if (this.getChkWeekDay('chkSun').getValue()){
-			result = result + "Sunday";
-		}
-		
-		if (this.getChkWeekDay('chkMon').getValue()){
-			result = result + ",Monday";
-		}
-		
-		if (this.getChkWeekDay('chkTue').getValue()){
-			result = result + ",Tuesday";
-		}
-		
-		if (endOn== '1'){
-			result = result + ", " + this.down('[id=endsOnOcurrences]').getValue() + " times.";
-		}else if (endOn== '2'){
-			result = result + ", until " + Ext.util.Format.date(this.down('[id=endsOnDate]').getValue(),'d-m-Y') + ".";
-		}
-	
-	}
-	
-	this.down('[id=summaryField]').setValue(result);
+			this.down('[id=summaryField]').setValue(summary);
+			
+    	}
 	
     },
     

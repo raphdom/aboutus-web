@@ -21,7 +21,8 @@ Ext.application({
     	'GroupController',
     	'CommonListController',
         'MainController',
-        'MenuController'
+        'MenuController',
+        'HomeController'
     ],
 
     launch: function() {
