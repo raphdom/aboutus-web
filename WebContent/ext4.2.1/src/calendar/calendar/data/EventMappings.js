@@ -163,7 +163,7 @@ Extensible.calendar.data.EventMappings = {
     WeekDays: {
     	name: 'WeekDays',
     	mapping: 'weekDays',
-    	type:'string'
+    	useNull:true
     },
     Count: {
     	name: 'Count',

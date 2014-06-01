@@ -71,4 +71,21 @@ public class EventController {
 		}
 	}
 	
+	@RequestMapping(value="/get.action")
+	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
+
+		try{
+			
+			ResultObject result = eventService.get(id);
+			
+			return result.toMap();
+			
+		} catch (Exception e) {
+			
+			logger.error(e);
+
+			return ExtJSReturn.mapError("Error retrieving Person from database.");
+		}
+	}
+	
 }

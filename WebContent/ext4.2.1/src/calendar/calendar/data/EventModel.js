@@ -87,6 +87,27 @@ Ext.define('Extensible.calendar.data.EventModel', {
     // to reinstate the 4.1.x version that still works as expected:
     getId: function() {
         return this.get(this.idProperty);
+    },
+    
+    
+    proxy: {
+        type: 'ajax',
+        api: {
+        	read : 'event/get.action',
+            create : 'event/save.action',
+            update: 'event/save.action',
+            destroy: 'event/delete.action'
+        },
+        reader: {
+            type: 'json',
+            root: 'data',
+            successProperty: 'success'
+        },
+        writer: {
+            type: 'associatedjson',
+            writeAllFields: true,
+            encode: false
+        }
     }
 },
 function(){

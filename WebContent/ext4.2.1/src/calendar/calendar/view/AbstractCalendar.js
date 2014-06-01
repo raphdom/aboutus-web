@@ -1550,7 +1550,22 @@ alert('End: '+bounds.end);
      * @return {Extensible.calendar.view.AbstractCalendar} this
      */
     showEventEditor : function(rec, animateTarget){
-        this.getEventEditor().show(rec, animateTarget, this);
+    	if(rec.data){
+	    	eval(rec.modelName).load(rec.get('EventIdOriginal'), {
+			    scope: this,
+			    failure: function(record, operation) {
+			    },
+			    success: function(record, operation) {
+			    	record.set('EventId',rec.get('EventId'));
+			    	this.getEventEditor().show(record, animateTarget, this);
+			    },
+			    callback: function(record, operation, success) {
+			    }
+			});
+    	}else{
+    		this.getEventEditor().show(rec, animateTarget, this);
+    	}
+        
         return this;
     },
     

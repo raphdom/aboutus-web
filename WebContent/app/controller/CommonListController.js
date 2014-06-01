@@ -43,7 +43,7 @@ Ext.define('AboutUs.controller.CommonListController', {
 				editRecord: this.onEdit
 			},
 	 		'commondialog commonform button[action=save]': {
-	 			click: this.onSave
+	 			click: this.onCommonSave
 	 		},
 	 		'commondialog commonform button[action=cancel]': {
 				click: this.onDialogCancel
@@ -142,8 +142,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     	}
     },
     
-    onSave: function(button, event, options) {
-    	console.log('CommonController.onSave()');
+    onCommonSave: function(button, event, options) {
     	var me = this;
     	var win = button.up('window'),
             form = win.down('form');

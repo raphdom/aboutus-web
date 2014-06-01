@@ -28,6 +28,15 @@
     <script type="text/javascript" src="app/app.js"></script>
     <script>
     var userListTitle = '<spring:message code="user.list.title" text="Users" />';
+    var Tradutor = {
+   		calendarWeekday0:	'<spring:message code="calendar-weekday-0" text="Sunday" />',
+   		calendarWeekday1:	'<spring:message code="calendar-weekday-1" text="Monday" />',
+   		calendarWeekday2:	'<spring:message code="calendar-weekday-2" text="Tuesday" />',
+   		calendarWeekday3:	'<spring:message code="calendar-weekday-3" text="Wednesday" />',
+   		calendarWeekday4:	'<spring:message code="calendar-weekday-4" text="Thuesday" />',
+   		calendarWeekday5:	'<spring:message code="calendar-weekday-5" text="Friday" />',
+   		calendarWeekday6:	'<spring:message code="calendar-weekday-6" text="Saturday" />',
+    }
     </script>
 </head>
 <body>

@@ -45,9 +45,9 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 					fields: ['text', 'value'],
 					data : [
 						{"text":"Daily", "value":"daily"},
-						{"text":"Weekly", "value":"weekly"},
+						{"text":"Weekly", "value":"weekly"}/*,
 						{"text":"Monthly", "value":"monthly"},
-						{"text":"Annualy", "value":"annually"}
+						{"text":"Annualy", "value":"annually"}*/
 					]
 				}),
 				listeners:{
@@ -342,7 +342,34 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     	
     	rec.set(M.Frequency.name,this.down('[id=comboRepeat]').getValue());
 		rec.set(M.Separation.name,this.down('[id=repeatEvery]').getValue());
-		//rec.set(M.WeekDays.name);
+		
+		//WeekDays
+		if (rec.get(M.Frequency.name)=="weekly"){
+			var weekDays = new Array();
+			if (this.getChkWeekDay('chkSun').getValue()){
+				weekDays.push(0);
+			}
+			if (this.getChkWeekDay('chkMon').getValue()){
+				weekDays.push(1);
+			}
+			if (this.getChkWeekDay('chkTue').getValue()){
+				weekDays.push(2);
+			}
+			if (this.getChkWeekDay('chkWed').getValue()){
+				weekDays.push(3);
+			}
+			if (this.getChkWeekDay('chkThu').getValue()){
+				weekDays.push(4);
+			}
+			if (this.getChkWeekDay('chkFri').getValue()){
+				weekDays.push(5);
+			}
+			if (this.getChkWeekDay('chkSat').getValue()){
+				weekDays.push(6);
+			}
+			rec.set(M.WeekDays.name,weekDays);
+		}
+		
 		rec.set(M.Count.name,undefined);
 		rec.set(M.Until.name,undefined);
 		if (endOn== '1'){
@@ -385,19 +412,19 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     },
     
     changeRepeatWeekDay: function (checkbox,newValue,oldValue,eOpts){
-	if (!this.getChkWeekDay('chkSun').getValue() &&
-		!this.getChkWeekDay('chkMon').getValue() &&
-		!this.getChkWeekDay('chkTue').getValue() &&
-		!this.getChkWeekDay('chkWed').getValue() &&
-		!this.getChkWeekDay('chkThu').getValue() &&
-		!this.getChkWeekDay('chkFri').getValue() &&
-		!this.getChkWeekDay('chkSat').getValue()){
+		if (!this.getChkWeekDay('chkSun').getValue() &&
+			!this.getChkWeekDay('chkMon').getValue() &&
+			!this.getChkWeekDay('chkTue').getValue() &&
+			!this.getChkWeekDay('chkWed').getValue() &&
+			!this.getChkWeekDay('chkThu').getValue() &&
+			!this.getChkWeekDay('chkFri').getValue() &&
+			!this.getChkWeekDay('chkSat').getValue()){
+			
+			this.getChkWeekDay('chkSun').setValue(true);
+			
+		}
 		
-		this.getChkWeekDay('chkSun').setValue(true);
-		
-	}
-	
-	this.updateSummaryField();
+		this.updateSummaryField();
     },
     
     getChkWeekDay :function(id){

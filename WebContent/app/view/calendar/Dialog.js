@@ -179,6 +179,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 			}
             
             f.loadRecord(rec);
+            
         }
         else{
 			//this.isAdd = true;
@@ -203,6 +204,14 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         this.dateRangeField.setValue(rec.data);
         this.activeRecord = rec;
         //this.el.setStyle('z-index', 12000);
+        
+        this.onCalendarSelect(this.calendarField);
+        var frequency = rec.get(Extensible.calendar.data.EventMappings.Frequency.name);
+		if (frequency != ""){
+			this.checkRepeatField.setValue(true);
+		}else{
+			this.checkRepeatField.setValue(false);
+		}
         
 		return this;
     },
@@ -250,12 +259,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     changeRepeatCheckBox: function(checkbox, newValue, oldValue){
     	var frequency = this.activeRecord.get(Extensible.calendar.data.EventMappings.Frequency.name);
     	if (checkbox.getValue() && frequency == ""){
-    		if(!this.eventWinRepeat){
-    			this.eventWinRepeat = Ext.create('Extensible.calendar.form.EventWindowRepeat',{
-    				eventWindow: this
-    			});
-    		}
-    		this.eventWinRepeat.show(this.activeRecord, this.dateRangeField.getValue()[0]);
+    		this.openEventWinRepeat();
     	}else{
     		this.checkRepeatButton.show();
     		this.checkRepeatLabel.setValue(this.getSummaryLabel(this.activeRecord));
@@ -268,7 +272,16 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     },
     
     onEditRepeatClick: function(button){
-   		this.eventWinRepeat.show(this.activeRecord, this.dateRangeField.getValue()[0]);
+   		this.openEventWinRepeat();
+    },
+    
+    openEventWinRepeat:function(){
+    	if(!this.eventWinRepeat){
+			this.eventWinRepeat = Ext.create('Extensible.calendar.form.EventWindowRepeat',{
+				eventWindow: this
+			});
+		}
+		this.eventWinRepeat.show(this.activeRecord, this.dateRangeField.getValue()[0]);
     },
     
     completeRepeatEdit:function(){
@@ -311,33 +324,30 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 		
 		}
 		
-		/*if (frequency == 'weekly'){
+		if (frequency == 'weekly'){
 			
-			if (repeatEvery == 1){
+			if (separation == 1){
 				result = "Weekly: every ";
 			}else{
-				result = "To each "+repeatEvery+ " weeks";
+				result = "To each "+separation+ " weeks";
 			}
 			
-			if (this.getChkWeekDay('chkSun').getValue()){
-				result = result + "Sunday";
+			if (weekdays && !Ext.isEmpty(weekdays)){
+				Ext.Array.forEach(weekdays, function(day, index, allItems) {
+					result = result + Tradutor['calendarWeekday'+day];
+	            	if (index + 1 != allItems.length){
+	            		result = result + ",";
+	            	}
+	        	});
 			}
 			
-			if (this.getChkWeekDay('chkMon').getValue()){
-				result = result + ",Monday";
-			}
-			
-			if (this.getChkWeekDay('chkTue').getValue()){
-				result = result + ",Tuesday";
-			}
-			
-			if (endOn== '1'){
-				result = result + ", " + this.down('[id=endsOnOcurrences]').getValue() + " times.";
-			}else if (endOn== '2'){
-				result = result + ", until " + Ext.util.Format.date(this.down('[id=endsOnDate]').getValue(),'d-m-Y') + ".";
+			if (count > 0){
+				result = result + ", " + count + " times.";
+			}else if (until){
+				result = result + ", until " + Ext.util.Format.date(until,'d-m-Y') + ".";
 			}
 		
-		}*/
+		}
 		
 		return result;
 	
@@ -374,6 +384,9 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     
     // private
     onSave: function(){
+    	if (this.activeRecord.get("WeekDays")==""){
+    		this.activeRecord.set("WeekDays",null);
+    	}
         if(!this.formPanel.form.isValid()){
             return;
         }
