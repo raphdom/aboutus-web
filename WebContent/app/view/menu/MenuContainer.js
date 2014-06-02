@@ -15,6 +15,7 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
         		items:[{
 			    	itemId:'global',
 			    	xtype:'menu-list',
+			    	selectFirst:true,
 			    	menuItems:[
 			    	       {
 			    	    	   title:'Início',
@@ -100,7 +101,9 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	       {
 			    	    	   title:'Artigos',
 			    	    	   icon:'resources/images/article.png',
-			    	    	   visible:true
+			    	    	   controller:'site.ArticleController',
+			    	    	   type:'list',
+			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
 			    	       },
 			    	       {
 			    	    	   title:'Vídeos',

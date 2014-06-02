@@ -14,6 +14,9 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.jrdevel.aboutus.core.common.helper.MessageHelper;
+import com.jrdevel.aboutus.core.common.helper.MessageKeyEnum;
+
 /**
  * @author Raphael Domingues
  *
@@ -50,7 +53,8 @@ public class CustomAjaxAuthenticationFilter extends UsernamePasswordAuthenticati
 
 		HttpServletResponseWrapper responseWrapper = new HttpServletResponseWrapper(response);
 		Writer out = responseWrapper.getWriter();
-		out.write("{success: false, errors: '" + failed.getMessage() + "'}");
+		String errorMessage = MessageHelper.getMessage(MessageKeyEnum.AUTHENTICATION_FAILED);
+		out.write("{success: false, messages: [{type:1,message:'" + errorMessage + "'}]}");
 		out.close();
 
 	}

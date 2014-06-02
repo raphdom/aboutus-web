@@ -59,8 +59,8 @@ Ext.define('AboutUs.controller.Authentication', {
 	        		window.location.href = "home.action";
 	            },
 	            failure: function(form, action) {
-	            	this.getLoginForm().down('textfield[name=password]').setValue("");
-	            	this.getLoginForm().down('textfield[name=password]').focus(false,1000);
+	            	this.getLoginForm().down('textfield[name=j_password]').setValue("");
+	            	this.getLoginForm().down('textfield[name=j_password]').focus(false,1000);
 	            	AboutUs.util.NotificationUtil.processMessages(action.result.messages);
 	            }
 	        });

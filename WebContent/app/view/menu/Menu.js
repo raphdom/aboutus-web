@@ -2,6 +2,8 @@ Ext.define('AboutUs.view.menu.Menu', {
     extend: 'Ext.panel.Panel',
     xtype:'menu-list',
     
+    selectFirst : false,
+    
     initComponent: function(){
         Ext.apply(this, {
             items: this.createView()
@@ -31,7 +33,12 @@ Ext.define('AboutUs.view.menu.Menu', {
             },
             listeners: {
                 scope: this,
-                viewready: this.onViewReady
+                viewready: this.onViewReady,
+                afterrender: function(dv) {
+                	if (this.selectFirst){
+			        	dv.selModel.select(dv.store.getAt(0));
+                	}
+			    }
             },
             trackOver: true,
             cls: 'feed-list',

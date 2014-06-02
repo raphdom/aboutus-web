@@ -94,8 +94,7 @@ Ext.define('AboutUs.controller.CommonListController', {
 		    failure: function(record, operation) {
 		    },
 		    success: function(record, operation) {
-		    	Ext.widget(me.getCommonList().dialog).show();
-		    	
+		    	var dialog = Ext.widget(me.getCommonList().dialog);
 		    	me.getCommonDialog().down('form').loadRecord(record);
 		    	var titleUpdate = me.getCommonDialog().titleUpdate;
         		if (titleUpdate != undefined){
@@ -105,7 +104,7 @@ Ext.define('AboutUs.controller.CommonListController', {
 		    	if (me.actualController().onGetDataSuccess != undefined){
 		    		me.actualController().onGetDataSuccess(record);	
 		    	}
-		    	
+		    	dialog.show();
 		    },
 		    callback: function(record, operation, success) {
 		    }
