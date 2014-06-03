@@ -24,7 +24,8 @@ Ext.define('AboutUs.view.component.ThumbField', {
         	AboutUs.app.getController('CloudController').openImagePicker();
         	var imagePicker = AboutUs.app.getController('CloudController').getImagePicker();
         	imagePicker.addListener({
-        		recordSelected : function(imagePicker, recordSelected){
+        		recordSelected : function(imagePicker, recordsSelected){
+        			var recordSelected = recordsSelected[0]; 
         			var thumbUrl = Ext.util.Format.formatThumbUrl(recordSelected.get('id'),
         			2,recordSelected.get('fileType'))
         			button.up().down('image').setSrc(thumbUrl);

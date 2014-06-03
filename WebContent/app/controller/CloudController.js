@@ -377,12 +377,12 @@ Ext.define('AboutUs.controller.CloudController', {
     	this.getFolderDialog().down('form').loadRecord(record); 
     },
     
-    _getRecordSelected: function(){
-    	return this.getGridActive().getSelectionModel().getSelection()[0];
+    _getRecordsSelected: function(){
+    	return this.getGridActive().getSelectionModel().getSelection();
     },
     
     onAcceptImagePicker: function(button){
-    	var recordSel = this._getRecordSelected();
+    	var recordSel = this._getRecordsSelected();
     	if (recordSel){
     		this.getImagePicker().fireEvent('recordSelected', this.getImagePicker(), recordSel);
     	}else{

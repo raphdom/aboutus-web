@@ -108,17 +108,23 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	       {
 			    	    	   title:'Vídeos',
 			    	    	   icon:'resources/images/videos.png',
-			    	    	   visible:true
+			    	    	   controller:'site.VideoController',
+			    	    	   type:'list',
+			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
 			    	       },
 			    	       {
 			    	    	   title:'Albuns',
 			    	    	   icon:'resources/images/albuns.png',
-			    	    	   visible:true
+			    	    	   controller:'site.AlbumController',
+			    	    	   type:'list',
+			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
 			    	       },
 			    	       {
 			    	    	   title:'Banners',
 			    	    	   icon:'resources/images/banners.png',
-			    	    	   visible:true
+			    	    	   controller:'site.BannerController',
+			    	    	   type:'list',
+			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
 			    	       }
 			    	       ]
 			    },{

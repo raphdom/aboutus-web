@@ -160,6 +160,10 @@ Ext.define('AboutUs.controller.CommonListController', {
 	    	form.getRecord().save({
 	    		success: function(record, operation){
 	    			win.close();
+	    			var response = operation.request.proxy.reader.rawData;
+	    			if (response.messages){
+	    				AboutUs.util.NotificationUtil.processMessages(response.messages);
+	    			}
 	        		me.getCommonList().grid.getStore().reload();
 		    	},
 		    	failure: function(record, operation){
