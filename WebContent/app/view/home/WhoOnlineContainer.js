@@ -4,7 +4,7 @@ Ext.define('AboutUs.view.home.WhoOnlineContainer', {
     
     title: 'Online',
     
-    width: 200,
+    width: 300,
     
     //layout:'border',
     

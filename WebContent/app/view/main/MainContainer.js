@@ -31,11 +31,16 @@ Ext.define('AboutUs.view.main.MainContainer', {
     				items:[{
     					xtype:'button',
     					icon:'resources/images/userManager.png',
-    					menu      : [
-					        {text: 'Meu Perfil'},
-					        {text: 'Preferências'},
-					        {text: 'Sobre'}
-					    ]
+    					menu      : [{
+    						text: 'Meu Perfil',
+    						action: 'myProfile'
+    					},{
+    						text: 'Preferências',
+    						action: 'preferencies'
+    					},{
+					        text: 'Sobre',
+					        action : 'aboutus'
+    					}]
     				},{
     					xtype:'container',
     					tpl: '<div class="userInfoBox">{name}</div>',

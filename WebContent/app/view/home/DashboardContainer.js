@@ -2,7 +2,7 @@ Ext.define('AboutUs.view.home.DashboardContainer', {
     extend: 'Ext.panel.Panel',
     xtype: 'dashboardcontainer',
     
-    height: 200,
+    height: 300,
     
     title: 'Dashboard',
     

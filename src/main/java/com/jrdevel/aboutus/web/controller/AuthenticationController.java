@@ -1,6 +1,7 @@
 package com.jrdevel.aboutus.web.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,6 @@ import com.jrdevel.aboutus.core.common.model.Register;
 import com.jrdevel.aboutus.core.common.model.User;
 import com.jrdevel.aboutus.core.common.to.ListResult;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
-import com.jrdevel.aboutus.core.user.UserDTO;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 /**
@@ -58,20 +58,20 @@ public class AuthenticationController {
 		try{
 			
 			UserDetailsAdapter userAdapter = (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			
-			ResultObject result = new ResultObject();
-			UserDTO dto = new UserDTO();
-			dto.setId(userAdapter.getId());
-			dto.setEmail(userAdapter.getUsername());
 			List<Integer> permissions = new ArrayList<Integer>();
 			for(Permission permission : userAdapter.getRoles()){
 				permissions.add(permission.getId());
 			}
-			dto.setPermissions(permissions);
-			result.setData(dto);
-			result.setSuccess(true);
+			HashMap<String, Object> result = new HashMap<String,Object>();
+			result.put("id", userAdapter.getId());
+			result.put("email", userAdapter.getUsername());
+			result.put("name", userAdapter.getUser().getPerson().getName());
+			if (userAdapter.getUser().getFile()!=null){
+				result.put("avatarId", userAdapter.getUser().getFile().getId());
+			}
+			result.put("permissions", permissions);
 			
-			return result.toMap();
+			return result;
 			
 		} catch (Exception e) {
 

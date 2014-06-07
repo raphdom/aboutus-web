@@ -1,7 +1,8 @@
 Ext.define('AboutUs.controller.MainController', {
     extend: 'Ext.app.Controller',
 
-    views: ['main.MainContainer'],
+    views: ['main.MainContainer',
+    		'main.DialogProfile'],
     
     stores: ['CurrentUserStore'],
     
@@ -13,6 +14,11 @@ Ext.define('AboutUs.controller.MainController', {
     },{
     	 ref: 'buttonCloudDialog',
          selector: 'mainContainer button[action=cloudDialog]'
+    },{
+    	ref: 'dialogProfile',
+    	selector:'dialogprofile',
+    	autoCreate:true,
+        xtype:'dialogprofile'
     }
     
     ],
@@ -30,6 +36,9 @@ Ext.define('AboutUs.controller.MainController', {
             },
             'mainContainer button[action=calendar]':{
             	click: this.onCalendarButtonClick
+            },
+            'mainContainer container[region=north] panel container menuitem[action=myProfile]':{
+            	click: this.OnMyProfileButtonClick
             }
         });
     },
@@ -53,6 +62,11 @@ Ext.define('AboutUs.controller.MainController', {
     	console.log('onCloudButtonClick');
     	this.getController('CommonListController').processActionMenu();
     	this.getController('CalendarController').processActionMenu();
+    },
+    
+    OnMyProfileButtonClick:function(button){
+    	AboutUs.app.getController('PersonController');
+    	this.getDialogProfile().show();
     }
     
 });

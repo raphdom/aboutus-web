@@ -113,3 +113,31 @@
 .folderTree .x-tree-icon-leaf {
     background-image: url("../images/folder.png");
 }  
+
+
+/** PROFILE CONTAINER **/
+
+.profileContainer{
+	padding:20px;
+}
+
+.profileContainer .profileAvatar{
+	float:left;
+}
+
+.profileContainer .profileData{
+	float:left;
+	padding-left:10px;
+}
+
+.profileContainer .profileData .profileName{
+	float:left;	
+	width:100%;
+	font-size:22px;
+}
+
+.profileContainer .profileData .profileEmail{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}

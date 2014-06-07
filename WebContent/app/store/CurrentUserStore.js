@@ -1,7 +1,8 @@
 Ext.define('AboutUs.store.CurrentUserStore', {
     extend: 'Ext.data.Store',
-    model: 'AboutUs.model.User',
-    
+    fields:[
+    	'id','name','email','avatarId','permissions'
+    ],
     autoLoad:true,
     proxy: {
         type: 'ajax',
@@ -10,7 +11,6 @@ Ext.define('AboutUs.store.CurrentUserStore', {
         },
         reader: {
             type: 'json',
-            root: 'data',
             successProperty: 'success'
         }
     },

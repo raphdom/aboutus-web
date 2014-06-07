@@ -2,8 +2,8 @@
 <meta http-equiv=content-type content=text/html; charset=UTF-8> 
 <html>
 <head>
-	<title>::About Us::</title>
-	
+	<title>::About Church::</title>
+	<link rel="SHORTCUT ICON" href="resources/images/favicon.png">
 	<!-- Ext JS Files -->
 	<link rel="stylesheet" type="text/css" href="ext4.2.1/resources/ext-theme-neptune/ext-theme-neptune-all.css">
     <script type="text/javascript" src="ext4.2.1/ext-all-dev.js"></script>

@@ -38,9 +38,8 @@ public class MainController {
 		
 	    LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(_request);
 		
-		// TODO RAD get locale in user preferences
-        localeResolver.setLocale(_request, _response, StringUtils.parseLocaleString("pt_PT"));
-        //localeResolver.setLocale(_request, _response, StringUtils.parseLocaleString("en_GB"));
+	    String userLocale = user.getLocale();
+        localeResolver.setLocale(_request, _response, StringUtils.parseLocaleString(userLocale));
         
 		return new ModelAndView("home");
 		

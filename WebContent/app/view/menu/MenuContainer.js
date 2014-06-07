@@ -132,18 +132,19 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			        itemId:'music',
 			        xtype:'menu-list',
 			        icon:'resources/images/music.png',
-			    	menuItems:[
-			    	       {
-			    	    	   title:'Listas de Reprodução',
-			    	    	   icon:'resources/images/playlist.png',
-			    	    	   visible:true
-			    	       },
-			    	       {
+			    	menuItems:[{
 			    	    	   title:'Músicas',
 			    	    	   icon:'resources/images/music.png',
-			    	    	   visible:true
-			    	       }
-			    	       ]
+			    	    	   controller:'music.MusicController',
+			    	    	   type:'list',
+			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	       },{
+			    	    	   title:'Listas de Reprodução',
+			    	    	   icon:'resources/images/playlist.png',
+			    	    	   controller:'music.PlaylistController',
+			    	    	   type:'list',
+			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+	    	        }]
 			    }]
         	}]
         })

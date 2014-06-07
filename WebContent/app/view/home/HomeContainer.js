@@ -11,7 +11,6 @@ Ext.define('AboutUs.view.home.HomeContainer', {
     items: [{
                 xtype: 'panel',
                 region: 'center',
-                title: 'Profile',
                 items: [{
                 	xtype: 'profilecontainer'
                 },{
