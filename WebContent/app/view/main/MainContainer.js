@@ -36,7 +36,7 @@ Ext.define('AboutUs.view.main.MainContainer', {
     						action: 'myProfile'
     					},{
     						text: 'Preferências',
-    						action: 'preferencies'
+    						action: 'preferences'
     					},{
 					        text: 'Sobre',
 					        action : 'aboutus'

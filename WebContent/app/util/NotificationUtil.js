@@ -11,6 +11,8 @@ Ext.define('AboutUs.util.NotificationUtil', {
     			me.showNotificationWarning(item.message);
     		}else if (item.type == 3){
     			me.showNotificationInfo(item.message);
+    		}else if (item.type == 4){
+    			me.showNotificationExceededPlan(item.message);
     		}
     	});
     },
@@ -69,6 +71,10 @@ Ext.define('AboutUs.util.NotificationUtil', {
 				cls:'ux-notification-window-error',
 				html: message
 		}).show();
+    },
+    
+    showNotificationExceededPlan: function(message){
+    	AboutUs.app.getController('MainController').openDialogPlans(message);
     }
     
 });

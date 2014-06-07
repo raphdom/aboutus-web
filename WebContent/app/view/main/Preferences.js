@@ -1,9 +1,9 @@
-Ext.define('AboutUs.view.main.DialogProfile', {
+Ext.define('AboutUs.view.main.Preferences', {
 	extend: 'AboutUs.view.common.Dialog',
     
-    alias: 'widget.dialogprofile',
+    alias: 'widget.dialogpreferences',
     
-    title: 'Meu perfil',
+    title: 'Preferências',
     
     requires:['AboutUs.view.component.ThumbField'],
     
@@ -20,7 +20,7 @@ Ext.define('AboutUs.view.main.DialogProfile', {
     		xtype: 'tabpanel',
     		items:[{
     			xtype:'panel',
-    			title:'Utilizador',
+    			title:'Plano',
     			layout: 'form',
 		        bodyPadding: 10,
 		        fieldDefaults: {
@@ -29,29 +29,18 @@ Ext.define('AboutUs.view.main.DialogProfile', {
 		        },
 		        defaultType: 'textfield',
     			items:[{
-    				fieldLabel: 'Email',
-		            name: 'email',
-		            allowBlank: false,
-		            vtype:'email'
+    				fieldLabel: 'Plano',
+		            name: 'plan',
+		            allowBlank: false
     			},{
-    				fieldLabel: 'Idioma',
-    				name:'lang',
+    				fieldLabel: 'URL',
+    				name:'url',
     				allowBlank:false
     			},{
     				xtype:'thumbfield',
-    				fieldLabel: 'Foto'
+    				fieldLabel: 'Logo'
     			}]
-    		},{
-		    	xtype:'persontabdata'
-		    },{
-		    	xtype:'persontabchurchdata'
-			},{
-		    	xtype:'persontabaddress'
-			},{
-		    	xtype:'persontabcontact'
-			},{
-		    	xtype:'persontabobservation'
-		    }]
+    		}]
         }]
     }]
     

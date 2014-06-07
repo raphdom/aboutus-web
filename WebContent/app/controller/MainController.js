@@ -2,7 +2,9 @@ Ext.define('AboutUs.controller.MainController', {
     extend: 'Ext.app.Controller',
 
     views: ['main.MainContainer',
-    		'main.DialogProfile'],
+    		'main.DialogProfile',
+    		'main.Preferences',
+    		'main.DialogPlans'],
     
     stores: ['CurrentUserStore'],
     
@@ -19,6 +21,16 @@ Ext.define('AboutUs.controller.MainController', {
     	selector:'dialogprofile',
     	autoCreate:true,
         xtype:'dialogprofile'
+    },{
+    	ref: 'dialogPreferences',
+    	selector:'dialogpreferences',
+    	autoCreate:true,
+        xtype:'dialogpreferences'
+    },{
+    	ref: 'dialogPlans',
+    	selector:'dialogplans',
+    	autoCreate:true,
+        xtype:'dialogplans'
     }
     
     ],
@@ -39,7 +51,11 @@ Ext.define('AboutUs.controller.MainController', {
             },
             'mainContainer container[region=north] panel container menuitem[action=myProfile]':{
             	click: this.OnMyProfileButtonClick
+            },
+            'mainContainer container[region=north] panel container menuitem[action=preferences]':{
+            	click: this.OnPreferencesButtonClick
             }
+            
         });
     },
     
@@ -67,6 +83,15 @@ Ext.define('AboutUs.controller.MainController', {
     OnMyProfileButtonClick:function(button){
     	AboutUs.app.getController('PersonController');
     	this.getDialogProfile().show();
+    },
+    
+    OnPreferencesButtonClick:function(button){
+    	this.getDialogPreferences().show();
+    },
+    
+    openDialogPlans:function(message){
+    	this.getDialogPlans().show();
     }
+    
     
 });
