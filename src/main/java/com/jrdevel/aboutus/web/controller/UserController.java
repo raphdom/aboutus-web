@@ -5,16 +5,17 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jrdevel.aboutus.core.common.helper.MessageHelper;
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
+import com.jrdevel.aboutus.core.user.ProfileDTO;
 import com.jrdevel.aboutus.core.user.UserDTO;
 import com.jrdevel.aboutus.core.user.UserService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
@@ -101,6 +102,39 @@ public class UserController {
 
 			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
 		}
+	}
+	
+	@RequestMapping(value="/getProfile.action")
+	public @ResponseBody Map<String,? extends Object> getCurrentProfile() throws Exception {
+		
+		ResultObject result = userService.getCurrentProfile();
+		
+		return result.toMap();
+		
+	}
+	
+	
+	@RequestMapping(value="/updateProfile.action", method = RequestMethod.POST)
+	public @ResponseBody Map<String,? extends Object> updateProfile(@RequestBody ProfileDTO profile) throws Exception {
+	
+		ResultObject result = null;
+
+		result = userService.updateProfile(profile);
+
+		return result.toMap();
+		
+	}
+	
+	
+	@RequestMapping(value="/changePassword.action", method = RequestMethod.POST)
+	public @ResponseBody Map<String,? extends Object> changePassword(@RequestParam String passActual, @RequestParam String passNew) throws Exception {
+	
+		ResultObject result = null;
+
+		result = userService.changePassword(passActual, passNew);
+
+		return result.toMap();
+		
 	}
 	
 	/*@RequestMapping(value="/currentUser.action")

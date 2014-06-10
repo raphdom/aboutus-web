@@ -1,5 +1,5 @@
 Ext.define('AboutUs.view.main.DialogProfile', {
-	extend: 'AboutUs.view.common.Dialog',
+	extend: 'Ext.window.Window',
     
     alias: 'widget.dialogprofile',
     
@@ -7,10 +7,12 @@ Ext.define('AboutUs.view.main.DialogProfile', {
     
     requires:['AboutUs.view.component.ThumbField'],
     
-    icon:'resources/images/user.png',
+    icon:'resources/images/profile.png',
     
     width: 600,
     height: 400,
+    
+    modal:true,
     
     layout:'fit',
     
@@ -34,12 +36,24 @@ Ext.define('AboutUs.view.main.DialogProfile', {
 		            allowBlank: false,
 		            vtype:'email'
     			},{
-    				fieldLabel: 'Idioma',
-    				name:'lang',
+    				xtype: 'combo',
+					fieldLabel: 'Idioma',
+					anchor: '100%',
+					displayField: 'text',
+			    	valueField: 'value',
+			    	name:'language',
+					store: Ext.create('Ext.data.Store', {
+						fields: ['text', 'value'],
+						data : [
+							{"text":"Português/Portugal", "value":"pt_PT"},
+							{"text":"Inglês/Britânico", "value":"en_GB"}
+						]
+					}),
     				allowBlank:false
     			},{
     				xtype:'thumbfield',
-    				fieldLabel: 'Foto'
+    				fieldLabel: 'Foto',
+    				name:'avatarId'
     			}]
     		},{
 		    	xtype:'persontabdata'

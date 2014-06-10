@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -93,6 +94,22 @@ public class AuthenticationController {
 		} catch (Exception e) {
 
 			return ExtJSReturn.mapError("Error retrieving Permissions from database.");
+		}
+	}
+	
+	@RequestMapping(value="/recoverPassword.action")
+	public @ResponseBody Map<String,? extends Object> recoverPassword(@RequestParam String email) throws Exception {
+
+		try{
+			
+			ResultObject result = authenticationService.recoverPassword(email);
+			
+			return result.toMap();
+			
+		} catch (Exception e) {
+
+			return ExtJSReturn.mapError("Error Recover Password.");
+			
 		}
 	}
 

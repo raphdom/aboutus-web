@@ -37,6 +37,12 @@ Ext.define('AboutUs.model.User', {
     		name:'churchName',
     		type:'string',
 			persist:false
+		},{
+			name: 'language',
+			type:'string'
+		},{
+			name: 'avatarId',
+			type:'int'
     	},{
     		name:'groups'
     	},{

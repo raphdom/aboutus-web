@@ -58,6 +58,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  	
     <security:http auto-config="false" use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
     	<security:intercept-url pattern="/login.action" access="permitAll"/>
+    	<security:intercept-url pattern="/recoverPassword.action" access="permitAll"/>
     	<security:intercept-url pattern="/*" access="hasRole('ROLE_AUTHENTICATED_USER')" />
         <security:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationProcessingFilter"/>
         <security:logout logout-success-url="/login.action" />

@@ -1,16 +1,22 @@
 Ext.define('AboutUs.controller.Authentication', {
     extend: 'Ext.app.Controller',
 
-    views: ['authentication.Login'
+    views: ['authentication.Login',
+    		'authentication.RecoverPassword'
     		/*'authentication.Register',
     		'authentication.TermsOfUseDialog',
     		'authentication.RegisterWindow'*/],
     
     stores: [],
     
-     refs: [{
+    refs: [{
         ref: 'loginForm',
         selector: 'loginForm'
+    },{
+     	ref: 'recoverPassword',
+        selector: 'recoverpassword',
+        autoCreate:true,
+        xtype:'recoverpassword'
     },{
     	ref: 'registerForm',
         selector: 'registerForm'
@@ -32,6 +38,9 @@ Ext.define('AboutUs.controller.Authentication', {
      		},
      		'loginForm textfield': {
          		specialkey: this.submitOnEnter
+     		},
+     		'recoverpassword button[action=recovery]': {
+     			click: this.onRecoverPassword
      		},
      		'registerForm textfield[name=churchName]': {
          		afterrender: this.onEmailAfterRender
@@ -112,6 +121,19 @@ Ext.define('AboutUs.controller.Authentication', {
 		}else{
 			this.getRegisterForm().down('[id=aliasNameEx]').setValue("");
 		}
+	},
+	
+	onRecoverPassword:function(button){
+		this.getRecoverPassword().down('form').submit({
+    		scope:this,
+        	success: function(form, action) {
+        		AboutUs.util.NotificationUtil.processMessages(action.result.messages);
+        		this.getRecoverPassword().hide();
+            },
+            failure: function(form, action) {
+            	AboutUs.util.NotificationUtil.processMessages(action.result.messages);
+            }
+        });
 	}
     
 });

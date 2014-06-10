@@ -48,7 +48,7 @@ Ext.define('AboutUs.util.NotificationUtil', {
 				icon:'resources/images/warning.png',
 				title:'Alerta!',
 				manager: 'demo1',
-				autoCloseDelay: 7000,
+				autoCloseDelay: 5000,
 				spacing: 20,
 				cls:'ux-notification-window-warning',
 				html: message
@@ -66,7 +66,7 @@ Ext.define('AboutUs.util.NotificationUtil', {
 				icon:'resources/images/error.png',
 				title:'Erro!',
 				manager: 'demo1',
-				autoCloseDelay: 100000,
+				autoCloseDelay: 6000,
 				spacing: 20,
 				cls:'ux-notification-window-error',
 				html: message

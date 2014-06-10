@@ -27,22 +27,37 @@ Ext.define('AboutUs.view.authentication.Login', {
             name:'j_password',
             emptyText: 'Palavra-chave',
             inputType: 'password'
-        },
-        {
-        	xtype: 'component',
-            autoEl: {
-                tag: 'a',
-                href: 'http://www.example.com/',
-                html: 'Recuperar palavra-chave'
-            }
         }
     ],
     
-    buttons: [{ 
+    buttons: [{
+        	xtype: 'tbtext',
+        	id: 'linkrecoverPass',
+        	text: '<a href="#">Recuperar palavra-chave</a>'
+        },'->',{ 
         	text:'Entrar',
         	action:'login',
         	icon:'resources/images/next.png',
         	iconAlign: 'right'
         	
-	}]
+	}],
+	
+	
+	initComponent: function(){
+		this.callParent(arguments);
+	},
+	
+	afterRender: function(){
+		this.callParent(arguments);
+		
+		this.recoverButton = this.down('#linkrecoverPass');
+        
+        if (this.recoverButton) {
+            this.recoverButton.getEl().on('click', this.onRecoverPassClick, this);
+        }
+	},
+	
+	onRecoverPassClick:function(){
+		AboutUs.app.getController('Authentication').getRecoverPassword().show();
+	}
 });

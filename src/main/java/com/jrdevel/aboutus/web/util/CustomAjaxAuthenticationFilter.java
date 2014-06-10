@@ -53,6 +53,7 @@ public class CustomAjaxAuthenticationFilter extends UsernamePasswordAuthenticati
 
 		HttpServletResponseWrapper responseWrapper = new HttpServletResponseWrapper(response);
 		Writer out = responseWrapper.getWriter();
+		
 		String errorMessage = MessageHelper.getMessage(MessageKeyEnum.AUTHENTICATION_FAILED);
 		out.write("{success: false, messages: [{type:1,message:'" + errorMessage + "'}]}");
 		out.close();

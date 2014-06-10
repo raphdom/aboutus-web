@@ -82,7 +82,6 @@ Ext.define('AboutUs.controller.CommonListController', {
     },
     
     onDialogCancel: function(button, event, options) {
-    	console.log('CommonController.onDialogCancel()');
     	button.up('commondialog').close();
     },
     

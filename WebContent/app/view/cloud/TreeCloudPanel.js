@@ -4,7 +4,7 @@ Ext.define('AboutUs.view.cloud.TreeCloudPanel' ,{
     
     title:'Pastas',
     region:'west',
-    width: 200,
+    width: 300,
     collapsible: true,
     border:true,
     store:'FolderStore',

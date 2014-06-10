@@ -7,7 +7,7 @@ Ext.define('AboutUs.view.main.Preferences', {
     
     requires:['AboutUs.view.component.ThumbField'],
     
-    icon:'resources/images/user.png',
+    icon:'resources/images/configuration.png',
     
     width: 600,
     height: 400,

@@ -14,13 +14,13 @@
     <script type="text/javascript" src="app/login.js"></script>
     <style>
     	#logoTarget{
-    		width:400px;
-    		height:200px;
+    		width:503px;
+    		height:236px;
     		margin-left: auto ;
 		  	margin-right: auto ;
-		  	background-image: url("resources/images/aboutUsLogin.png");
+		  	background-image: url("resources/images/aboutChurchLogin.png");
 			margin-top:100px;
-			margin-bottom:20px;
+			margin-bottom:10px;
     	}
 	    #senchaTarget {
 		  width: 400px ;

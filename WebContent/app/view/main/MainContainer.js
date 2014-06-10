@@ -7,14 +7,14 @@ Ext.define('AboutUs.view.main.MainContainer', {
     items: [
         {
         	region:'north',
-        	height:120,
+        	height:90,
         	layout:'hbox',
         	bodyCls:'north',
         	items:[{
         		xtype:'container',
         		cls:'imageLogo',
         		width: 300,
-        		height:100
+        		height:80
         	},{
         		xtype:'container',
         		cls:'northMiddle',
@@ -33,13 +33,20 @@ Ext.define('AboutUs.view.main.MainContainer', {
     					icon:'resources/images/userManager.png',
     					menu      : [{
     						text: 'Meu Perfil',
-    						action: 'myProfile'
+    						action: 'myProfile',
+    						icon:'resources/images/profile.png'
     					},{
     						text: 'Preferências',
-    						action: 'preferences'
+    						action: 'preferences',
+    						icon:'resources/images/configuration.png'
+						},{
+    						text: 'Alterar palavra-passe',
+    						action: 'changePassword',
+    						icon:'resources/images/lock.png'
     					},{
 					        text: 'Sobre',
-					        action : 'aboutus'
+					        action : 'aboutus',
+					        icon:'resources/images/question.png'
     					}]
     				},{
     					xtype:'container',
@@ -48,8 +55,10 @@ Ext.define('AboutUs.view.main.MainContainer', {
     					flex: 1
     				},{
     					xtype:'button',
-    					icon:'resources/images/logout.png',
-    					action:'logout'
+    					text:'Sair',
+    					icon:'resources/images/next.png',
+    					action:'logout',
+    					iconAlign: 'right'
     				}]
     			}],
     			buttons:[
