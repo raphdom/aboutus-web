@@ -5,8 +5,6 @@ Ext.define('AboutUs.view.main.Preferences', {
     
     title: 'Preferências',
     
-    requires:['AboutUs.view.component.ThumbField'],
-    
     icon:'resources/images/configuration.png',
     
     width: 600,
@@ -29,16 +27,14 @@ Ext.define('AboutUs.view.main.Preferences', {
 		        },
 		        defaultType: 'textfield',
     			items:[{
+    				xtype: 'displayfield',
     				fieldLabel: 'Plano',
 		            name: 'plan',
 		            allowBlank: false
     			},{
     				fieldLabel: 'URL',
-    				name:'url',
+    				name:'siteAlias',
     				allowBlank:false
-    			},{
-    				xtype:'thumbfield',
-    				fieldLabel: 'Logo'
     			}]
     		}]
         }]

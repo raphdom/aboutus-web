@@ -6,6 +6,8 @@ Ext.define('Ext.ux.upload.BrowseButton', {
     extend : 'Ext.form.field.File',
 
     buttonOnly : true,
+    
+    xtype: 'browserbutton',
 
     iconCls : 'ux-mu-icon-action-browse',
     buttonText : 'Browse...',

@@ -24,6 +24,7 @@ import com.jrdevel.aboutus.core.common.model.File;
 import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
+import com.mysql.jdbc.StringUtils;
 
 @Controller
 @RequestMapping(value="/cloud")
@@ -51,7 +52,7 @@ public class CloudController {
 	}
 
 	@RequestMapping(value="/upload.action", method = RequestMethod.POST)
-	public @ResponseBody String upload(MultipartHttpServletRequest request) throws Exception {
+	public @ResponseBody Map<String,? extends Object> upload(MultipartHttpServletRequest request) throws Exception {
 
 		Iterator<String> itr =  request.getFileNames();
 
@@ -59,7 +60,7 @@ public class CloudController {
 
 		String folderIdParam = request.getParameter("folderId");
 		Integer folderId = null;
-		if (!folderIdParam.isEmpty()){
+		if (!StringUtils.isNullOrEmpty(folderIdParam)){
 			folderId = Integer.parseInt(folderIdParam);
 		}
 
@@ -67,7 +68,7 @@ public class CloudController {
 
 		mpf.transferTo(file);
 
-		cloudService.processFile(new FileInputStream(file),mpf.getOriginalFilename(),mpf.getSize(),
+		ResultObject result = cloudService.processFile(new FileInputStream(file),mpf.getOriginalFilename(),mpf.getSize(),
 				file.getAbsolutePath(), mpf.getContentType(),folderId);
 
 		//System.out.println(mpf.getOriginalFilename() +" uploaded!");
@@ -79,7 +80,7 @@ public class CloudController {
 		//Quando o utilizador colocar o ficheiro no album criar então o datatype=3 e datatype=4 que serão para o site
 		//Guardar o registo na base de dados
 
-		return "{'success':true,'message':'OK'}";
+		return result.toMap();
 
 
 	}

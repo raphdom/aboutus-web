@@ -5,6 +5,8 @@ Ext.define('AboutUs.view.component.ThumbField', {
     },
 	alias: 'widget.thumbfield',
 	
+	requires:['Ext.ux.upload.BrowseButton'],
+	
     layout: {
     	type:'hbox',
     	defaultMargins:{
@@ -34,6 +36,34 @@ Ext.define('AboutUs.view.component.ThumbField', {
         		}
         	})
         }
+    },{
+    	xtype:'browserbutton',
+    	listeners:{
+    		fileselected:function(button, files){
+				var xhr = new XMLHttpRequest();
+			    
+			    xhr.upload.addEventListener("progress", function(e) {
+			        var pc = parseInt((e.loaded / e.total) * 100);
+			        console.log(pc + "%")
+			    }, false);
+				xhr.addEventListener("loadend", function(e){
+					 var response = e.target;
+					 var id = Ext.decode(response.response).messages[0].message;
+					 var thumbUrl = Ext.util.Format.formatThumbUrl(id,2)
+        			 button.up().down('image').setSrc(thumbUrl);
+        			 button.up().setValue(id);
+				},false);
+			
+			    var formData = new FormData();
+			    formData.append("file",files[0]);
+			
+			    xhr.open("POST", "cloud/upload.action", true);
+			    xhr.setRequestHeader("X_FILENAME", files[0].name);
+			    xhr.send(formData);
+    		}
+    	}
+    	
+    	
     }, {
         xtype: 'button',
         icon: 'resources/images/delete.png',
