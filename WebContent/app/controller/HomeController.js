@@ -7,7 +7,7 @@ Ext.define('AboutUs.controller.HomeController', {
     		'home.WhoOnlineContainer',
     		'home.DashboardContainer'],
     
-    stores: ['AuditStore'],
+    stores: ['AuditHomeStore'],
     
     models: ['Audit'],
     

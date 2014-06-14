@@ -8,7 +8,7 @@ Ext.define('AboutUs.view.home.AuditContainer', {
     
     items:[{
     	xtype:'grid',
-    	store: 'AuditStore',
+    	store: 'AuditHomeStore',
     	title: 'Minhas últimas ações',
     	border:true,
     	columns: [

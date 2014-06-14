@@ -1,4 +1,4 @@
-Ext.define('AboutUs.store.AuditStore', {
+Ext.define('AboutUs.store.AuditHomeStore', {
     extend: 'Ext.data.Store',
     model: 'AboutUs.model.Audit',
     remoteFilter:true,
@@ -12,7 +12,7 @@ Ext.define('AboutUs.store.AuditStore', {
         	create: 'POST', read: 'POST', update: 'POST', destroy: 'POST'
         },
         api: {
-        	read : 'audit/view.action'
+        	read : 'audit/viewAuditHome.action'
         },
         reader: {
             type: 'json',
