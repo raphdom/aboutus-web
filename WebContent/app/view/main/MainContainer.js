@@ -23,10 +23,26 @@ Ext.define('AboutUs.view.main.MainContainer', {
         		xtype:'panel',
         		width: 400,
         		height:120,
+        		layout: {
+					type: 'hbox'
+					
+				},
         		bodyCls:'north',
     			items:[{
     				xtype:'container',
+    				cls:'uploadButtonContainer',
+    				width: 40,
+    				margin: '0 5 0 0',
+    				items:[{
+    					xtype:'button',
+						icon:'resources/images/download-cloud.png',
+						action:'cloudDialog',
+						hidden:true
+    				}]
+    			},{
+    				xtype:'container',
     				cls:'userInfo',
+    				flex:1,
     				layout: 'hbox',
     				items:[{
     					xtype:'button',
@@ -60,15 +76,7 @@ Ext.define('AboutUs.view.main.MainContainer', {
     					action:'logout',
     					iconAlign: 'right'
     				}]
-    			}],
-    			buttons:[
-					{
-						text:'Upload Dialog',
-						icon:'resources/images/download-cloud.png',
-						action:'cloudDialog',
-						hidden:true
-	        		}
-        		]
+    			}]
         	}]
         },{
         	xtype:'container',

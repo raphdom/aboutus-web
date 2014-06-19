@@ -13,7 +13,7 @@ Ext.define('AboutUs.view.home.ProfileContainer', {
         	cls:'profileContainer',
         	tpl: [
 		        '<div class="profileAvatar">',
-		        	'<img src="{avatarId:formatThumbUrl(2)}"/>',
+		        	'<img src="{avatarId:formatThumbProfile}" width="150px" height="120px"/>',
 		        '</div>',
 		        '<div class="profileData">',
 		        	'<div class="profileName">{name}</div>',

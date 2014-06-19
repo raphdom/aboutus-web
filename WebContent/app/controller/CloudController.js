@@ -15,7 +15,8 @@ Ext.define('AboutUs.controller.CloudController', {
             'cloud.CenterCloudContainer',
             'cloud.CloudDialog',
             'cloud.FolderDialog',
-            'cloud.ImagePicker'
+            'cloud.ImagePicker',
+            'cloud.ThumbView'
     ],
     
    refs: [
@@ -95,6 +96,12 @@ Ext.define('AboutUs.controller.CloudController', {
     		'treecloudpanel toolbar button[action=edit]':{
     			click: this.onEditFolder
     		},
+    		'treecloudpanel toolbar button[action=del]':{
+    			click: this.onDeleteFolder
+    		},
+    		'treecloudpanel treeview':{
+    			beforedrop: this.onBeforeDropFiles
+    		},
     		'tilegriddetails':{
     		        selectionchange: this.onFileSelected,
     		        itemdblclick: this.onFileDoubleClick
@@ -125,6 +132,9 @@ Ext.define('AboutUs.controller.CloudController', {
     		},
     		'folderdialog commonform button[action=save]':{
     			click: this.onSaveFolder
+    		},
+    		'folderdialog commonform button[action=cancel]':{
+    			click: this.onCancelFolder
     		},
     		'imagepicker button[action=cancel]':{
     			click: this.onCancelImagePicker
@@ -269,7 +279,7 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onViewImageFile: function(button){
           var recordSelect = this.getGridActive().getSelectionModel().getSelection()[0];
-          var url = Ext.util.Format.formatThumbUrl(recordSelect.get('id'),3,recordSelect.get('fileType'));
+          var url = Ext.util.Format.formatThumbUrl(recordSelect.get('id'),6,recordSelect.get('fileType'));
           Lightview.show("http://localhost:8080/aboutus/"+url);
     },
     
@@ -288,17 +298,24 @@ Ext.define('AboutUs.controller.CloudController', {
     	console.log('onDeleteFile');
     	var records = this.getGridActive().getSelectionModel().getSelection();
     	if (records.length > 0){
-    		this.getCloudStoreStore().remove(records);
-    		this.getCloudStoreStore().sync({
-    			success: function(record, operation){
-    				var response = this.getReader().jsonData;
-	    			AboutUs.util.NotificationUtil.processMessages(response.messages);
-		    	},
-		    	failure: function(record, operation){
-		    		var response = this.getReader().jsonData;
-	    			AboutUs.util.NotificationUtil.processMessages(response.messages);
-		    	}
-    		});	
+    		Ext.Msg.confirm('Eliminar', 'Deseja realmente eliminar os registos selecionados', 
+    			function(btn, text){
+			    	if (btn == 'yes'){
+						this.getCloudStoreStore().remove(records);
+			    		this.getCloudStoreStore().sync({
+			    			success: function(record, operation){
+			    				var response = this.getReader().jsonData;
+				    			AboutUs.util.NotificationUtil.processMessages(response.messages);
+					    	},
+					    	failure: function(record, operation){
+					    		var response = this.getReader().jsonData;
+				    			AboutUs.util.NotificationUtil.processMessages(response.messages);
+					    	}
+			    		});	    		
+			    	}
+    			}
+    		,this);
+    		
     	}else{
     		AboutUs.util.NotificationUtil.showNotificationError("Você deve selecionar um registo.");
     	}
@@ -308,7 +325,7 @@ Ext.define('AboutUs.controller.CloudController', {
         var images = new Array();
         AboutUs.app.getStore('CloudStore').each(function(item,index,count) {
         	  if (item.get('fileType').indexOf("image") != -1){
-        	  	var url = Ext.util.Format.formatThumbUrl(item.get('id'),3,item.get('fileType'));
+        	  	var url = Ext.util.Format.formatThumbUrl(item.get('id'),6,item.get('fileType'));
               	images.push({url:'http://localhost:8080/aboutus/'+url});
         	  }
         });
@@ -362,7 +379,14 @@ Ext.define('AboutUs.controller.CloudController', {
     	form.getRecord().save({
     		success: function(record, operation){
     			win.close();
-    			me.getFolderStoreStore().load();
+    			me.getFolderStoreStore().load({
+    				callback: function(records, operation, success) {
+				        var node = me.getFolderStoreStore().getNodeById(record.get('id'));
+				        me.getTreeCloudPanel().getSelectionModel().select(node);
+				        me.getTreeCloudPanel().expandPath(node.getPath());
+				        me.onFolderClick(me.getTreeCloudPanel(),node);
+				    }
+    			});
 	    	},
 	    	failure: function(record, operation){
 	    		var response = operation.request.proxy.reader.rawData;
@@ -371,10 +395,30 @@ Ext.define('AboutUs.controller.CloudController', {
     	});
     },
     
+    onCancelFolder: function(button){
+    	button.up('window').close();
+    },
+    
     onEditFolder: function(button){
    		this.getFolderDialog().show();
    		var record = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
     	this.getFolderDialog().down('form').loadRecord(record); 
+    },
+    
+    onDeleteFolder:function(button){
+    	var record = this.getTreeCloudPanel().getSelectionModel().getSelection();
+    	if (record.length > 0){
+    		Ext.Msg.confirm('Eliminar', 'Deseja realmente eliminar os registos selecionados', 
+    			function(btn, text){
+			    	if (btn == 'yes'){
+						
+			    	}
+    			}
+    		,this);
+    		
+    	}else{
+    		AboutUs.util.NotificationUtil.showNotificationError("Você deve selecionar um registo.");
+    	}
     },
     
     _getRecordsSelected: function(){
@@ -392,6 +436,16 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onCancelImagePicker: function(button){
     	this.getImagePicker().close();
+    },
+    
+    onBeforeDropFiles: function(node, data, overModel, dropPosition, dropHandlers) {
+	    dropHandlers.wait = true;
+	    Ext.MessageBox.confirm('Mover ficheiros', 'Tem a certeza que deseja mover os ficheiros de pasta?', function(btn){
+	        if (btn === 'yes') {
+				alert(node);	            
+	        }
+    	});
+    	dropHandlers.cancelDrop();
     }
     
 });

@@ -10,6 +10,16 @@ Ext.define('AboutUs.view.cloud.TreeCloudPanel' ,{
     store:'FolderStore',
     cls: 'folderTree',
     useArrows: true,
+    singleExpand:true,
+    viewConfig: {
+        plugins: [{
+            ddGroup: 'organizerDD',
+            ptype  : 'treeviewdragdrop',
+            enableDrag : false,
+            displayField: 'name'
+        }]
+    },
+    
     //rootVisible: false,
     root: {
     	id: "0",

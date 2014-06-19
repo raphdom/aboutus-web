@@ -76,6 +76,11 @@
 	padding: 5px;
 }
 
+.uploadButtonContainer{
+	background-color: #157FCC;
+	padding: 5px;
+}
+
 .userInfoBox{
 	color: #FFFFFF;
 	padding-top:4px;

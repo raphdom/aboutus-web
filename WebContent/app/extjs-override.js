@@ -23,6 +23,14 @@ Ext.apply(Ext.util.Format,{
             return value != 1 ? plural : singular;
         },
         
+        formatThumbProfile: function(fileid){
+        	if (fileid && fileid > 0){
+        		return this.formatThumbUrl(fileid, 2);
+        	}else{
+        		return "resources/images/noProfileImage.png";
+        	}
+        },
+        
         /**
          * DATATYPE -1 = icons 24px
          * DATATYPE 0 = 50x40 (icons 32px)

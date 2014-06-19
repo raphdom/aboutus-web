@@ -15,7 +15,7 @@ Ext.define('AboutUs.view.component.ThumbField', {
     },
     items: [{
         xtype: 'image',
-        src: 'resources/images/logoAboutUs.png',
+        src: 'resources/images/noImage.png',
         width: 150,
         height: 120
     }, {
@@ -68,7 +68,7 @@ Ext.define('AboutUs.view.component.ThumbField', {
         xtype: 'button',
         icon: 'resources/images/delete.png',
         handler:function(button){
-        	button.up().down('image').setSrc('resources/images/logoAboutUs.png');
+        	button.up().down('image').setSrc('resources/images/noImage.png');
         }
     }],
 
