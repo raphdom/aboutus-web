@@ -280,7 +280,7 @@ Ext.define('AboutUs.controller.CloudController', {
     onViewImageFile: function(button){
           var recordSelect = this.getGridActive().getSelectionModel().getSelection()[0];
           var url = Ext.util.Format.formatThumbUrl(recordSelect.get('id'),6,recordSelect.get('fileType'));
-          Lightview.show("http://localhost:8080/aboutus/"+url);
+          Lightview.show("http://localhost:8080/aboutchurch/"+url);
     },
     
     onDownloadFile:function(button){
@@ -326,7 +326,7 @@ Ext.define('AboutUs.controller.CloudController', {
         AboutUs.app.getStore('CloudStore').each(function(item,index,count) {
         	  if (item.get('fileType').indexOf("image") != -1){
         	  	var url = Ext.util.Format.formatThumbUrl(item.get('id'),6,item.get('fileType'));
-              	images.push({url:'http://localhost:8080/aboutus/'+url});
+              	images.push({url:'http://localhost:8080/aboutchurch/'+url});
         	  }
         });
         Lightview.show(images, 1);
