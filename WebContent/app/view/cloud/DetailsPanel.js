@@ -15,7 +15,7 @@ Ext.define('AboutUs.view.cloud.DetailsPanel' ,{
     tpl: [
         '<div class="details">',
             '<tpl for=".">',
-            	'<img src="{id:formatThumbUrl(2,values.fileType)}" />', 
+            	'<img src="{id:formatThumbUrl(4,values.fileType)}" />', 
                 '<div class="details-info">',
                     '<b>Nome do Ficheiro:</b>',
                     '<span>{filename}</span>',

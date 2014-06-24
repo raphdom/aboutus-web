@@ -13,7 +13,7 @@
 }
 
 #images-view .thumb img{
-    height: 60px;
+    height: 80px;
     width: 80px;
 }
 #images-view .thumbIcon img{
@@ -27,7 +27,7 @@
     margin-right: 0;
     padding: 5px;
     width:96px;
-    height:90px;
+    height:110px;
 }
 #images-view .thumb-wrap span {
     cursor:default;
@@ -266,7 +266,7 @@
 }
 
 #icons-view .thumb img{
-    height: 40px;
+    height: 50px;
     width: 50px;
 }
 #icons-view .thumbIcon img{
@@ -281,7 +281,7 @@
     margin-right: 0;
     padding: 2px;
     width:200px;
-    height:50px;
+    height:60px;
 }
 #icons-view .icons-wrap .iconsInfo {
     display: block;

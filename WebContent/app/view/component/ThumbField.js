@@ -17,7 +17,7 @@ Ext.define('AboutUs.view.component.ThumbField', {
         xtype: 'image',
         src: 'resources/images/noImage.png',
         width: 150,
-        height: 120
+        height: 150
     }, {
         xtype: 'button',
         text:'Procurar',
@@ -29,7 +29,7 @@ Ext.define('AboutUs.view.component.ThumbField', {
         		recordSelected : function(imagePicker, recordsSelected){
         			var recordSelected = recordsSelected[0]; 
         			var thumbUrl = Ext.util.Format.formatThumbUrl(recordSelected.get('id'),
-        			2,recordSelected.get('fileType'))
+        			4,recordSelected.get('fileType'))
         			button.up().down('image').setSrc(thumbUrl);
         			button.up().setValue(recordSelected.get('id'));
         			imagePicker.close();
@@ -84,7 +84,7 @@ Ext.define('AboutUs.view.component.ThumbField', {
         me.value = value;
         me.checkChange();
         if (value != 0){
-        	var thumbUrl = Ext.util.Format.formatThumbUrl(value,2);
+        	var thumbUrl = Ext.util.Format.formatThumbUrl(value,4);
         	this.down('image').setSrc(thumbUrl);
         }
         return me;

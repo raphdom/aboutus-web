@@ -279,7 +279,7 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onViewImageFile: function(button){
           var recordSelect = this.getGridActive().getSelectionModel().getSelection()[0];
-          var url = Ext.util.Format.formatThumbUrl(recordSelect.get('id'),6,recordSelect.get('fileType'));
+          var url = Ext.util.Format.formatThumbUrl(recordSelect.get('id'),10,recordSelect.get('fileType'));
           Lightview.show("http://localhost:8080/aboutchurch/"+url);
     },
     
@@ -325,7 +325,7 @@ Ext.define('AboutUs.controller.CloudController', {
         var images = new Array();
         AboutUs.app.getStore('CloudStore').each(function(item,index,count) {
         	  if (item.get('fileType').indexOf("image") != -1){
-        	  	var url = Ext.util.Format.formatThumbUrl(item.get('id'),6,item.get('fileType'));
+        	  	var url = Ext.util.Format.formatThumbUrl(item.get('id'),10,item.get('fileType'));
               	images.push({url:'http://localhost:8080/aboutchurch/'+url});
         	  }
         });
