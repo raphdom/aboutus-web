@@ -8,8 +8,7 @@ Ext.define('AboutUs.view.user.TabUserPermission', {
     header:false,
     
     layout:{
-    	type:'hbox',
-    	align:'stretchmax'
+    	type:'hbox'
     },
    
     items:[{

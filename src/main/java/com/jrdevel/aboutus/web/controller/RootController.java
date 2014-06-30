@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,36 +25,42 @@ import com.jrdevel.aboutus.core.authentication.UserDetailsAdapter;
  *
  */
 @Controller
-public class MainController {
+@RequestMapping("/")
+public class RootController {
 	
 	@Autowired
 	private AuthenticationService authenticationService;
 	
-	@RequestMapping(value="/home.action", method = RequestMethod.GET)
-	public ModelAndView home(HttpServletRequest _request, HttpServletResponse _response, HttpSession session) throws Exception {
-		
-		UserDetailsAdapter user = (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-		authenticationService.updateLogin(user.getId());
-		
-	    LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(_request);
-		
-	    String userLocale = user.getLocale();
-        localeResolver.setLocale(_request, _response, StringUtils.parseLocaleString(userLocale));
-        
-		return new ModelAndView("home");
-		
-	}
+	@Autowired
+	private Environment env;
 	
-	@RequestMapping(value="/login.action")
-	public String login(HttpServletRequest _request, HttpServletResponse _response, HttpSession session) throws Exception {
+	@RequestMapping(method=RequestMethod.GET)
+	public ModelAndView index(HttpServletRequest _request, HttpServletResponse _response, HttpSession session) throws Exception {
+		
+		String viewName = "home";
+		
+		ModelAndView model = new ModelAndView();
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || (authentication instanceof AnonymousAuthenticationToken)) {
-			return "login";
+			viewName = "login";
 		}else{
-			return "redirect:/home.action";
+			
+			UserDetailsAdapter user = (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			
+			authenticationService.updateLogin(user.getId());
+			
+		    LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(_request);
+			
+		    String userLocale = user.getLocale();
+	        localeResolver.setLocale(_request, _response, StringUtils.parseLocaleString(userLocale));
+	        
 		}
+		
+		model.addObject("activeEnv", env.getActiveProfiles()[0]);
+		model.setViewName(viewName);
+		
+		return model;
 		
 	}
 

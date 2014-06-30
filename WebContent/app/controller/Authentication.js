@@ -65,7 +65,7 @@ Ext.define('AboutUs.controller.Authentication', {
 	    	this.getLoginForm().getForm().submit({
 	    		scope:this,
 	        	success: function(form, action) {
-	        		window.location.href = "home.action";
+	        		window.location.href = "";
 	            },
 	            failure: function(form, action) {
 	            	this.getLoginForm().down('textfield[name=j_password]').setValue("");

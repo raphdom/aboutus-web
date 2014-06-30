@@ -3,8 +3,7 @@ Ext.define('AboutUs.view.group.PermissionList', {
     
     alias: 'widget.permissionlist',
     store: 'PermissionStore',
-    height: 250,
-    anchor: '100%',
+    
     selType: 'checkboxmodel',
     
     columns: [

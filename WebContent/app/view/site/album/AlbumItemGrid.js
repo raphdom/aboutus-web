@@ -21,7 +21,7 @@ Ext.define('AboutUs.view.site.album.AlbumItemGrid' ,{
                             '<tpl for=".">',
                                 '<div class="thumb-wrap" id="{filename:stripTags}">',
                                     '<div class="{classThumb}">',
-                                    	'<img src="{id:formatThumbUrl(1,values.fileType)}" title="{filename:htmlEncode}">',
+                                    	'<img src="{id:formatThumbUrl(2,values.fileType)}" title="{filename:htmlEncode}">',
                                     '</div>',
                                     '<span class="x-editable">{filename:htmlEncode}</span>',
                                 '</div>',
@@ -47,6 +47,7 @@ Ext.define('AboutUs.view.site.album.AlbumItemGrid' ,{
 					        			Ext.Array.forEach(recordsSelected, function(record, index, allItems) {
 					        				var item = Ext.create('AboutUs.model.site.ItemAlbum');
 					        				item.set('id',record.get('id'));
+					        				item.set('filename',record.get('filename'));
 					        				store.add(item);
 					        			});
 					        			

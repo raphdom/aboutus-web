@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <meta http-equiv=content-type content=text/html; charset=UTF-8> 
 <html>
 <head>
@@ -6,7 +8,14 @@
 	<link rel="SHORTCUT ICON" href="resources/images/favicon.png">
 	<!-- Ext JS Files -->
 	<link rel="stylesheet" type="text/css" href="ext4.2.1/resources/ext-theme-neptune/ext-theme-neptune-all.css">
-    <script type="text/javascript" src="ext4.2.1/ext-all-dev.js"></script>
+    <c:choose>
+		<c:when test = "${activeEnv == 'dev'}">
+			<script type="text/javascript" src="ext4.2.1/ext-all-dev.js"></script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript" src="ext4.2.1/ext-all.js"></script>
+		</c:otherwise>
+	</c:choose>
     <script type="text/javascript" src="ext4.2.1/ext-theme-neptune.js"></script>
     <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="resources/js/lightview.js"></script>

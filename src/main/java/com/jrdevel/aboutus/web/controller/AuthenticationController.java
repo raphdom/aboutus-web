@@ -123,5 +123,14 @@ public class AuthenticationController {
 	public ModelAndView keepAlive(HttpSession session){
 		return null; 
 	}
+	
+	@RequestMapping(value="/listPermissions.action")
+	public @ResponseBody Map<String,? extends Object> listPermissions() throws Exception {
+		
+		ResultObject result = authenticationService.listPermissions();
+		
+		return result.toMap();
+		
+	}
 
 }
