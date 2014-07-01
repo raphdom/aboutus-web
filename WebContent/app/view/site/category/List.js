@@ -9,9 +9,9 @@ Ext.define('AboutUs.view.site.category.List', {
     controller: 'site.CategoryController',
     
     permissions:{
-    	add:Constants.auth_adduser,
-    	edit:Constants.auth_edituser,
-    	remove:Constants.auth_deleteuser
+    	add:'ROLE_ADD_CATEG',
+    	edit:'ROLE_EDIT_CATEG',
+    	remove:'ROLE_DEL_CATEG'
     },
     
     columns: [{

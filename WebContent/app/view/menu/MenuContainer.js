@@ -22,19 +22,19 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	    	   icon:'resources/images/home.png',
 			    	    	   controller:'HomeController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:true
 			    	       },{
 			    	    	   title:'Disco',
 			    	    	   icon:'resources/images/mediaManager.png',
 			    	    	   controller:'CloudController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listgroup)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_FILES")
 			    	       },{
 			    	    	   title:'Calendário',
 			    	    	   icon:'resources/images/calendar.png',
 			    	    	   controller:'CalendarController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listgroup)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_EVENTS")
 			    	       }
 			    	 ]
         		}]
@@ -54,14 +54,14 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	    	   icon:'resources/images/user.png',
 			    	    	   controller:'UserController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_USERS")
 			    	       },
 			    	       {
 			    	    	   title:'Grupos',
 			    	    	   icon:'resources/images/groupManager.png',
 			    	    	   controller:'GroupController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listgroup)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_GROUPS")
 			    	       }
 			    	       ]
 			    },{
@@ -96,35 +96,35 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	    	   icon:'resources/images/categories.png',
 			    	    	   controller:'site.CategoryController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_CATEG")
 			    	       },
 			    	       {
 			    	    	   title:'Artigos',
 			    	    	   icon:'resources/images/article.png',
 			    	    	   controller:'site.ArticleController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_ARTICLES")
 			    	       },
 			    	       {
 			    	    	   title:'Vídeos',
 			    	    	   icon:'resources/images/videos.png',
 			    	    	   controller:'site.VideoController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_VIDEOS")
 			    	       },
 			    	       {
 			    	    	   title:'Albuns',
 			    	    	   icon:'resources/images/albuns.png',
 			    	    	   controller:'site.AlbumController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_ALBUNS")
 			    	       },
 			    	       {
 			    	    	   title:'Banners',
 			    	    	   icon:'resources/images/banners.png',
 			    	    	   controller:'site.BannerController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_BANNERS")
 			    	       }
 			    	       ]
 			    },{
@@ -137,13 +137,13 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	    	   icon:'resources/images/music.png',
 			    	    	   controller:'music.MusicController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_MUSICS")
 			    	       },{
 			    	    	   title:'Listas de Reprodução',
 			    	    	   icon:'resources/images/playlist.png',
 			    	    	   controller:'music.PlaylistController',
 			    	    	   type:'list',
-			    	    	   visible:AboutUs.util.UserManager.hasPermission(Constants.auth_listuser)
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_PLAYLISTS")
 	    	        }]
 			    }]
         	}]

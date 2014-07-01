@@ -9,9 +9,9 @@ Ext.define('AboutUs.view.site.banner.List', {
     controller: 'site.BannerController',
     
     permissions:{
-    	add:Constants.auth_adduser,
-    	edit:Constants.auth_edituser,
-    	remove:Constants.auth_deleteuser
+    	add:'ROLE_ADD_BANNERS',
+    	edit:'ROLE_EDIT_BANNERS',
+    	remove:'ROLE_DEL_BANNERS'
     },
     
     columns: [{

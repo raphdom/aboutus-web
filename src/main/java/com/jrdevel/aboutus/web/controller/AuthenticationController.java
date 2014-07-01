@@ -59,9 +59,9 @@ public class AuthenticationController {
 		try{
 			
 			UserDetailsAdapter userAdapter = (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			List<Integer> permissions = new ArrayList<Integer>();
+			List<String> permissions = new ArrayList<String>();
 			for(Permission permission : userAdapter.getRoles()){
-				permissions.add(permission.getId());
+				permissions.add(permission.getName());
 			}
 			HashMap<String, Object> result = new HashMap<String,Object>();
 			result.put("id", userAdapter.getId());

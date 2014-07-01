@@ -5,6 +5,8 @@ Ext.define('AboutUs.view.common.Form', {
     
     requires:['Ext.ux.form.plugin.ValidationMessages'],
     
+    layout:'fit',
+    
     fieldDefaults: {
         labelWidth: 110,
         labelAlign: 'left',

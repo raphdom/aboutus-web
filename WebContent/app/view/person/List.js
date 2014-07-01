@@ -9,9 +9,9 @@ Ext.define('AboutUs.view.person.List', {
     dialog: 'persondialog',
     controller: 'PersonController',
     permissions:{
-    	add:Constants.auth_adduser,
-    	edit:Constants.auth_edituser,
-    	remove:Constants.auth_deleteuser
+    	add:'ROLE_ADD_PEOPLE',
+    	edit:'ROLE_EDIT_PEOPLE',
+    	remove:'ROLE_DEL_PEOPLE'
     },
     
     columns: [{

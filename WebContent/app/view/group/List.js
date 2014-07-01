@@ -8,9 +8,9 @@ Ext.define('AboutUs.view.group.List', {
     dialog: 'groupdialog',
     controller: 'GroupController',
     permissions:{
-    	add:Constants.auth_addgroup,
-    	edit:Constants.auth_editgroup,
-    	remove:Constants.auth_deletegroup
+    	add:'ROLE_ADD_GROUPS',
+    	edit:'ROLE_EDIT_GROUPS',
+    	remove:'ROLE_DEL_GROUPS'
     },
     columns: [
     {

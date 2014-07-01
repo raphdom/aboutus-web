@@ -9,9 +9,9 @@ Ext.define('AboutUs.view.site.article.List', {
     controller: 'site.ArticleController',
     
     permissions:{
-    	add:Constants.auth_adduser,
-    	edit:Constants.auth_edituser,
-    	remove:Constants.auth_deleteuser
+    	add:'ROLE_ADD_ARTICLES',
+    	edit:'ROLE_EDIT_ARTICLES',
+    	remove:'ROLE_DEL_ARTICLES'
     },
     
     columns: [{

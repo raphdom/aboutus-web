@@ -9,9 +9,9 @@ Ext.define('AboutUs.view.site.video.List', {
     controller: 'site.VideoController',
     
     permissions:{
-    	add:Constants.auth_adduser,
-    	edit:Constants.auth_edituser,
-    	remove:Constants.auth_deleteuser
+    	add:'ROLE_ADD_VIDEOS',
+    	edit:'ROLE_EDIT_VIDEOS',
+    	remove:'ROLE_DEL_VIDEOS'
     },
     
     columns: [{

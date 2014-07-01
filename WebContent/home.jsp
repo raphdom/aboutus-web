@@ -46,8 +46,13 @@
    		calendarWeekday5:	'<spring:message code="calendar-weekday-5" text="Friday" />',
    		calendarWeekday6:	'<spring:message code="calendar-weekday-6" text="Saturday" />',
     }
+    <c:set var="req" value="${pageContext.request}" />
+    <c:set var="baseURL" value="${req.scheme}://${req.serverName}:${req.serverPort}${req.contextPath}" />
+    var baseURL = "<c:out value='${baseURL}'/>"+"/"; 
+    
     </script>
 </head>
 <body>
+
 </body>
 </html>

@@ -52,11 +52,11 @@ Ext.apply(Ext.util.Format,{
         		
         		var sizeIconDataType = '24';
             	
-            	if (datatype == 0){
+            	if (datatype == 1){
             		sizeIconDataType= '32';
-            	}else if(datatype == 1){
-            		sizeIconDataType= '64';
             	}else if(datatype == 2){
+            		sizeIconDataType= '64';
+            	}else if(datatype == 4){
             		sizeIconDataType= '128';
             	}
         		

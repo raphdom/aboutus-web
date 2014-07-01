@@ -5,26 +5,25 @@ Ext.define('AboutUs.view.user.TabUserPermission', {
     
     title:'Grupos/Permissões',
     
-    header:false,
-    
     layout:{
-    	type:'hbox'
+    	type:'hbox',
+    	align:'stretchmax'
     },
    
     items:[{
     		title:'Grupos',
     		xtype:'grouplist',
-    		flex:1,
     		hidetoolbar:true,
     		editColumn:false,
-    		scroll:true
+    		autoScroll:true,
+    		flex:1
     	},{
     		title:'Permissões',
     		xtype:'permissionlist',
-    		flex:1,
     		hidetoolbar:true,
     		editColumn:false,
-    		scroll:true
+    		autoScroll:true,
+    		flex:1
 	}]
     
     

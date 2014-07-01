@@ -54,6 +54,11 @@
     background:transparent;
 }
 
+#images-view .thumbIcon{
+    height: 76px;
+    margin-top:8px;
+}
+
 #images-view .loading-indicator {
     font-size:11px;
     background-image:url('../../../resources/themes/images/default/grid/loading.gif');

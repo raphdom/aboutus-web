@@ -6,6 +6,8 @@ Ext.define('AboutUs.view.group.PermissionList', {
     
     selType: 'checkboxmodel',
     
+    layout:'fit',
+    
     columns: [
     {
     	header: "Nome",

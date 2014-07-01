@@ -19,9 +19,9 @@ Ext.define('AboutUs.view.home.HomeContainer', {
             /*},{
                 xtype: 'whoonlinecontainer',
                 region: 'east'*/
-            },{
+            /*},{
                 xtype: 'dashboardcontainer',
-                region: 'south'
+                region: 'south'*/
             }]
     
 });
