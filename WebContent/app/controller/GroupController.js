@@ -15,8 +15,10 @@ Ext.define('AboutUs.controller.GroupController', {
         	ref: 'grouplist',
         	selector: 'groupList'
    		},{
-    		ref: 'groupDialog',
-    		selector: 'groupdialog'
+    		ref: 'dialog',
+    		selector: 'groupdialog',
+    		autoCreate:true,
+        	xtype:'groupdialog'
 		},{
 	    	ref: 'permissionList',
     		selector: 'permissionlist'
@@ -51,17 +53,16 @@ Ext.define('AboutUs.controller.GroupController', {
 		this.getPermissionList().grid.getSelectionModel().select(record.permissions().getRange());
 	},
 	onBeforeSaveData: function(){
-		var form = this.getGroupDialog().down('form');
-		
-		var myItems = this.getPermissionList().getSelectionModel().getSelection();
-		var myJson = [];
-		for (var i in myItems) {
-		    myJson.push(myItems[i].data);
-		}
+		var form = this.getDialog().down('form');
 
-		var json = Ext.encode(myJson);
+		var permissions = this.getPermissionList().grid.getSelectionModel().getSelection();
 		
-		form.getForm().findField('permissions').setValue(json);
+		var permissionsId = new Array();
+		Ext.Array.each(permissions, function(record, index) {
+			permissionsId.push(record.getId());
+		});
+		
+		form.getRecord().set('permissions',permissionsId);
 		
 	},
 	onSaveDataFailure: function(){

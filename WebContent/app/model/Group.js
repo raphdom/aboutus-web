@@ -7,12 +7,11 @@ Ext.define('AboutUs.model.Group', {
     	},{
     		name:'name',
     		type:'string'
+    	},{
+    		name:'permissions'
     	}],
     	
     
-    	hasMany: [
-    		{model: 'AboutUs.model.Permission', foreignKey: 'groupId', name:'permissions'}
-    	],
     	belongsTo: {model: 'AboutUs.model.User', foreignKey: 'userId'},
     	
     	proxy: {

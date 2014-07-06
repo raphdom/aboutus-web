@@ -73,7 +73,7 @@ Ext.define('AboutUs.controller.CommonListController', {
 	},
 	
 	onAdd: function(button, event, options) {
-		Ext.widget(this.getCommonList().dialog).show();
+		this.actualController().getDialog().show();
     	if (this.actualController().onAfterAdd != undefined){
     		this.actualController().onAfterAdd(button,event,options);	
     	}
@@ -88,12 +88,12 @@ Ext.define('AboutUs.controller.CommonListController', {
     onEdit: function(button, record) {
     	var me = this;
     	var listRecord = record;
+    	var dialog = me.actualController().getDialog();
     	eval(record.modelName).load(record.get('id'), {
 		    scope: this,
 		    failure: function(record, operation) {
 		    },
 		    success: function(record, operation) {
-		    	var dialog = Ext.widget(me.getCommonList().dialog);
 		    	me.getCommonDialog().down('form').loadRecord(record);
 		    	var titleUpdate = me.getCommonDialog().titleUpdate;
         		if (titleUpdate != undefined){
@@ -171,18 +171,6 @@ Ext.define('AboutUs.controller.CommonListController', {
 		    	}
 	    	});
     	}
-        /*form.submit({
-        	url:this.getCommonDialog().urlSubmit,
-        	scope:this,
-        	success: function(form, action) {
-        		win.hide();
-        		this.getCommonGrid().getStore().reload();
-            },
-            failure: function(form, action) {
-            	AboutUs.util.NotificationUtil.processMessages(action.result.messages);
-                //AboutUs.util.NotificationUtil.showNotificationError("Erro ao guardar!");
-            }
-        });*/
     },
     
     onDoSearch: function(button, event, options) {

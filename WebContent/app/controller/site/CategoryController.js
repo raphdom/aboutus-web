@@ -8,7 +8,15 @@ Ext.define('AboutUs.controller.site.CategoryController', {
     views: ['site.category.List',
     		'site.category.Dialog'],
     
-    refs: [],
+    refs: [{
+        ref: 'list',
+        selector: 'sitecategorylist'
+    },{
+    	ref: 'dialog',
+    	selector: 'sitecategorydialog',
+    	autoCreate:true,
+        xtype:'sitecategorydialog'
+    }],
     
     init: function() {
         this.control({

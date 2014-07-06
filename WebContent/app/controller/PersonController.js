@@ -20,8 +20,10 @@ Ext.define('AboutUs.controller.PersonController', {
         ref: 'personList',
         selector: 'personlist'
     },{
-    	ref: 'personDialog',
-    	selector: 'persondialog'
+    	ref: 'dialog',
+    	selector: 'persondialog',
+    	autoCreate:true,
+        xtype:'persondialog'
     },{
     	ref: 'addressGrid',
     	selector: 'persontabaddress grid'
@@ -47,7 +49,7 @@ Ext.define('AboutUs.controller.PersonController', {
     },
     
     onBeforeSaveData: function(){
-		var form = this.getPersonDialog().down('form');
+		var form = this.getDialog().down('form');
 
 		var adresses = this.getAddressGrid().getSelectionModel().getSelection();
 		form.getRecord().addresses().add(adresses);
@@ -59,7 +61,7 @@ Ext.define('AboutUs.controller.PersonController', {
 	
 	onGetDataSuccess:function(record){
 		var me = this;
-		var form = this.getPersonDialog().down('form');
+		var form = this.getDialog().down('form');
 		
 		this.getAddressGrid().getStore().add(record.addresses().getRange());
 		this.getContactGrid().getStore().add(record.contacts().getRange());

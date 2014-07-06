@@ -2,15 +2,11 @@ Ext.define('AboutUs.view.church.List', {
 	extend: 'AboutUs.view.common.List',
     
     alias: 'widget.churchlist',
-    
     title : 'Igrejas',
-    
     store: 'ChurchStore',
-    
     icon:'resources/images/church.png',
-    
-    dialog: 'AboutUs.view.church.Dialog',
-    
+    dialog: 'churchdialog',
+    controller: 'ChurchController',
     permissions:{
     	add:'ROLE_ADD_CHURCHES',
     	edit:'ROLE_EDIT_CHURCHES',

@@ -9,11 +9,13 @@ Ext.define('AboutUs.controller.site.VideoController', {
     		'site.video.Dialog'],
     
     refs: [{
-        ref: 'videoList',
+        ref: 'list',
         selector: 'sitevideolist'
     },{
-    	ref: 'videoDialog',
-    	selector: 'sitevideodialog'
+    	ref: 'dialog',
+    	selector: 'sitevideodialog',
+    	autoCreate:true,
+        xtype:'sitevideodialog'
     }],
     
     init: function() {

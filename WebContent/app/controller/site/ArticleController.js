@@ -9,11 +9,13 @@ Ext.define('AboutUs.controller.site.ArticleController', {
     		'site.article.Dialog'],
     
     refs: [{
-        ref: 'articleList',
+        ref: 'list',
         selector: 'sitearticlelist'
     },{
-    	ref: 'articleDialog',
-    	selector: 'sitearticledialog'
+    	ref: 'dialog',
+    	selector: 'sitearticledialog',
+    	autoCreate:true,
+        xtype:'sitearticledialog'
     }],
     
     init: function() {

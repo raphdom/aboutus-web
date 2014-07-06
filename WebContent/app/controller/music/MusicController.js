@@ -9,11 +9,13 @@ Ext.define('AboutUs.controller.music.MusicController', {
     		'music.music.Dialog'],
     
     refs: [{
-        ref: 'musicList',
+        ref: 'list',
         selector: 'musiclist'
     },{
-    	ref: 'musicDialog',
-    	selector: 'musicdialog'
+    	ref: 'dialog',
+    	selector: 'musicdialog',
+    	autoCreate:true,
+        xtype:'musicdialog'
     }],
     
     init: function() {

@@ -18,6 +18,7 @@ Ext.define('AboutUs.store.CurrentUserStore', {
     listeners:{
     	load: function(store, records, successful, eOpts){
     		AboutUs.util.UserManager.setUser(records[0]);
+    		AboutUs.app.getController('MainController').getUserNameContainer().update({name:records[0].get('name')})
     		AboutUs.app.getController('MenuController').showMenu();
     	}
     }

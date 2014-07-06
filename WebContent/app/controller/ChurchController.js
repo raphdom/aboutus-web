@@ -14,8 +14,10 @@ Ext.define('AboutUs.controller.ChurchController', {
         ref: 'churchlist',
         selector: 'churchList'
     },{
-    	ref: 'churchdialog',
-    	selector: 'churchdialog'
+    	ref: 'dialog',
+    	selector: 'churchdialog',
+    	autoCreate:true,
+        xtype:'churchdialog'
     }],
     
     init: function() {

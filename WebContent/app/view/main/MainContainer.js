@@ -51,10 +51,10 @@ Ext.define('AboutUs.view.main.MainContainer', {
     						text: 'Meu Perfil',
     						action: 'myProfile',
     						icon:'resources/images/profile.png'
-    					},{
+    					/*},{
     						text: 'Preferências',
     						action: 'preferences',
-    						icon:'resources/images/configuration.png'
+    						icon:'resources/images/configuration.png'*/
 						},{
     						text: 'Alterar palavra-passe',
     						action: 'changePassword',
@@ -66,8 +66,8 @@ Ext.define('AboutUs.view.main.MainContainer', {
     					}]
     				},{
     					xtype:'container',
+    					id:'userNameContainer',
     					tpl: '<div class="userInfoBox">{name}</div>',
-    					data: {name: 'Raphael Rodrigues Domingues'},
     					flex: 1
     				},{
     					xtype:'button',

@@ -10,12 +10,14 @@ Ext.define('AboutUs.controller.site.AlbumController', {
     		'site.album.AlbumItemGrid'],
     
     refs: [{
-        ref: 'albumList',
+        ref: 'list',
         selector: 'sitealbumlist'
     },{
-    	ref: 'albumDialog',
-    	selector: 'sitealbumdialog'
-	 },{
+    	ref: 'dialog',
+    	selector: 'sitealbumdialog',
+    	autoCreate:true,
+        xtype:'sitealbumdialog'
+    },{
     	ref: 'itemGrid',
     	selector: 'albumitemgrid'
     }],
@@ -39,7 +41,7 @@ Ext.define('AboutUs.controller.site.AlbumController', {
     
     onBeforeSaveData: function(){
     	
-    	var form = this.getAlbumDialog().down('form');
+    	var form = this.getDialog().down('form');
     	
     	var items = this.getItemGrid().down('dataview').getStore().getRange();
 		form.getRecord().items().add(items);
@@ -49,7 +51,7 @@ Ext.define('AboutUs.controller.site.AlbumController', {
 	onGetDataSuccess:function(record){
 		
 		var me = this;
-		var form = this.getAlbumDialog().down('form');
+		var form = this.getDialog().down('form');
 		
 		this.getItemGrid().down('dataview').getStore().add(record.items().getRange());
 		

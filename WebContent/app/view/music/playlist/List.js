@@ -1,17 +1,17 @@
-Ext.define('AboutUs.view.site.video.List', {
+Ext.define('AboutUs.view.music.playlist.List', {
 	extend: 'AboutUs.view.common.List',
     
-    alias: 'widget.sitevideolist',
-    title : 'Videos',
-    store: 'site.VideoStore',
+    alias: 'widget.playlistlist',
+    title : 'Listas de Reprodução',
+    store: 'music.PlaylistStore',
     icon:'resources/images/videos.png',
-    dialog: 'sitevideodialog',
-    controller: 'site.VideoController',
+    dialog: 'playlistdialog',
+    controller: 'music.PlaylistController',
     
     permissions:{
-    	add:Constants.auth_adduser,
-    	edit:Constants.auth_edituser,
-    	remove:Constants.auth_deleteuser
+    	add:'ROLE_ADD_PLAYLISTS',
+    	edit:'ROLE_EDIT_PLAYLISTS',
+    	remove:'ROLE_DEL_PLAYLISTS'
     },
     
     columns: [{
@@ -19,28 +19,6 @@ Ext.define('AboutUs.view.site.video.List', {
 		width: 170,
 		flex:1,
 		dataIndex: 'title'
-    },{
-    	header: "URL",
-		width: 170,
-		flex:1,
-		dataIndex: 'url'
-    },{
-    	xtype:'booleanimagecolumn', 
-		header: "Publicado",
-		align:'center',
-		flex:1,
-		dataIndex:'published',
-		criteriaXtype:'combo'
-    },{
-    	header: "Ordem",
-		width: 170,
-		flex:1,
-		dataIndex: 'ordering'
-    },{
-    	header: "Categoria",
-		width: 170,
-		flex:1,
-		dataIndex: 'categoryName'
     }],
     
 

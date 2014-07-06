@@ -48,6 +48,7 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	itemId:'users',
 			    	icon:'resources/images/userManager.png',
 			    	xtype:'menu-list',
+			    	visible:false,
 			    	menuItems:[
 			    	       {
 			    	    	   title:'Utilizadores',
@@ -75,14 +76,14 @@ Ext.define('AboutUs.view.menu.MenuContainer', {
 			    	    	   icon:'resources/images/personManager.png',
 			    	    	   controller:'PersonController',
 			    	    	   type:'list',
-			    	    	   visible:true
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_PEOPLE")
 			    	       },
 			    	       {
 			    	    	   title:'Igrejas',
 			    	    	   icon:'resources/images/church.png',
 			    	    	   controller:'ChurchController',
 			    	    	   type:'list',
-			    	    	   visible:true
+			    	    	   visible:AboutUs.util.UserManager.hasPermission("ROLE_LIST_CHURCHES")
 			    	       }
 			    	       ]
 			    },{

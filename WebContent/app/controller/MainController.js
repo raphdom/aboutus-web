@@ -37,6 +37,9 @@ Ext.define('AboutUs.controller.MainController', {
     	selector:'dialogchangepass',
     	autoCreate:true,
         xtype:'dialogchangepass'
+    },{
+    	ref: 'userNameContainer',
+    	selector:'mainContainer container[id=userNameContainer]'
     }
     
     ],

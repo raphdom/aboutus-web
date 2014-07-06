@@ -1,28 +1,23 @@
 Ext.define('AboutUs.view.church.Dialog', {
-    extend: 'Ext.window.Window',
+    extend: 'AboutUs.view.common.Dialog',
     
     alias: 'widget.churchdialog',
     
     title: 'Igreja',
     
-    modal: true,
+    title: 'Nova Igreja',
+    titleUpdate: 'Detalhes da igreja: {name}',
+    
+    width:600,
+    height:400,
     
     layout:'fit',
     
-    
-    
     items:[{
-    
-    	xtype: 'churchtabpanel'
-        
-    }],
-    
-    buttons: [{
-        text: 'Save',
-        action:'save'
-    },{
-        text: 'Cancel',
-        action:'cancel'
+    	xtype:'commonform',
+    	items:[{
+    		xtype: 'churchtabpanel'
+    	}]
     }]
     
 });

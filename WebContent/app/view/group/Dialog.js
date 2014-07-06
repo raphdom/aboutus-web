@@ -7,10 +7,10 @@ Ext.define('AboutUs.view.group.Dialog', {
     
     urlLoad: 'group/get.action',
     urlSubmit: 'group/save.action',
+    height: 400,
     
     items:[{
     	xtype: 'commonform',
-        layout: 'form',
         bodyPadding: 10,
         defaultType: 'textfield',
         items: [
@@ -28,7 +28,7 @@ Ext.define('AboutUs.view.group.Dialog', {
         },{
         	xtype:'fieldset',
         	title: 'Permissões',
-        	layout:'anchor',
+        	height: 300,
         	items :[{
         		hidetoolbar:true,
     			editColumn:false,

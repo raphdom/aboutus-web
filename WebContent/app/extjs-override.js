@@ -25,7 +25,7 @@ Ext.apply(Ext.util.Format,{
         
         formatThumbProfile: function(fileid){
         	if (fileid && fileid > 0){
-        		return this.formatThumbUrl(fileid, 2);
+        		return this.formatThumbUrl(fileid, 4);
         	}else{
         		return "resources/images/noProfileImage.png";
         	}

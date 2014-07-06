@@ -6,7 +6,7 @@ Ext.define('AboutUs.view.music.music.List', {
     store: 'music.MusicStore',
     icon:'resources/images/music.png',
     dialog: 'musicdialog',
-    controller: 'site.MusicController',
+    controller: 'music.MusicController',
     
     permissions:{
     	add:'ROLE_ADD_MUSICS',

@@ -8,9 +8,7 @@ Ext.define('AboutUs.view.church.TabData', {
     closable:false,
     
     items:[{
-    	xtype: 'form',
         layout: 'form',
-        url: 'church/create.action',
         bodyPadding: 10,
         fieldDefaults: {
             msgTarget: 'side',

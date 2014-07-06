@@ -440,9 +440,28 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onBeforeDropFiles: function(node, data, overModel, dropPosition, dropHandlers) {
 	    dropHandlers.wait = true;
+	    var me = this;
 	    Ext.MessageBox.confirm('Mover ficheiros', 'Tem a certeza que deseja mover os ficheiros de pasta?', function(btn){
 	        if (btn === 'yes') {
-				alert(node);	            
+	        	var ids = new Array();
+	    		Ext.Array.each(data.records, function(record, index) {
+					ids.push(record.getId());
+	    		});
+	    		
+	    		var params = {
+	    			folderId : overModel.data.id,
+	    			files : ids
+	    		}
+				Ext.Ajax.request({
+				    url: 'cloud/moveFiles.action',
+				    headers: {
+	                	'Content-Type': 'application/json;'
+	                },
+				    params: Ext.encode(params),
+				    success: function(response){
+				        me.refresh();
+				    }
+				});
 	        }
     	});
     	dropHandlers.cancelDrop();

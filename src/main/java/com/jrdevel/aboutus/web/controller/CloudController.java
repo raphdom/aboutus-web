@@ -133,5 +133,14 @@ public class CloudController {
 
 	}
 	
+	@RequestMapping(value="/moveFiles.action")
+	public @ResponseBody Map<String,? extends Object> moveFiles(@RequestBody FilesToMove input) throws Exception {
+		
+		ResultObject result = cloudService.moveFiles(input.getFolderId(), input.getFiles());
+		
+		return result.toMap();
+		
+	}
+	
 
 }

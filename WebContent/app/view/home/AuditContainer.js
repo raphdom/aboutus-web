@@ -16,7 +16,7 @@ Ext.define('AboutUs.view.home.AuditContainer', {
                 xtype:'button',
                 text: 'Ver tudo',
                 handler: function(){
-                    alert('button clicked!');
+                    AboutUs.app.getController('AuditController').processActionMenu();
                 }
             }]    
         },

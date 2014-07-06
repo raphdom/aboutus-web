@@ -9,11 +9,13 @@ Ext.define('AboutUs.controller.site.BannerController', {
     		'site.banner.Dialog'],
     
     refs: [{
-        ref: 'bannerList',
+        ref: 'list',
         selector: 'sitebannerlist'
     },{
-    	ref: 'bannerDialog',
-    	selector: 'sitebannerdialog'
+    	ref: 'dialog',
+    	selector: 'sitebannerdialog',
+    	autoCreate:true,
+        xtype:'sitebannerdialog'
     }],
     
     init: function() {
