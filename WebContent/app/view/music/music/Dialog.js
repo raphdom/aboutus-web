@@ -6,13 +6,13 @@ Ext.define('AboutUs.view.music.music.Dialog', {
     requires:['AboutUs.view.component.CategoryCombo',
     		  'AboutUs.view.component.ThumbField'],
     
-    title: 'Novo Video',
-    titleUpdate: 'Detalhes do video: {title}',
+    title: 'Nova Música',
+    titleUpdate: 'Detalhes da música: {title}',
     
-    icon:'resources/images/videos.png',
+    icon:'resources/images/music.png',
     
     width:600,
-    height:300,
+    height:400,
     
     layout:'fit',
     
@@ -40,20 +40,26 @@ Ext.define('AboutUs.view.music.music.Dialog', {
 						name:'title',
 						allowBlank: false
 					},{
-						fieldLabel: 'Descrição',
-						name:'description',
-						allowBlank: false
+						fieldLabel: 'Tempo',
+						name:'time'
 					},{
-						fieldLabel: 'Url',
-						name:'url',
-						allowBlank: false
+						fieldLabel: 'Tom original',
+						name:'originalTone'
 					},{
-						fieldLabel: 'Ordem',
-						name:'ordering',
-						allowBlank: false
+						fieldLabel: 'Bateria',
+						name:'drumsStyle'
+					},{
+						fieldLabel: 'Link',
+						name:'link'
+					},{
+						fieldLabel: 'Autor',
+						name:'author'
+					},{
+						fieldLabel: 'Notas',
+						name:'musicNotes'
 					},{
 			            xtype: 'fieldcontainer',
-			            fieldLabel: 'Publicado',
+			            fieldLabel: 'Favorito',
 			            defaultType: 'checkboxfield',
 			            layout: {
 					    	type:'hbox',
@@ -63,17 +69,36 @@ Ext.define('AboutUs.view.music.music.Dialog', {
 					    },
 			            items: [
 			                {
-			                    name      : 'published',
+			                    name      : 'favorite',
 			                    inputValue: 'true',
 			                    id        : 'checkbox1'
 		                	}
 			            ]
-			        },{
-						xtype:'categorycombo',
-						fieldLabel: 'Categoria:',
-						name:'categoryId',
-						allowBlank: false
 			        }]
+        		}]
+        	},{
+        		title:'Letra',
+        		layout:'fit',
+        		items:[{
+        			xtype     : 'textareafield',
+			    	emptyText : 'Digita aqui a letra da música',
+			        name      : 'liryc'
+        		}]
+        	},{
+        		title:'Conteúdo',
+        		layout:'fit',
+        		items:[{
+        			xtype     : 'textareafield',
+			    	emptyText : 'Digita aqui a cifra da música',
+			        name      : 'content'
+        		}]
+    		},{
+        		title:'Observações',
+        		layout:'fit',
+        		items:[{
+        			xtype     : 'textareafield',
+			    	emptyText : 'Digita aqui as observações',
+			        name      : 'observations'
         		}]
         	}]
     	}]

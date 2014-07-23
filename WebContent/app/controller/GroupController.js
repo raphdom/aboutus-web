@@ -26,7 +26,9 @@ Ext.define('AboutUs.controller.GroupController', {
     
     init: function() {
         this.control({
-     		
+     		'groupdialog': {
+				afterlayout: this.onDialogAfterDialog
+			}
         });
     },
     
@@ -44,13 +46,12 @@ Ext.define('AboutUs.controller.GroupController', {
     
     onAfterAdd: function(button, event, options) {
     	console.log('GroupController.onAfterAdd()');
-    	this.getPermissionList().getStore().load();
     },
     
     onGetDataFailure: function(response){
 	},
 	onGetDataSuccess:function(record){
-		this.getPermissionList().grid.getSelectionModel().select(record.permissions().getRange());
+		//this.getPermissionList().grid.getSelectionModel().select(record.permissions().getRange());
 	},
 	onBeforeSaveData: function(){
 		var form = this.getDialog().down('form');
@@ -64,6 +65,17 @@ Ext.define('AboutUs.controller.GroupController', {
 		
 		form.getRecord().set('permissions',permissionsId);
 		
+	},
+	onDialogAfterDialog:function(dialog){
+		var me = this;
+		var form = this.getDialog().down('form');
+		
+		if(form.getRecord()){
+			Ext.Array.each(form.getRecord().get('permissions'), function(id, index) {
+				var record = me.getPermissionList().grid.getStore().getById(id)
+			    me.getPermissionList().grid.getSelectionModel().select(record,true);
+			});
+		}
 	},
 	onSaveDataFailure: function(){
 	},

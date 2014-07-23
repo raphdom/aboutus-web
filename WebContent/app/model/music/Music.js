@@ -5,11 +5,30 @@ Ext.define('AboutUs.model.music.Music', {
     		name:'id',
     		type:'int'
     	},{
+    		name:'time',
+    		type:'int',
+    		useNull:true
+    	},{
+    		name:'originalTone'
+    	},{
+    		name:'drumsStyle'
+    	},{
+    		name:'link'
+    	},{
     		name:'title'
     	},{
     		name:'author'
     	},{
     		name:'liryc'
+    	},{
+    		name:'musicNotes'
+    	},{
+    		name:'favorite',
+    		type:'boolean'
+    	},{
+    		name: 'content'
+    	},{
+    		name: 'observations'
     	}],
     	
    	proxy: {

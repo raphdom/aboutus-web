@@ -15,6 +15,22 @@ Ext.define('AboutUs.view.music.music.List', {
     },
     
     columns: [{
+	            xtype:'actioncolumn',
+	            width:30,
+	            hideable:false,
+	            menuDisabled:true,
+	            resizable:false,
+	            items: [{
+	                icon: 'resources/images/projection.png',
+	                tooltip: 'Slider',
+	                handler: function(grid, rowIndex, colIndex) {
+	                    var rec = grid.getStore().getAt(rowIndex);
+	                    if(rec){
+	    					grid.up('musiclist').fireEvent('slideMusic', this, rec);
+	    				}
+	                }
+            	}]
+	},{
     	header: "Id",
 		width: 170,
 		flex:1,
