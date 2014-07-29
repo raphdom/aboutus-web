@@ -17,10 +17,14 @@ Ext.define('AboutUs.view.site.album.AlbumItemGrid' ,{
             Ext.applyIf(me, {
                     items: Ext.create('Ext.view.View', {
                         store: store,
+				        plugins: {
+				            ptype: 'gridviewdragdrop',
+				            dragText: 'Drag and drop to reorganize'
+				        },
                         tpl: [
                             '<tpl for=".">',
                                 '<div class="thumb-wrap" id="{filename:stripTags}">',
-                                    '<div class="{classThumb}">',
+                                    '<div class="thumb">',
                                     	'<img src="{id:formatThumbUrl(2,values.fileType)}" title="{filename:htmlEncode}">',
                                     '</div>',
                                     '<span class="x-editable">{filename:htmlEncode}</span>',
@@ -47,7 +51,7 @@ Ext.define('AboutUs.view.site.album.AlbumItemGrid' ,{
 					        			Ext.Array.forEach(recordsSelected, function(record, index, allItems) {
 					        				var item = Ext.create('AboutUs.model.site.ItemAlbum');
 					        				item.set('id',record.get('id'));
-					        				item.set('filename',record.get('filename'));
+					        				//item.set('filename',record.get('filename'));
 					        				store.add(item);
 					        			});
 					        			

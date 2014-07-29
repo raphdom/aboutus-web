@@ -26,8 +26,8 @@ Ext.define('AboutUs.controller.music.MusicController', {
     
     init: function() {
         this.control({
-        	'musiclist': {
-				slideMusic: this.onSlideMusic
+        	'musicdialog commonform button[action=slide]': {
+				click: this.onSlideMusic
 			},
 			'slidewindow button[action=play]':{
 				click: this.onPlaySlide
@@ -57,27 +57,13 @@ Ext.define('AboutUs.controller.music.MusicController', {
 		
 	},
 	
-	onSlideMusic: function(actionCol, record){
+	onSlideMusic: function(button){
 		var dialog = this.getSlideWindow();
-		dialog.down('dataview').getStore().loadData([{
-        	phrase:'SLIDE 1 LINE LINE'
-        },{
-        	phrase:'SLIDE 2 LINE LINE <br/> LINE2 LINE2 LINE2'
-        },{
-        	phrase:'SLIDE 3 LINE LINE <br/> LINE2 LINE2 LINE2 <br/> LINE3 LINE3 LINE3'
-        },{
-        	phrase:'SLIDE 1 LINE LINE'
-        },{
-        	phrase:'SLIDE 2 LINE LINE <br/> LINE2 LINE2 LINE2'
-        },{
-        	phrase:'SLIDE 3 LINE LINE <br/> LINE2 LINE2 LINE2 <br/> LINE3 LINE3 LINE3'
-        },{
-        	phrase:'SLIDE 1 LINE LINE'
-        },{
-        	phrase:'SLIDE 2 LINE LINE <br/> LINE2 LINE2 LINE2'
-        },{
-        	phrase:'SLIDE 3 LINE LINE <br/> LINE2 LINE2 LINE2 <br/> LINE3 LINE3 LINE3'
-        }]);
+		
+        var musicTitle = this.getDialog().down('textfield[name=title]').getValue();
+        var musicLyric = this.getDialog().down('textfield[name=liryc]').getValue();
+        dialog.addMusic(musicTitle,musicLyric);
+		
 		dialog.show();
 	},
 	

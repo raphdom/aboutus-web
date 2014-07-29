@@ -9,8 +9,8 @@ Ext.define('AboutUs.view.music.music.SlideWindow', {
     
     icon:'resources/images/projection.png',
     
-    width:680,
-    height:400,
+    width:730,
+    height:430,
     
     layout:'fit',
     
@@ -22,18 +22,8 @@ Ext.define('AboutUs.view.music.music.SlideWindow', {
     initComponent: function() {
     	var me = this;
     	
-    	LyricModel = Ext.define('LyricModel', {
-			extend: 'Ext.data.Model',
-			fields: [
-			   {name: 'phrase'}
-			]
-		});
-	
-	    store = Ext.create('Ext.data.Store', {
-	        model: 'LyricModel',
-	        proxy: {
-	            type: 'memory'
-	        }
+	    store = Ext.create('Ext.data.ArrayStore', {
+	       fields: ['phrase']
 	    });
 	    
 	    //store.load();
@@ -62,6 +52,35 @@ Ext.define('AboutUs.view.music.music.SlideWindow', {
         	items:[view]
         })
     	this.callParent(arguments);
+    },
+    
+    addMusic : function(title, liryc){
+    	
+        var splited = liryc.split("\n");
+        var data = new Array();
+        var obj = new Object();
+        obj.phrase = title.toUpperCase();
+        data.push(obj);
+        obj = new Object();
+        obj.phrase = "";
+        for (var i = 0; i < splited.length; i++) {
+            if (splited[i].trim() == ""){
+                data.push(obj);
+                obj = new Object();
+                obj.phrase = "";
+            }else{
+                if (obj.phrase != ""){
+                    obj.phrase = obj.phrase + "<br/>" + splited[i].toUpperCase();
+                }else{
+                    obj.phrase = splited[i].toUpperCase();
+                }
+            }
+        }
+        data.push(obj);
+        data.push([]);
+
+        this.down('dataview').getStore().loadData(data,true);
+    	
     }
     
 });

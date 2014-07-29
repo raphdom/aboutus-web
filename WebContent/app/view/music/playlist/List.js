@@ -4,7 +4,7 @@ Ext.define('AboutUs.view.music.playlist.List', {
     alias: 'widget.playlistlist',
     title : 'Listas de Reprodução',
     store: 'music.PlaylistStore',
-    icon:'resources/images/videos.png',
+    icon:'resources/images/playlist.png',
     dialog: 'playlistdialog',
     controller: 'music.PlaylistController',
     
@@ -18,7 +18,15 @@ Ext.define('AboutUs.view.music.playlist.List', {
     	header: "Título",
 		width: 170,
 		flex:1,
-		dataIndex: 'title'
+		dataIndex: 'name'
+    },{
+    	header: "Data de criação",
+		width: 150,
+		flex:1,
+		dataIndex:'createDate',
+		xtype:'datecolumn', 
+		format:'d-m-Y H:i',
+		criteriaXtype:'datefield'
     }],
     
 

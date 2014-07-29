@@ -12,7 +12,7 @@ Ext.define('AboutUs.store.music.PlaylistStore', {
         	create: 'POST', read: 'POST', update: 'POST', destroy: 'POST'
         },
         api: {
-        	read : 'music/playlist/music.action',
+        	read : 'music/playlist/view.action',
             create : 'music/playlist/save.action',
             update: 'music/playlist/update.action',
             destroy: 'music/playlist/delete.action'

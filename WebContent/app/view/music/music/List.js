@@ -14,7 +14,7 @@ Ext.define('AboutUs.view.music.music.List', {
     	remove:'ROLE_DEL_MUSICS'
     },
     
-    columns: [{
+    columns: [/*{
 	            xtype:'actioncolumn',
 	            width:30,
 	            hideable:false,
@@ -30,7 +30,7 @@ Ext.define('AboutUs.view.music.music.List', {
 	    				}
 	                }
             	}]
-	},{
+	},*/{
     	header: "Id",
 		width: 170,
 		flex:1,

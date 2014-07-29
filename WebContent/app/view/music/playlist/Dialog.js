@@ -1,27 +1,28 @@
-Ext.define('AboutUs.view.site.video.Dialog', {
+Ext.define('AboutUs.view.music.playlist.Dialog', {
     extend: 'AboutUs.view.common.Dialog',
     
-    alias: 'widget.sitevideodialog',
+    alias: 'widget.playlistdialog',
     
-    requires:['AboutUs.view.component.CategoryCombo',
-    		  'AboutUs.view.component.ThumbField'],
+    title: 'Nova Playlist',
+    titleUpdate: 'Detalhes da playlist: {name}',
     
-    title: 'Novo Video',
-    titleUpdate: 'Detalhes do video: {title}',
+    icon:'resources/images/playlist.png',
     
-    icon:'resources/images/videos.png',
-    
-    width:600,
-    height:300,
+    width:500,
+    height:400,
     
     layout:'fit',
     
     items:[{
     	xtype:'commonform',
+    	buttons:[{
+    			text:'Slides',
+    			action:'slide'
+    	}],
     	items:[{
         	xtype:'tabpanel',
         	layout:'fit',
-        	items:[{
+        	items:[/*{
         		title:'Data',
         		items:[{
         			layout: 'form',
@@ -37,43 +38,15 @@ Ext.define('AboutUs.view.site.video.Dialog', {
 						hidden:true
 					},{
 						fieldLabel: 'Título',
-						name:'title',
-						allowBlank: false
-					},{
-						fieldLabel: 'Descrição',
-						name:'description',
-						allowBlank: false
-					},{
-						fieldLabel: 'Url',
-						name:'url',
-						allowBlank: false
-					},{
-						fieldLabel: 'Ordem',
-						name:'ordering',
-						allowBlank: false
-					},{
-			            xtype: 'fieldcontainer',
-			            fieldLabel: 'Publicado',
-			            defaultType: 'checkboxfield',
-			            layout: {
-					    	type:'hbox',
-					    	defaultMargins:{
-							    right: 5
-							}
-					    },
-			            items: [
-			                {
-			                    name      : 'published',
-			                    inputValue: 'true',
-			                    id        : 'checkbox1'
-		                	}
-			            ]
-			        },{
-						xtype:'categorycombo',
-						fieldLabel: 'Categoria:',
-						name:'categoryId',
+						name:'name',
+						editable: false,
 						allowBlank: false
 			        }]
+        		}]
+        	},*/{
+        		title:'Musicas',
+        		items:[{
+        			xtype:'musicgrid'
         		}]
         	}]
     	}]

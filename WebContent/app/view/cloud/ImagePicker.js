@@ -3,7 +3,9 @@ Ext.define('AboutUs.view.cloud.ImagePicker', {
 	alias: 'widget.imagepicker',
 	
 	width: 800,
-	height: 400,
+	height: 600,
+	
+	modal:true,
 	
 	title: 'Escolha uma imagem',
 	

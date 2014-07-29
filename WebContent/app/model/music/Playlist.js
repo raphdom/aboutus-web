@@ -5,8 +5,18 @@ Ext.define('AboutUs.model.music.Playlist', {
     		name:'id',
     		type:'int'
     	},{
-    		name:'title'
+    		name:'name'
+    	},{
+    		name:'createDate',
+    		type:'date',
+    		dateReadFormat:'time',
+    		dateWriteFormat:'d-m-Y',
+    		persist:false
     	}],
+    	
+    hasMany: [
+   		{model: 'AboutUs.model.music.Music', foreignKey: 'playlistId', name:'musics'}
+	],
     	
    	proxy: {
         type: 'ajax',

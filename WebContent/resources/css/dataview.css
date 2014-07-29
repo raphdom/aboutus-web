@@ -88,7 +88,7 @@
 }
 
 #album-images-view .thumb img{
-    height: 60px;
+    height: 80px;
     width: 80px;
 }
 #album-images-view .thumbIcon img{
@@ -102,7 +102,7 @@
     margin-right: 0;
     padding: 5px;
     width:96px;
-    height:90px;
+    height:96px;
 }
 #album-images-view .thumb-wrap span {
     cursor:default;

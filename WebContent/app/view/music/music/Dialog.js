@@ -18,6 +18,18 @@ Ext.define('AboutUs.view.music.music.Dialog', {
     
     items:[{
     	xtype:'commonform',
+    	buttons:[{
+        		text:'Cancelar',
+        		action:'cancel'
+    		}, {
+            	formBind: true,
+            	disabled: true,
+            	text: 'Guardar',
+            	action:'save'
+			},{
+    			text:'Slides',
+    			action:'slide'
+    	}],
     	items:[{
         	xtype:'tabpanel',
         	layout:'fit',
