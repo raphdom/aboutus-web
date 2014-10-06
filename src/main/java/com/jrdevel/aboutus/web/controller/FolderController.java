@@ -1,5 +1,6 @@
 package com.jrdevel.aboutus.web.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -76,6 +77,23 @@ public class FolderController {
 			
 			return ExtJSReturn.mapError("Error updating Folder from database.");
 			
+		}
+	}
+	
+	@RequestMapping(value="/delete.action")
+	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<Integer> ids) throws Exception {
+
+		try{
+			
+			ResultObject result = folderService.delete(ids);
+			
+			return result.toMap();
+			
+		} catch (Exception e) {
+
+			logger.error(e.getMessage());
+			
+			return ExtJSReturn.mapError("Error removing Folder from database.");
 		}
 	}
 	

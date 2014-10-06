@@ -34,7 +34,7 @@ Ext.define('AboutUs.view.cloud.ThumbView' ,{
 	            },
 	            ghostTpl: [
 	                '<tpl for=".">',
-	                    '<img src="../view/chooser/icons/{thumb}" />',
+	                    '<img src="{thumb}" />',
 	                    '<tpl if="xindex % 4 == 0"><br /></tpl>',
 	                '</tpl>',
 	                '<div class="count">',

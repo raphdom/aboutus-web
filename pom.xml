@@ -174,5 +174,10 @@
 		<artifactId>mail</artifactId>
 		<version>1.4</version>
 	</dependency>
+	<dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-drive</artifactId>
+      <version>v2-rev145-1.19.0</version>
+    </dependency>
   </dependencies>
 </project>

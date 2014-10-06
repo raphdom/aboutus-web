@@ -407,11 +407,33 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onDeleteFolder:function(button){
     	var record = this.getTreeCloudPanel().getSelectionModel().getSelection();
+    	var me = this;
     	if (record.length > 0){
     		Ext.Msg.confirm('Eliminar', 'Deseja realmente eliminar os registos selecionados', 
     			function(btn, text){
 			    	if (btn == 'yes'){
-						
+			    		
+						var ids = new Array();
+			    		Ext.Array.each(me.getTreeCloudPanel().getSelectionModel().getSelection(), function(record, index) {
+							ids.push(record.getId());
+			    		});
+			    		Ext.Ajax.request({
+						    url: 'folder/delete.action',
+						    headers: {
+			                	'Content-Type': 'application/json;'
+			                },
+						    params: Ext.encode(ids),
+						    success: function(response){
+						        var response = Ext.decode(response.responseText);
+						        AboutUs.util.NotificationUtil.processMessages(response.messages);
+						        if (response.success){
+						        	var nodeParent = me.getFolderStoreStore().getNodeById(record[0].get('parent'));
+				        			me.getTreeCloudPanel().getSelectionModel().select(nodeParent);
+				        			me.onFolderClick(me.getTreeCloudPanel(),nodeParent);
+			    					record[0].remove();
+						        }
+						    }
+						});
 			    	}
     			}
     		,this);

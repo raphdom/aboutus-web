@@ -64,12 +64,12 @@ public class CloudController {
 			folderId = Integer.parseInt(folderIdParam);
 		}
 
-		java.io.File file = new java.io.File(AboutUsFileHelper.getNameOfFile(configuration.getMediaPath())); 
+		//java.io.File file = new java.io.File(AboutUsFileHelper.getNameOfFile(configuration.getMediaPath())); 
 
-		mpf.transferTo(file);
+		//mpf.transferTo(file);
 
-		ResultObject result = cloudService.processFile(new FileInputStream(file),mpf.getOriginalFilename(),mpf.getSize(),
-				file.getAbsolutePath(), mpf.getContentType(),folderId);
+		ResultObject result = cloudService.processFile(mpf.getInputStream(),mpf.getOriginalFilename(),mpf.getSize(),
+				"googleDrive", mpf.getContentType(),folderId);
 
 		//System.out.println(mpf.getOriginalFilename() +" uploaded!");
 
