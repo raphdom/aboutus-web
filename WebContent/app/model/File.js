@@ -15,7 +15,8 @@ Ext.define('AboutUs.model.File', {
                     name:'classThumb',
                     persist:false,
                     convert:function(v, record){
-                        if (record.data.fileType.indexOf("image") != -1){
+                        if (record.data.fileType.indexOf("image") != -1 &&
+            				record.data.fileType.indexOf("svg") == -1){
 							return "thumb";
                     	}else{
                     		return "thumbIcon";

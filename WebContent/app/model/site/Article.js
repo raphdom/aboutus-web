@@ -34,7 +34,8 @@ Ext.define('AboutUs.model.site.Article', {
 			persist:false
     	},{
     		name:'categoryId',
-    		type:'int'
+    		type:'int',
+    		useNull:true
     	},{
     		name:'introarticle'
     	},{

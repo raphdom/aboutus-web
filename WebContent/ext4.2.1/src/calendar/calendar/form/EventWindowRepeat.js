@@ -22,7 +22,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		closable:false,
 		modal: true,
 		resizable: false,
-		title: 'Repeat Event',
+		title: 'Repetir',
     		items:[{
 		    	xtype: 'form',
 			fieldDefaults: {
@@ -35,7 +35,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 			border: false,
 			items: [{
 				xtype: 'combo',
-				fieldLabel: 'Repeats',
+				fieldLabel: 'Repete-se',
 				id:'comboRepeat',
 				anchor: '100%',
 				displayField: 'text',
@@ -44,8 +44,8 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 				store: Ext.create('Ext.data.Store', {
 					fields: ['text', 'value'],
 					data : [
-						{"text":"Daily", "value":"daily"},
-						{"text":"Weekly", "value":"weekly"}/*,
+						{"text":"Todos os dias", "value":"daily"},
+						{"text":"Semanal", "value":"weekly"}/*,
 						{"text":"Monthly", "value":"monthly"},
 						{"text":"Annualy", "value":"annually"}*/
 					]
@@ -59,7 +59,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 			},{
 				xtype: 'fieldcontainer',
 				anchor: '100%',
-		            	fieldLabel: 'Repeat every',
+		            	fieldLabel: 'Repete todos os(as)',
 		            	layout: {
 		            		type: 'hbox',
 		            		defaultMargins:{
@@ -88,7 +88,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 			},{
 				xtype: 'fieldcontainer',
 				anchor: '100%',
-		            	fieldLabel: 'Repeat',
+		            	fieldLabel: 'Repetir no(a)',
 		            	id: 'daysOfWeek',
 		            	defaultType: 'checkboxfield',
 		            	layout: {
@@ -98,7 +98,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 					}
 		            	},
 		            	items: [{
-		                    boxLabel  : 'S',
+		                    boxLabel  : 'D',
 		                    name      : 'repeatWeekly',
 		                    inputValue: '0',
 		                    id        : 'chkSun',
@@ -109,7 +109,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    	}
 		                    }
 		                },{
-		                    boxLabel  : 'M',
+		                    boxLabel  : 'S',
 		                    name      : 'repeatWeekly',
 		                    inputValue: '1',
 		                    id        : 'chkMon',
@@ -131,7 +131,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    	}
 		                    }
 		                },{
-		                    boxLabel  : 'W',
+		                    boxLabel  : 'Q',
 		                    name      : 'repeatWeekly',
 		                    inputValue: '3',
 		                    id        : 'chkWed',
@@ -142,7 +142,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    	}
 		                    }
 		                },{
-		                    boxLabel  : 'T',
+		                    boxLabel  : 'Q',
 		                    name      : 'repeatWeekly',
 		                    inputValue: '4',
 		                    id        : 'chkThu',
@@ -153,7 +153,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    	}
 		                    }
 		                },{
-		                    boxLabel  : 'F',
+		                    boxLabel  : 'S',
 		                    name      : 'repeatWeekly',
 		                    inputValue: '5',
 		                    id        : 'chkFri',
@@ -177,17 +177,17 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                }]
 			},{
 				xtype: 'displayfield',
-				fieldLabel: 'Start on',
+				fieldLabel: 'Tem início às',
 				anchor: '100%',
 				id:'startOn'
 			},{
 				xtype: 'fieldcontainer',
 				anchor: '100%',
-		            	fieldLabel: 'End on',
+		            	fieldLabel: 'Termina no dia',
 		            	defaultType: 'fieldcontainer',
 		            	layout: 'vbox',
 		            	items: [{
-		                    boxLabel  : 'Always',
+		                    boxLabel  : 'Nunca',
 		                    xtype     : 'radiofield',
 		                    name      : 'endOn',
 		                    checked: true,
@@ -210,7 +210,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    items     : [{
 		                    	xtype     : 'radiofield',
 		                    	name      : 'endOn',
-		                    	boxLabel  : 'After',
+		                    	boxLabel  : 'Após',
 		                    	inputValue: '1',
 		                    	id        : 'radio2',
 		                    	listeners :{
@@ -235,7 +235,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 			                }
 		                    },{
 		                    	xtype:'displayfield',
-		                    	value:'ocurrence(s)'
+		                    	value:'ocorrências'
 		                    }]
 		                },{
 		                    xtype     : 'fieldcontainer',
@@ -248,7 +248,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                    items     : [{
 		                    	xtype     : 'radiofield',
 		                    	name      : 'endOn',
-		                    	boxLabel  : 'On',
+		                    	boxLabel  : 'No dia',
 		                    	inputValue: '2',
 		                    	id        : 'radio3',
 		                    	listeners :{
@@ -265,7 +265,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
 		                }]
 			},{
 				xtype: 'displayfield',
-				fieldLabel: 'Summary',
+				fieldLabel: 'Resumo',
 				anchor: '100%',
 				value: 'Toda segunda-feira',
 				id: 'summaryField'
@@ -321,14 +321,14 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     	this.down('[id=daysOfWeek]').setVisible(false);
     	
     	if (combo.getValue()=='daily'){
-    		this.down('[id=repeatEveryLabel]').setValue('days');
+    		this.down('[id=repeatEveryLabel]').setValue('dias');
     	}else if(combo.getValue()=='weekly'){
-    		this.down('[id=repeatEveryLabel]').setValue('weeks');
+    		this.down('[id=repeatEveryLabel]').setValue('semanas');
     		this.down('[id=daysOfWeek]').setVisible(true);
     	}else if(combo.getValue()=='monthly'){
-    		this.down('[id=repeatEveryLabel]').setValue('months');
+    		this.down('[id=repeatEveryLabel]').setValue('meses');
     	}else if(combo.getValue()=='annually'){
-    		this.down('[id=repeatEveryLabel]').setValue('years');
+    		this.down('[id=repeatEveryLabel]').setValue('anos');
     	}
     	
     	this.updateSummaryField();

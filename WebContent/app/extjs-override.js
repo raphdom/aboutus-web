@@ -43,7 +43,8 @@ Ext.apply(Ext.util.Format,{
         formatThumbUrl: function(fileid, datatype, filetype){
         	
         	if (datatype == -1){
-	        	if (filetype.indexOf("image") != -1){
+	        	if (filetype.indexOf("image") != -1 &&
+            			filetype.indexOf("svg") == -1){
 	        		return "resources/images/mimetypes/24/image-generic.png";
 	        	}else{
 	        		return "resources/images/mimetypes/24/default.png";
@@ -60,7 +61,10 @@ Ext.apply(Ext.util.Format,{
             		sizeIconDataType= '128';
             	}
         		
-            	if (Ext.isDefined(filetype) && filetype.indexOf("image") == -1){
+            	if (Ext.isDefined(filetype) && (
+            			filetype.indexOf("image") == -1 ||
+            			filetype.indexOf("svg") >= 0
+            			)){
             		return "resources/images/mimetypes/"+sizeIconDataType+"/default.png";
             	}else{
             		return "cloud/getImage.action?imageId="+fileid+"&dataType="+datatype;

@@ -22,7 +22,8 @@ Ext.define('AboutUs.model.site.Video', {
 			persist:false
     	},{
     		name:'categoryId',
-    		type:'int'
+    		type:'int',
+    		useNull:true
     	}],
     	
    	proxy: {

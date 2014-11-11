@@ -11,7 +11,7 @@ Ext.define('AboutUs.view.site.category.Dialog', {
     
     icon:'resources/images/categories.png',
     
-    width:500,
+    width:550,
     height:400,
     
     layout:'fit',
@@ -45,8 +45,10 @@ Ext.define('AboutUs.view.site.category.Dialog', {
 						name:'text',
 						allowBlank: false
 					},{
-						fieldLabel: 'Posição',
+						fieldLabel: 'Ordem',
 						name:'position',
+						xtype: 'numberfield',
+						minValue: 0,
 						allowBlank: false
 					},{
 			            xtype: 'fieldcontainer',

@@ -3,8 +3,8 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     
     alias: 'widget.eventdialog',
     
-    title: 'Novo Event',
-    titleUpdate: 'Detalhes do event: {title}',
+    title: 'Novo Evento',
+    titleUpdate: 'Detalhes do evento: {title}',
     
     icon:'resources/images/calendar.png',
     
@@ -37,7 +37,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 				    deferredRender:false,
 				    items:[{
 				    	xtype:'panel',
-				    	title: 'Event',
+				    	title: 'Detalhes',
 				    	items:[{
 					        layout: 'form',
 					        bodyPadding: 10,
@@ -50,24 +50,28 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					            xtype: 'textfield',
 					            itemId: this.id + '-title',
 					            name: Extensible.calendar.data.EventMappings.Title.name,
-					            fieldLabel: 'What',
+					            fieldLabel: 'O quê',
 					            anchor: '100%'
 					        },{
 					            xtype: 'extensible.daterangefield',
 					            itemId: this.id + '-dates',
 					            name: 'dates',
 					            anchor: '95%',
+					            allDayText: 'Todo o dia',
+					            toText: 'até',
+					            dateFormat:'d/m/Y',
+					            timeFormat:'G:i',
 					            singleLine: true,
-					            fieldLabel: 'When'
+					            fieldLabel: 'Quando'
 					        },{
 					        	xtype: 'textfield',
 					        	itemId: this.id + '-loc',
 					        	name: Extensible.calendar.data.EventMappings.Location.name,
-					        	fieldLabel: 'Where',
+					        	fieldLabel: 'Onde',
 					        	anchor: '100%'
 					        },{
 					        	xtype     : 'fieldcontainer',
-					        	fieldLabel: 'Repeat',
+					        	fieldLabel: 'Repetir...',
 							    layout: {
 					    			type: 'hbox',
 					            	defaultMargins:{
@@ -99,7 +103,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					            itemId: this.id + '-calendar',
 					            name: Extensible.calendar.data.EventMappings.CalendarId.name,
 					            anchor: '100%',
-					            fieldLabel: 'Calendar',
+					            fieldLabel: 'Calendário',
 					            store: this.calendarStore,
 					            listeners:{
 									select: {
@@ -110,7 +114,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					        },{
 					        	xtype:'categorycombo',
 					        	itemId: this.id + '-category',
-					        	fieldLabel: 'Category',
+					        	fieldLabel: 'Categoria',
 					        	name: Extensible.calendar.data.EventMappings.CategoryId.name,
 					        	anchor: '100%',
 					        	hidden:true
@@ -124,7 +128,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					        },{
 					        	xtype: 'checkbox',
 					        	itemId: this.id + '-published',
-					        	fieldLabel: 'Published',
+					        	fieldLabel: 'Publicado',
 					        	name: Extensible.calendar.data.EventMappings.Published.name,
 					        	inputValue: 'true',
 					        	anchor: '100%',
@@ -133,7 +137,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					    }]
 				    },{
 				    	xtype:'panel',
-				    	title:'Description',
+				    	title:'Descrição',
 					    layout:{
 					    	type:'hbox',
 					    	align:'stretchmax'
@@ -311,15 +315,15 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 		if (frequency == 'daily'){
 			
 			if (separation == 1){
-				result = "Every day";
+				result = "Todos os dias";
 			}else{
-				result = "To each " + separation + " days";
+				result = "A cada " + separation + " dias";
 			}
 			
 			if (count > 0){
-				result = result + ", " + count + " times.";
+				result = result + ", " + count + " vezes.";
 			}else if (until){
-				result = result + ", until " + Ext.util.Format.date(until,'d-m-Y') + ".";
+				result = result + ", até " + Ext.util.Format.date(until,'d-m-Y') + ".";
 			}
 		
 		}
@@ -327,9 +331,9 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 		if (frequency == 'weekly'){
 			
 			if (separation == 1){
-				result = "Weekly: every ";
+				result = "Semanal: toda ";
 			}else{
-				result = "To each "+separation+ " weeks";
+				result = "A cada "+separation+ " semanas";
 			}
 			
 			if (weekdays && !Ext.isEmpty(weekdays)){
@@ -342,7 +346,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 			}
 			
 			if (count > 0){
-				result = result + ", " + count + " times.";
+				result = result + ", " + count + " vezes.";
 			}else if (until){
 				result = result + ", until " + Ext.util.Format.date(until,'d-m-Y') + ".";
 			}

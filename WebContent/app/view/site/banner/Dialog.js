@@ -40,27 +40,44 @@ Ext.define('AboutUs.view.site.banner.Dialog', {
 						name:'name',
 						allowBlank: false
 					},{
-						fieldLabel: 'Alias',
-						name:'alias',
-						allowBlank: false
-					},{
 						fieldLabel: 'Link',
-						name:'link',
-						allowBlank: false
+						name:'link'
 					},{
 						fieldLabel: 'Ordem',
 						name:'ordering',
+						xtype: 'numberfield',
+						minValue: 0,
 						allowBlank: false
 					},{
-						xtype: 'datefield',
-						fieldLabel: 'Início da Publicação',	
-						name:'publishUp',
-						allowBlank: false
-					},{
-						xtype: 'datefield',
-						fieldLabel: 'Fim da Publicação',	
-						name:'publishDown',
-						allowBlank: false
+			            xtype: 'fieldcontainer',
+			            fieldLabel: 'Publicação',
+			            defaultType: 'datefield',
+			            layout: {
+					    	type:'hbox',
+					    	align:'stretchmax',
+					    	defaultMargins:{
+							    right: 25
+							}
+					    },
+			            items: [
+			                {
+			                    name      : 'publishUp',
+			                    format: 'd/m/Y',
+			                    id        : 'publishUp',
+			                    fieldLabel: 'Início da Publicação',
+			                    hideLabel: true,
+			                    allowBlank: false
+		                	},{
+		                		xtype: 'displayfield',
+						        name: 'untilLabel',
+						        value: 'até'
+		                	},{
+			                    name      : 'publishDown',
+			                    format: 'd/m/Y',
+			                    id        : 'publishDown',
+			                    emptyText: 'sempre'
+		                	}
+			            ]
 					},{
 			        	xtype: 'thumbfield',
 				        fieldLabel: 'Banner',

@@ -41,8 +41,7 @@ Ext.define('AboutUs.view.site.video.Dialog', {
 						allowBlank: false
 					},{
 						fieldLabel: 'Descrição',
-						name:'description',
-						allowBlank: false
+						name:'description'
 					},{
 						fieldLabel: 'Url',
 						name:'url',
@@ -50,6 +49,8 @@ Ext.define('AboutUs.view.site.video.Dialog', {
 					},{
 						fieldLabel: 'Ordem',
 						name:'ordering',
+						xtype: 'numberfield',
+						minValue: 0,
 						allowBlank: false
 					},{
 			            xtype: 'fieldcontainer',
@@ -72,7 +73,14 @@ Ext.define('AboutUs.view.site.video.Dialog', {
 						xtype:'categorycombo',
 						fieldLabel: 'Categoria:',
 						name:'categoryId',
-						allowBlank: false
+						allowBlank: false,
+						validator: function(value){
+					    	if (value == 'Raiz'){
+					    		return 'Tem de escolher uma categoria diferente de Raiz';
+					    	}else{
+					    		return true;
+					    	}
+					    }
 			        }]
         		}]
         	}]

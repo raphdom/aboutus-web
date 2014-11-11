@@ -40,15 +40,35 @@ Ext.define('AboutUs.view.site.article.Dialog', {
 						name:'title',
 						allowBlank: false
 					},{
-						xtype: 'datefield',
-						fieldLabel: 'Início da Publicação',	
-						name:'publishUp',
-						allowBlank: false
-					},{
-						xtype: 'datefield',
-						fieldLabel: 'Fim da Publicação',	
-						name:'publishDown',
-						allowBlank: false
+			            xtype: 'fieldcontainer',
+			            fieldLabel: 'Publicação',
+			            defaultType: 'datefield',
+			            layout: {
+					    	type:'hbox',
+					    	align:'stretchmax',
+					    	defaultMargins:{
+							    right: 25
+							}
+					    },
+			            items: [
+			                {
+			                    name      : 'publishUp',
+			                    format: 'd/m/Y',
+			                    id        : 'publishUp',
+			                    fieldLabel: 'Início da Publicação',
+			                    hideLabel: true,
+			                    allowBlank: false
+		                	},{
+		                		xtype: 'displayfield',
+						        name: 'untilLabel',
+						        value: 'até'
+		                	},{
+			                    name      : 'publishDown',
+			                    format: 'd/m/Y',
+			                    id        : 'publishDown',
+			                    emptyText: 'sempre'
+		                	}
+			            ]
 					},{
 			            xtype: 'fieldcontainer',
 			            fieldLabel: 'Pagina inicial',
@@ -66,15 +86,27 @@ Ext.define('AboutUs.view.site.article.Dialog', {
 			                    id        : 'checkbox1'
 		                	}
 			            ]
+		            },{
+						fieldLabel: 'Ordem',
+						name:'ordering',
+						xtype: 'numberfield',
+						minValue: 0,
+						allowBlank: false
 			        },{
 						xtype:'categorycombo',
 						fieldLabel: 'Categoria:',
 						name:'categoryId',
-						allowBlank: false
+						allowBlank: false,
+						validator: function(value){
+					    	if (value == 'Raiz'){
+					    		return 'Tem de escolher uma categoria diferente de Raiz';
+					    	}else{
+					    		return true;
+					    	}
+					    }
 					},{
 						fieldLabel: 'Autor',
-						name:'author',
-						allowBlank: false
+						name:'author'
 					},{
 			        	xtype: 'thumbfield',
 				        fieldLabel: 'Miniatura',

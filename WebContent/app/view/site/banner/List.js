@@ -20,11 +20,6 @@ Ext.define('AboutUs.view.site.banner.List', {
 		flex:1,
 		dataIndex: 'name'
     },{
-    	header: "Alias",
-		width: 170,
-		flex:1,
-		dataIndex: 'alias'
-    },{
     	header: "Link",
 		width: 170,
 		flex:1,

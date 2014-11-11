@@ -20,7 +20,8 @@ Ext.define('AboutUs.model.site.Album', {
 			persist:false
     	},{
     		name:'categoryId',
-    		type:'int'
+    		type:'int',
+    		useNull:true
     	},{
     		name:'thumbId',
     		type:'int'

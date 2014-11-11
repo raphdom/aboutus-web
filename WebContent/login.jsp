@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <meta http-equiv=content-type content=text/html; charset=UTF-8>
 <html>
@@ -24,6 +25,13 @@
 			margin-top:100px;
 			margin-bottom:10px;
     	}
+    	#version{
+    		width:503px;
+    		margin-left: auto ;
+		  	margin-right: auto ;
+		  	font-size:0.7em;
+		  	text-align:center;
+    	}
 	    #senchaTarget {
 		  width: 400px ;
 		  margin-left: auto ;
@@ -34,5 +42,6 @@
 <body>
 <div id="logoTarget"></div>
 <div id="senchaTarget"></div>
+<div id="version">2014 - AboutChurch - Versão <spring:eval expression="@applicationProperties.getProperty('version')" /></div>
 </body>
 </html>
