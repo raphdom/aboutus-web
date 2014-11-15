@@ -14,7 +14,9 @@ Ext.define('AboutUs.view.cloud.TileGridIcons' ,{
                             tpl: [
                                 '<tpl for=".">',
                                     '<div class="icons-wrap" id="{name:stripTags}">',
-                                        '<div class="{classThumb}"><img src="{id:formatThumbUrl(1,values.fileType)}" title="{name:htmlEncode}"></div>',
+                                        '<div class="{classThumb}">',
+                                        	'<img src="{id:formatThumbUrl(1,values.fileType)}" onerror="if (this.src != \'{id:getDefaultIcon(1,values.fileType)}\') this.src = \'{id:getDefaultIcon(1,values.fileType)}\';" title="{filename:htmlEncode}">',
+                                        '</div>',
                                         '<div class="iconsInfo">',
                                                 '<span class="infoName">{filename:htmlEncode}</span>',
                                                 '<span class="infoType">{fileType:htmlEncode}</span>',

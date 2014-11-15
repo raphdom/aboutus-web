@@ -65,10 +65,36 @@ Ext.apply(Ext.util.Format,{
             			filetype.indexOf("image") == -1 ||
             			filetype.indexOf("svg") >= 0
             			)){
-            		return "resources/images/mimetypes/"+sizeIconDataType+"/default.png";
+            		return "resources/images/mimetypes/"+sizeIconDataType+"/"+filetype.replace('/','-')+".png";
             	}else{
             		return "cloud/getImage.action?imageId="+fileid+"&dataType="+datatype;
             	}
+        	}
+        },
+        
+        getDefaultIcon: function(fileid, datatype, filetype){
+        	var sizeIconDataType = '24';
+            	
+        	if (datatype == 1){
+        		sizeIconDataType= '32';
+        	}else if(datatype == 2){
+        		sizeIconDataType= '64';
+        	}else if(datatype == 4){
+        		sizeIconDataType= '128';
+        	}
+    		
+        	return "resources/images/mimetypes/"+sizeIconDataType+"/default.png";
+        	
+        },
+        
+        getIcon: function(filetype){
+        	//Se tiver dentro de um array o filetype devolve o filetype, senão se for imagem devolve image-generic senão devolve o default
+        	if (filetype.indexOf("svg") == -1){
+        		return filetype + '.png';
+        	}else if (filetype.indexOf("image") != -1){
+        		return "image-generic.png";
+        	}else{
+        		return "default.png";
         	}
         }
         
