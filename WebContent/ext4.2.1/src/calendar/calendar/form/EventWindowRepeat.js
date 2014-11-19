@@ -294,7 +294,7 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     	
     	this.activeRecord.beginEdit();
     	
-    	this.onRepeatComboSelect(this.down('[id=comboRepeat]'));
+    	this.updateWindow();
     	
     	this.callParent();
     	return this;
@@ -320,6 +320,10 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     	
     	this.down('[id=daysOfWeek]').setVisible(false);
     	
+    	if (combo.getValue()==''){
+    		combo.setValue('daily');
+    	}
+    	
     	if (combo.getValue()=='daily'){
     		this.down('[id=repeatEveryLabel]').setValue('dias');
     	}else if(combo.getValue()=='weekly'){
@@ -332,6 +336,45 @@ Ext.define('Extensible.calendar.form.EventWindowRepeat', {
     	}
     	
     	this.updateSummaryField();
+    	
+    },
+    
+    updateWindow: function(){
+    	
+    	var rec = this.activeRecord;
+    	
+    	this.getChkWeekDay('chkSun').suspendEvents();
+		this.getChkWeekDay('chkMon').suspendEvents();
+		this.getChkWeekDay('chkTue').suspendEvents();
+		this.getChkWeekDay('chkWed').suspendEvents();
+		this.getChkWeekDay('chkThu').suspendEvents();
+		this.getChkWeekDay('chkFri').suspendEvents();
+		this.getChkWeekDay('chkSat').suspendEvents();
+    	
+    	this.getChkWeekDay('chkSun').setValue(false);
+		this.getChkWeekDay('chkMon').setValue(false);
+		this.getChkWeekDay('chkTue').setValue(false);
+		this.getChkWeekDay('chkWed').setValue(false);
+		this.getChkWeekDay('chkThu').setValue(false);
+		this.getChkWeekDay('chkFri').setValue(false);
+		this.getChkWeekDay('chkSat').setValue(false);
+    	
+    	
+    	this.down('[id=comboRepeat]').setValue(rec.get(M.Frequency.name));
+    	this.down('[id=repeatEvery]').setValue(rec.get(M.Separation.name));
+    	var array = rec.get(M.WeekDays.name);
+    	for (var i in array) {
+    		this.down('[inputValue='+array[i]+']').setValue(true);
+		}
+    	this.onRepeatComboSelect(this.down('[id=comboRepeat]'));
+    	
+    	this.getChkWeekDay('chkSun').resumeEvents();
+		this.getChkWeekDay('chkMon').resumeEvents();
+		this.getChkWeekDay('chkTue').resumeEvents();
+		this.getChkWeekDay('chkWed').resumeEvents();
+		this.getChkWeekDay('chkThu').resumeEvents();
+		this.getChkWeekDay('chkFri').resumeEvents();
+		this.getChkWeekDay('chkSat').resumeEvents();
     	
     },
     

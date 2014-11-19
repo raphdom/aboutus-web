@@ -3,8 +3,8 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     
     alias: 'widget.eventdialog',
     
-    title: 'Novo Evento',
-    titleUpdate: 'Detalhes do evento: {title}',
+    titleAdd: 'Novo Evento',
+    titleUpdate: 'Detalhes do evento: {Title}',
     
     icon:'resources/images/calendar.png',
     
@@ -176,18 +176,20 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 				// Enable adding the default record that was passed in
 				// if it's new even if the user makes no changes 
 				//rec.markDirty();
-				this.setTitle(this.title);
+				this.setTitle(this.titleAdd);
 			}
 			else{
-				this.setTitle(this.titleTextEdit);
+				var tpl = new Ext.XTemplate(this.titleUpdate);
+				this.setTitle(tpl.apply(rec.data))
 			}
             
+			f.reset();
             f.loadRecord(rec);
             
         }
         else{
 			//this.isAdd = true;
-            this.setTitle(this.title);
+            this.setTitle(this.titleAdd);
 
             var start = o[M.StartDate.name],
                 end = o[M.EndDate.name] || Extensible.Date.add(start, {hours: 1});
@@ -196,6 +198,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
             //rec.data[M.EventId.name] = this.newId++;
             rec.data[M.StartDate.name] = start;
             rec.data[M.EndDate.name] = end;
+            rec.data[M.Separation.name] = 1;
             rec.data[M.IsAllDay.name] = !!o[M.IsAllDay.name] || start.getDate() != Extensible.Date.add(end, {millis: 1}).getDate();
             
             f.reset();
@@ -211,7 +214,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         
         this.onCalendarSelect(this.calendarField);
         var frequency = rec.get(Extensible.calendar.data.EventMappings.Frequency.name);
-		if (frequency != ""){
+		if (frequency != "" && frequency != 'once'){
 			this.checkRepeatField.setValue(true);
 		}else{
 			this.checkRepeatField.setValue(false);

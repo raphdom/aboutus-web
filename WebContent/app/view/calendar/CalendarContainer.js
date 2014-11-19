@@ -115,7 +115,7 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
                         },
                         'eventadd': {
                             fn: function(cp, rec){
-                                this.showMsg('Event '+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +' was added');
+                                this.showMsg('Evento '+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +' foi adicionado com sucesso.');
                             },
                             scope: this
                         },
@@ -133,7 +133,7 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
                         },
                         'eventcancel': {
                             fn: function(cp, rec){
-                                // edit canceled
+                                
                             },
                             scope: this
                         },
@@ -216,6 +216,8 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
     },
     
     showMsg: function(msg){
+    	AboutUs.util.NotificationUtil.showNotificationInfo(msg);
+    	this.down('[id=app-calendar]').getActiveView().refresh(true);
         //Ext.fly('app-msg').update(msg).removeCls('x-hidden');
     },
     clearMsg: function(){

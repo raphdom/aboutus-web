@@ -1484,6 +1484,12 @@ alert('End: '+bounds.end);
                             win.currentView.onEventAdd(null, rec);
                         },
                         scope: this
+                    },
+                    'eventupdate': {
+                        fn: function(win, rec, animTarget) {
+                            win.currentView.onEventUpdate(null, rec);
+                        },
+                        scope: this
                     }
         		}
         	});
