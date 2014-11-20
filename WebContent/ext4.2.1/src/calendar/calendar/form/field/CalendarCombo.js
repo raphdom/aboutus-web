@@ -32,6 +32,7 @@ Ext.define('Extensible.calendar.form.field.CalendarCombo', {
     forceSelection: true,
     selectOnFocus: true,
     
+    
     // private
     defaultCls: 'x-cal-default',
     hiddenCalendarCls: 'ext-cal-hidden',

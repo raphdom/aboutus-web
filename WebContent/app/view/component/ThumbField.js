@@ -92,9 +92,11 @@ Ext.define('AboutUs.view.component.ThumbField', {
         var me = this;
         me.value = value;
         me.checkChange();
-        if (value != 0){
+        if (Ext.isDefined(value) && value != 0){
         	var thumbUrl = Ext.util.Format.formatThumbUrl(value,4);
         	this.down('image').setSrc(thumbUrl);
+        }else{
+        	this.down('image').setSrc('resources/images/noImage.png');
         }
         return me;
     }

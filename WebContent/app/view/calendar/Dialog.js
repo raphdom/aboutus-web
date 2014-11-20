@@ -256,10 +256,12 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     		this.categoryField.setVisible(true);
         	this.thumbField.setVisible(true);
         	this.publishedField.setVisible(true);
+        	this.setHeight(480);
     	}else{
     		this.categoryField.setVisible(false);
         	this.thumbField.setVisible(false);
         	this.publishedField.setVisible(false);
+        	this.setHeight(300);
     	}
     },
     
