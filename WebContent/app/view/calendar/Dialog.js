@@ -156,7 +156,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     	this.callParent(arguments);
     },
     
-    show: function(o, animateTarget){
+    show: function(o, original, animateTarget){
 		// Work around the CSS day cell height hack needed for initial render in IE8/strict:
 		this.animateTarget = (Ext.isIE8 && Ext.isStrict) ? null : animateTarget,
             M = Extensible.calendar.data.EventMappings;
@@ -210,6 +210,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         }
         this.dateRangeField.setValue(rec.data);
         this.activeRecord = rec;
+        this.originalRecord = original;
         //this.el.setStyle('z-index', 12000);
         
         this.onCalendarSelect(this.calendarField);
@@ -376,6 +377,10 @@ Ext.define('AboutUs.view.calendar.Dialog', {
             }
         });
         
+        if (record.get(M.WeekDays.name)==""){
+    		record.set(M.WeekDays.name,null);
+    	}
+        
         var dates = this.dateRangeField.getValue();
         obj[M.StartDate.name] = dates[0];
         obj[M.EndDate.name] = dates[1];
@@ -391,17 +396,27 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         return this;
     },
     
+    updateOriginalRecord:function(){
+    	var fields = this.originalRecord.fields;
+		var me = this; 
+        fields.each(function(f) {
+            name = f.name;
+            me.originalRecord.set(name,me.activeRecord.get(name));
+        });
+    },
+    
     // private
     onSave: function(){
-    	if (this.activeRecord.get("WeekDays")==""){
-    		this.activeRecord.set("WeekDays",null);
-    	}
+    	
         if(!this.formPanel.form.isValid()){
             return;
         }
 		if(!this.updateRecord(this.activeRecord)){
 			this.onCancel();
 			return;
+		}
+		if(!this.activeRecord.phantom){
+			this.updateOriginalRecord();
 		}
 		this.fireEvent(this.activeRecord.phantom ? 'eventadd' : 'eventupdate', this, this.activeRecord, this.animateTarget);
     }

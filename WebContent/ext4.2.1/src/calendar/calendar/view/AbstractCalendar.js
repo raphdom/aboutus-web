@@ -1563,13 +1563,13 @@ alert('End: '+bounds.end);
 			    },
 			    success: function(record, operation) {
 			    	record.set('EventId',rec.get('EventId'));
-			    	this.getEventEditor().show(record, animateTarget, this);
+			    	this.getEventEditor().show(record, rec, animateTarget, this);
 			    },
 			    callback: function(record, operation, success) {
 			    }
 			});
     	}else{
-    		this.getEventEditor().show(rec, animateTarget, this);
+    		this.getEventEditor().show(rec, rec, animateTarget, this);
     	}
         
         return this;
