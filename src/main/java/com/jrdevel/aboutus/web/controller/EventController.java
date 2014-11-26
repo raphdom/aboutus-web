@@ -88,4 +88,23 @@ public class EventController {
 		}
 	}
 	
+	@RequestMapping(value="/delete.action", method = RequestMethod.POST)
+	public @ResponseBody Map<String,? extends Object> delete(@RequestBody EventDTO eventDTO) throws Exception {
+
+		try{
+
+			ResultObject result = null;
+
+			result = eventService.delete(eventDTO.getEid());
+			
+			return result.toMap();
+			
+		} catch (Exception e) {
+			
+			logger.error(e);
+			
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
+		}
+	}
+	
 }

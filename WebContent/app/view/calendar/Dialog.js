@@ -31,6 +31,21 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     	Ext.apply(me, {
         	items:[{
         		xtype:'commonform',
+        		buttons: [{
+					text: 'Remover',
+		            action:'delete',
+		            hidden:true,
+		            handler: this.onDelete,
+		            scope: this
+				},{
+			       	text:'Cancelar',
+			       	action:'cancel'
+			    }, {
+			        formBind: true,
+			    	disabled: true,
+			        text: 'Guardar',
+			        action:'save'
+				}],
 		    	items:[{
 		    		xtype: 'tabpanel',
 		    		activeTab: 0,
@@ -51,7 +66,8 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					            itemId: this.id + '-title',
 					            name: Extensible.calendar.data.EventMappings.Title.name,
 					            fieldLabel: 'O quê',
-					            anchor: '100%'
+					            anchor: '100%',
+					            allowBlank:false
 					        },{
 					            xtype: 'extensible.daterangefield',
 					            itemId: this.id + '-dates',
@@ -94,7 +110,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					            	xtype:'button',
 					            	hidden:true,
 					            	itemId: this.id + '-repeatButton',
-					            	text:'Edit',
+					            	text:'Editar',
 					            	handler:this.onEditRepeatClick,
 					            	scope: this
 					            }]
@@ -158,6 +174,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     
     show: function(o, original, animateTarget){
 		// Work around the CSS day cell height hack needed for initial render in IE8/strict:
+    	this.down('button[action=delete]').hide();
 		this.animateTarget = (Ext.isIE8 && Ext.isStrict) ? null : animateTarget,
             M = Extensible.calendar.data.EventMappings;
 
@@ -181,6 +198,9 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 			else{
 				var tpl = new Ext.XTemplate(this.titleUpdate);
 				this.setTitle(tpl.apply(rec.data))
+				
+				this.formPanel.down('button[action=delete]').show();
+				
 			}
             
 			f.reset();
@@ -419,5 +439,13 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 			this.updateOriginalRecord();
 		}
 		this.fireEvent(this.activeRecord.phantom ? 'eventadd' : 'eventupdate', this, this.activeRecord, this.animateTarget);
+    },
+    
+    // private
+    onDelete: function(){
+    	if(!this.activeRecord.phantom){
+			this.updateOriginalRecord();
+			this.fireEvent('eventdelete', this, this.originalRecord, this.animateTarget);
+		}
     }
 });

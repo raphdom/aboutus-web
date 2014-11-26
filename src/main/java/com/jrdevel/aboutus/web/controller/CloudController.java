@@ -142,5 +142,13 @@ public class CloudController {
 		
 	}
 	
+	@RequestMapping(value="/driveInfo.action")
+	public @ResponseBody Map<String,? extends Object> driveInfo() throws Exception {
+		
+		ResultObject result = cloudService.getDriveInfo();
+		
+		return result.toMap();
+		
+	}
 
 }

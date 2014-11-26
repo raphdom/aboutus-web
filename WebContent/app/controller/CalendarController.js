@@ -35,4 +35,5 @@ Ext.define('AboutUs.controller.CalendarController', {
     	this.getEventDialog().onSave();
     }
     
+    
 });

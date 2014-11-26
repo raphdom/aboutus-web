@@ -1490,6 +1490,12 @@ alert('End: '+bounds.end);
                             win.currentView.onEventUpdate(null, rec);
                         },
                         scope: this
+                    },
+                    'eventdelete': {
+                        fn: function(win, rec, animTarget) {
+                            win.currentView.onEventDelete(null, rec);
+                        },
+                        scope: this
                     }
         		}
         	});

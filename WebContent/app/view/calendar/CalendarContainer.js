@@ -115,19 +115,19 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
                         },
                         'eventadd': {
                             fn: function(cp, rec){
-                                this.showMsg('Evento '+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +' foi adicionado com sucesso.');
+                                this.showMsg('Evento "'+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +'" foi adicionado com sucesso.');
                             },
                             scope: this
                         },
                         'eventupdate': {
                             fn: function(cp, rec){
-                                this.showMsg('Event '+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +' was updated');
+                                this.showMsg('Evento "'+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +'" foi atualizado');
                             },
                             scope: this
                         },
                         'eventdelete': {
                             fn: function(cp, rec){
-                                this.showMsg('Event '+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +' was deleted');
+                                this.showMsg('Evento "'+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +'" foi eliminado');
                             },
                             scope: this
                         },
@@ -176,13 +176,13 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
                             },
                             scope: this
                         },
-                        'eventdelete': {
+                        /*'eventdelete': {
                             fn: function(win, rec){
                                 this.eventStore.remove(rec);
                                 this.showMsg('Event '+ rec.data[Extensible.calendar.data.EventMappings.Title.name] +' was deleted');
                             },
                             scope: this
-                        },
+                        },*/
                         'initdrag': {
                             fn: function(vw){
                                 // do something when drag starts
