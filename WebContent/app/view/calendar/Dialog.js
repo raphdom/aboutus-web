@@ -152,18 +152,14 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					        }]
 					    }]
 				    },{
-				    	xtype:'panel',
 				    	title:'Descrição',
-					    layout:{
-					    	type:'hbox',
-					    	align:'stretchmax'
-					    },
-					   	items:[{
-					    	xtype     : 'htmleditor',
+		        		layout:'fit',
+		        		items:[{
+		        			itemId	  : this.id + '-notes',
+		        			xtype     : 'htmleditor',
 					    	emptyText : 'Digita aqui a descrição detalhada do evento',
-					        name      : 'description'
-					    }]
-					    
+					        name      : 'notes'
+		        		}]
 				    }]
 		    	}]
         	}]
@@ -229,6 +225,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
             this.calendarField.setValue(rec.data[M.CalendarId.name]);
         }
         this.dateRangeField.setValue(rec.data);
+        this.notesField.setValue(rec.data[M.Notes.name]);
         this.activeRecord = rec;
         this.originalRecord = original;
         //this.el.setStyle('z-index', 12000);
@@ -265,6 +262,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         this.checkRepeatField = this.down('#' + this.id + '-repeat');
         this.checkRepeatLabel = this.down('#' + this.id + '-repeatLabel');
         this.checkRepeatButton = this.down('#' + this.id + '-repeatButton');
+        this.notesField = this.down('#' + this.id + '-notes');
         
         //site fields
         this.categoryField = this.down('#' + this.id + '-category');
@@ -400,6 +398,8 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         if (record.get(M.WeekDays.name)==""){
     		record.set(M.WeekDays.name,null);
     	}
+    	
+    	record.set(M.Notes.name,this.notesField.getValue());
         
         var dates = this.dateRangeField.getValue();
         obj[M.StartDate.name] = dates[0];
@@ -443,9 +443,16 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     
     // private
     onDelete: function(){
-    	if(!this.activeRecord.phantom){
-			this.updateOriginalRecord();
-			this.fireEvent('eventdelete', this, this.originalRecord, this.animateTarget);
-		}
+    	var me = this;
+    	Ext.Msg.confirm('Eliminar', 'Deseja realmente eliminar este evento?', 
+    			function(btn, text){
+			    	if (btn == 'yes'){
+						if(!me.activeRecord.phantom){
+							me.updateOriginalRecord();
+							me.fireEvent('eventdelete', me, me.originalRecord, me.animateTarget);
+						}	    		
+			    	}
+    			}
+    	);
     }
 });

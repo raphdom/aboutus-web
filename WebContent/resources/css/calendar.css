@@ -899,9 +899,7 @@ td.ext-cal-dtitle-today div {
     font-family: helvetica, arial, sans-serif;
     font-size: 12px;
 }
-.x-calendar-list .x-panel-header-text {
-    color: #555;
-}
+
 .x-calendar-list li {
     position: relative;
     margin-bottom: 2px;

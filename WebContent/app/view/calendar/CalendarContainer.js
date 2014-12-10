@@ -62,6 +62,13 @@ Ext.define('AboutUs.view.calendar.CalendarContainer' ,{
                     border: false,
                     id:'app-calendar',
                     region: 'center',
+                    dayText:'Dia',
+                    weekText: 'Semana',
+                    multiWeekText: '{0} Semanas',
+    				monthText: 'Mês',
+    				jumpToText: 'Ir para:',
+    				goText: 'Ir',
+    				todayText: 'Hoje',
                     activeItem: 3, // month view
                     
                     // Any generic view options that should be applied to all sub views:

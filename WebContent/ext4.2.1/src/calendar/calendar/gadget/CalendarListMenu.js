@@ -33,7 +33,7 @@ Ext.define('Extensible.calendar.gadget.CalendarListMenu', {
      * @cfg {String} displayOnlyThisCalendarText
      * The text to display for the 'Display only this calendar' option in the menu.
      */
-    displayOnlyThisCalendarText: 'Display only this calendar',
+    displayOnlyThisCalendarText: 'Mostrar somente este calendário',
     /**
      * @cfg {Number} calendarId
      * The id of the calendar to be associated with this menu. This calendarId will be passed

@@ -368,6 +368,7 @@ Ext.define('AboutUs.controller.CloudController', {
     
     onSaveFolder: function(button){
     	var me = this;
+    	var record = this.getTreeCloudPanel().getSelectionModel().getSelection()[0];
     	var win = button.up('window'),
             form = win.down('form');
     	if (!form.isValid()){
@@ -379,6 +380,7 @@ Ext.define('AboutUs.controller.CloudController', {
     	form.getRecord().save({
     		success: function(record, operation){
     			win.close();
+    			
     			me.getFolderStoreStore().load({
     				callback: function(records, operation, success) {
 				        var node = me.getFolderStoreStore().getNodeById(record.get('id'));

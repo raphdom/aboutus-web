@@ -17,6 +17,7 @@ import com.jrdevel.aboutus.core.common.to.ListParams;
 import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.user.ProfileDTO;
 import com.jrdevel.aboutus.core.user.UserDTO;
+import com.jrdevel.aboutus.core.user.UserListDTO;
 import com.jrdevel.aboutus.core.user.UserService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
@@ -38,6 +39,9 @@ public class UserController {
 
 		
 		ResultObject result = userService.list(input);
+		
+		UserListDTO dtoUser1 = (UserListDTO) result.getData().get(0);
+		logger.info("Date of user 1 = " + dtoUser1.getLastvisitDate().toString());
 		
 		return result.toMap();
 		
