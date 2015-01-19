@@ -24,6 +24,22 @@ Ext.define('AboutUs.view.person.TabContact', {
 		        type: 'memory'
 		    }
 		});
+		
+		var storeContactType = Ext.create('Ext.data.Store', {
+		    fields: ['value','text'], 
+		    autoLoad:true,
+		    proxy: {
+		        type: 'ajax',
+		        api: {
+		        	read : 'list/contactType.action'
+		        },
+		        reader: {
+		            type: 'json',
+		            root: 'data',
+		            successProperty: 'success'
+		        }
+		    }
+		})
 	    
 	    Ext.applyIf(this, {
         	items:[{
@@ -34,8 +50,8 @@ Ext.define('AboutUs.view.person.TabContact', {
 		        		text: 'Tipo',  
 		        		dataIndex: 'contactTypeValue',
 		        		renderer: function(value, metaData, record, rowIndex, colIndex, store) {
-							var idx = this.columns[colIndex].field.store.find('value', value);
-							return idx !== -1 ? this.columns[colIndex].field.store.getAt(idx).get('text') : ''; 
+							var idx = storeContactType.find('value', value);
+							return idx !== -1 ? storeContactType.getAt(idx).get('text') : ''; 
 						},
 		        		editor:{
 		        			xtype:'listcombo',
@@ -53,6 +69,7 @@ Ext.define('AboutUs.view.person.TabContact', {
 		    	],
 		    	tbar: [{
 		            text: 'Adicionar',
+		            icon:'resources/images/add.png',
 		            handler : function() {
 		                rowEditing.cancelEdit();
 		
@@ -63,6 +80,7 @@ Ext.define('AboutUs.view.person.TabContact', {
 		            }
 		        },{
 		            text: 'Remover',
+		            icon:'resources/images/delete.png',
 		            handler: function() {
 		                var sm = arguments[0].up('grid').getSelectionModel();
 		                rowEditing.cancelEdit();

@@ -1,7 +1,8 @@
 package com.jrdevel.aboutus.web.controller;
 
-import java.util.Date;
 import java.util.Map;
+
+import net.aboutchurch.common.to.ResultObject;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jrdevel.aboutus.core.calendar.CalendarService;
-import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 @RequestMapping(value="/calendar")

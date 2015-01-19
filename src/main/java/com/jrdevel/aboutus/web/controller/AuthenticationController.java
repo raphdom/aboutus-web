@@ -7,6 +7,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import net.aboutchurch.common.to.ListResult;
+import net.aboutchurch.common.to.ResultObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,8 +24,6 @@ import com.jrdevel.aboutus.core.authentication.UserDetailsAdapter;
 import com.jrdevel.aboutus.core.common.model.Permission;
 import com.jrdevel.aboutus.core.common.model.Register;
 import com.jrdevel.aboutus.core.common.model.User;
-import com.jrdevel.aboutus.core.common.to.ListResult;
-import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 /**

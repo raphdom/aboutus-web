@@ -39,6 +39,7 @@ Ext.define('AboutUs.view.person.TabChurchData', {
     	},{
 			xtype:'datefield',
 			fieldLabel: 'Data de Batismo',
+			format: 'd/m/Y',
             name: 'baptismdate'
     	},{
     		xtype      : 'fieldcontainer',
@@ -64,6 +65,7 @@ Ext.define('AboutUs.view.person.TabChurchData', {
     	},{
 			xtype:'datefield',
 			fieldLabel: 'Data de Chegada',
+			format: 'd/m/Y',
             name: 'arrivalChurchDate'
         },{
 			fieldLabel: 'Igreja Anterior',

@@ -3,6 +3,8 @@ package com.jrdevel.aboutus.web.util;
 import java.util.List;
 import java.util.Set;
 
+import net.aboutchurch.common.to.Filter;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.core.convert.converter.Converter;
@@ -14,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jrdevel.aboutus.core.common.model.File;
 import com.jrdevel.aboutus.core.common.model.Group;
 import com.jrdevel.aboutus.core.common.model.Permission;
-import com.jrdevel.aboutus.core.common.to.Filter;
 
 /**
  * @author Raphael Domingues

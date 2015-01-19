@@ -5,7 +5,7 @@ Ext.define('AboutUs.view.component.ListCombo', {
     
     displayField:'text',
 	valueField:'value',
-	queryMode:'local',
+	//queryMode:'local',
     
     initComponent: function() {
     	var me = this;

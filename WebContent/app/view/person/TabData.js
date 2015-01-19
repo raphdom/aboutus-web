@@ -63,7 +63,8 @@ Ext.define('AboutUs.view.person.TabData', {
         },{
 			xtype:'datefield',
 			fieldLabel: 'Data de Nascimento',
-            name: 'birthday'
+            name: 'birthday',
+            format: 'd/m/Y'
         },{
 			fieldLabel: 'NIF',
             name: 'nif',

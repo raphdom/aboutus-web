@@ -72,6 +72,10 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="basename" value="classpath:messages" />
 	</bean>
 	
-	<mvc:resources mapping="/**" location="/" />
+	<!-- <mvc:resources mapping="/**" location="/" /> -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/app/**" location="/app/" />
+	<mvc:resources mapping="/ext4.2.1/**" location="/ext4.2.1/" />
+	
 	
 </beans>

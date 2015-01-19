@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import net.aboutchurch.common.dto.EventDTO;
+import net.aboutchurch.common.to.ResultObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jrdevel.aboutus.core.calendar.EventDTO;
 import com.jrdevel.aboutus.core.calendar.EventService;
 import com.jrdevel.aboutus.core.common.helper.MessageHelper;
-import com.jrdevel.aboutus.core.common.helper.MessageKeyEnum;
-import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 @RequestMapping(value="/event")

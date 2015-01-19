@@ -51,10 +51,12 @@ Ext.define('AboutUs.controller.PersonController', {
     onBeforeSaveData: function(){
 		var form = this.getDialog().down('form');
 
-		var adresses = this.getAddressGrid().getSelectionModel().getSelection();
+		var adresses = this.getAddressGrid().getStore().getRange();
+		form.getRecord().addresses().removeAll();
 		form.getRecord().addresses().add(adresses);
 		
-		var contacts = this.getContactGrid().getSelectionModel().getSelection();
+		var contacts = this.getContactGrid().getStore().getRange();
+		form.getRecord().contacts().removeAll();
 		form.getRecord().contacts().add(contacts);
 		
 	},

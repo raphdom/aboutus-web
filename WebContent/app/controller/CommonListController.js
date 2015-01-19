@@ -197,6 +197,7 @@ Ext.define('AboutUs.controller.CommonListController', {
     },
     
     onSearchCheckField:function(menuItem, checked, options){
+    	var me = this;
     	if (checked){
     		if (!menuItem.criteriaXtype){
     			menuItem.criteriaXtype= 'textfield'
@@ -204,7 +205,14 @@ Ext.define('AboutUs.controller.CommonListController', {
 	    	var field = Ext.widget(menuItem.criteriaXtype,{
 	    		fieldLabel: menuItem.header,
 				name : menuItem.criteriaName,
-				width : 400
+				width : 400,
+				listeners: {
+	                specialkey: function(field, e){
+	                    if (e.getKey() == e.ENTER) {
+	                        me.onDoSearch();
+	                    }
+	                }
+            	}
 	    	});
 	    	this.getCriteriaContainer().add(field);
     	}else{

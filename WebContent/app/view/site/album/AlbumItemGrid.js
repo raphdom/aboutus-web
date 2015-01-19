@@ -63,7 +63,11 @@ Ext.define('AboutUs.view.site.album.AlbumItemGrid' ,{
 			        },{
 			                text: 'Eliminar',
 			                icon:'resources/images/delete.png',
-			                action:'delete'
+			                action:'delete',
+			                handler:function(button){
+			                	var recordDelete = AboutUs.app.getController('site.AlbumController').getItemGrid().down('dataview').getSelectionModel().getSelection();
+			                	AboutUs.app.getController('site.AlbumController').getItemGrid().down('dataview').getStore().remove(recordDelete);
+			                }
 			        }]
             });
             me.callParent(arguments);

@@ -37,6 +37,7 @@ Ext.define('AboutUs.view.person.TabAddress', {
 		    	],
 		    	tbar: [{
 		            text: 'Adicionar',
+		            icon:'resources/images/add.png',
 		            handler : function() {
 		                rowEditing.cancelEdit();
 		
@@ -47,6 +48,7 @@ Ext.define('AboutUs.view.person.TabAddress', {
 		            }
 		        },{
 		            text: 'Remover',
+		            icon:'resources/images/delete.png',
 		            handler: function() {
 		                var sm = arguments[0].up('grid').getSelectionModel();
 		                rowEditing.cancelEdit();

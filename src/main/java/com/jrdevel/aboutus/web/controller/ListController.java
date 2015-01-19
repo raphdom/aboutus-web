@@ -3,7 +3,7 @@ package com.jrdevel.aboutus.web.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import net.aboutchurch.common.dto.GenericValueTextDTO;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jrdevel.aboutus.core.common.ListService;
-import com.jrdevel.aboutus.core.dto.GenericValueTextDTO;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 /**

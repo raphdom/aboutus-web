@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import net.aboutchurch.common.to.ResultObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +19,6 @@ import com.jrdevel.aboutus.core.authentication.UserDetailsAdapter;
 import com.jrdevel.aboutus.core.cloud.FolderService;
 import com.jrdevel.aboutus.core.cloud.FolderWrapper;
 import com.jrdevel.aboutus.core.common.model.Folder;
-import com.jrdevel.aboutus.core.common.to.ResultObject;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 /**
