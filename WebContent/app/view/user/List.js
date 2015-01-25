@@ -1,7 +1,9 @@
 Ext.define('AboutUs.view.user.List', {
 	extend: 'AboutUs.view.common.List',
-    
     alias: 'widget.userlist',
+    
+    requires:['AboutUs.view.component.DataRangeCriteria'],
+    
     title : userListTitle,
     store: 'UserStore',
     icon:'resources/images/user.png',
@@ -15,7 +17,6 @@ Ext.define('AboutUs.view.user.List', {
     columns: [
     {
     	header: "Nome",
-		width: 170,
 		flex:1,
 		dataIndex: 'personName',
 		criteriaName:'person.name',
@@ -24,12 +25,10 @@ Ext.define('AboutUs.view.user.List', {
     	}
 	},{
 		header: "Email",
-		width: 170,
 		flex:1,
 		dataIndex: 'email'
 	},{
 		header: "Igreja",
-		width: 170,
 		flex:1,
 		dataIndex: 'churchName',
 		criteriaXtype:'churchcombo',
@@ -41,24 +40,23 @@ Ext.define('AboutUs.view.user.List', {
 		xtype:'booleanimagecolumn', 
 		header: "Ativo",
 		align:'center',
-		flex:1,
+		width: 80,
 		dataIndex:'activation',
-		criteriaXtype:'combo'
+		criteriaXtype:'checkbox'
 	},{
 		xtype:'booleanimagecolumn',
 		align:'center',
 		header: "Bloqueado",
-		flex:1,
+		width: 100,
 		dataIndex:'block',
-		criteriaXtype:'combo'
+		criteriaXtype:'checkbox'
 	},{
 		header: "Último acesso",
-		width: 150,
-		flex:1,
+		width: 130,
 		dataIndex:'lastvisitDate',
 		xtype:'datecolumn', 
 		format:'d-m-Y H:i',
-		criteriaXtype:'datefield'
+		criteriaXtype:'datarangecriteria'
 	}],
 	
 	initComponent: function() {

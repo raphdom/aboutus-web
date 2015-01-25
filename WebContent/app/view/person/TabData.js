@@ -5,7 +5,8 @@ Ext.define('AboutUs.view.person.TabData', {
     
     title:'Dados Pessoais',
     
-	requires:['AboutUs.view.component.ListCombo'],
+	requires:['AboutUs.view.component.ListCombo',
+			  'AboutUs.view.component.CivilStatusCriteriaCombo'],
     
     closable:false,
     

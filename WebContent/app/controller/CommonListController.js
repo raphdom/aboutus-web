@@ -205,6 +205,7 @@ Ext.define('AboutUs.controller.CommonListController', {
 	    	var field = Ext.widget(menuItem.criteriaXtype,{
 	    		fieldLabel: menuItem.header,
 				name : menuItem.criteriaName,
+				uncheckedValue:'disabled',
 				width : 400,
 				listeners: {
 	                specialkey: function(field, e){

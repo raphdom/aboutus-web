@@ -26,6 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/ButtonSegment.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/dataview.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/tileview.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/daterange.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/upload.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/calendar.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/calendar-colors.css">

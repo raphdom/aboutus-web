@@ -28,7 +28,7 @@ public class PersonController {
 	private PersonService personService;
 	
 	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
 
 		try{
 			

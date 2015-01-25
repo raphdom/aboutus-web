@@ -9,20 +9,8 @@ Ext.define('AboutUs.view.component.ChurchCombo', {
     
     initComponent: function() {
     	var me = this;
-    	var store = Ext.create('Ext.data.Store', {
-		    model: 'AboutUs.model.Church',
-		    autoLoad:true,
-		    proxy: {
-		        type: 'ajax',
-		        api: {
-		        	read : 'church/view.action'
-		        },
-		        reader: {
-		            type: 'json',
-		            root: 'data',
-		            successProperty: 'success'
-		        }
-		    }
+    	var store = Ext.create('AboutUs.store.ChurchStore', {
+		    autoLoad:true
 		})
     	Ext.apply(me, {
         	store:store

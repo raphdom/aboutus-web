@@ -32,13 +32,11 @@ Ext.define('AboutUs.view.music.music.List', {
             	}]
 	},*/{
     	header: "Id",
-		width: 170,
-		flex:1,
+		width: 80,
 		dataIndex: 'id'
     },{
     	header: "Título",
-		width: 170,
-		flex:1,
+		flex:2,
 		dataIndex: 'title'
     },{
     	header: "Autor",
@@ -48,7 +46,7 @@ Ext.define('AboutUs.view.music.music.List', {
     },{
     	header: "Letra",
 		width: 170,
-		flex:1,
+		flex:3,
 		dataIndex: 'liryc'
     }],
     

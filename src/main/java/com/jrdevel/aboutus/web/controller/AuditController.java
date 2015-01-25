@@ -56,7 +56,7 @@ public class AuditController {
 		sorters.add(sort);
 		
 		input.setFilter(filters);
-		input.setSorters(sorters);
+		input.setSort(sorters);
 		input.setLimit(5);
 		
 		ResultObject result = auditService.list(input);

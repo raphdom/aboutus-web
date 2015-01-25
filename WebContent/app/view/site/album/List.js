@@ -16,26 +16,28 @@ Ext.define('AboutUs.view.site.album.List', {
     
     columns: [{
     	header: "Título",
-		width: 170,
-		flex:1,
+		flex:2,
 		dataIndex: 'title'
+	},{
+    	header: "Categoria",
+		flex:1,
+		dataIndex: 'categoryName',
+		criteriaXtype:'categorycombo',
+		criteriaName:'category.id',
+		getSortParam: function() {
+        	return this.criteriaName;
+    	}
    },{
     	xtype:'booleanimagecolumn', 
 		header: "Publicado",
 		align:'center',
-		flex:1,
+		width: 100,
 		dataIndex:'published',
 		criteriaXtype:'combo'
     },{
     	header: "Ordem",
-		width: 170,
-		flex:1,
+		width: 100,
 		dataIndex: 'ordering'
-    },{
-    	header: "Categoria",
-		width: 170,
-		flex:1,
-		dataIndex: 'categoryName'
     }],
     
 

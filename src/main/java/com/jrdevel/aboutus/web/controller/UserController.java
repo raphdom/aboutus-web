@@ -18,63 +18,57 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jrdevel.aboutus.core.common.helper.MessageHelper;
 import com.jrdevel.aboutus.core.user.ProfileDTO;
 import com.jrdevel.aboutus.core.user.UserDTO;
-import com.jrdevel.aboutus.core.user.UserListDTO;
 import com.jrdevel.aboutus.core.user.UserService;
 import com.jrdevel.aboutus.core.util.ExtJSReturn;
 
 @RequestMapping(value="/user")
 @Controller
 public class UserController {
-	
-	
+
+
 	private static final Logger logger = Logger.getLogger(UserController.class);
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private MessageHelper messageHelper;
-	
-	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
-		
-		ResultObject result = userService.list(input);
-		
-		UserListDTO dtoUser1 = (UserListDTO) result.getData().get(0);
-		logger.info("Date of user 1 = " + dtoUser1.getLastvisitDate().toString());
-		
-		return result.toMap();
-		
-		/*try{
+	@RequestMapping(value="/view.action")
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
+
+		try{
 			
-			
+			ResultObject result = userService.list(input);
+
+			return result.toMap();
 			
 		} catch (Exception e) {
-			
+
 			logger.error(e);
-			
-			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
-		}*/
+
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
+		}
+
 	}
-	
+
 	@RequestMapping(value="/get.action")
 	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
 
 		try{
-			
+
 			ResultObject result = userService.get(id);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
-			
+
 			logger.error(e);
 
-			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 	@RequestMapping(value="/save.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> save(@RequestBody UserDTO userDTO) throws Exception {
 
@@ -83,81 +77,81 @@ public class UserController {
 			ResultObject result = null;
 
 			result = userService.save(userDTO);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
-			
+
 			logger.error(e);
-			
-			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
+
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 	@RequestMapping(value="/delete.action")
 	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<Integer> ids) throws Exception {
 
 		try{
-			
+
 			ResultObject result = userService.delete(ids);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
 
-			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 	@RequestMapping(value="/getProfile.action")
 	public @ResponseBody Map<String,? extends Object> getCurrentProfile() throws Exception {
-		
+
 		ResultObject result = userService.getCurrentProfile();
-		
+
 		return result.toMap();
-		
+
 	}
-	
-	
+
+
 	@RequestMapping(value="/updateProfile.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> updateProfile(@RequestBody ProfileDTO profile) throws Exception {
-	
+
 		ResultObject result = null;
 
 		result = userService.updateProfile(profile);
 
 		return result.toMap();
-		
+
 	}
-	
-	
+
+
 	@RequestMapping(value="/changePassword.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> changePassword(@RequestParam String passActual, @RequestParam String passNew) throws Exception {
-	
+
 		ResultObject result = null;
 
 		result = userService.changePassword(passActual, passNew);
 
 		return result.toMap();
-		
+
 	}
-	
+
 	/*@RequestMapping(value="/currentUser.action")
 	public @ResponseBody Map<String,? extends Object> currentUser() throws Exception {
 
 		try{
-			
+
 			ResultObject result = userService.get(userSession);
 			User user = (User)result.getData().get(0);
 			user.setPermissions(new HashSet<Permission>(userService.getUserPermissions(user)));
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
 
 			return ExtJSReturn.mapError("Error retrieving Groups from database.");
 		}
 	}*/
-	
+
 
 }

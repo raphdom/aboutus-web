@@ -2,6 +2,10 @@ Ext.define('AboutUs.view.person.List', {
 	extend: 'AboutUs.view.common.List',
     
     alias: 'widget.personlist',
+
+    requires:['AboutUs.view.component.ListCombo',
+			  'AboutUs.view.component.CivilStatusCriteriaCombo',
+			  'AboutUs.view.component.CountryCriteriaCombo'],
     
     title : 'Pessoas',
     store: 'PersonStore',
@@ -16,36 +20,41 @@ Ext.define('AboutUs.view.person.List', {
     
     columns: [{
     	header: "Nome",
-		width: 170,
-		flex:1,
+		flex:2,
 		dataIndex: 'name'
 	},{
 		xtype:'booleanimagecolumn',
+		trueImage:'resources/images/male.png',
+    	falseImage:'resources/images/female.png',
 		align:'center',
+		width: 50,
 		header: "Sexo",
-		flex:1,
 		dataIndex:'male',
-		criteriaXtype:'combo'
+		criteriaXtype:'checkbox'
 	},{
 		header: "Estado Civil",
-		width: 170,
 		flex:1,
-		dataIndex: 'civilStatus'
+		dataIndex: 'civilStatus',
+		criteriaXtype:'civilstatuscriteriacombo',
+		criteriaName:'civilStatus.id'
 	},{
 		header: "Naturalidade",
-		width: 170,
 		flex:1,
-		dataIndex: 'naturality'
+		dataIndex: 'naturality',
+		criteriaXtype:'countrycriteriacombo',
+		criteriaName:'country.id',
+		getSortParam: function() {
+        	return this.criteriaName;
+    	}
 	},{
 		xtype:'booleanimagecolumn',
 		align:'center',
 		header: "Membro",
-		width: 170,
-		flex:1,
-		dataIndex: 'member'
+		width: 80,
+		dataIndex: 'member',
+		criteriaXtype:'checkbox'
 	},{
 		header: "Nascimento",
-		width: 170,
 		flex:1,
 		dataIndex: 'birthday',
 		xtype:'datecolumn', 
@@ -53,17 +62,14 @@ Ext.define('AboutUs.view.person.List', {
 		criteriaXtype:'datefield'
 	},{
 		header: "NIF",
-		width: 170,
 		flex:1,
 		dataIndex: 'nif'
 	},{
 		header: "Profissão",
-		width: 170,
 		flex:1,
 		dataIndex: 'profession'
 	},{
 		header: "Tipo de membro",
-		width: 170,
 		flex:1,
 		dataIndex: 'memberType'
 	}],

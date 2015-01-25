@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.aboutchurch.common.to.ListParams;
 import net.aboutchurch.common.to.ResultObject;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,13 +37,20 @@ public class CloudController {
 	private AboutUsConfiguration configuration;
 
 	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
 
 		try{
+			
+			if (CollectionUtils.isEmpty(input.getFilter())){
+				
+				return new ResultObject().toMap();
+				
+			}else{
 
-			ResultObject result = cloudService.list(input);
-
-			return result.toMap();
+				ResultObject result = cloudService.list(input);
+				
+				return result.toMap();
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

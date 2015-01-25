@@ -30,7 +30,7 @@ public class MusicController {
 	private MusicService musicService;
 	
 	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
 
 		
 		ResultObject result = musicService.list(input);

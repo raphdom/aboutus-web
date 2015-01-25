@@ -17,26 +17,24 @@ Ext.define('AboutUs.view.site.category.List', {
     columns: [{
     	xtype: 'treecolumn',
     	header: "Nome",
-		width: 170,
 		flex:1,
 		dataIndex: 'text'
     },{
     	header: "Posição",
-		width: 170,
-		flex:1,
+		width: 80,
 		dataIndex: 'position'
 	},{
 		xtype:'booleanimagecolumn',
 		align:'center',
 		header: "Publicado Fotos",
-		flex:1,
+		width: 150,
 		dataIndex:'publishedAlbuns',
 		criteriaXtype:'combo'
 	},{
 		xtype:'booleanimagecolumn',
 		align:'center',
 		header: "Publicado Vídeos",
-		flex:1,
+		width: 150,
 		dataIndex:'publishedVideos',
 		criteriaXtype:'combo'
     }],

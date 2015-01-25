@@ -22,50 +22,47 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
 @RequestMapping(value="/site/article")
 @Controller
 public class ArticleController {
-	
-	
+
+
 	private static final Logger logger = Logger.getLogger(ArticleController.class);
-	
+
 	@Autowired
 	private ArticleService articleService;
-	
-	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
-		
-		ResultObject result = articleService.list(input);
-		
-		return result.toMap();
-		
-		/*try{
-			
-			
-			
-		} catch (Exception e) {
-			
-			logger.error(e);
-			
-			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
-		}*/
-	}
-	
-	@RequestMapping(value="/get.action")
-	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
+	@RequestMapping(value="/view.action")
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
 
 		try{
 			
-			ResultObject result = articleService.get(id);
-			
+			ResultObject result = articleService.list(input);
+
 			return result.toMap();
 			
 		} catch (Exception e) {
-			
+
 			logger.error(e);
 
 			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
+	@RequestMapping(value="/get.action")
+	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
+
+		try{
+
+			ResultObject result = articleService.get(id);
+
+			return result.toMap();
+
+		} catch (Exception e) {
+
+			logger.error(e);
+
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
+		}
+	}
+
 	@RequestMapping(value="/save.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> save(@RequestBody ArticleDTO dto) throws Exception {
 
@@ -74,30 +71,30 @@ public class ArticleController {
 			ResultObject result = null;
 
 			result = articleService.save(dto);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
-			
+
 			logger.error(e);
-			
+
 			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 	@RequestMapping(value="/delete.action")
 	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<Integer> ids) throws Exception {
 
 		try{
-			
+
 			ResultObject result = articleService.delete(ids);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
 
 			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 }

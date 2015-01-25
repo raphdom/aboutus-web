@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.aboutchurch.common.to.Filter;
+import net.aboutchurch.common.to.Sort;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,7 +29,8 @@ public class AboutUsJsonConverter extends FormattingConversionServiceFactoryBean
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
-		registry.addConverter(convertFilter());
+		//registry.addConverter(convertFilter());
+		//registry.addConverter(convertSorter());
 		//registry.addConverter(convertInteger());
 		//registry.addConverter(convertPermissions());
 		//registry.addConverter(convertGroups());
@@ -47,6 +49,24 @@ public class AboutUsJsonConverter extends FormattingConversionServiceFactoryBean
 				} catch (Exception e) {
 					if(log.isErrorEnabled())
 						log.error("Error converting JSON collection to List<MyType>.", e);
+				}
+				return myTypeList;
+			}
+		};
+	}
+	
+	public Converter<String, List<Sort>> convertSorter() {
+		return new Converter<String, List<Sort>>() {
+
+			@Override
+			public List<Sort> convert(String source) {
+				ObjectMapper mapper = new ObjectMapper();
+				List<Sort> myTypeList = null;
+				try {
+					myTypeList = mapper.readValue(source, new TypeReference<List<Sort>>() {});
+				} catch (Exception e) {
+					if(log.isErrorEnabled())
+						log.error("Error converting JSON collection to List<Sort>.", e);
 				}
 				return myTypeList;
 			}

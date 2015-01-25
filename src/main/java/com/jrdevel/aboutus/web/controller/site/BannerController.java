@@ -22,50 +22,47 @@ import com.jrdevel.aboutus.core.util.ExtJSReturn;
 @RequestMapping(value="/site/banner")
 @Controller
 public class BannerController {
-	
-	
+
+
 	private static final Logger logger = Logger.getLogger(BannerController.class);
-	
+
 	@Autowired
 	private BannerService bannerService;
-	
-	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
 
-		
-		ResultObject result = bannerService.list(input);
-		
-		return result.toMap();
-		
-		/*try{
-			
-			
-			
-		} catch (Exception e) {
-			
-			logger.error(e);
-			
-			return ExtJSReturn.mapError(messageHelper.genericErrorMessage());
-		}*/
-	}
-	
-	@RequestMapping(value="/get.action")
-	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
+	@RequestMapping(value="/view.action")
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
 
 		try{
 			
-			ResultObject result = bannerService.get(id);
-			
+			ResultObject result = bannerService.list(input);
+
 			return result.toMap();
 			
 		} catch (Exception e) {
-			
+
 			logger.error(e);
 
 			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
+	@RequestMapping(value="/get.action")
+	public @ResponseBody Map<String,? extends Object> get(Integer id) throws Exception {
+
+		try{
+
+			ResultObject result = bannerService.get(id);
+
+			return result.toMap();
+
+		} catch (Exception e) {
+
+			logger.error(e);
+
+			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
+		}
+	}
+
 	@RequestMapping(value="/save.action", method = RequestMethod.POST)
 	public @ResponseBody Map<String,? extends Object> save(@RequestBody BannerDTO dto) throws Exception {
 
@@ -74,30 +71,30 @@ public class BannerController {
 			ResultObject result = null;
 
 			result = bannerService.save(dto);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
-			
+
 			logger.error(e);
-			
+
 			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 	@RequestMapping(value="/delete.action")
 	public @ResponseBody Map<String,? extends Object> delete(@RequestBody List<Integer> ids) throws Exception {
 
 		try{
-			
+
 			ResultObject result = bannerService.delete(ids);
-			
+
 			return result.toMap();
-			
+
 		} catch (Exception e) {
 
 			return ExtJSReturn.mapError(MessageHelper.genericErrorMessage());
 		}
 	}
-	
+
 }
