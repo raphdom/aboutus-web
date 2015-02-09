@@ -1824,6 +1824,22 @@ alert('End: '+bounds.end);
                 els[type == 'over' ? 'addCls' : 'removeCls'](this.eventOverClass);
             }
             this.fireEvent('event'+type, this, this.getEventRecord(evtId), el);
+            
+            var record = this.getEventRecord(evtId);
+            /*Ext.tip.QuickTipManager.register({
+			    target: el.dom,
+			    title: 'My Tooltip',
+			    text: 'This tooltip was added in code',
+			    width: 100,
+			    dismissDelay: 10000 // Hide after 10 seconds hover
+			});*/
+            /*var tip = Ext.create('Ext.tip.ToolTip', {
+    			target: el,
+    			anchor:'right',
+    			showDelay:0,
+    			html: 'Record id='+record.get('Title')
+			});*/
+			
             return true;
         }
         return false;

@@ -194,8 +194,11 @@
             <artifactId>javamelody-core</artifactId>
             <version>1.53.0</version>
     </dependency>
-	
-	
+	<dependency>
+		<groupId>org.apache.velocity</groupId>
+		<artifactId>velocity</artifactId>
+		<version>1.7</version>
+	</dependency>
     
   </dependencies>
 </project>

@@ -7,16 +7,17 @@ Ext.define('AboutUs.view.home.ListAudit', {
     icon:'resources/images/user.png',
     controller: 'AuditController',
     columns: [{ 
-        		text: 'Action',  
-        		dataIndex: 'action',
-        		flex:1
+        		header: "Ação",
+				flex:1,
+				dataIndex: 'action',
+				hideCriteria:true
         	},{ 
-        		text: "Data",
+        		header: "Data",
 				width:200,
 				dataIndex:'actionDate',
 				xtype:'datecolumn', 
 				format:'d-m-Y H:i',
-				criteriaXtype:'datefield'
+				criteriaXtype:'daterangecriterion'
         	}],
 	
 	initComponent: function() {

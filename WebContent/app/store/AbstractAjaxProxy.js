@@ -1,6 +1,7 @@
 Ext.define('AboutUs.store.AbstractAjaxProxy', {
     extend: 'Ext.data.proxy.Ajax',
     
+    remoteFilter:true,
     actionMethods: {
     	create: 'POST', read: 'POST', update: 'POST', destroy: 'POST'
     },
@@ -16,8 +17,8 @@ Ext.define('AboutUs.store.AbstractAjaxProxy', {
     writer: {
         type: 'json',
         writeAllFields: true,
-        encode: true,
-        root: 'data'
+        encode: false,
+        allowSingle:false
     },
     listeners: {
         exception: function(proxy, response, operation){

@@ -1,6 +1,7 @@
-Ext.define('AboutUs.view.component.DataRangeCriteria', {
+Ext.define('AboutUs.view.component.criteria.DataRangeCriterion', {
 	extend: 'Ext.ux.daterange.field.DateRangeSelection',
-	alias: 'widget.datarangecriteria',
+	alias: 'widget.daterangecriterion',
+	criteriaType:'daterange',
 	
 	startDateText: 'Data início',
 	endDateText: 'Data fim',

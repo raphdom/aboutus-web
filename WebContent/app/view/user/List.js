@@ -2,8 +2,6 @@ Ext.define('AboutUs.view.user.List', {
 	extend: 'AboutUs.view.common.List',
     alias: 'widget.userlist',
     
-    requires:['AboutUs.view.component.DataRangeCriteria'],
-    
     title : userListTitle,
     store: 'UserStore',
     icon:'resources/images/user.png',
@@ -31,7 +29,7 @@ Ext.define('AboutUs.view.user.List', {
 		header: "Igreja",
 		flex:1,
 		dataIndex: 'churchName',
-		criteriaXtype:'churchcombo',
+		criteriaXtype:'churchcombocriterion',
 		criteriaName:'church.id',
 		getSortParam: function() {
         	return this.criteriaName;
@@ -42,21 +40,21 @@ Ext.define('AboutUs.view.user.List', {
 		align:'center',
 		width: 80,
 		dataIndex:'activation',
-		criteriaXtype:'checkbox'
+		criteriaXtype:'booleancriterion'
 	},{
 		xtype:'booleanimagecolumn',
 		align:'center',
 		header: "Bloqueado",
 		width: 100,
 		dataIndex:'block',
-		criteriaXtype:'checkbox'
+		criteriaXtype:'booleancriterion'
 	},{
 		header: "Último acesso",
 		width: 130,
 		dataIndex:'lastvisitDate',
 		xtype:'datecolumn', 
 		format:'d-m-Y H:i',
-		criteriaXtype:'datarangecriteria'
+		criteriaXtype:'daterangecriterion'
 	}],
 	
 	initComponent: function() {

@@ -210,7 +210,7 @@ Ext.define('AboutUs.controller.CloudController', {
        	filters.push({
        		property: 'folder.id', 
        		value: record.get('id') , 
-       		type: 'id', 
+       		type: 'number', 
        		operator:'eq'
        	});
        	if (!Ext.isEmpty(Ext.ComponentQuery.query('imagepicker'))){

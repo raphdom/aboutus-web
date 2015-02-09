@@ -24,6 +24,7 @@
     <!-- App Files -->
 	<link rel="stylesheet" type="text/css" href="resources/css/aboutus.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/ButtonSegment.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/BoxSelect.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/dataview.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/tileview.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/daterange.css">

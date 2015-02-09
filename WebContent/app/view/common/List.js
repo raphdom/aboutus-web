@@ -24,13 +24,15 @@ Ext.define('AboutUs.view.common.List', {
 			
 			var searchMenu = new Array();
 			Ext.Array.each(this.columns, function(column, index, countriesItSelf) {
-			    searchMenu.push({
-			    	text: 'Procurar por '+ column.header,
-			    	criteriaName:column.criteriaName ? column.criteriaName : column.dataIndex,
-			    	header: column.header,
-			    	checked: false,
-			    	criteriaXtype:column.criteriaXtype
-			    })
+				if (!Ext.isDefined(column.hideCriteria) || !column.hideCriteria){
+				    searchMenu.push({
+				    	text: 'Procurar por '+ column.header,
+				    	criteriaName:column.criteriaName ? column.criteriaName : column.dataIndex,
+				    	header: column.header,
+				    	checked: false,
+				    	criteriaXtype:column.criteriaXtype
+				    })
+				}
 			});
 			
 			this.dockedItems = [{

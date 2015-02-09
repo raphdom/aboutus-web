@@ -33,7 +33,8 @@ Ext.define('AboutUs.view.music.music.List', {
 	},*/{
     	header: "Id",
 		width: 80,
-		dataIndex: 'id'
+		dataIndex: 'id',
+		criteriaXtype:'numbercriterion'
     },{
     	header: "Título",
 		flex:2,

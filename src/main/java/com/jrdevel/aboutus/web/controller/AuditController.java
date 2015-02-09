@@ -12,6 +12,7 @@ import net.aboutchurch.common.to.Sort;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,7 +30,7 @@ public class AuditController {
 	private AuditService auditService;
 	
 	@RequestMapping(value="/view.action")
-	public @ResponseBody Map<String,? extends Object> view(ListParams input) throws Exception {
+	public @ResponseBody Map<String,? extends Object> view(@RequestBody ListParams input) throws Exception {
 
 		
 		ResultObject result = auditService.list(input);
@@ -45,7 +46,7 @@ public class AuditController {
 		filter.setType("id");
 		filter.setProperty("userId");
 		filter.setOperator("eq");
-		filter.setValue(Integer.toString(UserAuthenticatedManager.getCurrentUser().getId()));
+		filter.setValue(UserAuthenticatedManager.getCurrentUser().getId());
 		List<Filter> filters = new ArrayList<Filter>();
 		filters.add(filter);
 		

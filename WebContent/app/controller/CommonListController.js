@@ -6,6 +6,17 @@ Ext.define('AboutUs.controller.CommonListController', {
     		'common.Form',
     		'common.CriteriaContainer'],
     
+	requires:[
+		'AboutUs.view.component.criteria.TextCriterion',
+		'AboutUs.view.component.criteria.NumberCriterion',
+		'AboutUs.view.component.criteria.BooleanCriterion',
+		'AboutUs.view.component.criteria.DataRangeCriterion',
+		'AboutUs.view.component.criteria.ChurchComboCriterion',
+		'AboutUs.view.component.criteria.CivilStatusCriterion',
+		'AboutUs.view.component.criteria.CountryCriterion',
+		'AboutUs.view.component.criteria.MemberTypeCriterion'
+	],
+    		
     refs: [{
         ref: 'commonList',
         selector: 'commonlist'
@@ -174,7 +185,6 @@ Ext.define('AboutUs.controller.CommonListController', {
     },
     
     onDoSearch: function(button, event, options) {
-    	console.log('CommonController.onDoSearch()');
         var store = this.getCommonList().grid.store;
         var form = this.getCriteriaContainer();
         var values = form.getValues();
@@ -184,7 +194,7 @@ Ext.define('AboutUs.controller.CommonListController', {
         	var value = values[p];
         	var field =  form.getForm().findField(p);
         	if (value) {
-        		filters.push({ property: p, value: value , type: field.xtype});
+        		filters.push({ property: p, value: value , type: field.criteriaType});
         	}
         }
  
@@ -200,12 +210,11 @@ Ext.define('AboutUs.controller.CommonListController', {
     	var me = this;
     	if (checked){
     		if (!menuItem.criteriaXtype){
-    			menuItem.criteriaXtype= 'textfield'
+    			menuItem.criteriaXtype= 'textcriterion'
     		}
 	    	var field = Ext.widget(menuItem.criteriaXtype,{
 	    		fieldLabel: menuItem.header,
 				name : menuItem.criteriaName,
-				uncheckedValue:'disabled',
 				width : 400,
 				listeners: {
 	                specialkey: function(field, e){

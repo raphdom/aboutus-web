@@ -45,6 +45,7 @@ Ext.define('AboutUs.controller.MainController', {
     ],
     
     init: function() {
+    	Ext.tip.QuickTipManager.init();
         this.control({
             'mainContainer container[region=north] button[action=cloud]': {
                 click: this.onCloudButtonClick
