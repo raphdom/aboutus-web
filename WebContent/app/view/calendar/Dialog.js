@@ -9,7 +9,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     icon:'resources/images/calendar.png',
     
     width:700,
-    height:300,
+    height:380,
     
     controller: 'CalendarController',
     
@@ -128,6 +128,12 @@ Ext.define('AboutUs.view.calendar.Dialog', {
 					       			}
 								}
 					        },{
+					        	xtype:'multipersoncombo',
+					        	itemId: this.id + '-multipersoncombo',
+					        	fieldLabel: 'Pessoas envolvidas',
+					        	name: Extensible.calendar.data.EventMappings.People.name,
+					        	anchor: '100%'
+					        },{
 					        	xtype:'categorycombo',
 					        	itemId: this.id + '-category',
 					        	fieldLabel: 'Categoria',
@@ -226,6 +232,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         }
         this.dateRangeField.setValue(rec.data);
         this.notesField.setValue(rec.data[M.Notes.name]);
+        this.peopleField.setValue(rec.data[M.People.name]);
         this.activeRecord = rec;
         this.originalRecord = original;
         //this.el.setStyle('z-index', 12000);
@@ -259,6 +266,7 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         this.titleField = this.down('#' + this.id + '-title');
         this.dateRangeField = this.down('#' + this.id + '-dates');
         this.calendarField = this.down('#' + this.id + '-calendar');
+        this.peopleField = this.down('#' + this.id + '-multipersoncombo');
         this.checkRepeatField = this.down('#' + this.id + '-repeat');
         this.checkRepeatLabel = this.down('#' + this.id + '-repeatLabel');
         this.checkRepeatButton = this.down('#' + this.id + '-repeatButton');
@@ -275,12 +283,12 @@ Ext.define('AboutUs.view.calendar.Dialog', {
     		this.categoryField.setVisible(true);
         	this.thumbField.setVisible(true);
         	this.publishedField.setVisible(true);
-        	this.setHeight(480);
+        	this.setHeight(520);
     	}else{
     		this.categoryField.setVisible(false);
         	this.thumbField.setVisible(false);
         	this.publishedField.setVisible(false);
-        	this.setHeight(300);
+        	this.setHeight(310);
     	}
     },
     
@@ -405,6 +413,9 @@ Ext.define('AboutUs.view.calendar.Dialog', {
         obj[M.StartDate.name] = dates[0];
         obj[M.EndDate.name] = dates[1];
         obj[M.IsAllDay.name] = dates[2];
+        
+        //People involved
+		obj[M.People.name]=this.peopleField.getValue();
 
         record.beginEdit();
         record.set(obj);

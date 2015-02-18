@@ -6,6 +6,10 @@ Ext.define('AboutUs.view.calendar.data.Calendars', {
 		                "id"    : 1,
 		                "title" : "Liderança",
 		                "color" : 2
+                 	},{
+                 		"id"    : 5,
+		                "title" : "Liderança Espinho",
+		                "color" : 14
 		            },{
 		                "id"    : 2,
 		                "title" : "Site",

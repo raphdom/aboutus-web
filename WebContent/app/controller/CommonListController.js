@@ -14,7 +14,8 @@ Ext.define('AboutUs.controller.CommonListController', {
 		'AboutUs.view.component.criteria.ChurchComboCriterion',
 		'AboutUs.view.component.criteria.CivilStatusCriterion',
 		'AboutUs.view.component.criteria.CountryCriterion',
-		'AboutUs.view.component.criteria.MemberTypeCriterion'
+		'AboutUs.view.component.criteria.MemberTypeCriterion',
+		'AboutUs.view.component.field.MultiPersonCombo'
 	],
     		
     refs: [{

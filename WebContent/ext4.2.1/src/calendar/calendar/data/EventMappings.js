@@ -189,5 +189,10 @@ Extensible.calendar.data.EventMappings = {
     	name: 'Published',
     	mapping: 'published',
     	type:    'boolean'
+    },
+    People: {
+    	name: 'People',
+    	mapping: 'people',
+    	useNull:true
     }
 };
